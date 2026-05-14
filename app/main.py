@@ -1,7 +1,5 @@
 import asyncio
-
 from datetime import datetime
-from app.utils.market_hours import market_is_open
 
 from app.data.market_data import (
     get_stock_data,
@@ -14,98 +12,143 @@ from app.portfolio.portfolio_monitor import (
     calculate_position_status
 )
 
+from app.portfolio.trailing_stop import (
+    evaluate_trailing_stop
+)
+
 from app.scanners.watchlist_scanner import (
     analyze_buy_opportunity
 )
 
-# =========================
-# STOCKS TO BUY
-# =========================
+from app.utils.market_hours import (
+    market_is_open
+)
+
+# ====================================
+# WATCHLIST
+# Stocks you want to buy
+# ====================================
 
 WATCHLIST = [
 
     "NVDA",
-    "MU",
-    "CCJ",
+    "PLTR",
+    "PLTU",
     "SMH",
-    "RIOT",
-    "CORZ",
-    "WULF"
+    "VOO"
 ]
 
-# =========================
-# STOCKS OWNED
-# =========================
+# ====================================
+# PORTFOLIO
+# Stocks already owned
+# ====================================
 
 SALELIST = [
 
     {
         "ticker": "BITX",
+        "number_of_shares": 51,
         "buy_price": 48.26,
-        "target_profit": 11
+        "target_profit": 11,
+        "trailing_stop": 0,
+        "highest_price": 48.26
     },
 
     {
         "ticker": "FNGU",
+        "number_of_shares": 106,
         "buy_price": 33.83,
-        "target_profit": 5
+        "target_profit": 8,
+        "trailing_stop": 0,
+        "highest_price": 33.83
     },
 
     {
         "ticker": "PLTR",
+        "number_of_shares": 30,
         "buy_price": 129.88,
-        "target_profit": 10
+        "target_profit": 10,
+        "trailing_stop": 0,
+        "highest_price": 129.88
     },
 
     {
         "ticker": "PLTU",
+        "number_of_shares": 100,
         "buy_price": 33.42,
-        "target_profit": 10
+        "target_profit": 10,
+        "trailing_stop": 0,
+        "highest_price": 33.42
     }
 ]
 
+# ====================================
+# MAIN MONITOR LOOP
+# ====================================
+
 async def monitor_market():
- 
+
+    print("===================================")
+    print("AI TRADING AGENT STARTED")
+    print("===================================")
+
     while True:
 
-        if not market_is_open():
-            print("Market is closed.")
-            await asyncio.sleep(300)
-            continue
+        try:
 
-        print("\n===================================")
-        print(f"Market Scan: {datetime.now()}")
-        print("===================================\n")
+            # ====================================
+            # MARKET HOURS VALIDATION
+            # ====================================
 
-        # ====================================
-        # BUY OPPORTUNITY SCANNER
-        # ====================================
-
-        print("========== WATCHLIST ==========\n")
-
-        for ticker in WATCHLIST:
-
-            try:
-
-                df = get_stock_data(ticker)
-
-                result = analyze_buy_opportunity(df)
+            if not market_is_open():
 
                 print(
-                    f"{ticker} => "
-                    f"{result['signal']} | "
-                    f"RSI: {result['rsi']} | "
-                    f"Confidence: {result['confidence']}"
+                    f"[{datetime.now()}] "
+                    f"Market closed. Sleeping..."
                 )
 
-                if result["signal"] == "BUY":
+                await asyncio.sleep(300)
 
-                    message = f"""
+                continue
+
+            print("\n===================================")
+            print(f"Market Scan: {datetime.now()}")
+            print("===================================\n")
+
+            # ====================================
+            # WATCHLIST SCANNER
+            # ====================================
+
+            print("========== WATCHLIST ==========\n")
+
+            for ticker in WATCHLIST:
+
+                try:
+
+                    df = get_stock_data(ticker)
+
+                    result = analyze_buy_opportunity(df)
+
+                    print(
+                        f"{ticker} => "
+                        f"{result['signal']} | "
+                        f"RSI: {result['rsi']} | "
+                        f"Confidence: {result['confidence']}"
+                    )
+
+                    # ====================================
+                    # BUY ALERT
+                    # ====================================
+
+                    if result["signal"] == "BUY":
+
+                        message = f"""
 🚀 BUY OPPORTUNITY 🚀
 
 Ticker: {ticker}
 
 Signal: BUY
+
 Confidence: {result['confidence']}
 
 RSI: {result['rsi']}
@@ -113,69 +156,142 @@ RSI: {result['rsi']}
 Reasons:
 {', '.join(result['reasons'])}
 
-Time: {datetime.now()}
+Time:
+{datetime.now()}
 """
 
-                    await send_alert(message)
+                        print(message)
 
-            except Exception as e:
+                        await send_alert(message)
 
-                print(f"{ticker} ERROR => {e}")
+                except Exception as e:
 
-        # ====================================
-        # PORTFOLIO MONITOR
-        # ====================================
+                    print(f"{ticker} WATCHLIST ERROR => {e}")
 
-        print("\n========== PORTFOLIO ==========\n")
+            # ====================================
+            # PORTFOLIO MONITOR
+            # ====================================
 
-        for stock in SALELIST:
+            print("\n========== PORTFOLIO ==========\n")
 
-            try:
+            for stock in SALELIST:
 
-                ticker = stock["ticker"]
+                try:
 
-                df = get_stock_data(ticker)
+                    ticker = stock["ticker"]
 
-                current_price = get_current_price(df)
+                    df = get_stock_data(ticker)
 
-                result = calculate_position_status(
-                    current_price=current_price,
-                    buy_price=stock["buy_price"],
-                    target_profit=stock["target_profit"]
-                )
+                    current_price = get_current_price(df)
 
-                print(
-                    f"{ticker} | "
-                    f"BUY: {result['buy_price']} | "
-                    f"CURRENT: {result['current_price']} | "
-                    f"P/L: {result['profit_percent']}%"
-                )
+                    # ====================================
+                    # POSITION STATUS
+                    # ====================================
 
-                if result["target_hit"]:
+                    result = calculate_position_status(
+                        current_price=current_price,
+                        buy_price=stock["buy_price"],
+                        target_profit=stock["target_profit"]
+                    )
 
-                    message = f"""
-🚨 SELL TARGET HIT 🚨
+                    # ====================================
+                    # TRAILING STOP ENGINE
+                    # ====================================
+
+                    trailing_result = evaluate_trailing_stop(
+                        stock,
+                        current_price
+                    )
+
+                    # ====================================
+                    # UPDATE HIGHEST PRICE
+                    # ====================================
+
+                    stock["highest_price"] = (
+                        trailing_result["highest_price"]
+                    )
+
+                    print(
+                        f"{ticker} | "
+                        f"BUY: ${result['buy_price']} | "
+                        f"CURRENT: ${result['current_price']} | "
+                        f"P/L: {result['profit_percent']}% | "
+                        f"P/L US$: {round(result['current_price'] * stock['number_of_shares'] - result['buy_price'] * stock['number_of_shares'], 2)} | "
+                       # f"HIGHEST: ${round(stock['highest_price'], 2)}"
+                    )
+
+                    # ====================================
+                    # TARGET REACHED
+                    # ====================================
+
+                    if result["target_hit"]:
+
+                        print(
+                            f"{ticker} target reached."
+                        )
+
+                    # ====================================
+                    # TRAILING STOP SELL ALERT
+                    # ====================================
+
+                    if trailing_result["status"] == "SELL":
+
+                        message = f"""
+🚨 TRAILING STOP SELL 🚨
 
 Ticker: {ticker}
 
-Buy Price: ${result['buy_price']}
-Current Price: ${result['current_price']}
+Buy Price:
+${result['buy_price']}
 
-Profit: {result['profit_percent']}%
+Current Price:
+${result['current_price']}
 
-Target Price: ${result['target_price']}
+Profit:
+{result['profit_percent']}%
 
-Time: {datetime.now()}
+Highest Price:
+${round(trailing_result['highest_price'], 2)}
+
+Trailing Stop:
+${round(trailing_result['trailing_price'], 2)}
+
+Time:
+{datetime.now()}
 """
 
-                    await send_alert(message)
+                        print(message)
 
-            except Exception as e:
+                        await send_alert(message)
 
-                print(f"{ticker} ERROR => {e}")
+                except Exception as e:
 
-        await asyncio.sleep(60)
+                    print(f"{ticker} PORTFOLIO ERROR => {e}")
+
+            # ====================================
+            # WAIT BEFORE NEXT SCAN
+            # ====================================
+
+            print("\nNext scan in 30 seconds...\n")
+
+            await asyncio.sleep(60)
+
+        except Exception as e:
+
+            print(f"MAIN LOOP ERROR => {e}")
+
+            await asyncio.sleep(30)
+
+# ====================================
+# APPLICATION ENTRYPOINT
+# ====================================
 
 if __name__ == "__main__":
 
-    asyncio.run(monitor_market())
+    try:
+
+        asyncio.run(monitor_market())
+
+    except Exception as e:
+
+        print(f"FATAL ERROR => {e}")
