@@ -16,3 +16,7 @@ def get_stock_data(ticker):
         df.columns = df.columns.get_level_values(0)
 
     return df
+
+def get_current_price(df):
+
+    return float(df["Close"].iloc[-1])

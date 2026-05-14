@@ -5,3 +5,28 @@ sudo usermod -aG docker luigi
 sudo reboot
 docker --version
 
+
+Install Docker Compose
+
+docker compose version
+
+
+
+
+
+git remote add origin https://github.com/Luigi-Burga/ai-trader.git
+
+git config --global user.email "luigiburga@hotmail.com"
+
+
+Push desde Powershell
+(venv) PS C:\Scripts\Python\ai-trader
+git add .
+git commit -m "new feature"
+git push
+
+
+
+Pull desde Raspberry PI
+/home/luigi/ai-trader/
+git pull
