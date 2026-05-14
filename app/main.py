@@ -1,7 +1,7 @@
 import asyncio
 
 from datetime import datetime
-from app.utils.market_hours import market_is_open
+#from app.utils.market_hours import market_is_open
 
 from app.data.market_data import (
     get_stock_data,
