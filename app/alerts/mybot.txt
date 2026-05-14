@@ -1,0 +1,8 @@
+/newbot alertas_gsd
+
+user : alertas_gsd_bot
+
+https://t.me/alertas_gsd_bot
+
+Bot ID	: 8822251742
+token	: 8523771506:AAHaxz7QaXolwaoL0gDg0eh_yVrCzaQNl1g

@@ -1,0 +1,7 @@
+Install Docker
+
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker luigi
+sudo reboot
+docker --version
+
