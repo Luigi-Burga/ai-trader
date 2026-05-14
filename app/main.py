@@ -49,7 +49,7 @@ SALELIST = [
         "ticker": "BITX",
         "number_of_shares": 51,
         "buy_price": 48.26,
-        "target_profit": 11,
+        "target_profit": 5,
         "trailing_stop": 0,
         "highest_price": 48.26
     },
@@ -58,7 +58,7 @@ SALELIST = [
         "ticker": "FNGU",
         "number_of_shares": 106,
         "buy_price": 33.83,
-        "target_profit": 8,
+        "target_profit": 5,
         "trailing_stop": 0,
         "highest_price": 33.83
     },
