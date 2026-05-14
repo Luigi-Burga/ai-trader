@@ -68,10 +68,10 @@ async def monitor_market():
  
     while True:
 
-        if not market_is_open():
-            print("Market is closed.")
-            await asyncio.sleep(300)
-            continue
+      #  if not market_is_open():
+      #      print("Market is closed.")
+      #      await asyncio.sleep(300)
+      #      continue
 
         print("\n===================================")
         print(f"Market Scan: {datetime.now()}")
