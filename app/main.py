@@ -31,11 +31,16 @@ from app.utils.market_hours import (
 
 WATCHLIST = [
 
-    "NVDA",
-    "PLTR",
-    "PLTU",
-    "SMH",
-    "VOO"
+    "NVDA",   # NVIDIA busquemos un precio de 190  US$
+    "TQQQ",   # Busquemos un precio de 60 US$
+    "AMZN",   # Amazon busquemos un precio de 230 US$
+    "PLTR",   # Palantir busquemos un precio de 125 US$
+    "CRWD",   # CrowdStrike busquemos un precio de 450 US$
+    "CIBR",   # CyberOptics busquemos un precio de 70 US$
+    "UPRO",   # ProShares UltraPro QQQ busquemos un precio de 115 US$
+    "SMH",    # Invesco Semiconductor ETF busquemos un precio de 450 US$
+    "VOO",    # Vanguard S&P 500 ETF busquemos un precio de 600 US$
+    "CCJ"     # Courtaulds Industries busquemos un precio de 100 US$
 ]
 
 # ====================================
@@ -58,27 +63,18 @@ SALELIST = [
         "ticker": "FNGU",
         "number_of_shares": 106,
         "buy_price": 33.83,
-        "target_profit": 5,
+        "target_profit": 3,
         "trailing_stop": 0,
         "highest_price": 33.83
     },
 
     {
-        "ticker": "PLTR",
+        "ticker": "GDXU",
         "number_of_shares": 30,
-        "buy_price": 129.88,
+        "buy_price": 161.41,
         "target_profit": 10,
         "trailing_stop": 0,
-        "highest_price": 129.88
-    },
-
-    {
-        "ticker": "PLTU",
-        "number_of_shares": 100,
-        "buy_price": 33.42,
-        "target_profit": 10,
-        "trailing_stop": 0,
-        "highest_price": 33.42
+        "highest_price": 161.41
     }
 ]
 

@@ -15,7 +15,7 @@ def market_is_open():
 
     market_close = now.replace(
         hour=16,
-        minute=30,
+        minute=00,
         second=0
     )
 

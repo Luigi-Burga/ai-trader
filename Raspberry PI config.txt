@@ -20,6 +20,7 @@ git config --global user.email "luigiburga@hotmail.com"
 
 
 Push desde Powershell
+
 (venv) PS C:\Scripts\Python\ai-trader
 git add .
 git commit -m "new feature"
@@ -30,3 +31,64 @@ git push
 Pull desde Raspberry PI
 /home/luigi/ai-trader/
 git pull
+
+
+# await send_alert(f"{ticker} => {signal}")
+
+
+python -m app.main
+
+
+
+
+
+/home/luigi/ai-trader 
+
+docker compose down
+git pull
+docker --version
+docker compose version
+docker compose up --build -d
+docker compose logs -f
+
+docker compose build
+docker compose up
+
+
+
+Grupo de Equipos : {HOSTGROUP.NAME} - Problem: {EVENT.NAME}
+
+{{HOSTGROUP.NAME}.htmlencode()}<br> 
+
+
+Grupo : {{HOSTGROUP.NAME}
+
+
+
+HOST TYPE  Virual Machine
+
+VIRTUAL SERVER VMWARE  | VMESSENTIALS
+
+ENTORNO  DEMO
+
+
+
+IP Address
+192.168.180.130
+Subnet Mask
+255.255.255.0
+Default Gateway
+192.168.180.1
+Primary DNS Server
+192.168.180.122
+Secondary DNS Server
+8.8.8.8
+
+
+Support Identifier
+0764a726-1b9d-4950-94b1-b6c75cc9939f
+
+
+
+Device Token
+J11oAgX1a1eEpkZz4EWkS3ROo
