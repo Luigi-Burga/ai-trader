@@ -20,9 +20,9 @@ from app.scanners.watchlist_scanner import (
     analyze_buy_opportunity
 )
 
-#from app.utils.market_hours import (
-#    market_is_open
-#)
+from app.utils.market_hours import (
+    market_is_open
+)
 
 # ====================================
 # WATCHLIST
@@ -96,16 +96,16 @@ async def monitor_market():
             # MARKET HOURS VALIDATION
             # ====================================
 
-            if not market_is_open():
+          #  if not market_is_open():
 
-                print(
-                    f"[{datetime.now()}] "
-                    f"Market closed. Sleeping..."
-                )
+          #      print(
+          #          f"[{datetime.now()}] "
+          #          f"Market closed. Sleeping..."
+          #      )
 
-                await asyncio.sleep(300)
+          #      await asyncio.sleep(300)
 
-                continue
+           #     continue
 
             print("\n===================================")
             print(f"Market Scan: {datetime.now()}")
