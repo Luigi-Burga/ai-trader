@@ -16,8 +16,16 @@ from app.portfolio.trailing_stop import (
     evaluate_trailing_stop
 )
 
+from app.portfolio.multi_level_alerts import (
+    evaluate_multi_level_alerts
+)
+
 from app.scanners.watchlist_scanner import (
     analyze_buy_opportunity
+)
+
+from app.scanners.entry_price import (
+    evaluate_entry_price
 )
 
 from app.utils.market_hours import (
@@ -31,16 +39,55 @@ from app.utils.market_hours import (
 
 WATCHLIST = [
 
-    "NVDA",   # NVIDIA busquemos un precio de 190  US$
-    "TQQQ",   # Busquemos un precio de 60 US$
-    "AMZN",   # Amazon busquemos un precio de 230 US$
-    "PLTR",   # Palantir busquemos un precio de 125 US$
-    "CRWD",   # CrowdStrike busquemos un precio de 450 US$
-    "CIBR",   # CyberOptics busquemos un precio de 70 US$
-    "UPRO",   # ProShares UltraPro QQQ busquemos un precio de 115 US$
-    "SMH",    # Invesco Semiconductor ETF busquemos un precio de 450 US$
-    "VOO",    # Vanguard S&P 500 ETF busquemos un precio de 600 US$
-    "CCJ"     # Courtaulds Industries busquemos un precio de 100 US$
+    {
+        "ticker": "NVDA",
+        "buy_target": 190
+    },
+
+    {
+        "ticker": "TQQQ",
+        "buy_target": 60
+    },
+
+    {
+        "ticker": "AMZN",
+        "buy_target": 230
+    },
+
+    {
+        "ticker": "PLTR",
+        "buy_target": 125
+    },
+
+    {
+        "ticker": "CRWD",
+        "buy_target": 450
+    },
+
+    {
+        "ticker": "CIBR",
+        "buy_target": 70
+    },
+
+    {
+        "ticker": "UPRO",
+        "buy_target": 115
+    },
+
+    {
+        "ticker": "SMH",
+        "buy_target": 450
+    },
+
+    {
+        "ticker": "VOO",
+        "buy_target": 600
+    },
+
+    {
+        "ticker": "CCJ",
+        "buy_target": 100
+    }
 ]
 
 # ====================================
@@ -56,7 +103,8 @@ SALELIST = [
         "buy_price": 48.26,
         "target_profit": 5,
         "trailing_stop": 0,
-        "highest_price": 48.26
+        "highest_price": 48.26,
+        "alerts_sent": []
     },
 
     {
@@ -65,7 +113,8 @@ SALELIST = [
         "buy_price": 33.83,
         "target_profit": 3,
         "trailing_stop": 0,
-        "highest_price": 33.83
+        "highest_price": 33.83,
+        "alerts_sent": []
     },
 
     {
@@ -74,7 +123,8 @@ SALELIST = [
         "buy_price": 161.41,
         "target_profit": 10,
         "trailing_stop": 0,
-        "highest_price": 161.41
+        "highest_price": 161.41,
+        "alerts_sent": []
     }
 ]
 
@@ -96,61 +146,139 @@ async def monitor_market():
             # MARKET HOURS VALIDATION
             # ====================================
 
-          #  if not market_is_open():
+            if not market_is_open():
 
-          #      print(
-          #          f"[{datetime.now()}] "
-          #          f"Market closed. Sleeping..."
-          #      )
+                print(
+                    f"[{datetime.now()}] "
+                    f"Market closed. Sleeping..."
+                )
 
-          #      await asyncio.sleep(300)
+                await asyncio.sleep(300)
 
-           #     continue
+                continue
 
             print("\n===================================")
             print(f"Market Scan: {datetime.now()}")
             print("===================================\n")
 
-            # ====================================
-            # WATCHLIST SCANNER
-            # ====================================
+
+            # ==========================================
+            # WATCHLIST MONITOR
+            # ==========================================
 
             print("========== WATCHLIST ==========\n")
 
-            for ticker in WATCHLIST:
+            for stock in WATCHLIST:
 
                 try:
 
+                    ticker = stock["ticker"]
+
+                    buy_target = stock["buy_target"]
+
+                    # ==========================================
+                    # GET MARKET DATA
+                    # ==========================================
+
                     df = get_stock_data(ticker)
 
-                    result = analyze_buy_opportunity(df)
+                    current_price = get_current_price(df)
 
-                    print(
-                        f"{ticker} => "
-                        f"{result['signal']} | "
-                        f"RSI: {result['rsi']} | "
-                        f"Confidence: {result['confidence']}"
+                    # ==========================================
+                    # TECHNICAL ANALYSIS
+                    # ==========================================
+
+                    technical_result = (
+                        analyze_buy_opportunity(df)
                     )
 
-                    # ====================================
-                    # BUY ALERT
-                    # ====================================
+                    # ==========================================
+                    # ENTRY PRICE ANALYSIS
+                    # ==========================================
 
-                    if result["signal"] == "BUY":
+                    entry_result = evaluate_entry_price(
+                        current_price,
+                        buy_target
+                    )
+
+                    # ==========================================
+                    # CONSOLE OUTPUT
+                    # ==========================================
+
+                    print(
+                        f"{ticker} | "
+                        f"CURRENT: ${current_price} | "
+                        f"TARGET: ${buy_target} | "
+                        f"SIGNAL: {entry_result['signal']} | "
+                        f"RSI: {technical_result['rsi']} | "
+                        f"CONFIDENCE: "
+                        f"{technical_result['confidence']}"
+                    )
+
+                    # ==========================================
+                    # BUY ALERT
+                    # ==========================================
+
+                    if (
+                        entry_result["signal"] == "BUY_NOW"
+                        and technical_result["signal"] == "BUY"
+                    ):
 
                         message = f"""
 🚀 BUY OPPORTUNITY 🚀
 
-Ticker: {ticker}
+Ticker:
+{ticker}
 
-Signal: BUY
+Current Price:
+${current_price}
 
-Confidence: {result['confidence']}
+Buy Target:
+${buy_target}
 
-RSI: {result['rsi']}
+Distance To Target:
+{entry_result['difference_percent']}%
+
+RSI:
+{technical_result['rsi']}
+
+Confidence:
+{technical_result['confidence']}
 
 Reasons:
-{', '.join(result['reasons'])}
+{', '.join(technical_result['reasons'])}
+
+Time:
+{datetime.now()}
+"""
+
+                        print(message)
+
+                        await send_alert(message)
+
+                    # ==========================================
+                    # NEAR BUY ZONE ALERT
+                    # ==========================================
+
+                    elif (
+                        entry_result["signal"]
+                        == "NEAR_BUY_ZONE"
+                    ):
+
+                        message = f"""
+🟡 NEAR BUY ZONE 🟡
+
+Ticker:
+{ticker}
+
+Current Price:
+${current_price}
+
+Buy Target:
+${buy_target}
+
+Distance:
+{entry_result['difference_percent']}%
 
 Time:
 {datetime.now()}
@@ -162,11 +290,13 @@ Time:
 
                 except Exception as e:
 
-                    print(f"{ticker} WATCHLIST ERROR => {e}")
+                    print(
+                        f"{ticker} WATCHLIST ERROR => {e}"
+                    )
 
-            # ====================================
+            # ==========================================
             # PORTFOLIO MONITOR
-            # ====================================
+            # ==========================================
 
             print("\n========== PORTFOLIO ==========\n")
 
@@ -176,66 +306,160 @@ Time:
 
                     ticker = stock["ticker"]
 
+                    # ==========================================
+                    # GET MARKET DATA
+                    # ==========================================
+
                     df = get_stock_data(ticker)
 
                     current_price = get_current_price(df)
 
-                    # ====================================
+                    # ==========================================
                     # POSITION STATUS
-                    # ====================================
+                    # ==========================================
 
                     result = calculate_position_status(
                         current_price=current_price,
+
                         buy_price=stock["buy_price"],
-                        target_profit=stock["target_profit"]
+
+                        target_profit=stock[
+                            "target_profit"
+                        ]
                     )
 
-                    # ====================================
+                    # ==========================================
+                    # MULTI-LEVEL ALERTS
+                    # ==========================================
+
+                    multi_alerts = (
+                        evaluate_multi_level_alerts(
+                            stock,
+                            current_price
+                        )
+                    )
+
+                    # ==========================================
+                    # PROCESS ALERTS
+                    # ==========================================
+
+                    for alert in multi_alerts:
+
+                        level = alert["level"]
+
+                        if level == 65:
+
+                            emoji = "🟡"
+
+                            title = "EARLY WARNING"
+
+                        elif level == 75:
+
+                            emoji = "🟠"
+
+                            title = (
+                                "IMPORTANT TARGET APPROACH"
+                            )
+
+                        elif level == 90:
+
+                            emoji = "🔴"
+
+                            title = "PREPARE SELL"
+
+                        elif level == 100:
+
+                            emoji = "🚀"
+
+                            title = "TARGET REACHED"
+
+                        else:
+
+                            emoji = "📈"
+
+                            title = "TARGET ALERT"
+
+                        message = f"""
+{emoji} {title} {emoji}
+
+Ticker:
+{ticker}
+
+Buy Price:
+${result['buy_price']}
+
+Current Price:
+${result['current_price']}
+
+Profit:
+{result['profit_percent']}%
+
+Alert Level:
+{level}%
+
+Alert Price:
+${alert['alert_price']}
+
+Target Price:
+${alert['target_price']}
+
+Time:
+{datetime.now()}
+"""
+
+                        print(message)
+
+                        await send_alert(message)
+
+                    # ==========================================
                     # TRAILING STOP ENGINE
-                    # ====================================
+                    # ==========================================
 
-                    trailing_result = evaluate_trailing_stop(
-                        stock,
-                        current_price
+                    trailing_result = (
+                        evaluate_trailing_stop(
+                            stock,
+                            current_price
+                        )
                     )
 
-                    # ====================================
+                    # ==========================================
                     # UPDATE HIGHEST PRICE
-                    # ====================================
+                    # ==========================================
 
                     stock["highest_price"] = (
-                        trailing_result["highest_price"]
+                        trailing_result[
+                            "highest_price"
+                        ]
                     )
+
+                    # ==========================================
+                    # CONSOLE OUTPUT
+                    # ==========================================
 
                     print(
                         f"{ticker} | "
                         f"BUY: ${result['buy_price']} | "
                         f"CURRENT: ${result['current_price']} | "
-                        f"P/L: {result['profit_percent']}% | "
-                        f"P/L US$: {round(result['current_price'] * stock['number_of_shares'] - result['buy_price'] * stock['number_of_shares'], 2)} | "
-                       # f"HIGHEST: ${round(stock['highest_price'], 2)}"
+                        f"P/L: "
+                        f"{result['profit_percent']}% | "
+                        f"HIGHEST: "
+                        f"${round(stock['highest_price'], 2)}"
                     )
 
-                    # ====================================
-                    # TARGET REACHED
-                    # ====================================
+                    # ==========================================
+                    # SELL ALERT
+                    # ==========================================
 
-                    if result["target_hit"]:
-
-                        print(
-                            f"{ticker} target reached."
-                        )
-
-                    # ====================================
-                    # TRAILING STOP SELL ALERT
-                    # ====================================
-
-                    if trailing_result["status"] == "SELL":
+                    if (
+                        trailing_result["status"]
+                        == "SELL"
+                    ):
 
                         message = f"""
 🚨 TRAILING STOP SELL 🚨
 
-Ticker: {ticker}
+Ticker:
+{ticker}
 
 Buy Price:
 ${result['buy_price']}
@@ -247,10 +471,16 @@ Profit:
 {result['profit_percent']}%
 
 Highest Price:
-${round(trailing_result['highest_price'], 2)}
+${round(
+    trailing_result['highest_price'],
+    2
+)}
 
 Trailing Stop:
-${round(trailing_result['trailing_price'], 2)}
+${round(
+    trailing_result['trailing_price'],
+    2
+)}
 
 Time:
 {datetime.now()}
@@ -262,13 +492,15 @@ Time:
 
                 except Exception as e:
 
-                    print(f"{ticker} PORTFOLIO ERROR => {e}")
+                    print(
+                        f"{ticker} PORTFOLIO ERROR => {e}"
+                    )
 
-            # ====================================
+            # ==========================================
             # WAIT BEFORE NEXT SCAN
-            # ====================================
+            # ==========================================
 
-            print("\nNext scan in 30 seconds...\n")
+            print("\nNext scan in 60 seconds...\n")
 
             await asyncio.sleep(60)
 
@@ -276,11 +508,11 @@ Time:
 
             print(f"MAIN LOOP ERROR => {e}")
 
-            await asyncio.sleep(30)
+            await asyncio.sleep(60)
 
-# ====================================
+# ==========================================
 # APPLICATION ENTRYPOINT
-# ====================================
+# ==========================================
 
 if __name__ == "__main__":
 
