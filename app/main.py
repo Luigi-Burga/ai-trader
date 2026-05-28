@@ -20,9 +20,9 @@ from app.scanners.watchlist_scanner import (
     analyze_buy_opportunity
 )
 
-from app.utils.market_hours import (
-    market_is_open
-)
+#from app.utils.market_hours import (
+#    market_is_open
+#)
 
 # ====================================
 # WATCHLIST
