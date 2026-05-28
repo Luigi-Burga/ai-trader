@@ -77,7 +77,13 @@ WATCHLIST = [
     {
         "ticker": "CCJ",
         "buy_target": 100
+    },
+
+    {
+        "ticker": "GDXU",
+        "buy_target": 135
     }
+
 ]
 
 # ====================================
