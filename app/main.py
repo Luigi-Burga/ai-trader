@@ -77,11 +77,6 @@ WATCHLIST = [
     {
         "ticker": "CCJ",
         "buy_target": 100
-    },
-
-    {
-        "ticker": "GDXU",
-        "buy_target": 135
     }
 
 ]
@@ -104,18 +99,8 @@ SALELIST = [
     },
 
     {
-        "ticker": "FNGU",
-        "number_of_shares": 106,
-        "buy_price": 33.83,
-        "target_profit": 3,
-        "trailing_stop": 0,
-        "highest_price": 33.83,
-        "alerts_sent": []
-    },
-
-    {
         "ticker": "GDXU",
-        "number_of_shares": 30,
+        "number_of_shares": 50,
         "buy_price": 161.41,
         "target_profit": 10,
         "trailing_stop": 0,
