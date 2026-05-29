@@ -117,7 +117,7 @@ WATCHLIST = [
     },
 
         {
-        "ticker": "wDFE",
+        "ticker": "wDEF",
         "buy_target": 25
     },
 
