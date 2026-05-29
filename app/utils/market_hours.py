@@ -14,9 +14,9 @@ def market_is_open():
     )
 
     market_close = now.replace(
-        hour=0,   # 16
-        minute=0,  #00 
-        second=0
+        hour=23,   # 16
+        minute=59,  #00 
+        second=59
     )
 
     return market_open <= now <= market_close
