@@ -92,3 +92,11 @@ Support Identifier
 
 Device Token
 J11oAgX1a1eEpkZz4EWkS3ROo
+
+
+ai-trader  | TQQQ | PRICE: $83.86  | TARGET: $60  | ENTRY: WAIT | AI: BULLISH | AI SCORE: 2 | RSI: 76.16
+ai-trader  | PLTR | PRICE: $139.84 | TARGET: $125 | ENTRY: WAIT | AI: BULLISH | AI SCORE: 3 | RSI: 52.39
+ai-trader  | CRWD | PRICE: $673.10 | TARGET: $450 | ENTRY: WAIT | AI: BULLISH | AI SCORE: 2 | RSI: 79.3
+ai-trader  | CIBR | PRICE: $84.08  | TARGET: $70  | ENTRY: WAIT | AI: BULLISH | AI SCORE: 2 | RSI: 74.89
+ai-trader  | SMH  | PRICE: $603.78 | TARGET: $450 | ENTRY: WAIT | AI: BULLISH | AI SCORE: 2 | RSI: 72.31
+

@@ -74,6 +74,56 @@ WATCHLIST = [
         "buy_target": 600
     },
 
+# ---------------------------
+    {
+        "ticker": "UMAC",
+        "buy_target": 20
+    },
+
+        {
+        "ticker": "AVAV",
+        "buy_target": 150
+    },
+
+        {
+        "ticker": "KTOS",
+        "buy_target": 50
+    },
+
+        {
+        "ticker": "ONDS",
+        "buy_target": 8
+    },
+
+        {
+        "ticker": "RDW",
+        "buy_target": 18
+    },
+        {
+        "ticker": "MNTS",
+        "buy_target": 12
+    },
+        {
+        "ticker": "CRM",
+        "buy_target": 180
+    },
+        {
+        "ticker": "BBAI",
+        "buy_target": 4
+    },
+        {
+        "ticker": "DFEN",
+        "buy_target": 55
+    },
+
+        {
+        "ticker": "wDFE",
+        "buy_target": 25
+    },
+
+
+# ---------------------------
+
     {
         "ticker": "CCJ",
         "buy_target": 100

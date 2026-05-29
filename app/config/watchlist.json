@@ -1,0 +1,49 @@
+   {
+        "ticker": "NVDA",
+        "buy_target": 190
+    }
+
+    {
+        "ticker": "TQQQ",
+        "buy_target": 60
+    },
+
+    {
+        "ticker": "AMZN",
+        "buy_target": 230
+    },
+
+    {
+        "ticker": "PLTR",
+        "buy_target": 125
+    },
+
+    {
+        "ticker": "CRWD",
+        "buy_target": 450
+    },
+
+    {
+        "ticker": "CIBR",
+        "buy_target": 70
+    },
+
+    {
+        "ticker": "UPRO",
+        "buy_target": 115
+    },
+
+    {
+        "ticker": "SMH",
+        "buy_target": 450
+    },
+
+    {
+        "ticker": "VOO",
+        "buy_target": 600
+    },
+
+    {
+        "ticker": "CCJ",
+        "buy_target": 100
+    }
