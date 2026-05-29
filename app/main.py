@@ -40,33 +40,13 @@ WATCHLIST = [
     },
 
     {
-        "ticker": "AMZN",
-        "buy_target": 230
-    },
-
-    {
         "ticker": "PLTR",
         "buy_target": 125
     },
 
     {
-        "ticker": "CRWD",
-        "buy_target": 450
-    },
-
-    {
-        "ticker": "CIBR",
-        "buy_target": 70
-    },
-
-    {
-        "ticker": "UPRO",
-        "buy_target": 115
-    },
-
-    {
-        "ticker": "SMH",
-        "buy_target": 450
+        "ticker": "GDXU",
+        "buy_target": 135
     },
 
     {
@@ -76,40 +56,27 @@ WATCHLIST = [
 
 # ---------------------------
     {
-        "ticker": "UMAC",
-        "buy_target": 20
+        "ticker": "PLTU",
+        "buy_target": 40
     },
 
         {
         "ticker": "AVAV",
-        "buy_target": 150
+        "buy_target": 180
     },
 
         {
-        "ticker": "KTOS",
-        "buy_target": 50
+        "ticker": "BBAI",
+        "buy_target": 4
     },
 
         {
-        "ticker": "ONDS",
-        "buy_target": 8
-    },
-
-        {
-        "ticker": "RDW",
-        "buy_target": 18
-    },
-        {
-        "ticker": "MNTS",
-        "buy_target": 12
+        "ticker": "UMAC",
+        "buy_target": 20
     },
         {
         "ticker": "CRM",
         "buy_target": 180
-    },
-        {
-        "ticker": "BBAI",
-        "buy_target": 4
     },
         {
         "ticker": "DFEN",
@@ -117,10 +84,14 @@ WATCHLIST = [
     },
 
         {
-        "ticker": "wDEF",
+        "ticker": "ARM",
         "buy_target": 25
     },
 
+        {
+        "ticker": "BE",
+        "buy_target": 200
+    },
 
 # ---------------------------
 
@@ -146,17 +117,8 @@ SALELIST = [
         "trailing_stop": 0,
         "highest_price": 48.26,
         "alerts_sent": []
-    },
-
-    {
-        "ticker": "GDXU",
-        "number_of_shares": 50,
-        "buy_price": 161.41,
-        "target_profit": 10,
-        "trailing_stop": 0,
-        "highest_price": 161.41,
-        "alerts_sent": []
     }
+
 ]
 
 # ====================================
