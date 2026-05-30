@@ -5,7 +5,7 @@ from app.data.market_data import (
     get_stock_data,
     get_current_price
 )
-
+# demo
 from app.alerts.telegram_alert import (send_alert)
 
 from app.portfolio.portfolio_monitor import (calculate_position_status)
