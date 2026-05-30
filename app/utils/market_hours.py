@@ -8,15 +8,15 @@ def market_is_open():
     now = datetime.now(est)
 
     market_open = now.replace(
-        hour=0,  #  9
-        minute=0, # 30
+        hour=9,  #  9
+        minute=30, # 30
         second=0
     )
 
     market_close = now.replace(
-        hour=23,   # 16
-        minute=59,  #00 
-        second=59
+        hour=16,   # 16
+        minute=00,  #00 
+        second=00
     )
 
     return market_open <= now <= market_close

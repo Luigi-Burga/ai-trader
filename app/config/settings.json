@@ -1,0 +1,7 @@
+{
+  "scan_interval": 60,
+  "market_open_hour": 8,
+  "market_close_hour": 15,
+  "telegram_enabled": true,
+  "ai_enabled": true
+}

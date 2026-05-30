@@ -1,16 +1,14 @@
-   {
+{
+  "stocks": [
+
+    {
         "ticker": "NVDA",
         "buy_target": 190
-    }
+    },
 
     {
         "ticker": "TQQQ",
         "buy_target": 60
-    },
-
-    {
-        "ticker": "AMZN",
-        "buy_target": 230
     },
 
     {
@@ -19,23 +17,8 @@
     },
 
     {
-        "ticker": "CRWD",
-        "buy_target": 450
-    },
-
-    {
-        "ticker": "CIBR",
-        "buy_target": 70
-    },
-
-    {
-        "ticker": "UPRO",
-        "buy_target": 115
-    },
-
-    {
-        "ticker": "SMH",
-        "buy_target": 450
+        "ticker": "GDXU",
+        "buy_target": 135
     },
 
     {
@@ -44,6 +27,48 @@
     },
 
     {
+        "ticker": "PLTU",
+        "buy_target": 40
+    },
+
+    {
+        "ticker": "AVAV",
+        "buy_target": 180
+    },
+
+    {
+        "ticker": "BBAI",
+        "buy_target": 4
+    },
+
+    {
+        "ticker": "UMAC",
+        "buy_target": 20
+    },
+ 
+    {
+        "ticker": "CRM",
+        "buy_target": 180
+    },
+        {
+        "ticker": "DFEN",
+        "buy_target": 55
+    },
+
+    {
+        "ticker": "ARM",
+        "buy_target": 25
+    },
+
+    {
+        "ticker": "BE",
+        "buy_target": 200
+    },
+
+    {
         "ticker": "CCJ",
         "buy_target": 100
     }
+
+]
+}

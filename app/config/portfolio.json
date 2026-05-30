@@ -1,0 +1,42 @@
+{
+  "positions": [
+    {
+      "ticker": "BITX",
+      "buy_price": 48.26,
+      "number_of_shares": 51,
+      "target_profit": 5,
+      "trailing_stop": 0,
+      "highest_price": 48.26,
+      "alerts_sent": []
+    },
+    {
+      "ticker": "PLTU",
+      "buy_price": 47.80,
+      "number_of_shares": 50,
+      "target_profit": 10,
+      "trailing_stop": 0,
+      "highest_price": 47.80,
+      "alerts_sent": []
+    },
+    {
+      "ticker": "PLTR",
+      "buy_price": 156.88,
+      "number_of_shares": 20,
+      "target_profit": 10,
+      "trailing_stop": 5,
+      "highest_price": 156.88,
+      "alerts_sent": []
+    },
+    {
+      "ticker": "DFEN",
+      "buy_price": 74.39,
+      "number_of_shares": 40,
+      "target_profit": 10,
+      "trailing_stop": 0,
+      "highest_price": 74.39,
+      "alerts_sent": []
+    }
+  ]
+}
+
+

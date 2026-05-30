@@ -20,106 +20,15 @@ from app.scanners.entry_price import (evaluate_entry_price)
 
 from app.ai.price_prediction import (predict_price_direction)
 
+from app.config.config_loader import (
+    load_watchlist,
+    load_portfolio,
+    save_portfolio
+)
+
 from app.utils.market_hours import (market_is_open)
 
-# ====================================
-# WATCHLIST
-# Stocks you want to buy
-# ====================================
 
-WATCHLIST = [
-
-    {
-        "ticker": "NVDA",
-        "buy_target": 190
-    },
-
-    {
-        "ticker": "TQQQ",
-        "buy_target": 60
-    },
-
-    {
-        "ticker": "PLTR",
-        "buy_target": 125
-    },
-
-    {
-        "ticker": "GDXU",
-        "buy_target": 135
-    },
-
-    {
-        "ticker": "VOO",
-        "buy_target": 600
-    },
-
-# ---------------------------
-    {
-        "ticker": "PLTU",
-        "buy_target": 40
-    },
-
-        {
-        "ticker": "AVAV",
-        "buy_target": 180
-    },
-
-        {
-        "ticker": "BBAI",
-        "buy_target": 4
-    },
-
-        {
-        "ticker": "UMAC",
-        "buy_target": 20
-    },
-        {
-        "ticker": "CRM",
-        "buy_target": 180
-    },
-        {
-        "ticker": "DFEN",
-        "buy_target": 55
-    },
-
-        {
-        "ticker": "ARM",
-        "buy_target": 25
-    },
-
-        {
-        "ticker": "BE",
-        "buy_target": 200
-    },
-
-# ---------------------------
-
-    {
-        "ticker": "CCJ",
-        "buy_target": 100
-    }
-
-]
-
-# ====================================
-# PORTFOLIO
-# Stocks already owned
-# ====================================
-
-SALELIST = [
-
-    {
-        "ticker": "BITX",
-        "number_of_shares": 51,
-        "buy_price": 48.26,
-        "target_profit": 5,
-        "trailing_stop": 0,
-        "highest_price": 48.26,
-        "alerts_sent": []
-    }
-
-]
 
 # ====================================
 # MAIN MONITOR LOOP
@@ -139,20 +48,34 @@ async def monitor_market():
             # MARKET HOURS VALIDATION
             # ====================================
 
-            if not market_is_open():
-
-                print(
-                    f"[{datetime.now()}] "
-                    f"Market closed. Sleeping..."
-                )
-
-                await asyncio.sleep(300)
-
-                continue
+#            if not market_is_open():
+#
+#                print(
+#                    f"[{datetime.now()}] "
+#                    f"Market closed. Sleeping..."
+#                )
+#
+#                await asyncio.sleep(300)
+#
+#                continue
 
             print("\n===================================")
             print(f"Market Scan: {datetime.now()}")
             print("===================================\n")
+
+           # ====================================
+           # WATCHLIST
+           # Stocks you want to buy
+           # ====================================
+
+            WATCHLIST = load_watchlist()
+
+           # ====================================
+           # PORTFOLIO
+           # Stocks already owned
+           # ====================================
+
+            SALELIST = load_portfolio()
 
 
             # ==========================================
