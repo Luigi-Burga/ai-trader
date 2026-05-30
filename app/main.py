@@ -26,6 +26,11 @@ from app.config.config_loader import (
     save_portfolio
 )
 
+from app.fundamentals.score_engine import (
+    calculate_fundamental_score,
+    get_rating
+)
+
 from app.utils.market_hours import (market_is_open)
 
 
@@ -48,16 +53,16 @@ async def monitor_market():
             # MARKET HOURS VALIDATION
             # ====================================
 
-#            if not market_is_open():
-#
-#                print(
-#                    f"[{datetime.now()}] "
-#                    f"Market closed. Sleeping..."
-#                )
-#
-#                await asyncio.sleep(300)
-#
-#                continue
+            if not market_is_open():
+
+                print(
+                    f"[{datetime.now()}] "
+                    f"Market closed. Sleeping..."
+                )
+
+                await asyncio.sleep(300)
+
+                continue
 
             print("\n===================================")
             print(f"Market Scan: {datetime.now()}")
