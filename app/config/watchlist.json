@@ -65,6 +65,11 @@
         "buy_target": 200
     },
 
+   {
+        "ticker": "APLD",
+        "buy_target": 200
+    },
+
     {
         "ticker": "CCJ",
         "buy_target": 100
