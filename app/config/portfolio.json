@@ -27,6 +27,28 @@
       "highest_price": 156.88,
       "alerts_sent": []
     },
+
+    {
+      "ticker": "GDXU",
+      "buy_price": 136,
+      "number_of_shares": 70,
+      "target_profit": 15,
+      "trailing_stop": 0,
+      "highest_price": 136,
+      "alerts_sent": []
+    },
+
+    {
+      "ticker": "APLD",
+      "buy_price": 48.27,
+      "number_of_shares": 20,
+      "target_profit": 15,
+      "trailing_stop": 0,
+      "highest_price": 48.27,
+      "alerts_sent": []
+    },
+
+
     {
       "ticker": "DFEN",
       "buy_price": 74.39,
