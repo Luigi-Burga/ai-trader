@@ -67,7 +67,12 @@
 
    {
         "ticker": "APLD",
-        "buy_target": 200
+        "buy_target": 46
+    },
+
+   {
+        "ticker": "NOW",
+        "buy_target": 110
     },
 
     {
