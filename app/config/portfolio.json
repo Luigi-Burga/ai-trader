@@ -4,7 +4,7 @@
       "ticker": "BITX",
       "buy_price": 48.26,
       "number_of_shares": 51,
-      "target_profit": 5,
+      "target_profit": -37.84,
       "trailing_stop": 0,
       "highest_price": 48.26,
       "alerts_sent": []
@@ -37,7 +37,6 @@
       "highest_price": 48.27,
       "alerts_sent": []
     },
-
 
     {
       "ticker": "DFEN",

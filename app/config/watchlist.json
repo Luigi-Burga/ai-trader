@@ -37,11 +37,6 @@
     },
  
     {
-        "ticker": "CRM",
-        "buy_target": 180
-    },
-
-    {
         "ticker": "ARM",
         "buy_target": 25
     },
