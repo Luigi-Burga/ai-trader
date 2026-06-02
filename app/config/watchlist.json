@@ -12,23 +12,13 @@
     },
 
     {
-        "ticker": "PLTR",
-        "buy_target": 125
-    },
-
-    {
         "ticker": "GDXU",
-        "buy_target": 135
+        "buy_target": 133
     },
 
     {
         "ticker": "VOO",
         "buy_target": 600
-    },
-
-    {
-        "ticker": "PLTU",
-        "buy_target": 40
     },
 
     {
@@ -50,10 +40,6 @@
         "ticker": "CRM",
         "buy_target": 180
     },
-        {
-        "ticker": "DFEN",
-        "buy_target": 55
-    },
 
     {
         "ticker": "ARM",
@@ -63,11 +49,6 @@
     {
         "ticker": "BE",
         "buy_target": 200
-    },
-
-   {
-        "ticker": "APLD",
-        "buy_target": 46
     },
 
    {

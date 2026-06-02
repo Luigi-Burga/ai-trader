@@ -29,16 +29,6 @@
     },
 
     {
-      "ticker": "GDXU",
-      "buy_price": 135.28,
-      "number_of_shares": 70,
-      "target_profit": 13,
-      "trailing_stop": 0,
-      "highest_price": 135.28,
-      "alerts_sent": []
-    },
-
-    {
       "ticker": "APLD",
       "buy_price": 48.27,
       "number_of_shares": 20,
