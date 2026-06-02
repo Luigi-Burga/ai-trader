@@ -10,10 +10,6 @@ Install Docker Compose
 
 docker compose version
 
-
-
-
-
 git remote add origin https://github.com/Luigi-Burga/ai-trader.git
 
 git config --global user.email "luigiburga@hotmail.com"

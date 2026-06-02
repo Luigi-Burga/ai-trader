@@ -30,11 +30,11 @@
 
     {
       "ticker": "GDXU",
-      "buy_price": 136,
+      "buy_price": 135.28,
       "number_of_shares": 70,
-      "target_profit": 15,
+      "target_profit": 20,
       "trailing_stop": 0,
-      "highest_price": 136,
+      "highest_price": 135.28,
       "alerts_sent": []
     },
 
