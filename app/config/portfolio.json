@@ -39,6 +39,16 @@
     },
 
     {
+      "ticker": "MSTU",
+      "buy_price": 4.04,
+      "number_of_shares": 120,
+      "target_profit": 99,
+      "trailing_stop": 0,
+      "highest_price": 4.04,
+      "alerts_sent": []
+    }
+
+    {
       "ticker": "DFEN",
       "buy_price": 74.39,
       "number_of_shares": 40,
