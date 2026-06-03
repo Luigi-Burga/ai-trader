@@ -3,22 +3,17 @@
 
     {
         "ticker": "NVDA",
-        "buy_target": 190
+        "buy_target": 205
     },
 
     {
         "ticker": "TQQQ",
-        "buy_target": 60
+        "buy_target": 75
     },
 
     {
         "ticker": "GDXU",
         "buy_target": 133
-    },
-
-    {
-        "ticker": "VOO",
-        "buy_target": 600
     },
 
     {
@@ -33,17 +28,17 @@
 
     {
         "ticker": "UMAC",
-        "buy_target": 20
+        "buy_target": 22
     },
  
     {
         "ticker": "ARM",
-        "buy_target": 25
+        "buy_target": 300
     },
 
     {
         "ticker": "BE",
-        "buy_target": 200
+        "buy_target": 260
     },
 
    {
@@ -53,7 +48,7 @@
 
     {
         "ticker": "CCJ",
-        "buy_target": 100
+        "buy_target": 105
     }
 
 ]
