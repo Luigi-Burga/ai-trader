@@ -16,12 +16,7 @@
         "buy_target": 133
     },
 
-    {
-        "ticker": "AVAV",
-        "buy_target": 180
-    },
-
-    {
+      {
         "ticker": "BBAI",
         "buy_target": 4
     },
@@ -31,16 +26,6 @@
         "buy_target": 22
     },
  
-    {
-        "ticker": "ARM",
-        "buy_target": 300
-    },
-
-    {
-        "ticker": "BE",
-        "buy_target": 260
-    },
-
    {
         "ticker": "NOW",
         "buy_target": 110
@@ -50,7 +35,6 @@
         "ticker": "SOXL",
         "buy_target": 250
     },
-
 
     {
         "ticker": "CCJ",
