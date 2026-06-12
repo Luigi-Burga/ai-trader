@@ -48,15 +48,6 @@
       "alerts_sent": []
     },
 
-        {
-      "ticker": "SOXL",
-      "buy_price": 232.74,
-      "number_of_shares": 40,
-      "target_profit": 10,
-      "trailing_stop": 0,
-      "highest_price": 232.74,
-      "alerts_sent": []
-    },
     {
       "ticker": "DFEN",
       "buy_price": 74.39,

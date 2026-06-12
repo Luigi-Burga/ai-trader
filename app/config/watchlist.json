@@ -3,42 +3,32 @@
 
     {
         "ticker": "NVDA",
-        "buy_target": 100
+        "buy_target": 195
     },
 
     {
         "ticker": "TQQQ",
-        "buy_target": 50
+        "buy_target": 65
     },
 
     {
         "ticker": "GDXU",
-        "buy_target": 50
+        "buy_target": 110
     },
 
    {
         "ticker": "NOW",
-        "buy_target": 50
+        "buy_target": 100
     },
 
    {
         "ticker": "SOXL",
-        "buy_target": 150
-    },
-
-   {
-        "ticker": "MSTU",
-        "buy_target": 1
-    },
-
-   {
-        "ticker": "PLTU",
-        "buy_target": 15
+        "buy_target": 190
     },
 
     {
         "ticker": "CCJ",
-        "buy_target": 50
+        "buy_target": 95
     }
 
 ]
