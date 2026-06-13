@@ -19,4 +19,5 @@ def market_is_open():
         second=00
     )
 
+
     return market_open <= now <= market_close
