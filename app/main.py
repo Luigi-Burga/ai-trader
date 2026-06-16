@@ -13,7 +13,16 @@ from app.scanners.watchlist_scanner import (
 
 from app.fundamentals.score_engine import (
     calculate_fundamental_score,
-    get_rating
+    build_fundamental_message
+)
+
+from app.cache.fundamental_alert_cache import (
+    already_sent,
+    mark_sent
+)
+
+from app.alerts.telegram_alert import (
+    send_telegram
 )
 
 
@@ -27,7 +36,7 @@ def main():
     #
     # PORTFOLIO MONITOR
     #
-    print("\n===== PORTFOLIO =====")
+    print("\n===== PORTFOLIO MONITOR =====")
 
     portfolio = load_portfolio()
 
@@ -40,14 +49,15 @@ def main():
         except Exception as e:
 
             print(
-                f"Portfolio error "
-                f"{stock['symbol']}: {e}"
+                f"Portfolio Error "
+                f"{stock.get('symbol', 'UNKNOWN')} "
+                f": {e}"
             )
 
     #
     # WATCHLIST MONITOR
     #
-    print("\n===== WATCHLIST =====")
+    print("\n===== WATCHLIST MONITOR =====")
 
     watchlist = load_watchlist()
 
@@ -60,8 +70,9 @@ def main():
         except Exception as e:
 
             print(
-                f"Watchlist error "
-                f"{stock['symbol']}: {e}"
+                f"Watchlist Error "
+                f"{stock.get('symbol', 'UNKNOWN')} "
+                f": {e}"
             )
 
     #
@@ -75,34 +86,60 @@ def main():
 
             symbol = stock["symbol"]
 
-            result = calculate_fundamental_score(
-                symbol
-            )
+            result = calculate_fundamental_score(symbol)
 
             if result is None:
                 continue
 
-            rating = get_rating(
-                result["total"]
-            )
+            #
+            # ETF
+            #
+            if result["type"] == "ETF":
 
+                print(
+                    f"{symbol} | ETF | "
+                    f"Fundamental Score N/A"
+                )
+
+                continue
+
+            #
+            # STOCK
+            #
             print(
                 f"{symbol} | "
-                f"Revenue:{result['revenue']} "
-                f"Margins:{result['margins']} "
-                f"Debt:{result['debt']} "
-                f"Score:{result['total']}/55 "
-                f"{rating}"
+                f"Revenue:{result['revenue']}/25 | "
+                f"Margins:{result['margins']}/15 | "
+                f"Debt:{result['debt']}/15 | "
+                f"Score:{result['total']}/55 | "
+                f"{result['rating']}"
             )
+
+            #
+            # Fundamental Alert
+            #
+            if result["total"] >= 45:
+
+                if not already_sent(symbol):
+
+                    message = build_fundamental_message(
+                        result
+                    )
+
+                    send_telegram(message)
+
+                    mark_sent(symbol)
 
         except Exception as e:
 
             print(
-                f"Fundamental error "
-                f"{stock['symbol']}: {e}"
+                f"Fundamental Error "
+                f"{stock.get('symbol', 'UNKNOWN')} "
+                f": {e}"
             )
 
-    print("\nScan completed.\n")
+    print("\nScan Completed")
+    print("===================================\n")
 
 
 if __name__ == "__main__":
