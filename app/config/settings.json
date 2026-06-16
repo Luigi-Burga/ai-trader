@@ -3,5 +3,7 @@
   "market_open_hour": 8,
   "market_close_hour": 15,
   "telegram_enabled": true,
-  "ai_enabled": true
+  "ai_enabled": true,
+  "market_scan_minutes": 5,
+  "fundamental_scan_hours": 24
 }
