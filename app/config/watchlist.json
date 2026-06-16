@@ -2,11 +2,6 @@
   "stocks": [
 
     {
-        "ticker": "NVDA",
-        "buy_target": 195
-    },
-
-    {
         "ticker": "TQQQ",
         "buy_target": 65
     },
