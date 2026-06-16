@@ -1,4 +1,4 @@
-import os
+import asyncio
 
 from telegram import Bot
 from dotenv import load_dotenv
@@ -18,3 +18,17 @@ async def send_alert(message):
         chat_id=TELEGRAM_CHAT_ID,
         text=message        
     )
+
+def send_telegram(message):
+
+    try:
+
+        asyncio.run(
+            send_alert(message)
+        )
+
+    except Exception as e:
+
+        print(
+            f"Telegram Error: {e}"
+        )
