@@ -31,6 +31,15 @@ from app.utils.market_hours import (
 
 def main():
 
+    if not is_market_open():
+
+        print(
+            "Market closed. "
+            "Skipping scan."
+        )
+
+        return
+
     print("\n")
     print("===================================")
     print(f"Market Scan: {datetime.now()}")
