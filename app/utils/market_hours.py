@@ -1,23 +1,28 @@
 from datetime import datetime
+import pandas_market_calendars as mcal
 import pytz
 
-def market_is_open():
 
-    est = pytz.timezone("US/Eastern")
+def is_market_open():
 
-    now = datetime.now(est)
+    ny_tz = pytz.timezone("America/New_York")
 
-    market_open = now.replace(
-        hour=9,  #  9
-        minute=30, # 30
-        second=0
+    now = datetime.now(ny_tz)
+
+    nyse = mcal.get_calendar("NYSE")
+
+    schedule = nyse.schedule(
+        start_date=now.date(),
+        end_date=now.date()
     )
 
-    market_close = now.replace(
-        hour=16,   # 16
-        minute=00,  #00 
-        second=00
-    )
+    #
+    # Holiday or weekend
+    #
+    if schedule.empty:
+        return False
 
+    market_open = schedule.iloc[0]["market_open"]
+    market_close = schedule.iloc[0]["market_close"]
 
     return market_open <= now <= market_close
