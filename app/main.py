@@ -25,6 +25,9 @@ from app.alerts.telegram_alert import (
     send_telegram
 )
 
+from app.utils.market_hours import (
+    is_market_open
+)
 
 def main():
 
