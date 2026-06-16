@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+numpy
+yfinance
+ta
+openai
+python-telegram-bot
+python-dotenv
+pytz
+pandas-market-calendars
