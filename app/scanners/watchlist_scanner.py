@@ -149,3 +149,52 @@ def analyze_buy_opportunity(df):
         "current_price": round(current_price,2)
 
     }
+
+import yfinance as yf
+
+
+def scan_buy_opportunity(stock):
+
+    ticker = stock["ticker"]
+
+    buy_target = float(
+        stock["buy_target"]
+    )
+
+    df = yf.download(
+        ticker,
+        period="6mo",
+        progress=False,
+        auto_adjust=True
+    )
+
+    if df.empty:
+
+        print(
+            f"{ticker} => "
+            f"No market data"
+        )
+
+        return
+
+    result = analyze_buy_opportunity(df)
+
+    current_price = result["current_price"]
+
+    print(
+        f"{ticker} => "
+        f"{result['signal']} | "
+        f"Price={current_price:.2f} | "
+        f"Target={buy_target:.2f}"
+    )
+
+    #
+    # Ideal buy price alert
+    #
+    if current_price <= buy_target:
+
+        print(
+            f"BUY ALERT: "
+            f"{ticker} reached "
+            f"target price"
+        )
