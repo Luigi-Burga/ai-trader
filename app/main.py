@@ -96,7 +96,7 @@ def main():
 
         try:
 
-            symbol = stock["symbol"]
+            symbol = stock["ticker"]
 
             result = calculate_fundamental_score(symbol)
 
@@ -146,7 +146,7 @@ def main():
 
             print(
                 f"Fundamental Error "
-                f"{stock.get('symbol', 'UNKNOWN')} "
+                f"{stock.get('tickerNKNOWN')} "
                 f": {e}"
             )
 

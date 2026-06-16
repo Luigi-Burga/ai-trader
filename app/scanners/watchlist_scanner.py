@@ -1,3 +1,5 @@
+import pandas as pd
+
 from ta.momentum import RSIIndicator
 from ta.trend import (
     MACD , 
@@ -10,7 +12,10 @@ def analyze_buy_opportunity(df):
    # CLOSE PRICES
    # ====================================
 
-    close_prices = df["Close"]
+    close_prices = pd.Series(
+    df["Close"].values.flatten()
+)
+
 
    # ====================================
    # RSI

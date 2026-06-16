@@ -4,7 +4,10 @@ def evaluate_target_alert(position, current_price):
 
     target_profit = position["target_profit"]
 
-    alert_percent = position["target_alert_percent"]
+    alert_percent = position.get(
+    "target_alert_percent",
+    75
+)
 
     # ====================================
     # TARGET PRICE

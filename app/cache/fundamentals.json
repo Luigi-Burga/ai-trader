@@ -1,0 +1,62 @@
+{
+    "TQQQ": {
+        "timestamp": "2026-06-16T09:42:54.124410",
+        "data": {
+            "symbol": "TQQQ",
+            "type": "ETF",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "ETF"
+        }
+    },
+    "GDXU": {
+        "timestamp": "2026-06-16T09:42:54.624506",
+        "data": {
+            "symbol": "GDXU",
+            "type": "ETF",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "ETF"
+        }
+    },
+    "NOW": {
+        "timestamp": "2026-06-16T09:42:55.104850",
+        "data": {
+            "symbol": "NOW",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 5,
+            "debt": 15,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "SOXL": {
+        "timestamp": "2026-06-16T09:42:55.647747",
+        "data": {
+            "symbol": "SOXL",
+            "type": "ETF",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "ETF"
+        }
+    },
+    "CCJ": {
+        "timestamp": "2026-06-16T09:42:56.139334",
+        "data": {
+            "symbol": "CCJ",
+            "type": "STOCK",
+            "revenue": 10,
+            "margins": 10,
+            "debt": 15,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    }
+}
