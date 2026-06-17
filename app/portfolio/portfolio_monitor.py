@@ -70,9 +70,23 @@ def monitor_position(position):
 
         return
 
-    current_price = float(
+    close_price = float(
         df["Close"].iloc[-1]
     )
+
+    high_price = float(
+        df["High"].iloc[-1]
+    )
+
+    low_price = float(
+        df["Low"].iloc[-1]
+    )
+
+    #
+    # Para objetivos de venta
+    # usamos HIGH intradía
+    #
+    current_price = high_price
 
     status = calculate_position_status(
         current_price,
@@ -82,10 +96,14 @@ def monitor_position(position):
 
     print(
         f"{symbol} | "
-        f"Price={current_price:.2f} | "
+        f"Close={close_price:.2f} | "
+        f"High={high_price:.2f} | "
         f"Profit={status['profit_percent']}%"
     )
 
+    #
+    # Multi-level alerts
+    #
     alerts = evaluate_multi_level_alerts(
         position,
         current_price
@@ -94,10 +112,14 @@ def monitor_position(position):
     for alert in alerts:
 
         print(
-            f"{symbol} "
-            f"Level {alert['level']}%"
+            f"🚨 {symbol} | "
+            f"Level={alert['level']}% | "
+            f"Price={current_price:.2f}"
         )
 
+    #
+    # Target alert
+    #
     target = evaluate_target_alert(
         position,
         current_price
@@ -106,18 +128,43 @@ def monitor_position(position):
     if target["triggered"]:
 
         print(
-            f"{symbol} "
-            f"TARGET REACHED"
+            f"🎯 {symbol} | "
+            f"TARGET REACHED | "
+            f"Price={current_price:.2f} | "
+            f"Target={target['target_price']:.2f}"
         )
 
+    #
+    # Trailing stop
+    #
     trailing = evaluate_trailing_stop(
         position,
         current_price
     )
 
+    #
+    # Persist highest price
+    #
+    position["highest_price"] = (
+        trailing["highest_price"]
+    )
+
     if trailing["status"] == "SELL":
 
         print(
-            f"{symbol} "
-            f"TRAILING STOP SELL"
+            f"🔴 {symbol} | "
+            f"TRAILING STOP SELL | "
+            f"Price={current_price:.2f} | "
+            f"Stop={trailing['trailing_price']:.2f}"
         )
+
+    return {
+        "symbol": symbol,
+        "current_price": current_price,
+        "close_price": close_price,
+        "high_price": high_price,
+        "status": status,
+        "alerts": alerts,
+        "target": target,
+        "trailing": trailing
+    }

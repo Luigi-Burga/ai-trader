@@ -2,10 +2,12 @@ from datetime import datetime
 
 from app.config.config_loader import (
     load_portfolio,
-    load_watchlist
+    load_watchlist,
+    save_portfolio
 )
 
 from app.portfolio.portfolio_monitor import monitor_position
+
 
 from app.scanners.watchlist_scanner import (
     scan_buy_opportunity
@@ -31,7 +33,7 @@ from app.utils.market_hours import (
 
 def main():
 
-    if not is_market_open():
+    if  not is_market_open():
 
         print(
             "Market closed. "
@@ -65,7 +67,8 @@ def main():
                 f"{stock.get('symbol', 'UNKNOWN')} "
                 f": {e}"
             )
-
+    save_portfolio(portfolio)
+    
     #
     # WATCHLIST MONITOR
     #
