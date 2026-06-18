@@ -23,6 +23,8 @@ def send_telegram(message):
 
     try:
 
+        print(f"TELEGRAM SEND: {message}")
+
         asyncio.run(
             send_alert(message)
         )

@@ -1,6 +1,6 @@
 {
     "TQQQ": {
-        "timestamp": "2026-06-17T17:07:16.408600",
+        "timestamp": "2026-06-18T17:12:27.315549",
         "data": {
             "symbol": "TQQQ",
             "type": "ETF",
@@ -12,7 +12,7 @@
         }
     },
     "GDXU": {
-        "timestamp": "2026-06-17T17:07:17.534538",
+        "timestamp": "2026-06-18T17:12:28.861523",
         "data": {
             "symbol": "GDXU",
             "type": "ETF",
@@ -24,7 +24,7 @@
         }
     },
     "NOW": {
-        "timestamp": "2026-06-17T17:07:18.467459",
+        "timestamp": "2026-06-18T17:12:30.400978",
         "data": {
             "symbol": "NOW",
             "type": "STOCK",
@@ -36,7 +36,7 @@
         }
     },
     "SOXL": {
-        "timestamp": "2026-06-17T17:07:19.514843",
+        "timestamp": "2026-06-18T17:12:31.933140",
         "data": {
             "symbol": "SOXL",
             "type": "ETF",
@@ -48,7 +48,7 @@
         }
     },
     "CCJ": {
-        "timestamp": "2026-06-17T17:07:20.433933",
+        "timestamp": "2026-06-18T17:12:32.951090",
         "data": {
             "symbol": "CCJ",
             "type": "STOCK",
