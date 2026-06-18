@@ -31,8 +31,8 @@ from app.utils.market_hours import (
     is_market_open
 )
 
-print("Starting AI Trading Agent")
-send_telegram("🚀 AI Trader Startup Test")
+#print("Starting AI Trading Agent")
+#send_telegram("🚀 AI Trader Startup Test")
 
 def main():
 

@@ -12,6 +12,9 @@ from app.portfolio.trailing_stop import (
     evaluate_trailing_stop
 )
 
+from app.alerts.telegram_alert import (
+    send_telegram
+)
 
 def calculate_position_status(
     current_price,
