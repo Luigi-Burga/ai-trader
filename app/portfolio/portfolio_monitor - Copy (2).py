@@ -16,7 +16,6 @@ from app.alerts.telegram_alert import (
     send_telegram
 )
 
-
 def calculate_position_status(
     current_price,
     buy_price,
@@ -63,13 +62,7 @@ def monitor_position(position):
 
     ticker = yf.Ticker(symbol)
 
-    #
-    # Use intraday data
-    #
-    df = ticker.history(
-        period="1d",
-        interval="1m"
-    )
+    df = ticker.history(period="1d")
 
     if df.empty:
 
@@ -80,17 +73,23 @@ def monitor_position(position):
 
         return
 
-    current_price = float(
+    close_price = float(
         df["Close"].iloc[-1]
     )
 
-    #
-    # IMPORTANT:
-    # Use intraday HIGH
-    #
-    highest_today = float(
-        df["High"].max()
+    high_price = float(
+        df["High"].iloc[-1]
     )
+
+    low_price = float(
+        df["Low"].iloc[-1]
+    )
+
+    #
+    # Para objetivos de venta
+    # usamos HIGH intradía
+    #
+    current_price = high_price
 
     status = calculate_position_status(
         current_price,
@@ -100,77 +99,75 @@ def monitor_position(position):
 
     print(
         f"{symbol} | "
-        f"Close={current_price:.2f} | "
-        f"High={highest_today:.2f} | "
+        f"Close={close_price:.2f} | "
+        f"High={high_price:.2f} | "
         f"Profit={status['profit_percent']}%"
     )
 
     #
-    # MULTI LEVEL ALERTS
+    # Multi-level alerts
     #
     alerts = evaluate_multi_level_alerts(
         position,
-        highest_today
+        current_price
     )
 
     for alert in alerts:
 
-        message = (
-            f"🚨 {symbol}\n"
-            f"Profit Alert: {alert['level']}%\n"
-            f"Price: {highest_today:.2f}"
+        print(
+            f"🚨 {symbol} | "
+            f"Level={alert['level']}% | "
+            f"Price={current_price:.2f}"
         )
 
-        print(message)
-
-        send_telegram(message)
-
     #
-    # TARGET ALERT
+    # Target alert
     #
     target = evaluate_target_alert(
         position,
-        highest_today
+        current_price
     )
 
     if target["triggered"]:
 
-        message = (
-            f"🎯 TARGET REACHED\n\n"
-            f"Ticker: {symbol}\n"
-            f"Price: {highest_today:.2f}\n"
-            f"Target: {target['target_price']:.2f}"
+        print(
+            f"🎯 {symbol} | "
+            f"TARGET REACHED | "
+            f"Price={current_price:.2f} | "
+            f"Target={target['target_price']:.2f}"
         )
 
-        print(message)
-
-        send_telegram(message)
-
     #
-    # TRAILING STOP
+    # Trailing stop
     #
     trailing = evaluate_trailing_stop(
         position,
-        highest_today
+        current_price
     )
 
     #
-    # Save highest price reached
+    # Persist highest price
     #
-    position["highest_price"] = max(
-        position["highest_price"],
-        highest_today
+    position["highest_price"] = (
+        trailing["highest_price"]
     )
 
     if trailing["status"] == "SELL":
 
-        message = (
-            f"🔴 TRAILING STOP SELL\n\n"
-            f"Ticker: {symbol}\n"
-            f"Price: {highest_today:.2f}\n"
-            f"Stop: {trailing['trailing_price']:.2f}"
+        print(
+            f"🔴 {symbol} | "
+            f"TRAILING STOP SELL | "
+            f"Price={current_price:.2f} | "
+            f"Stop={trailing['trailing_price']:.2f}"
         )
 
-        print(message)
-
-        send_telegram(message)
+    return {
+        "symbol": symbol,
+        "current_price": current_price,
+        "close_price": close_price,
+        "high_price": high_price,
+        "status": status,
+        "alerts": alerts,
+        "target": target,
+        "trailing": trailing
+    }
