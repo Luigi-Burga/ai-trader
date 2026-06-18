@@ -31,6 +31,9 @@ from app.utils.market_hours import (
     is_market_open
 )
 
+print("Starting AI Trading Agent")
+send_telegram("🚀 AI Trader Startup Test")
+
 def main():
 
     if  not is_market_open():
@@ -143,7 +146,7 @@ def main():
 
                     send_telegram(message)
 
-                    mark_sent(symbol)
+                    #mark_sent(symbol)
 
         except Exception as e:
 

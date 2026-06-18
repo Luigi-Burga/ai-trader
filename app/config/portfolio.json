@@ -43,12 +43,7 @@
             "target_profit": 99,
             "trailing_stop": 0,
             "highest_price": 4.04,
-            "alerts_sent": [
-                65,
-                75,
-                90,
-                100
-            ]
+            "alerts_sent": []
         },
         {
             "ticker": "GDXU",
@@ -59,9 +54,7 @@
             "highest_price": 119,
             "alerts_sent": [
                 65,
-                75,
-                90,
-                100
+                75
             ]
         },
         {
