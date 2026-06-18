@@ -21,11 +21,11 @@ async def send_alert(message):
 
 def send_telegram(message):
 
+    print(f"TELEGRAM SEND: {message}")
+    
     try:
 
-        print(f"TELEGRAM SEND: {message}")
-
-        asyncio.run(
+     asyncio.run(
             send_alert(message)
         )
 
