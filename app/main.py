@@ -36,7 +36,7 @@ from app.utils.market_hours import (
 
 def main():
 
-    if  is_market_open():
+    if  not is_market_open():
 
         print(
             "Market closed. "
