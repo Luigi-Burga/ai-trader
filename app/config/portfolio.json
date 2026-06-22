@@ -13,7 +13,7 @@
             "ticker": "PLTU",
             "buy_price": 47.8,
             "number_of_shares": 50,
-            "target_profit": 10,
+            "target_profit": 15,
             "trailing_stop": 0,
             "highest_price": 47.8,
             "alerts_sent": []
@@ -22,7 +22,7 @@
             "ticker": "PLTR",
             "buy_price": 156.88,
             "number_of_shares": 20,
-            "target_profit": 10,
+            "target_profit": 15,
             "trailing_stop": 5,
             "highest_price": 156.88,
             "alerts_sent": []
@@ -49,7 +49,7 @@
             "ticker": "GDXU",
             "buy_price": 116.8,
             "number_of_shares": 65,
-            "target_profit": 15,
+            "target_profit": 23,
             "trailing_stop": 0,
             "highest_price": 132.5,
             "alerts_sent": [
