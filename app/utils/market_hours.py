@@ -2,7 +2,6 @@ from datetime import datetime
 import pandas_market_calendars as mcal
 import pytz
 
-
 def is_market_open():
 
     ny_tz = pytz.timezone("America/New_York")

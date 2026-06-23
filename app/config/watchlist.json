@@ -21,6 +21,11 @@
         "buy_target": 190
     },
 
+   {
+        "ticker": "SPMO",
+        "buy_target": 145
+    },
+
     {
         "ticker": "CCJ",
         "buy_target": 95
