@@ -138,7 +138,8 @@ def monitor_position(position):
         message = (
             f"🎯 TARGET REACHED\n\n"
             f"Ticker: {symbol}\n"
-            f"Price: {highest_today:.2f}\n"
+            f"Price Actual: {current_price:.2f}\n"
+            f"Price Alto: {highest_today:.2f}\n"
             f"Target: {target['target_price']:.2f}"
         )
 

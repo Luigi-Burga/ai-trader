@@ -61,7 +61,7 @@
             "ticker": "DFEN",
             "buy_price": 74.39,
             "number_of_shares": 40,
-            "target_profit": 15,
+            "target_profit": 12.34,
             "trailing_stop": 0,
             "highest_price": 83.75,
             "alerts_sent": [
