@@ -55,6 +55,17 @@
             "alerts_sent": []
         },
 
+{
+            "ticker": "GDXU",
+            "buy_price": 85,
+            "number_of_shares": 40,
+            "target_profit": 30,
+            "trailing_stop": 0,
+            "highest_price": 85,
+            "alerts_sent": []
+        },
+
+
         {
             "ticker": "GDXU",
             "buy_price": 116.8,
