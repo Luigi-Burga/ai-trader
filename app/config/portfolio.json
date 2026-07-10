@@ -73,10 +73,7 @@
             "target_profit": 15,
             "trailing_stop": 0,
             "highest_price": 132.5,
-            "alerts_sent": [
-                65,
-                75
-            ]
+            "alerts_sent": [ ]
         }
     ]
 }
