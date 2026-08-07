@@ -53,27 +53,6 @@
             "trailing_stop": 0,
             "highest_price": 192.80,
             "alerts_sent": []
-        },
-
-{
-            "ticker": "GDXU",
-            "buy_price": 85,
-            "number_of_shares": 40,
-            "target_profit": 20,
-            "trailing_stop": 0,
-            "highest_price": 85,
-            "alerts_sent": []
-        },
-
-
-        {
-            "ticker": "GDXU",
-            "buy_price": 116.8,
-            "number_of_shares": 86,
-            "target_profit": 15,
-            "trailing_stop": 0,
-            "highest_price": 132.5,
-            "alerts_sent": [ ]
         }
     ]
 }
