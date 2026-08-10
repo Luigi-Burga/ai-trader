@@ -6,6 +6,30 @@ For SOXL, delegates to the specialized quantitative cycle analyzer.
 """
 
 import ta
+import pandas as pd
+
+
+def _normalize_close(df):
+    """Return Close as a 1-D Series even when yfinance returns MultiIndex columns."""
+    if "Close" in df.columns and isinstance(df["Close"], pd.Series):
+        return df["Close"]
+
+    if isinstance(df.columns, pd.MultiIndex):
+        for level in range(df.columns.nlevels):
+            for value in df.columns.get_level_values(level).unique():
+                if str(value).lower() == "close":
+                    selected = df.xs(value, axis=1, level=level, drop_level=True)
+                    if isinstance(selected, pd.Series):
+                        return selected
+                    if "Close" in selected.columns:
+                        return selected["Close"]
+                    if selected.shape[1] == 1:
+                        return selected.iloc[:, 0]
+
+    close = df["Close"]
+    if isinstance(close, pd.DataFrame):
+        return close.iloc[:, 0]
+    return close
 
 
 def _generate_standard_signal(df):
@@ -18,7 +42,9 @@ def _generate_standard_signal(df):
 
     data = df.copy()
 
-    close_prices = data["Close"]
+    close_prices = _normalize_close(data)
+    if close_prices.empty:
+        return "NO_DATA"
 
     rsi_indicator = ta.momentum.RSIIndicator(
         close=close_prices,

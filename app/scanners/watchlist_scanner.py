@@ -17,6 +17,35 @@ from ta.trend import MACD, SMAIndicator
 from app.strategies.signal_engine import generate_signal
 
 
+def _normalize_ohlcv(df):
+    """Normalize yfinance MultiIndex output to standard OHLCV columns."""
+    if not isinstance(df.columns, pd.MultiIndex):
+        return df
+
+    price_names = {"open", "high", "low", "close", "adj close", "volume"}
+    flattened = []
+    for col in df.columns:
+        candidates = [str(x).lower() for x in col]
+        match = next((x for x in candidates if x in price_names), None)
+        flattened.append(match if match else candidates[-1])
+
+    out = df.copy()
+    out.columns = flattened
+
+    # Keep exactly one column per OHLCV field.
+    selected = {}
+    for name in ["open", "high", "low", "close", "volume"]:
+        matches = [c for c in out.columns if c == name]
+        if matches:
+            selected[name] = out[matches[0]]
+
+    if len(selected) == 5:
+        return pd.DataFrame(selected, index=out.index)
+
+    # Restore conventional capitalization expected by existing code.
+    return out
+
+
 def analyze_buy_opportunity(df):
     """
     Existing watchlist analysis for non-SOXL instruments.
@@ -221,6 +250,9 @@ def scan_buy_opportunity(stock):
         progress=False,
         auto_adjust=True
     )
+    df = _normalize_ohlcv(df)
+    # Existing analyzer expects capitalized OHLCV names.
+    df.columns = [str(c).title() for c in df.columns]
 
     if df.empty:
         print(f"{ticker} => No market data")

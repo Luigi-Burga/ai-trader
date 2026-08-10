@@ -114,28 +114,75 @@ def download_history(
     if raw.empty:
         raise RuntimeError("No market data returned by yfinance.")
 
-    # MultiIndex can appear for multiple tickers.
+    # yfinance can return either:
+    #   (Price, Ticker)
+    # or
+    #   (Ticker, Price)
+    # MultiIndex orientation changed across yfinance versions, so never
+    # assume that the ticker is level -1.
     if isinstance(raw.columns, pd.MultiIndex):
         frames = {}
+        price_names = {"open", "high", "low", "close", "adj close", "volume"}
+
         for ticker in tickers:
-            if ticker not in raw.columns.get_level_values(-1):
+            found = None
+            for level in range(raw.columns.nlevels):
+                values = {str(v).upper() for v in raw.columns.get_level_values(level)}
+                if ticker.upper() in values:
+                    found = level
+                    break
+
+            if found is None:
                 continue
-            frames[ticker] = raw.xs(ticker, axis=1, level=-1)
+
+            frame = raw.xs(ticker, axis=1, level=found, drop_level=True)
+
+            # If one more MultiIndex remains, flatten it safely.
+            if isinstance(frame.columns, pd.MultiIndex):
+                cols = []
+                for col in frame.columns:
+                    candidates = [str(x).lower() for x in col]
+                    match = next((x for x in candidates if x in price_names), None)
+                    cols.append(match if match else candidates[-1])
+                frame.columns = cols
+
+            frames[ticker] = frame
+
         return frames
 
     return {tickers[0]: raw}
 
 
 def _clean_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize yfinance OHLCV data to one-dimensional columns."""
     df = df.copy()
-    df.columns = [str(c).lower() for c in df.columns]
-    required = ["open", "high", "low", "close", "volume"]
-    missing = [c for c in required if c not in df.columns]
-    if missing:
-        raise RuntimeError(f"Missing OHLCV columns: {missing}")
 
-    df = df[required].dropna()
-    return df
+    if isinstance(df.columns, pd.MultiIndex):
+        price_names = {"open", "high", "low", "close", "adj close", "volume"}
+        flattened = []
+        for col in df.columns:
+            candidates = [str(x).lower() for x in col]
+            match = next((x for x in candidates if x in price_names), None)
+            flattened.append(match if match else candidates[-1])
+        df.columns = flattened
+    else:
+        df.columns = [str(c).lower() for c in df.columns]
+
+    # Defensive fix: if duplicate columns remain, retain the first OHLCV
+    # column. This prevents pandas from returning a 2-D DataFrame where a
+    # Series is required by rolling/ewm calculations.
+    required = ["open", "high", "low", "close", "volume"]
+    normalized = {}
+    for name in required:
+        matches = [c for c in df.columns if c == name]
+        if not matches:
+            raise RuntimeError(
+                f"Missing OHLCV column '{name}'. Columns received: {list(df.columns)}"
+            )
+        normalized[name] = df[matches[0]]
+
+    clean = pd.DataFrame(normalized, index=df.index)
+    return clean.dropna()
 
 
 def sma(series: pd.Series, period: int) -> pd.Series:
