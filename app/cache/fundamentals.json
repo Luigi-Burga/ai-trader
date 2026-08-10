@@ -1,6 +1,6 @@
 {
     "TQQQ": {
-        "timestamp": "2026-06-19T11:18:39.265971",
+        "timestamp": "2026-08-10T14:51:50.189172",
         "data": {
             "symbol": "TQQQ",
             "type": "ETF",
@@ -12,7 +12,7 @@
         }
     },
     "GDXU": {
-        "timestamp": "2026-06-19T11:18:40.598591",
+        "timestamp": "2026-08-10T14:51:50.682942",
         "data": {
             "symbol": "GDXU",
             "type": "ETF",
@@ -36,7 +36,7 @@
         }
     },
     "SOXL": {
-        "timestamp": "2026-06-19T11:18:42.757336",
+        "timestamp": "2026-08-10T14:51:51.167441",
         "data": {
             "symbol": "SOXL",
             "type": "ETF",
@@ -48,15 +48,27 @@
         }
     },
     "CCJ": {
-        "timestamp": "2026-06-19T11:18:43.655921",
+        "timestamp": "2026-08-10T14:51:52.132302",
         "data": {
             "symbol": "CCJ",
             "type": "STOCK",
-            "revenue": 10,
-            "margins": 10,
+            "revenue": 0,
+            "margins": 5,
             "debt": 15,
-            "total": 35,
-            "rating": "\ud83d\udfe2 BUY"
+            "total": 20,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "DFEN": {
+        "timestamp": "2026-08-10T14:51:51.650472",
+        "data": {
+            "symbol": "DFEN",
+            "type": "ETF",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "ETF"
         }
     }
 }
