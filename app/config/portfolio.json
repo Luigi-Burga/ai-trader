@@ -18,15 +18,7 @@
             "highest_price": 47.8,
             "alerts_sent": []
         },
-        {
-            "ticker": "PLTR",
-            "buy_price": 156.88,
-            "number_of_shares": 20,
-            "target_profit": 15,
-            "trailing_stop": 5,
-            "highest_price": 156.88,
-            "alerts_sent": []
-        },
+
         {
             "ticker": "APLD",
             "buy_price": 48.27,
