@@ -9,15 +9,6 @@
             "highest_price": 48.26,
             "alerts_sent": []
         },
-        {
-            "ticker": "PLTU",
-            "buy_price": 47.8,
-            "number_of_shares": 50,
-            "target_profit": 15,
-            "trailing_stop": 0,
-            "highest_price": 47.8,
-            "alerts_sent": []
-        },
 
         {
             "ticker": "APLD",

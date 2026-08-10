@@ -8,22 +8,17 @@
 
     {
         "ticker": "GDXU",
-        "buy_target": 85
-    },
-
-   {
-        "ticker": "NOW",
-        "buy_target": 96
+        "buy_target": 75
     },
 
    {
         "ticker": "SOXL",
-        "buy_target": 250
+        "buy_target": 100
     },
 
    {
-        "ticker": "SPMO",
-        "buy_target": 145
+        "ticker": "DFEN",
+        "buy_target": 65
     },
 
     {
