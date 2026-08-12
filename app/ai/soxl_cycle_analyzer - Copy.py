@@ -94,162 +94,13 @@ class AnalyzerConfig:
     tp2_pct: float = 0.35
     tp3_rsi: float = 75.0
 
-##-----
-
-def _normalize_ohlcv_frame(df: pd.DataFrame) -> pd.DataFrame:
-
-    """
-    Normalize yfinance OHLCV data into plain 1-D columns.
-
-    Handles both common yfinance MultiIndex layouts:
-
-        Price / Ticker
-        Ticker / Price
-
-    and guarantees that:
-        open
-        high
-        low
-        close
-        volume
-
-    are pandas Series, not DataFrames or ndarrays.
-    """
-
-    if df is None or df.empty:
-        raise RuntimeError("Empty market-data frame.")
-
-    out = df.copy()
-
-    # ------------------------------------------------------------
-    # Handle MultiIndex columns
-    # ------------------------------------------------------------
-    if isinstance(out.columns, pd.MultiIndex):
-
-        flattened = []
-
-        for col in out.columns:
-
-            parts = [
-                str(x).strip()
-                for x in col
-                if str(x).strip().lower() != "nan"
-            ]
-
-            price_field = next(
-                (
-                    x for x in parts
-                    if x.lower() in {
-                        "open",
-                        "high",
-                        "low",
-                        "close",
-                        "adj close",
-                        "volume",
-                    }
-                ),
-                None,
-            )
-
-            flattened.append(
-                price_field if price_field else parts[-1]
-            )
-
-        out.columns = flattened
-
-    else:
-        out.columns = [
-            str(c).strip()
-            for c in out.columns
-        ]
-
-    # ------------------------------------------------------------
-    # Normalize column names
-    # ------------------------------------------------------------
-    rename_map = {}
-
-    for column in out.columns:
-
-        name = str(column).strip().lower()
-
-        if name in ("adj close", "adj_close"):
-            name = "close"
-
-        rename_map[column] = name
-
-    out = out.rename(columns=rename_map)
-
-    required = [
-        "open",
-        "high",
-        "low",
-        "close",
-        "volume",
-    ]
-
-    missing = [
-        column
-        for column in required
-        if column not in out.columns
-    ]
-
-    if missing:
-        raise RuntimeError(
-            f"Missing OHLCV columns: {missing}. "
-            f"Received: {list(out.columns)}"
-        )
-
-    out = out[required].copy()
-
-    # ------------------------------------------------------------
-    # Force every field to be 1-dimensional
-    # ------------------------------------------------------------
-    for column in required:
-
-        value = out[column]
-
-        if isinstance(value, pd.DataFrame):
-
-            if value.shape[1] != 1:
-                raise RuntimeError(
-                    f"{column} is not 1-dimensional: "
-                    f"shape={value.shape}"
-                )
-
-            value = value.iloc[:, 0]
-
-        elif isinstance(value, np.ndarray):
-
-            value = np.asarray(value).reshape(-1)
-
-        out[column] = pd.to_numeric(
-            value,
-            errors="coerce"
-        )
-
-    return out.dropna(
-        subset=required
-    )
-
 
 def download_history(
     tickers: list[str],
     period: str = "2y",
     interval: str = "1d",
-) -> dict[str, pd.DataFrame]:
-
-    """
-    Download and normalize yfinance OHLCV data.
-
-    Works regardless of whether yfinance returns:
-
-        Price / Ticker
-
-    or:
-
-        Ticker / Price
-    """
-
+) -> pd.DataFrame:
+    """Download adjusted daily OHLCV data and normalize the yfinance format."""
     raw = yf.download(
         tickers=tickers,
         period=period,
@@ -261,85 +112,79 @@ def download_history(
     )
 
     if raw.empty:
-        raise RuntimeError(
-            "No market data returned by yfinance."
-        )
+        raise RuntimeError("No market data returned by yfinance.")
 
-    frames = {}
-
-    # ============================================================
-    # MULTIINDEX RESPONSE
-    # ============================================================
-
-    if isinstance(
-        raw.columns,
-        pd.MultiIndex
-    ):
+    # yfinance can return either:
+    #   (Price, Ticker)
+    # or
+    #   (Ticker, Price)
+    # MultiIndex orientation changed across yfinance versions, so never
+    # assume that the ticker is level -1.
+    if isinstance(raw.columns, pd.MultiIndex):
+        frames = {}
+        price_names = {"open", "high", "low", "close", "adj close", "volume"}
 
         for ticker in tickers:
-
-            ticker = str(ticker)
-
-            ticker_level = None
-
-            # Detect which MultiIndex level contains ticker.
-            for level in range(
-                raw.columns.nlevels
-            ):
-
-                values = {
-                    str(x)
-                    for x in raw.columns
-                        .get_level_values(level)
-                }
-
-                if ticker in values:
-                    ticker_level = level
+            found = None
+            for level in range(raw.columns.nlevels):
+                values = {str(v).upper() for v in raw.columns.get_level_values(level)}
+                if ticker.upper() in values:
+                    found = level
                     break
 
-            if ticker_level is None:
+            if found is None:
                 continue
 
-            frame = raw.xs(
-                ticker,
-                axis=1,
-                level=ticker_level,
-                drop_level=True,
-            )
+            frame = raw.xs(ticker, axis=1, level=found, drop_level=True)
 
-            frames[ticker] = (
-                _normalize_ohlcv_frame(frame)
-            )
+            # If one more MultiIndex remains, flatten it safely.
+            if isinstance(frame.columns, pd.MultiIndex):
+                cols = []
+                for col in frame.columns:
+                    candidates = [str(x).lower() for x in col]
+                    match = next((x for x in candidates if x in price_names), None)
+                    cols.append(match if match else candidates[-1])
+                frame.columns = cols
 
-    # ============================================================
-    # SINGLE-INDEX RESPONSE
-    # ============================================================
+            frames[ticker] = frame
 
+        return frames
+
+    return {tickers[0]: raw}
+
+
+def _clean_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize yfinance OHLCV data to one-dimensional columns."""
+    df = df.copy()
+
+    if isinstance(df.columns, pd.MultiIndex):
+        price_names = {"open", "high", "low", "close", "adj close", "volume"}
+        flattened = []
+        for col in df.columns:
+            candidates = [str(x).lower() for x in col]
+            match = next((x for x in candidates if x in price_names), None)
+            flattened.append(match if match else candidates[-1])
+        df.columns = flattened
     else:
+        df.columns = [str(c).lower() for c in df.columns]
 
-        frames[str(tickers[0])] = (
-            _normalize_ohlcv_frame(raw)
-        )
+    # Defensive fix: if duplicate columns remain, retain the first OHLCV
+    # column. This prevents pandas from returning a 2-D DataFrame where a
+    # Series is required by rolling/ewm calculations.
+    required = ["open", "high", "low", "close", "volume"]
+    normalized = {}
+    for name in required:
+        matches = [c for c in df.columns if c == name]
+        if not matches:
+            raise RuntimeError(
+                f"Missing OHLCV column '{name}'. Columns received: {list(df.columns)}"
+            )
+        normalized[name] = df[matches[0]]
 
-    if not frames:
-
-        raise RuntimeError(
-            "Unable to identify requested tickers "
-            f"in yfinance response. "
-            f"Columns={list(raw.columns)}"
-        )
-
-    return frames
-
-
-def _clean_frame(
-    df: pd.DataFrame
-) -> pd.DataFrame:
-
-    return _normalize_ohlcv_frame(df)
+    clean = pd.DataFrame(normalized, index=df.index)
+    return clean.dropna()
 
 
-#---
 def sma(series: pd.Series, period: int) -> pd.Series:
     return series.rolling(period).mean()
 
@@ -441,45 +286,18 @@ def latest_row(df: pd.DataFrame) -> pd.Series:
         raise RuntimeError("No valid rows available.")
     return valid.iloc[-1]
 
-#---
 
 def safe_float(value) -> Optional[float]:
-
     if value is None:
         return None
-
-    if isinstance(
-        value,
-        (pd.Series, np.ndarray)
-    ):
-
-        arr = np.asarray(value).reshape(-1)
-
-        if arr.size != 1:
-            return None
-
-        value = arr[0]
-
     try:
-
         value = float(value)
-
-        if (
-            math.isnan(value)
-            or math.isinf(value)
-        ):
+        if math.isnan(value) or math.isinf(value):
             return None
-
         return value
-
-    except (
-        TypeError,
-        ValueError
-    ):
-
+    except (TypeError, ValueError):
         return None
 
-#---
 
 def relative_strength(
     soxl_df: pd.DataFrame,
