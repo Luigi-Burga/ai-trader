@@ -22,8 +22,8 @@
             "ticker": "MSTU",
             "buy_price": 40.5,
             "number_of_shares": 12,
-            "target_profit": 60,
-            "trailing_stop": 0,
+            "target_profit": 15,
+            "trailing_stop": 10,
             "highest_price": 40.5,
             "alerts_sent": []
         },
@@ -33,7 +33,7 @@
             "buy_price": 547.5,
             "number_of_shares": 30,
             "target_profit": 20,
-            "trailing_stop": 0,
+            "trailing_stop": 8,
             "highest_price": 547.5,
             "alerts_sent": []
         },
@@ -41,8 +41,8 @@
             "ticker": "SOXL",
             "buy_price": 192.8,
             "number_of_shares": 26,
-            "target_profit": 16.7,
-            "trailing_stop": 0,
+            "target_profit": 5,
+            "trailing_stop": 10,
             "highest_price": 192.8,
             "alerts_sent": []
         }
