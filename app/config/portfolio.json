@@ -13,7 +13,7 @@
             "ticker": "APLD",
             "buy_price": 48.27,
             "number_of_shares": 20,
-            "target_profit": 15,
+            "target_profit": 5,
             "trailing_stop": 0,
             "highest_price": 48.27,
             "alerts_sent": []
