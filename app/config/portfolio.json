@@ -32,7 +32,7 @@
             "ticker": "META",
             "buy_price": 547.5,
             "number_of_shares": 30,
-            "target_profit": 14,
+            "target_profit": 16,
             "trailing_stop": 8,
             "highest_price": 547.5,
             "alerts_sent": []
