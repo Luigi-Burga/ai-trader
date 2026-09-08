@@ -22,7 +22,7 @@
             "ticker": "MSTU",
             "buy_price": 40.5,
             "number_of_shares": 12,
-            "target_profit": 15,
+            "target_profit": 8.5,
             "trailing_stop": 10,
             "highest_price": 40.5,
             "alerts_sent": []
@@ -32,7 +32,7 @@
             "ticker": "META",
             "buy_price": 547.5,
             "number_of_shares": 30,
-            "target_profit": 20,
+            "target_profit": 14,
             "trailing_stop": 8,
             "highest_price": 547.5,
             "alerts_sent": []
