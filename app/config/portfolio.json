@@ -29,6 +29,16 @@
         },
 
         {
+            "ticker": "DFEN",
+            "buy_price": 61.57,
+            "number_of_shares": 93,
+            "target_profit": 15,
+            "trailing_stop": 10,
+            "highest_price": 61.57,
+            "alerts_sent": []
+        },
+
+        {
             "ticker": "SOXL",
             "buy_price": 192.8,
             "number_of_shares": 26,
