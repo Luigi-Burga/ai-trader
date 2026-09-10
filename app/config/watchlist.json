@@ -8,7 +8,7 @@
 
     {
         "ticker": "GDXU",
-        "buy_target": 90
+        "buy_target": 95
     },
 
    {
@@ -17,13 +17,18 @@
     },
 
    {
+        "ticker": "META",
+        "buy_target": 550
+    },
+
+   {
         "ticker": "DFEN",
-        "buy_target": 65
+        "buy_target": 50
     },
 
     {
-        "ticker": "CCJ",
-        "buy_target": 95
+        "ticker": "ASMG",
+        "buy_target": 40
     }
 
 ]
