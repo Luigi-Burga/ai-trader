@@ -27,7 +27,6 @@
             "highest_price": 40.5,
             "alerts_sent": []
         },
-
         {
             "ticker": "DFEN",
             "buy_price": 61.57,
@@ -37,7 +36,6 @@
             "highest_price": 61.57,
             "alerts_sent": []
         },
-
         {
             "ticker": "SOXL",
             "buy_price": 192.8,

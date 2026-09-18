@@ -1,22 +1,19 @@
 """
-AI Trader - Integrated Main V2.8
---------------------------------
-Structural migration of V2.7:
+AI Trader - Integrated Main V2.7
+Prediction Logger V1.1 + Prediction Tracker V1.1 integration.
 
-1. All application Python code is under app/.
-2. Prediction Logger is imported as app.prediction_logger.
-3. Prediction Tracker is imported as app.prediction_tracker.
-4. Persistent prediction data remains OUTSIDE app/:
-       data/predictions/
-5. Default prediction storage is resolved from the project root by the
-   logger/tracker, so execution is not dependent on the current directory.
-6. Keeps the validated V2.7 trading flow unchanged:
-   - corrected market-hours condition
-   - Watchlist Scanner V2.1.1
-   - Telegram/cache handling
-   - Prediction Tracker before current T0 logging
-   - prediction snapshot for every watchlist result
-   - fail-safe prediction logging/tracking
+Changes versus main_integrated_v2_4.py:
+1. Keeps the corrected market-hours condition.
+2. Keeps Watchlist Scanner V2.1.1.
+3. Keeps Telegram/cache success handling unchanged.
+4. Runs Prediction Tracker V1.1 at the start of the scan for prior-day prediction files.
+5. Logs EVERY watchlist prediction snapshot after scan_buy_opportunity()
+   returns, including non-bullish and REVIEW_DATA results.
+6. Prediction logging failures never change the trading signal or stop
+   the watchlist scan.
+7. Prediction log directory can be overridden with:
+       AI_TRADER_PREDICTION_DIR
+8. Production app/main.py is NOT modified.
 """
 
 from datetime import datetime
@@ -24,16 +21,9 @@ import os
 import sys
 
 if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(
-        encoding="utf-8",
-        errors="backslashreplace",
-    )
-
+    sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
 if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(
-        encoding="utf-8",
-        errors="backslashreplace",
-    )
+    sys.stderr.reconfigure(encoding="utf-8", errors="backslashreplace")
 
 from app.config.config_loader import (
     load_portfolio,
@@ -65,22 +55,8 @@ from app.utils.market_hours import (
     is_market_open,
 )
 
-# V2.8: ALL application modules are under app/
-from app.prediction_logger import log_prediction
-from app.prediction_tracker import update_all_predictions
-
-
-def _prediction_directory() -> str:
-    """
-    Return the optional prediction directory override.
-
-    If not configured, logger/tracker use their project-root default:
-        <project_root>/data/predictions/
-    """
-    return os.getenv(
-        "AI_TRADER_PREDICTION_DIR",
-        "",
-    ).strip()
+from prediction_logger_v1_1 import log_prediction
+from prediction_tracker import update_all_predictions
 
 
 def _scan_allowed() -> bool:
@@ -90,20 +66,9 @@ def _scan_allowed() -> bool:
     Test override:
         AI_TRADER_FORCE_SCAN=1
     """
-    force_scan = os.getenv(
-        "AI_TRADER_FORCE_SCAN",
-        "",
-    ).strip().lower()
-
-    if force_scan in {
-        "1",
-        "true",
-        "yes",
-        "on",
-    }:
-        print(
-            "TEST MODE: AI_TRADER_FORCE_SCAN enabled."
-        )
+    force_scan = os.getenv("AI_TRADER_FORCE_SCAN", "").strip().lower()
+    if force_scan in {"1", "true", "yes", "on"}:
+        print("TEST MODE: AI_TRADER_FORCE_SCAN enabled.")
         return True
 
     return is_market_open()
@@ -112,33 +77,25 @@ def _scan_allowed() -> bool:
 def _run_prediction_tracker() -> None:
     """
     Evaluate eligible historical prediction snapshots before creating the
-    current T0 snapshots.
-
-    Today's file is excluded so current predictions remain PENDING.
+    current T0 snapshots. Today's file is excluded by Prediction Tracker
+    V1.1, so current predictions remain PENDING.
 
     Tracker failures are fail-safe and never stop the trading scan.
     """
-    prediction_dir = _prediction_directory()
+    prediction_dir = os.getenv("AI_TRADER_PREDICTION_DIR", "").strip()
+    base_dir = prediction_dir or None
 
     try:
-        if prediction_dir:
-            summary = update_all_predictions(
-                base_dir=prediction_dir,
-                include_today=False,
-            )
-        else:
-            # Use prediction_tracker's project-root default.
-            summary = update_all_predictions(
-                include_today=False,
-            )
-
+        summary = update_all_predictions(
+            base_dir=base_dir or "data/predictions",
+            include_today=False,
+        )
         print(
             "Prediction Tracker | "
             f"files={summary.get('files', 0)} | "
             f"updated={summary.get('updated', 0)} | "
             f"unchanged={summary.get('unchanged', 0)}"
         )
-
     except Exception as e:
         print(
             f"Prediction Tracker Error: {e} | "
@@ -155,27 +112,20 @@ def _log_prediction_snapshot(
     """
     Persist one immutable T0 prediction snapshot.
 
-    Logging is fail-safe: storage/logger errors never change the trading
-    decision or interrupt the watchlist loop.
+    Logging is deliberately fail-safe: a logger/storage error must not
+    change the trading decision or interrupt the watchlist loop.
     """
-    prediction_dir = _prediction_directory()
+    prediction_dir = os.getenv("AI_TRADER_PREDICTION_DIR", "").strip()
+    base_dir = prediction_dir or None
 
     try:
-        if prediction_dir:
-            snapshot, path = log_prediction(
-                symbol,
-                result,
-                source="main_integrated_v2_8",
-                run_id=run_id,
-                base_dir=prediction_dir,
-            )
-        else:
-            snapshot, path = log_prediction(
-                symbol,
-                result,
-                source="main_integrated_v2_8",
-                run_id=run_id,
-            )
+        snapshot, path = log_prediction(
+            symbol,
+            result,
+            source="main_integrated_v2_7",
+            run_id=run_id,
+            base_dir=base_dir,
+        )
 
         print(
             f"{symbol} | Prediction logged | "
@@ -185,11 +135,10 @@ def _log_prediction_snapshot(
             f"price={snapshot.get('price_at_prediction')} | "
             f"file={path}"
         )
-
     except Exception as e:
         print(
             f"{symbol} | Prediction Logger Error: {e} | "
-            "scan result preserved"
+            f"scan result preserved"
         )
 
 
@@ -200,19 +149,17 @@ def main() -> None:
 
     run_id = (
         "MAIN_"
-        + datetime.now().strftime(
-            "%Y%m%d_%H%M%S"
-        )
+        + datetime.now().strftime("%Y%m%d_%H%M%S")
     )
 
     print("\n")
     print("===================================")
-    print(f"AI Trader Integrated V2.8")
     print(f"Market Scan: {datetime.now()}")
     print(f"Run ID: {run_id}")
     print("===================================")
 
     # PREDICTION TRACKER
+    # Evaluate prior prediction files before writing the current T0 file.
     _run_prediction_tracker()
 
     # PORTFOLIO
@@ -231,21 +178,17 @@ def main() -> None:
     save_portfolio(portfolio)
 
     # WATCHLIST V2.1.1 + PREDICTION LOGGER
-    print(
-        "\n===== WATCHLIST MONITOR V2.1.1 ====="
-    )
+    print("\n===== WATCHLIST MONITOR V2.1.1 =====")
     watchlist = load_watchlist()
 
     for stock in watchlist:
-        symbol = stock.get(
-            "ticker",
-            "UNKNOWN",
-        )
+        symbol = stock.get("ticker", "UNKNOWN")
 
         try:
             result = scan_buy_opportunity(stock)
 
-            # Capture T0 before moving to the next ticker.
+            # Log the complete returned prediction state BEFORE moving
+            # to the next ticker. This captures T0 for every asset.
             _log_prediction_snapshot(
                 symbol,
                 result,
@@ -275,9 +218,7 @@ def main() -> None:
     for stock in watchlist:
         try:
             symbol = stock["ticker"]
-            result = calculate_fundamental_score(
-                symbol
-            )
+            result = calculate_fundamental_score(symbol)
 
             if result is None:
                 continue
@@ -285,7 +226,7 @@ def main() -> None:
             if result["type"] == "ETF":
                 print(
                     f"{symbol} | ETF | "
-                    "Fundamental Score N/A"
+                    f"Fundamental Score N/A"
                 )
                 continue
 
@@ -300,24 +241,19 @@ def main() -> None:
 
             if result["total"] >= 45:
                 if not already_sent(symbol):
-                    message = build_fundamental_message(
-                        result
-                    )
-                    telegram_ok = send_telegram(
-                        message
-                    )
+                    message = build_fundamental_message(result)
+                    telegram_ok = send_telegram(message)
 
                     if telegram_ok:
                         mark_sent(symbol)
                         print(
-                            f"{symbol} | Telegram alert "
-                            "sent successfully and marked "
-                            "as sent."
+                            f"{symbol} | Telegram alert sent successfully "
+                            f"and marked as sent."
                         )
                     else:
                         print(
                             f"{symbol} | Telegram alert FAILED; "
-                            "cache unchanged."
+                            f"cache unchanged."
                         )
 
         except Exception as e:

@@ -1,6 +1,6 @@
 {
     "TQQQ": {
-        "timestamp": "2026-08-12T12:19:21.070877",
+        "timestamp": "2026-09-17T19:39:20.443690",
         "data": {
             "symbol": "TQQQ",
             "type": "ETF",
@@ -12,7 +12,7 @@
         }
     },
     "GDXU": {
-        "timestamp": "2026-08-12T12:19:21.540655",
+        "timestamp": "2026-09-17T19:39:21.009202",
         "data": {
             "symbol": "GDXU",
             "type": "ETF",
@@ -36,7 +36,7 @@
         }
     },
     "SOXL": {
-        "timestamp": "2026-08-12T12:19:22.047402",
+        "timestamp": "2026-09-17T19:39:22.179661",
         "data": {
             "symbol": "SOXL",
             "type": "ETF",
@@ -60,7 +60,7 @@
         }
     },
     "DFEN": {
-        "timestamp": "2026-08-12T12:19:22.544327",
+        "timestamp": "2026-09-17T19:39:24.192353",
         "data": {
             "symbol": "DFEN",
             "type": "ETF",
@@ -69,6 +69,762 @@
             "debt": 0,
             "total": 0,
             "rating": "ETF"
+        }
+    },
+    "META": {
+        "timestamp": "2026-09-17T19:39:23.201500",
+        "data": {
+            "symbol": "META",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 15,
+            "debt": 10,
+            "total": 45,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "ASMG": {
+        "timestamp": "2026-09-17T19:39:37.809220",
+        "data": {
+            "symbol": "ASMG",
+            "type": "ETF",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "ETF"
+        }
+    },
+    "ELOX": {
+        "timestamp": "2026-09-17T23:01:36.048773",
+        "data": {
+            "symbol": "ELOX",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "MGRT": {
+        "timestamp": "2026-09-17T23:01:36.762933",
+        "data": {
+            "symbol": "MGRT",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "SNDK": {
+        "timestamp": "2026-09-17T23:01:39.027975",
+        "data": {
+            "symbol": "SNDK",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "AXTI": {
+        "timestamp": "2026-09-17T23:01:41.579134",
+        "data": {
+            "symbol": "AXTI",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "NUAI": {
+        "timestamp": "2026-09-17T23:01:44.164735",
+        "data": {
+            "symbol": "NUAI",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "ERAS": {
+        "timestamp": "2026-09-17T23:01:44.838727",
+        "data": {
+            "symbol": "ERAS",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "DMRA": {
+        "timestamp": "2026-09-17T23:01:45.526267",
+        "data": {
+            "symbol": "DMRA",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "\ud83d\udd34 SELL"
+        }
+    },
+    "ANRO": {
+        "timestamp": "2026-09-17T23:01:46.068385",
+        "data": {
+            "symbol": "ANRO",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "CYPH": {
+        "timestamp": "2026-09-17T23:01:46.838792",
+        "data": {
+            "symbol": "CYPH",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "PRAX": {
+        "timestamp": "2026-09-17T23:01:47.422386",
+        "data": {
+            "symbol": "PRAX",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "WOLF": {
+        "timestamp": "2026-09-17T23:01:50.063471",
+        "data": {
+            "symbol": "WOLF",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 5,
+            "total": 5,
+            "rating": "\ud83d\udd34 SELL"
+        }
+    },
+    "SLS": {
+        "timestamp": "2026-09-17T23:01:50.683438",
+        "data": {
+            "symbol": "SLS",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "CLYM": {
+        "timestamp": "2026-09-17T23:01:51.312864",
+        "data": {
+            "symbol": "CLYM",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "ORKA": {
+        "timestamp": "2026-09-17T23:01:51.902494",
+        "data": {
+            "symbol": "ORKA",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "SYRE": {
+        "timestamp": "2026-09-17T23:01:52.457057",
+        "data": {
+            "symbol": "SYRE",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 0,
+            "total": 0,
+            "rating": "\ud83d\udd34 SELL"
+        }
+    },
+    "QTTB": {
+        "timestamp": "2026-09-17T23:01:53.103996",
+        "data": {
+            "symbol": "QTTB",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 15,
+            "debt": 15,
+            "total": 30,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "MRNA": {
+        "timestamp": "2026-09-17T23:01:53.723070",
+        "data": {
+            "symbol": "MRNA",
+            "type": "STOCK",
+            "revenue": 10,
+            "margins": 0,
+            "debt": 15,
+            "total": 25,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "MU": {
+        "timestamp": "2026-09-17T23:01:54.320322",
+        "data": {
+            "symbol": "MU",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "BUUU": {
+        "timestamp": "2026-09-17T23:01:56.514988",
+        "data": {
+            "symbol": "BUUU",
+            "type": "STOCK",
+            "revenue": 15,
+            "margins": 0,
+            "debt": 15,
+            "total": 30,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "MBX": {
+        "timestamp": "2026-09-17T23:01:57.190813",
+        "data": {
+            "symbol": "MBX",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "EDRY": {
+        "timestamp": "2026-09-17T23:01:59.998381",
+        "data": {
+            "symbol": "EDRY",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 10,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "IMMX": {
+        "timestamp": "2026-09-17T23:02:02.320935",
+        "data": {
+            "symbol": "IMMX",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "TWST": {
+        "timestamp": "2026-09-17T23:02:03.080985",
+        "data": {
+            "symbol": "TWST",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 0,
+            "debt": 15,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "SPRB": {
+        "timestamp": "2026-09-17T23:02:03.798730",
+        "data": {
+            "symbol": "SPRB",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "MTC": {
+        "timestamp": "2026-09-17T23:02:04.513365",
+        "data": {
+            "symbol": "MTC",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "NVDA": {
+        "timestamp": "2026-09-17T23:01:02.767046",
+        "data": {
+            "symbol": "NVDA",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "SPCX": {
+        "timestamp": "2026-09-17T23:01:05.018019",
+        "data": {
+            "symbol": "SPCX",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 0,
+            "debt": 10,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "INTC": {
+        "timestamp": "2026-09-17T23:01:05.737304",
+        "data": {
+            "symbol": "INTC",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 5,
+            "debt": 10,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "AAPL": {
+        "timestamp": "2026-09-17T23:01:06.453960",
+        "data": {
+            "symbol": "AAPL",
+            "type": "STOCK",
+            "revenue": 15,
+            "margins": 15,
+            "debt": 10,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "TSLA": {
+        "timestamp": "2026-09-17T23:01:07.171813",
+        "data": {
+            "symbol": "TSLA",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 0,
+            "debt": 15,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "AMD": {
+        "timestamp": "2026-09-17T23:01:07.828594",
+        "data": {
+            "symbol": "AMD",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "AMZN": {
+        "timestamp": "2026-09-17T23:01:10.048758",
+        "data": {
+            "symbol": "AMZN",
+            "type": "STOCK",
+            "revenue": 15,
+            "margins": 5,
+            "debt": 10,
+            "total": 30,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "MSFT": {
+        "timestamp": "2026-09-17T23:01:10.752872",
+        "data": {
+            "symbol": "MSFT",
+            "type": "STOCK",
+            "revenue": 15,
+            "margins": 15,
+            "debt": 15,
+            "total": 45,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "AVGO": {
+        "timestamp": "2026-09-17T23:01:13.313183",
+        "data": {
+            "symbol": "AVGO",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 10,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "DELL": {
+        "timestamp": "2026-09-17T23:01:15.972830",
+        "data": {
+            "symbol": "DELL",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 5,
+            "debt": 0,
+            "total": 30,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "LITE": {
+        "timestamp": "2026-09-17T23:01:16.813952",
+        "data": {
+            "symbol": "LITE",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 10,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "ORCL": {
+        "timestamp": "2026-09-17T23:01:19.416508",
+        "data": {
+            "symbol": "ORCL",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 15,
+            "debt": 0,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "GOOG": {
+        "timestamp": "2026-09-17T23:01:19.993129",
+        "data": {
+            "symbol": "GOOG",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 15,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "MRVL": {
+        "timestamp": "2026-09-17T23:01:22.131129",
+        "data": {
+            "symbol": "MRVL",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "PLTR": {
+        "timestamp": "2026-09-17T23:01:24.953844",
+        "data": {
+            "symbol": "PLTR",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "BE": {
+        "timestamp": "2026-09-17T23:01:27.673979",
+        "data": {
+            "symbol": "BE",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 5,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "HOOD": {
+        "timestamp": "2026-09-17T23:01:28.364892",
+        "data": {
+            "symbol": "HOOD",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 0,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "GS": {
+        "timestamp": "2026-09-17T23:01:29.082330",
+        "data": {
+            "symbol": "GS",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 0,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "GEV": {
+        "timestamp": "2026-09-17T23:01:29.799795",
+        "data": {
+            "symbol": "GEV",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 5,
+            "debt": 15,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "WDC": {
+        "timestamp": "2026-09-17T23:01:30.502785",
+        "data": {
+            "symbol": "WDC",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "FANG": {
+        "timestamp": "2026-09-17T23:01:32.776384",
+        "data": {
+            "symbol": "FANG",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 15,
+            "debt": 15,
+            "total": 55,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "NBIS": {
+        "timestamp": "2026-09-17T23:01:35.432455",
+        "data": {
+            "symbol": "NBIS",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 0,
+            "debt": 10,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "CTNT": {
+        "timestamp": "2026-09-17T19:39:25.006988",
+        "data": {
+            "symbol": "CTNT",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 0,
+            "debt": 15,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "RITR": {
+        "timestamp": "2026-09-17T19:39:25.844759",
+        "data": {
+            "symbol": "RITR",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 5,
+            "total": 5,
+            "rating": "\ud83d\udd34 SELL"
+        }
+    },
+    "UZX": {
+        "timestamp": "2026-09-17T19:39:26.758351",
+        "data": {
+            "symbol": "UZX",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "ZBAO": {
+        "timestamp": "2026-09-17T19:39:27.618201",
+        "data": {
+            "symbol": "ZBAO",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 0,
+            "debt": 5,
+            "total": 30,
+            "rating": "\ud83d\udfe1 HOLD"
+        }
+    },
+    "HKPD": {
+        "timestamp": "2026-09-17T19:39:28.631770",
+        "data": {
+            "symbol": "HKPD",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "ADBT": {
+        "timestamp": "2026-09-17T19:39:29.669744",
+        "data": {
+            "symbol": "ADBT",
+            "type": "STOCK",
+            "revenue": 20,
+            "margins": 15,
+            "debt": 15,
+            "total": 50,
+            "rating": "\ud83d\udfe2 STRONG BUY"
+        }
+    },
+    "FAMI": {
+        "timestamp": "2026-09-17T19:39:30.863817",
+        "data": {
+            "symbol": "FAMI",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "AMZE": {
+        "timestamp": "2026-09-17T19:39:31.818173",
+        "data": {
+            "symbol": "AMZE",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 10,
+            "total": 10,
+            "rating": "\ud83d\udd34 SELL"
+        }
+    },
+    "MGN": {
+        "timestamp": "2026-09-17T19:39:32.405475",
+        "data": {
+            "symbol": "MGN",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 0,
+            "debt": 15,
+            "total": 40,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "PASW": {
+        "timestamp": "2026-09-17T19:39:32.972056",
+        "data": {
+            "symbol": "PASW",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 5,
+            "debt": 15,
+            "total": 20,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "ZONE": {
+        "timestamp": "2026-09-17T19:39:33.581312",
+        "data": {
+            "symbol": "ZONE",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "FNGR": {
+        "timestamp": "2026-09-17T19:39:34.683754",
+        "data": {
+            "symbol": "FNGR",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
+        }
+    },
+    "SURG": {
+        "timestamp": "2026-09-17T19:39:35.781268",
+        "data": {
+            "symbol": "SURG",
+            "type": "STOCK",
+            "revenue": 25,
+            "margins": 10,
+            "debt": 0,
+            "total": 35,
+            "rating": "\ud83d\udfe2 BUY"
+        }
+    },
+    "GNS": {
+        "timestamp": "2026-09-17T19:39:36.912533",
+        "data": {
+            "symbol": "GNS",
+            "type": "STOCK",
+            "revenue": 0,
+            "margins": 0,
+            "debt": 15,
+            "total": 15,
+            "rating": "\ud83d\udfe0 REDUCE"
         }
     }
 }
