@@ -1,330 +1,96 @@
 {
   "stocks": [
-
     {
-        "ticker": "TQQQ",
-        "buy_target": 65
+      "ticker": "NVDA"
+    },
+    {
+      "ticker": "MSFT"
+    },
+    {
+      "ticker": "GOOGL"
+    },
+    {
+      "ticker": "AMZN"
+    },
+    {
+      "ticker": "AVGO"
+    },
+    {
+      "ticker": "TSM"
+    },
+    {
+      "ticker": "META"
+    },
+    {
+      "ticker": "AAPL"
+    },
+    {
+      "ticker": "BRK.B"
+    },
+    {
+      "ticker": "JPM"
+    },
+  
+    {
+      "ticker": "V"
     },
 
     {
-        "ticker": "GDXU",
-        "buy_target": 95
+        "ticker": "TQQQ"        
     },
 
     {
-        "ticker": "SOXL",
-        "buy_target": 100
+        "ticker": "GDXU"
     },
 
     {
-        "ticker": "META",
-        "buy_target": 550
+        "ticker": "SPCX"
     },
 
     {
-        "ticker": "DFEN",
-        "buy_target": 50
-    },
-
-    {
-        "ticker": "CTNT",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "RITR",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "UZX",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "ZBAO",
-        "buy_target": 0.50
-    },
-
-    {
-        "ticker": "HKPD",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "ADBT",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "FAMI",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "AMZE",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "MGN",
-        "buy_target": 0.50
-    },
-
-    {
-        "ticker": "PASW",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "ZONE",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "FNGR",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "SURG",
-        "buy_target": 0.50
-    },
-    {
-        "ticker": "GNS",
-        "buy_target": 0.50
-    },
-
-    {
-        "ticker": "NVDA",
-        "buy_target": 50
-    },
-
-    {
-        "ticker": "SPCX",
-        "buy_target": 50
-    },
-
-    {
-        "ticker": "INTC",
-        "buy_target": 50
-    },
-
-    {
-        "ticker": "AAPL",
-        "buy_target": 50
+        "ticker": "TSLA"
     },
    
     {
-        "ticker": "TSLA",
-        "buy_target": 50
+        "ticker": "AMD"
+    },
+      
+    {
+        "ticker": "DELL"
     },
    
     {
-        "ticker": "AMD",
-        "buy_target": 50
+        "ticker": "LITE"
     },
    
     {
-        "ticker": "AMZN",
-        "buy_target": 50
-    },
-   
-    {
-           "ticker": "MSFT",
-        "buy_target": 50
-    },
-   
-    {
-        "ticker": "AVGO",
-        "buy_target": 50
-    },
-   
-    {
-        "ticker": "DELL",
-        "buy_target": 50
-    },
-   
-    {
-        "ticker": "LITE",
-        "buy_target": 50
-    },
-   
-    {
-        "ticker": "ORCL",
-        "buy_target": 50
-    },
-   
-    {
-        "ticker": "GOOG",
-        "buy_target": 50
+        "ticker": "ORCL"
     },
  
     {
-        "ticker": "MRVL",
-        "buy_target": 50
+        "ticker": "MRVL"
     }, 
 
     {
-        "ticker": "PLTR",
-        "buy_target": 50
+        "ticker": "PLTR"
     }, 
 
     {
-        "ticker": "BE",
-        "buy_target": 50
+        "ticker": "PLTU"
     }, 
-    
+   
     {
-        "ticker": "HOOD",
-        "buy_target": 50
-    }, 
-
-    {
-        "ticker": "GS",
-        "buy_target": 50
-    }, 
-
-    {
-        "ticker": "GEV",
-        "buy_target": 50
-    }, 
-
-    {
-        "ticker": "WDC",
-        "buy_target": 50
-    }, 
-
-    {
-        "ticker": "FANG",
-        "buy_target": 50
-    }, 
-
-    {
-        "ticker": "NBIS",
-        "buy_target": 50
-    }, 
-
-   {
-        "ticker": "ELOX",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "MGRT",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "SNDK",
-        "buy_target": 50
-    },
-
-
-   {
-        "ticker": "AXTI",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "NUAI",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "ERAS",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "DMRA",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "ANRO",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "CYPH",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "PRAX",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "WOLF",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "SLS",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "CLYM",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "ORKA",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "SYRE",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "QTTB",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "MRNA",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "MU",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "BUUU",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "MBX",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "EDRY",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "IMMX",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "TWST",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "SPRB",
-        "buy_target": 50
-    },
-
-   {
-        "ticker": "MTC",
-        "buy_target": 50
+        "ticker": "SNDK"
     },
 
     {
-        "ticker": "ASMG",
-        "buy_target": 40
+        "ticker": "ASMG"
+    },
+
+    {
+      "ticker": "MA"
     }
-
-]
+  ]
 }
+
+ 
