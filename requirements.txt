@@ -1,3 +1,29 @@
+# AI Trader - Audited Runtime Dependencies
+# Audited against the current validated production architecture:
+# Main Integrated V2.8
+# Asset Age Resolver V1.4
+# Asset Analysis Orchestrator V1.3
+# Benchmark Resolver V1.6.1
+# Characteristic Curve Engine V1.6.1
+# New Listing Engine V1.3
+# Decision Gate V1.2
+# Signal Engine V1.1
+# Watchlist Scanner V2.1.1
+# Prediction Logger V1.1
+# Prediction Tracker V1.1
+# Telegram Alert V2
+#
+# Notes:
+# - Standard-library modules (json, os, math, pathlib, datetime, argparse,
+#   dataclasses, typing, asyncio, etc.) are NOT listed.
+# - scipy is intentionally NOT listed: the current CCE V1.6.1 implements
+#   Mahalanobis distance/covariance operations with NumPy and does not import scipy.
+# - openai, fastapi and uvicorn are retained because they were already part
+#   of the project's declared environment, but the current validated trading
+#   pipeline does not require them directly.
+# - ta is retained for compatibility with the existing project environment;
+#   no production engine should be changed as part of this dependency audit.
+
 fastapi
 uvicorn
 pandas
@@ -9,4 +35,3 @@ python-telegram-bot
 python-dotenv
 pytz
 pandas-market-calendars
-scipy
