@@ -196,7 +196,7 @@ def _log_prediction_snapshot(
 if not _scan_allowed():
 """
 def main() -> None:
-    if _scan_allowed():
+    if not _scan_allowed():
         print("Market closed. Skipping scan.")
         return
 
