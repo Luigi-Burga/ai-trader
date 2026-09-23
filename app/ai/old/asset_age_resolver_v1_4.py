@@ -75,18 +75,7 @@ from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
-from app.data.market_data import get_history
-
-
-def get_history_compat(ticker: str, *, period: str, interval: str, auto_adjust: bool) -> pd.DataFrame:
-    return get_history(
-        ticker,
-        period=period,
-        interval=interval,
-        auto_adjust=auto_adjust,
-        actions=False,
-        group_by="column",
-    )
+import yfinance as yf
 
 
 VERSION = "1.4"
@@ -859,11 +848,13 @@ def download_history(
 ) -> pd.DataFrame:
     """Download daily market history through yfinance."""
 
-    return get_history_compat(
-        ticker,
+    return yf.download(
+        ticker.upper().strip(),
         period=period,
         interval=interval,
         auto_adjust=False,
+        progress=False,
+        threads=False,
     )
 
 
@@ -874,11 +865,13 @@ def download_benchmark_history(
 ) -> pd.DataFrame:
     """Download optional benchmark history for exact rs_momentum construction."""
 
-    return get_history_compat(
-        benchmark,
+    return yf.download(
+        benchmark.upper().strip(),
         period=period,
         interval=interval,
         auto_adjust=False,
+        progress=False,
+        threads=False,
     )
 
 

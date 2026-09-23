@@ -51,18 +51,6 @@ DEFAULT_CACHE_DIR = PROJECT_ROOT / "data" / "market_cache"
 DEFAULT_TTL_SECONDS = 900
 DEFAULT_INTRADAY_TTL_SECONDS = 60
 
-# ---------------------------------------------------------------------------
-# TEMPORARY DEBUG LOGGING
-# ---------------------------------------------------------------------------
-_DEBUG_LOGGING = os.getenv("AI_TRADER_MARKET_DATA_DEBUG", "1").strip().lower() not in {
-    "0", "false", "no", "off"
-}
-
-def _debug_log(message: str) -> None:
-    if _DEBUG_LOGGING:
-        print(f"[MARKET_DATA] {message}", flush=True)
-
-
 
 def _env_bool(name: str, default: bool = False) -> bool:
     value = os.getenv(name)
@@ -236,25 +224,10 @@ def get_history(
     path = _cache_path(cache_directory(cache_dir), key)
     ttl = _ttl_seconds(interval, ttl_seconds)
 
-    if force_refresh:
-        _debug_log(
-            f"FORCE REFRESH | ticker={symbol} | period={period_key} | "
-            f"interval={interval} | auto_adjust={auto_adjust}"
-        )
-
     if not force_refresh:
         cached = _read_cache(path, ttl)
         if cached is not None:
-            _debug_log(
-                f"CACHE HIT | ticker={symbol} | period={period_key} | "
-                f"interval={interval} | auto_adjust={auto_adjust} | cache={path.name}"
-            )
             return cached
-
-        _debug_log(
-            f"CACHE MISS | ticker={symbol} | period={period_key} | "
-            f"interval={interval} | auto_adjust={auto_adjust} | cache={path.name}"
-        )
 
     kwargs: dict[str, Any] = {
         "interval": interval,
@@ -270,11 +243,6 @@ def get_history(
         kwargs["period"] = period_key
     if end is not None:
         kwargs["end"] = end
-
-    _debug_log(
-        f"YAHOO DOWNLOAD | ticker={symbol} | period={period_key} | "
-        f"interval={interval} | auto_adjust={auto_adjust}"
-    )
 
     try:
         data = yf.download(symbol, **kwargs)

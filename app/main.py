@@ -43,7 +43,8 @@ from app.config.config_loader import (
 
 from app.portfolio.portfolio_monitor import monitor_position
 
-from app.scanners.watchlist_scanner_v2_1_1 import (
+from app.scanners.watchlist_scanner_v2_1_2 import (
+    VERSION as WATCHLIST_SCANNER_VERSION,
     scan_buy_opportunity,
 )
 
@@ -232,9 +233,9 @@ def main() -> None:
 
     save_portfolio(portfolio)
 
-    # WATCHLIST V2.1.1 + PREDICTION LOGGER
+    # WATCHLIST V2.1.2 + PREDICTION LOGGER
     print(
-        "\n===== WATCHLIST MONITOR V2.1.1 ====="
+        f"\n===== WATCHLIST MONITOR V{WATCHLIST_SCANNER_VERSION} ====="
     )
     watchlist = load_watchlist()
 

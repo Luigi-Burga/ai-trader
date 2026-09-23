@@ -1074,7 +1074,6 @@ def analyze(
         }
 
     selected_benchmark = explicit_benchmark
-    bdf = None
     resolution_context: Dict[str, object] = {
         "selected_benchmark": explicit_benchmark,
         "source": "manual" if explicit_benchmark else "none",
@@ -1103,12 +1102,7 @@ def analyze(
                 benchmark=None,
                 period=cfg.period,
                 asset_df=df,
-                return_selected_data=True,
             )
-            # The resolver already downloaded/loaded the selected benchmark
-            # while validating candidates. Reuse that exact DataFrame instead
-            # of asking Market Data V2 for the same benchmark a second time.
-            bdf = resolution.pop("_selected_benchmark_data", None)
             resolution_context = dict(resolution)
             selected_benchmark = resolution_context.get("selected_benchmark")
         except Exception as exc:
@@ -1125,9 +1119,8 @@ def analyze(
                 "is_manual": False,
             }
 
-    if selected_benchmark and (bdf is None or bdf.empty):
-        # Fallback only when the resolver did not return usable selected data
-        # (e.g. manual benchmark path or unavailable benchmark data).
+    bdf = None
+    if selected_benchmark:
         bdf = download_history(selected_benchmark, cfg)
         if bdf.empty:
             resolution_context["fallback_reason"] = (

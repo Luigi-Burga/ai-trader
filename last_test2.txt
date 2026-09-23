@@ -1,0 +1,480 @@
+
+
+===================================
+AI Trader Integrated V2.8
+Market Scan: 2026-09-23 12:40:55.306460
+Run ID: MAIN_20260923_124055
+===================================
+Prediction Tracker | files=2 | updated=216 | unchanged=11
+
+===== PORTFOLIO MONITOR =====
+BITX | Close=19.92 | High=20.84 | Profit=-58.72%
+APLD | Close=27.94 | High=28.90 | Profit=-42.12%
+DFEN | Close=52.68 | High=54.33 | Profit=-14.44%
+SOXL | Close=143.80 | High=151.00 | Profit=-25.41%
+
+===== WATCHLIST MONITOR V{WATCHLIST_SCANNER_VERSION} =====
+[MARKET_DATA] CACHE HIT | ticker=NVDA | period=5y | interval=1d | auto_adjust=False | cache=market_ab55e60e471ac86feff7f4e9a6c9b616f4edd21fab5bf567bb30f19c87481c03.pkl
+[MARKET_DATA] CACHE HIT | ticker=NVDA | period=5y | interval=1d | auto_adjust=True | cache=market_d8ff48aefb3f54bf605222c2c6a08905bf015889bbaafe9e08191f46249c66a9.pkl
+[MARKET_DATA] CACHE HIT | ticker=SMH | period=5y | interval=1d | auto_adjust=True | cache=market_335ccfb4b1cef159bd23fe305313d3f2466e75a1cea5fcd18d5341914a37e6e1.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | NVDA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=61.20 | confidence=54.92 | days=1254 | features=1003
+benchmark=SMH | trust=HIGH | grade=True | current=$224.46
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+NVDA | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=224.4585 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+NVDA | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=MSFT | period=5y | interval=1d | auto_adjust=False | cache=market_1712b69933775e76faefb6ea54ded2202a6eefbbeb7884c35f636ad90babe95b.pkl
+[MARKET_DATA] CACHE HIT | ticker=MSFT | period=5y | interval=1d | auto_adjust=True | cache=market_f8f759837cc18f89bb95a72dfe21b96c4042e2787039c9511c56a84b285ec0ed.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | MSFT
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=52.77 | confidence=44.04 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$499.29
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=RECOVERY
+========================================================================================
+MSFT | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=499.29 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+MSFT | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=GOOGL | period=5y | interval=1d | auto_adjust=False | cache=market_11328b4f3eb4442fec24c671404a94ab3c8885c21e0671ebe5e6f7649b1300d3.pkl
+[MARKET_DATA] CACHE HIT | ticker=GOOGL | period=5y | interval=1d | auto_adjust=True | cache=market_f1e421099d7d4730df2e2f13790decd2f43625b674f4c527fe6b70af8da43921.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | GOOGL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=65.87 | confidence=59.69 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$338.38
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+GOOGL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=338.375 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+GOOGL | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=AMZN | period=5y | interval=1d | auto_adjust=False | cache=market_2acff954b3003a942774adee55e0170c41a3c0d8c3ecaa096863006ec857b08f.pkl
+[MARKET_DATA] CACHE HIT | ticker=AMZN | period=5y | interval=1d | auto_adjust=True | cache=market_8a5700bfddbc260d5a4eb0322ed8cfe5f7fb9877de32b191db484d487fd21b26.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AMZN
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=66.07 | confidence=62.63 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$247.96
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+AMZN | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=247.955 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+AMZN | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=AVGO | period=5y | interval=1d | auto_adjust=False | cache=market_21c9f3fa1c7f03f6d3ddcb2857a9606748c1436445932a52882bb4d58aae4719.pkl
+[MARKET_DATA] CACHE HIT | ticker=AVGO | period=5y | interval=1d | auto_adjust=True | cache=market_da9fa82ee9df6450056d84d29f707b6745bc1b997f602c3cd852e9f547a40d32.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AVGO
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=64.56 | confidence=60.75 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$354.50
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+AVGO | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=354.495 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+AVGO | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=TSM | period=5y | interval=1d | auto_adjust=False | cache=market_df57a3cbc7c1fa68978584771a9562bc93dc30cc45a4ad50213a9373c672e4e6.pkl
+[MARKET_DATA] CACHE HIT | ticker=TSM | period=5y | interval=1d | auto_adjust=True | cache=market_23521600834c46ccfd6283b90970bcfb234ece0fc778a57ebfdcdf00339bb412.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TSM
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION
+score=83.51 | confidence=60.05 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$445.21
+gate=BLOCKED | reason=buy_requires_confirmation
+failed BUY gates: match_quality
+regime=CONFIRMED_BULL
+========================================================================================
+TSM | Prediction logged | raw=BUY_ON_CONFIRMATION | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=445.21 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+TSM | FINAL=BUY_ON_CONFIRMATION
+[MARKET_DATA] CACHE HIT | ticker=META | period=5y | interval=1d | auto_adjust=False | cache=market_b7f4c3f184ac95a7d315a055b2657823aea0fcddc706adb120c62c1ac466c8f6.pkl
+[MARKET_DATA] CACHE HIT | ticker=META | period=5y | interval=1d | auto_adjust=True | cache=market_20f531e0a3481bdc18e5ac8dcaf3fa67f98e3af817b56366ac25addd0b0a173e.pkl
+[MARKET_DATA] CACHE HIT | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | META
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=49.43 | confidence=30.24 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$746.95
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=EXTREME_MOMENTUM
+========================================================================================
+META | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=746.95 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+META | FINAL=REDUCE
+[MARKET_DATA] CACHE HIT | ticker=AAPL | period=5y | interval=1d | auto_adjust=False | cache=market_ab194939ffc094415e62fd105c4c9ae8e95c69dce5d54bcbbce16c011c1609b7.pkl
+[MARKET_DATA] CACHE HIT | ticker=AAPL | period=5y | interval=1d | auto_adjust=True | cache=market_c13d36b1f381ee49738cac2f42363f71ca973139773b455bacea30d978d57e98.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AAPL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=49.05 | confidence=50.86 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$336.92
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+AAPL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=336.92 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+AAPL | FINAL=WATCH
+[MARKET_DATA] CACHE MISS | ticker=BRK.B | period=5y | interval=1d | auto_adjust=False | cache=market_68fcbf7989121958368f75a8cad2fa69eb271ffb5cc37c66a8353417f10663da.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BRK.B | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=BRK.B | period=5y | interval=1d | auto_adjust=False | cache=market_68fcbf7989121958368f75a8cad2fa69eb271ffb5cc37c66a8353417f10663da.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BRK.B | period=5y | interval=1d | auto_adjust=False
+
+========================================================================================
+WATCHLIST ANALYSIS | BRK.B
+========================================================================================
+route=NO_DATA | engine=NONE V- | raw=REVIEW_DATA | FINAL=REVIEW_DATA
+score=0.00 | confidence=0.00 | days=0 | features=0
+benchmark=- | trust=NONE | grade=None | current=-
+gate=NOT_APPLICABLE | reason=REVIEW_DATA: insufficient data for engine analysis
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=-
+========================================================================================
+BRK.B | Prediction logged | raw=REVIEW_DATA | gate=REVIEW_DATA | FINAL=REVIEW_DATA | price=None | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+BRK.B | FINAL=REVIEW_DATA
+[MARKET_DATA] CACHE HIT | ticker=JPM | period=5y | interval=1d | auto_adjust=False | cache=market_94b11311fb9df7245f851bcce997e6e763adc4f4592ae72203fbf41e3b9eab5c.pkl
+[MARKET_DATA] CACHE HIT | ticker=JPM | period=5y | interval=1d | auto_adjust=True | cache=market_94e0f9ba1f8f304846311b9d86bc124f1817ecfeabbeeecb6ca946a9baeec338.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | JPM
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=59.80 | confidence=53.64 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$338.41
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+JPM | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=338.41 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+JPM | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=V | period=5y | interval=1d | auto_adjust=False | cache=market_d9eb9ae6453ab9a98f6310f971042fd7e783dbe40eb9c2f349829587fa06e18d.pkl
+[MARKET_DATA] CACHE HIT | ticker=V | period=5y | interval=1d | auto_adjust=True | cache=market_af47ab17ce06b0e124d1a5fa48fdfcabd8c7c352afbabdeafb00894edcd0cde2.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | V
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=39.59 | confidence=52.10 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$362.46
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+V | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=362.465 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+V | FINAL=REDUCE
+[MARKET_DATA] CACHE HIT | ticker=TQQQ | period=5y | interval=1d | auto_adjust=False | cache=market_65bd3e01755f27c882e3c72bcf466e38f64ffd3ec9467f607a1a1cb714b0045e.pkl
+[MARKET_DATA] CACHE HIT | ticker=TQQQ | period=5y | interval=1d | auto_adjust=True | cache=market_423f32c8b7116cbe5a3d0e2690fd3e891303519e839a6353f2e753623de27b3d.pkl
+[MARKET_DATA] CACHE HIT | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TQQQ
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=59.93 | confidence=51.63 | days=1254 | features=1003
+benchmark=QQQ | trust=HIGH | grade=True | current=$77.97
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+TQQQ | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=77.97 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+TQQQ | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=GDXU | period=5y | interval=1d | auto_adjust=False | cache=market_79371db348c94bb38ac5a06fdaa600f135712ef72175850de480d3b8f89f2d58.pkl
+[MARKET_DATA] CACHE HIT | ticker=GDXU | period=5y | interval=1d | auto_adjust=True | cache=market_a0f33ca70295a2907d402e62a3d60910adc1f03d984d44175ac7e5538a8e1868.pkl
+[MARKET_DATA] CACHE HIT | ticker=GDX | period=5y | interval=1d | auto_adjust=True | cache=market_c86b36e0101b62d865d2a9a7a51020a53589f70bf4a71c7e359091976d5aee95.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | GDXU
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=SELL | FINAL=SELL
+score=16.02 | confidence=44.03 | days=1254 | features=1003
+benchmark=GDX | trust=HIGH | grade=True | current=$130.75
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+GDXU | Prediction logged | raw=SELL | gate=SELL | FINAL=SELL | price=130.75 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+GDXU | FINAL=SELL
+[MARKET_DATA] CACHE HIT | ticker=SPCX | period=5y | interval=1d | auto_adjust=False | cache=market_2e3944ae8b394074f38074eeb2a3a9483423c22f612ae2ea26ac50c8eb0c0e4e.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPCX | period=5y | interval=1d | auto_adjust=True | cache=market_713e031db6bb8b1e802a0d13e17f1727ef074829ef8ad93462628ebacb038175.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | SPCX
+========================================================================================
+route=NEW_LISTING | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION
+score=91.00 | confidence=68.05 | days=70 | features=0
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$150.50
+gate=CONFIRMATION_REQUIRED | reason=engine_requires_confirmation
+BUY gates: confirmation required by engine
+regime=BULLISH
+========================================================================================
+SPCX | Prediction logged | raw=BUY_ON_CONFIRMATION | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=150.505 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+SPCX | FINAL=BUY_ON_CONFIRMATION
+[MARKET_DATA] CACHE HIT | ticker=TSLA | period=5y | interval=1d | auto_adjust=False | cache=market_e688ece316bfccd766bfa155230087dc559a8f38607445c4519f892c2a66de0f.pkl
+[MARKET_DATA] CACHE HIT | ticker=TSLA | period=5y | interval=1d | auto_adjust=True | cache=market_297f72ff565467e325e7a5b8d7f7afc8dbdba674a674d0b70362253ef2170f85.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TSLA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=SELL | FINAL=SELL
+score=29.81 | confidence=39.12 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$378.70
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=EARLY_BULL
+========================================================================================
+TSLA | Prediction logged | raw=SELL | gate=SELL | FINAL=SELL | price=378.7 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+TSLA | FINAL=SELL
+[MARKET_DATA] CACHE HIT | ticker=AMD | period=5y | interval=1d | auto_adjust=False | cache=market_1f94334e160570905d71b4242eda1d346279b8a5298a186fe40d5c651b5e1a2b.pkl
+[MARKET_DATA] CACHE HIT | ticker=AMD | period=5y | interval=1d | auto_adjust=True | cache=market_5592fe0a6d7c490754416de71d252195ddc52420ecfd568d7d3dd89b28911e14.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AMD
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=39.71 | confidence=34.42 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$611.80
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+AMD | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=611.8 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+AMD | FINAL=REDUCE
+[MARKET_DATA] CACHE HIT | ticker=DELL | period=5y | interval=1d | auto_adjust=False | cache=market_a443a5c12c7dd99635004f95d9c6fdb85acd982c5e8ff0fd275610389952755c.pkl
+[MARKET_DATA] CACHE HIT | ticker=DELL | period=5y | interval=1d | auto_adjust=True | cache=market_9f92cdbb0282168109b467214e7b86d09c9e92e67e5ad69d25aa6804d36094dc.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | DELL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=58.76 | confidence=45.56 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$548.34
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+DELL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=548.34 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+DELL | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=LITE | period=5y | interval=1d | auto_adjust=False | cache=market_d077f46b8372938127ae1b4971a4d12c6676e3476817a3a6c6428655cbb62248.pkl
+[MARKET_DATA] CACHE HIT | ticker=LITE | period=5y | interval=1d | auto_adjust=True | cache=market_ac9d00f011dee28923a4fec64d50d003050d76b3bef2273594519edc5c9cd76a.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | LITE
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION
+score=89.97 | confidence=57.09 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$939.80
+gate=BLOCKED | reason=buy_requires_confirmation
+failed BUY gates: benchmark_trust, trading_confidence, match_quality
+regime=CONFIRMED_BULL
+========================================================================================
+LITE | Prediction logged | raw=BUY_ON_CONFIRMATION | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=939.8 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+LITE | FINAL=BUY_ON_CONFIRMATION
+[MARKET_DATA] CACHE HIT | ticker=ORCL | period=5y | interval=1d | auto_adjust=False | cache=market_c79accfa86a007cb391d58d62cebaf4797deaa1b82d9a704c1946a88053f35bb.pkl
+[MARKET_DATA] CACHE HIT | ticker=ORCL | period=5y | interval=1d | auto_adjust=True | cache=market_c3da9d597419820870e9752404633f057824eba746b3496f2d8c24264978db42.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | ORCL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=57.46 | confidence=52.30 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$146.50
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+ORCL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=146.5 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+ORCL | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=MRVL | period=5y | interval=1d | auto_adjust=False | cache=market_22d780bbd4dd3ccffa119a80155e2ecee415de98a5cb95b9e4fc7121646e8e76.pkl
+[MARKET_DATA] CACHE HIT | ticker=MRVL | period=5y | interval=1d | auto_adjust=True | cache=market_c48de43b5a6c2afb0e8f55a278120c24a62ab0e4ad07bf08319075cf39a55f6e.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | MRVL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=48.66 | confidence=35.03 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$257.40
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+MRVL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=257.405 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+MRVL | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=PLTR | period=5y | interval=1d | auto_adjust=False | cache=market_be5fa33b77dda3b062698e3f827662137ecc96e145f393ad5b29bfae7a209831.pkl
+[MARKET_DATA] CACHE HIT | ticker=PLTR | period=5y | interval=1d | auto_adjust=True | cache=market_2da430e6f0665f3406c19438cefded4da798a6d027be378ddfa9c9c96d688706.pkl
+[MARKET_DATA] CACHE HIT | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+[MARKET_DATA] CACHE HIT | ticker=IGV | period=5y | interval=1d | auto_adjust=True | cache=market_9ed2702a6763707aaae1f7c662df85df7ac7afa09a6370ee278d89260e659cf3.pkl
+[MARKET_DATA] CACHE HIT | ticker=XLK | period=5y | interval=1d | auto_adjust=True | cache=market_9d9964a694d5949a9a1e1fb03c70d617db0b71d03a66e284d18ee6c9213b4f31.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | PLTR
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=78.31 | confidence=49.39 | days=1254 | features=1003
+benchmark=IGV | trust=MEDIUM | grade=True | current=$190.97
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+PLTR | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=190.97 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+PLTR | FINAL=WATCH
+[MARKET_DATA] CACHE HIT | ticker=PLTU | period=5y | interval=1d | auto_adjust=False | cache=market_4133696dcc36cd3e05acdf69deea08bc270663b63ced75ddb76becc10600cfd3.pkl
+[MARKET_DATA] CACHE HIT | ticker=PLTU | period=5y | interval=1d | auto_adjust=True | cache=market_3cde5903c07e032db77b101a3783081419aa26018a037df9e33fe9262f3b19a0.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | PLTU
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK
+score=96.00 | confidence=79.00 | days=445 | features=194
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$58.83
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=BULLISH
+========================================================================================
+PLTU | Prediction logged | raw=BUY_ON_PULLBACK | gate=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK | price=58.83 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+PLTU | FINAL=BUY_ON_PULLBACK
+[MARKET_DATA] CACHE HIT | ticker=SNDK | period=5y | interval=1d | auto_adjust=False | cache=market_7d8494ff9366f9c914506b209818ff85c244e0da5d1bbfa1eccbb148205e7a19.pkl
+[MARKET_DATA] CACHE HIT | ticker=SNDK | period=5y | interval=1d | auto_adjust=True | cache=market_95bdc70c4d290b21e118350d1c8b1f13ce77674a63b6d1396b09e43c526f4153.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | SNDK
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK
+score=91.00 | confidence=79.00 | days=403 | features=152
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$1816.55
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=BULLISH
+========================================================================================
+SNDK | Prediction logged | raw=BUY_ON_PULLBACK | gate=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK | price=1816.5549 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+SNDK | FINAL=BUY_ON_PULLBACK
+[MARKET_DATA] CACHE HIT | ticker=ASMG | period=5y | interval=1d | auto_adjust=False | cache=market_8518d9723322ca4907e01bf29599532691de635b4076e2da5f848ea6143b4b59.pkl
+[MARKET_DATA] CACHE HIT | ticker=ASMG | period=5y | interval=1d | auto_adjust=True | cache=market_5461e2bf6cda35ee1726a47b1c863d81c2eb71ec241ba08d1c4b43c001499795.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | ASMG
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=WAIT | FINAL=WAIT
+score=36.00 | confidence=79.00 | days=424 | features=173
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$44.90
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=RECOVERY
+========================================================================================
+ASMG | Prediction logged | raw=WAIT | gate=WAIT | FINAL=WAIT | price=44.9 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+ASMG | FINAL=WAIT
+[MARKET_DATA] CACHE HIT | ticker=MA | period=5y | interval=1d | auto_adjust=False | cache=market_529713e11734aeda47b0400adefe4bd110418b07270bc2f15b65e4fe3e13a536.pkl
+[MARKET_DATA] CACHE HIT | ticker=MA | period=5y | interval=1d | auto_adjust=True | cache=market_52683ad082fe1303e067d8f5343d93828654ce88bdc952dbef8cefe54be472de.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | MA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=SELL | FINAL=SELL
+score=27.15 | confidence=35.96 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$559.80
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+MA | Prediction logged | raw=SELL | gate=SELL | FINAL=SELL | price=559.8 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-23.jsonl
+MA | FINAL=SELL
+
+===== FUNDAMENTAL ANALYSIS =====
+NVDA => FUNDAMENTAL CACHE
+NVDA | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+MSFT => FUNDAMENTAL CACHE
+MSFT | Revenue:15/25 | Margins:15/15 | Debt:15/15 | Score:45/55 | 🟢 STRONG BUY
+GOOGL => FUNDAMENTAL CACHE
+GOOGL | Revenue:20/25 | Margins:15/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+AMZN => FUNDAMENTAL CACHE
+AMZN | Revenue:15/25 | Margins:5/15 | Debt:10/15 | Score:30/55 | 🟡 HOLD
+AVGO => FUNDAMENTAL CACHE
+AVGO | Revenue:25/25 | Margins:15/15 | Debt:10/15 | Score:50/55 | 🟢 STRONG BUY
+TSM => FUNDAMENTAL CACHE
+TSM | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+META => FUNDAMENTAL CACHE
+META | Revenue:20/25 | Margins:15/15 | Debt:10/15 | Score:45/55 | 🟢 STRONG BUY
+AAPL => FUNDAMENTAL CACHE
+AAPL | Revenue:15/25 | Margins:15/15 | Debt:10/15 | Score:40/55 | 🟢 BUY
+BRK.B => FUNDAMENTAL CACHE
+BRK.B | Revenue:0/25 | Margins:0/15 | Debt:0/15 | Score:0/55 | 🔴 SELL
+JPM => FUNDAMENTAL CACHE
+JPM | Revenue:25/25 | Margins:15/15 | Debt:0/15 | Score:40/55 | 🟢 BUY
+V => FUNDAMENTAL CACHE
+V | Revenue:15/25 | Margins:15/15 | Debt:10/15 | Score:40/55 | 🟢 BUY
+TQQQ => FUNDAMENTAL CACHE
+TQQQ | ETF | Fundamental Score N/A
+GDXU => FUNDAMENTAL CACHE
+GDXU | ETF | Fundamental Score N/A
+SPCX => FUNDAMENTAL CACHE
+SPCX | Revenue:25/25 | Margins:0/15 | Debt:10/15 | Score:35/55 | 🟢 BUY
+TSLA => FUNDAMENTAL CACHE
+TSLA | Revenue:20/25 | Margins:0/15 | Debt:15/15 | Score:35/55 | 🟢 BUY
+AMD => FUNDAMENTAL CACHE
+AMD | Revenue:25/25 | Margins:10/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+DELL => FUNDAMENTAL CACHE
+DELL | Revenue:25/25 | Margins:5/15 | Debt:0/15 | Score:30/55 | 🟡 HOLD
+LITE => FUNDAMENTAL CACHE
+LITE | Revenue:25/25 | Margins:15/15 | Debt:10/15 | Score:50/55 | 🟢 STRONG BUY
+ORCL => FUNDAMENTAL CACHE
+ORCL | Revenue:20/25 | Margins:15/15 | Debt:0/15 | Score:35/55 | 🟢 BUY
+MRVL => FUNDAMENTAL CACHE
+MRVL | Revenue:25/25 | Margins:10/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+PLTR => FUNDAMENTAL CACHE
+PLTR | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+PLTU => FUNDAMENTAL CACHE
+PLTU | ETF | Fundamental Score N/A
+SNDK => FUNDAMENTAL CACHE
+SNDK | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+ASMG => FUNDAMENTAL CACHE
+ASMG | ETF | Fundamental Score N/A
+MA => FUNDAMENTAL CACHE
+MA | Revenue:15/25 | Margins:15/15 | Debt:0/15 | Score:30/55 | 🟡 HOLD
+
+Scan Completed
+===================================
+

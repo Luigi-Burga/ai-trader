@@ -1,0 +1,87 @@
+{
+  "suite": "Production Validation Suite",
+  "version": "1.2",
+  "generated_at": "2026-09-23T16:35:25.357316+00:00",
+  "v1_3_module": "app.ai.asset_analysis_orchestrator_v1_3",
+  "v1_4_2_module": "app.ai.asset_analysis_orchestrator_v1_4_2",
+  "market_data_layer": {
+    "ok": true,
+    "version": "2.0"
+  },
+  "benchmark_resolver": {
+    "ok": true,
+    "version": "1.6.1"
+  },
+  "asset_age_resolver": {
+    "ok": true,
+    "version": "1.4"
+  },
+  "tickers": [
+    "NVDA",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "AVGO",
+    "TSM",
+    "META",
+    "AAPL",
+    "BRK.B",
+    "JPM",
+    "V",
+    "MA",
+    "TQQQ",
+    "SOXL",
+    "UPRO",
+    "DFEN",
+    "GDXU",
+    "AGQ",
+    "SPCX"
+  ],
+  "benchmark": null,
+  "period": "5y",
+  "interval": "1d",
+  "preflight": {
+    "app.ai.asset_analysis_orchestrator_v1_3": {
+      "ok": false,
+      "error": "No module named 'app.ai.asset_analysis_orchestrator_v1_3'"
+    },
+    "app.ai.asset_analysis_orchestrator_v1_4_2": {
+      "ok": true,
+      "module_version": "1.4.2",
+      "expected_version": "1.4.2"
+    },
+    "app.data.market_data": {
+      "ok": true,
+      "version": "2.0",
+      "expected_version": "2.0"
+    },
+    "benchmark_resolver": {
+      "ok": true,
+      "version": "1.6.1",
+      "expected_version": "1.6.1"
+    },
+    "asset_age_resolver": {
+      "ok": true,
+      "version": "1.4",
+      "expected_version": "1.4"
+    }
+  },
+  "results": [],
+  "overall": "FAIL",
+  "pass": false,
+  "production_gate": {
+    "REGRESSION": 0,
+    "UNEXPECTED_DIFF": 0,
+    "ERROR": 1,
+    "PASS_CONDITION": "REGRESSION=0 AND UNEXPECTED_DIFF=0 AND ERROR=0"
+  },
+  "totals": {
+    "regressions": 0,
+    "architecture_differences": 0,
+    "expected_data_path_differences": 0,
+    "market_data_drift": 0,
+    "unexpected_differences": 0,
+    "errors": 1
+  },
+  "completed_at": "2026-09-23T16:35:26.026672+00:00"
+}

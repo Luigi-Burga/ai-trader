@@ -30,8 +30,9 @@ from typing import Dict, List, Optional, Tuple
 import math
 import numpy as np
 import pandas as pd
+import yfinance as yf
+
 from app.ai.benchmark_resolver_v1_6_1 import resolve_benchmarks
-from app.data.market_data import get_daily_history
 
 
 FEATURES = [
@@ -168,12 +169,13 @@ def _clean_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def download_history(ticker: str, cfg: CurveConfig) -> pd.DataFrame:
-    raw = get_daily_history(
+    raw = yf.download(
         ticker,
         period=cfg.period,
+        interval=cfg.interval,
         auto_adjust=True,
-        actions=False,
-        group_by="column",
+        progress=False,
+        threads=False,
     )
     return _clean_ohlcv(raw)
 
@@ -1074,7 +1076,6 @@ def analyze(
         }
 
     selected_benchmark = explicit_benchmark
-    bdf = None
     resolution_context: Dict[str, object] = {
         "selected_benchmark": explicit_benchmark,
         "source": "manual" if explicit_benchmark else "none",
@@ -1100,17 +1101,13 @@ def analyze(
         try:
             resolution = resolve_benchmarks(
                 ticker,
-                benchmark=None,
+                manual_benchmark=None,
+                allow_market_fallback=True,
+                validate=cfg.validate_benchmark,
                 period=cfg.period,
-                asset_df=df,
-                return_selected_data=True,
             )
-            # The resolver already downloaded/loaded the selected benchmark
-            # while validating candidates. Reuse that exact DataFrame instead
-            # of asking Market Data V2 for the same benchmark a second time.
-            bdf = resolution.pop("_selected_benchmark_data", None)
-            resolution_context = dict(resolution)
-            selected_benchmark = resolution_context.get("selected_benchmark")
+            resolution_context = asdict(resolution)
+            selected_benchmark = resolution.selected_benchmark
         except Exception as exc:
             # Benchmark resolution must never prevent the asset-only CCE from
             # running. Keep the failure visible in the output.
@@ -1125,9 +1122,8 @@ def analyze(
                 "is_manual": False,
             }
 
-    if selected_benchmark and (bdf is None or bdf.empty):
-        # Fallback only when the resolver did not return usable selected data
-        # (e.g. manual benchmark path or unavailable benchmark data).
+    bdf = None
+    if selected_benchmark:
         bdf = download_history(selected_benchmark, cfg)
         if bdf.empty:
             resolution_context["fallback_reason"] = (

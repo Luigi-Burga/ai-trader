@@ -11,11 +11,11 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Dict, Mapping
 
-from app.ai.asset_analysis_orchestrator_v1_3 import analyze_ticker
+from app.ai.asset_analysis_orchestrator_v1_4_2 import analyze_ticker
 from app.strategies.decision_gate_v1_2 import apply_decision_gate
 from app.strategies.signal_engine_v1_1 import generate_signal
 
-VERSION = "2.1.1"
+VERSION = "2.1.2"
 SCANNER = "Watchlist Scanner"
 
 
