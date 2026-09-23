@@ -79,16 +79,7 @@ def _env_int(name: str, default: int) -> int:
 
 
 def normalize_ticker(ticker: str) -> str:
-    """Return the internal ticker identity used by AI Trader."""
     return str(ticker or "").strip().upper()
-
-
-def normalize_yahoo_ticker(ticker: str) -> str:
-    """Translate internal ticker notation to Yahoo Finance notation."""
-    symbol = normalize_ticker(ticker)
-    if symbol in {"BRK.B", "BF.B"}:
-        return symbol.replace(".", "-")
-    return symbol
 
 
 def cache_directory(cache_dir: Optional[str | Path] = None) -> Path:
@@ -210,7 +201,6 @@ def get_history(
     separately; this preserves existing engine behavior.
     """
     symbol = normalize_ticker(ticker)
-    yahoo_symbol = normalize_yahoo_ticker(symbol)
     if not symbol:
         return pd.DataFrame()
 
@@ -282,12 +272,12 @@ def get_history(
         kwargs["end"] = end
 
     _debug_log(
-        f"YAHOO DOWNLOAD | ticker={symbol} | yahoo={yahoo_symbol} | "
-        f"period={period_key} | interval={interval} | auto_adjust={auto_adjust}"
+        f"YAHOO DOWNLOAD | ticker={symbol} | period={period_key} | "
+        f"interval={interval} | auto_adjust={auto_adjust}"
     )
 
     try:
-        data = yf.download(yahoo_symbol, **kwargs)
+        data = yf.download(symbol, **kwargs)
     except Exception:
         # Preserve yfinance's failure semantics for callers while avoiding a
         # stale/partial cache write.
@@ -397,5 +387,4 @@ __all__ = [
     "clear_cache",
     "cache_stats",
     "normalize_ticker",
-    "normalize_yahoo_ticker",
 ]

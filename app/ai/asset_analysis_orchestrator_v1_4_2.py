@@ -470,19 +470,24 @@ def analyze_ticker(
             auto_adjust=False,
         )
 
+        # IMPORTANT:
+        # The orchestrator already owns the first raw Market Data request.
+        # Never call resolve_asset_age() again when that request returns empty.
+        # resolve_asset_age() would issue the same Market Data request a second
+        # time, creating the duplicate-download path observed with BRK.B.
+        #
+        # Always resolve routing from the already-loaded dataframe. An empty
+        # dataframe is a valid input to resolve_from_dataframe(); the resolver
+        # returns route=NO_DATA without performing another Yahoo request.
+        age = resolve_from_dataframe(
+            symbol,
+            raw_asset_df,
+            config=resolver_cfg,
+        )
+
         if raw_asset_df.empty:
-            age = resolve_asset_age(
-                symbol,
-                config=resolver_cfg,
-            )
             adjusted_asset_df = pd.DataFrame()
         else:
-            age = resolve_from_dataframe(
-                symbol,
-                raw_asset_df,
-                config=resolver_cfg,
-            )
-
             adjusted_asset_df = _market_history(
                 symbol,
                 period=period,
@@ -651,7 +656,7 @@ def _print_compact(result: Dict[str, Any]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="AI Trader Asset Analysis Orchestrator V1.4.1"
+        description="AI Trader Asset Analysis Orchestrator V1.4.2"
     )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--ticker", help="Single ticker, e.g. SPCX or PLTR")
