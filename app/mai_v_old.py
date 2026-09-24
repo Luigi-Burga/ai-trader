@@ -1,5 +1,5 @@
 """
-AI Trader - Integrated Main V2.8 + Fundamental Alert Engine V1 DRY-RUN
+AI Trader - Integrated Main V2.8
 --------------------------------
 Structural migration of V2.7:
 
@@ -196,7 +196,7 @@ def _log_prediction_snapshot(
 if not _scan_allowed():
 """
 def main() -> None:
-    if not _scan_allowed():
+    if _scan_allowed():
         print("Market closed. Skipping scan.")
         return
 

@@ -1,5 +1,5 @@
 """
-AI Trader - Integrated Main V2.8 + Fundamental Alert Engine V1 DRY-RUN
+AI Trader - Integrated Main V2.8
 --------------------------------
 Structural migration of V2.7:
 
@@ -53,8 +53,9 @@ from app.fundamentals.score_engine import (
     build_fundamental_message,
 )
 
-from app.alerts.fundamental_alert_engine_v1 import (
-    process_result as process_fundamental_alert,
+from app.cache.fundamental_alert_cache import (
+    already_sent,
+    mark_sent,
 )
 
 from app.alerts.telegram_alert import (
@@ -196,7 +197,7 @@ def _log_prediction_snapshot(
 if not _scan_allowed():
 """
 def main() -> None:
-    if not _scan_allowed():
+    if _scan_allowed():
         print("Market closed. Skipping scan.")
         return
 
@@ -300,22 +301,27 @@ def main() -> None:
                 f"{result['rating']}"
             )
 
-        # FUNDAMENTAL ALERT ENGINE V1
-        # DRY-RUN: evaluates and persists state,
-        # but does NOT send Telegram.
+            if result["total"] >= 45:
+                if not already_sent(symbol):
+                    message = build_fundamental_message(
+                        result
+                    )
+                    telegram_ok = send_telegram(
+                        message
+                    )
 
-            alert_decision = process_fundamental_alert(
-                result,
-                send=False,
-                )
-
-            print(
-                f"{symbol} | "
-                f"Fundamental Alert="
-                f"{alert_decision.alert_class} | "
-                f"reason={alert_decision.reason}"
-                 )
-
+                    if telegram_ok:
+                        mark_sent(symbol)
+                        print(
+                            f"{symbol} | Telegram alert "
+                            "sent successfully and marked "
+                            "as sent."
+                        )
+                    else:
+                        print(
+                            f"{symbol} | Telegram alert FAILED; "
+                            "cache unchanged."
+                        )
 
         except Exception as e:
             print(
