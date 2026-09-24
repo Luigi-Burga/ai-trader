@@ -1,0 +1,814 @@
+
+
+===================================
+AI Trader Integrated V2.9-PERF
+Market Scan: 2026-09-23 21:03:37.923309
+Run ID: MAIN_20260923_210337
+===================================
+[MARKET_DATA] CACHE MISS | ticker=AAPL | period=None | interval=1d | auto_adjust=False | cache=market_f4c419a8255fa74318690f8b05554f72493c1409a5f0e910a5e14803c70d5374.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AAPL | yahoo=AAPL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AAPL | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=1.56s
+[MARKET_DATA] CACHE MISS | ticker=AMD | period=None | interval=1d | auto_adjust=False | cache=market_200fae023da3a46b8b364ced663cd70dd6485ece9733591d76a6272814d83005.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMD | yahoo=AMD | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AMD | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=AMZE | period=None | interval=1d | auto_adjust=False | cache=market_332c2bd85b451c0933c0db11e0de3e7e66a0844bad7057401e895896513b719f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMZE | yahoo=AMZE | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AMZE | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=AMZN | period=None | interval=1d | auto_adjust=False | cache=market_7068a7d5ef88c880253328c1a882156aeb5ad37142dc2ab3a0d9fb0b30f2e7e0.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMZN | yahoo=AMZN | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AMZN | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.50s
+[MARKET_DATA] CACHE MISS | ticker=ANRO | period=None | interval=1d | auto_adjust=False | cache=market_a5a1ed9ae96235e4c648e5ec60e055542938a5715d06bf8d44b28bf06861306b.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ANRO | yahoo=ANRO | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ANRO | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=ASMG | period=None | interval=1d | auto_adjust=False | cache=market_787c9203fd6549ff521208dd5571e6e0fac238c3afd561aa93b5676c03543719.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ASMG | yahoo=ASMG | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ASMG | start=2026-09-18 | end=2027-04-07 | rows=3 | elapsed=0.49s
+[MARKET_DATA] CACHE MISS | ticker=AVGO | period=None | interval=1d | auto_adjust=False | cache=market_a66565a47f9f226e6f577832a788026f51fc98b3187c7ed2d2dbc59bbd9fb5f2.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AVGO | yahoo=AVGO | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AVGO | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.63s
+[MARKET_DATA] CACHE MISS | ticker=AXTI | period=None | interval=1d | auto_adjust=False | cache=market_48d8f008c8e93f5e1f81eb11c0d739176fe182ab3cbc17fe06c42d1e9089433f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AXTI | yahoo=AXTI | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=AXTI | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.56s
+[MARKET_DATA] CACHE MISS | ticker=BE | period=None | interval=1d | auto_adjust=False | cache=market_e44598621aee2e1bea73e76e80d5c559fe666ef83917af3960c83ec8ee6813b3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BE | yahoo=BE | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=BE | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.64s
+[MARKET_DATA] CACHE MISS | ticker=BRK.B | period=None | interval=1d | auto_adjust=False | cache=market_5fe677cab5758dac1201d0a5a360314aaa25e7b81387beabca59961b4960bad0.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BRK.B | yahoo=BRK-B | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=BRK.B | start=2026-09-24 | end=2027-04-07 | rows=0 | elapsed=1.06s
+[MARKET_DATA] CACHE MISS | ticker=BUUU | period=None | interval=1d | auto_adjust=False | cache=market_b9bd3661c301535a16d380dd913dbe135065224df043f8c2ea9525497649fcc8.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BUUU | yahoo=BUUU | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=BUUU | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.53s
+[MARKET_DATA] CACHE MISS | ticker=CLYM | period=None | interval=1d | auto_adjust=False | cache=market_7366da2d55af257affef4d90c9435108e33b91c6f8ea8c4621d41a7286052ed3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=CLYM | yahoo=CLYM | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=CLYM | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=CTNT | period=None | interval=1d | auto_adjust=False | cache=market_69227d4b8c1bc60a01a8e9b98c317493d3e22b99fe51b9d1f039a77d2de280e9.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=CTNT | yahoo=CTNT | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=CTNT | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=CYPH | period=None | interval=1d | auto_adjust=False | cache=market_58e631eaa615782a0d9e7f6074afc7e36658e50da128f4d47e515d592a74aff1.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=CYPH | yahoo=CYPH | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=CYPH | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=DELL | period=None | interval=1d | auto_adjust=False | cache=market_4a8657c35b70a4a9f28524bb7037db86db29d89c1556b025652e203fca8e3486.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=DELL | yahoo=DELL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=DELL | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.55s
+[MARKET_DATA] CACHE MISS | ticker=DFEN | period=None | interval=1d | auto_adjust=False | cache=market_f30109cbdb965b321c3e14b0daebdab596a0c28f67bab5daaf6297476ac42ce8.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=DFEN | yahoo=DFEN | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=DFEN | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=DMRA | period=None | interval=1d | auto_adjust=False | cache=market_c41fef657d7c998da20990713b2f135217f3e7bcf7ff2d0cc1437201eb2014af.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=DMRA | yahoo=DMRA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=DMRA | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.49s
+[MARKET_DATA] CACHE MISS | ticker=EDRY | period=None | interval=1d | auto_adjust=False | cache=market_10df79c5e0b2c209c6c8d213a30c859d09ee54b4240aaf2f77d447c18d8b2dc6.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=EDRY | yahoo=EDRY | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=EDRY | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.69s
+[MARKET_DATA] CACHE MISS | ticker=ELOX | period=None | interval=1d | auto_adjust=False | cache=market_cf35a1a5d971ac9861ab70022bc3a360f824c896637581b61c4654babbdaa94a.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ELOX | yahoo=ELOX | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ELOX | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.49s
+[MARKET_DATA] CACHE MISS | ticker=ERAS | period=None | interval=1d | auto_adjust=False | cache=market_2f51c259f145a076c67441476071e99b96c9c02f0246a03e9d62557f9f349b0e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ERAS | yahoo=ERAS | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ERAS | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=FAMI | period=None | interval=1d | auto_adjust=False | cache=market_e19485c2176726027942aea8fac49f374d2d0cd08bdce765b6a426a77367934b.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=FAMI | yahoo=FAMI | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=FAMI | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.51s
+[MARKET_DATA] CACHE MISS | ticker=FANG | period=None | interval=1d | auto_adjust=False | cache=market_64735f81a4d784612df0739691aa98c8b01e9597470c412e2768819dc153a4e6.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=FANG | yahoo=FANG | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=FANG | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.47s
+[MARKET_DATA] CACHE MISS | ticker=FNGR | period=None | interval=1d | auto_adjust=False | cache=market_2b0aa2c07391c44b2d176da04268f18b55cef093ec6484f64016e15b80f5c945.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=FNGR | yahoo=FNGR | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=FNGR | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=GDXU | period=None | interval=1d | auto_adjust=False | cache=market_4ea2e4e1f3a509fc6707f6a52da3dc4fa75d26e9b1480d4462ced5d098a64d5c.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GDXU | yahoo=GDXU | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GDXU | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=GEV | period=None | interval=1d | auto_adjust=False | cache=market_75396b4c1dd758613dd31b8c69641e48362ee13eb4fb5c5287ebf67ceb8b5773.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GEV | yahoo=GEV | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GEV | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.49s
+[MARKET_DATA] CACHE MISS | ticker=GNS | period=None | interval=1d | auto_adjust=False | cache=market_156904b7527b71ce566e66af7ae6deb30ddaaf785fa7414745f290d895d78db8.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GNS | yahoo=GNS | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GNS | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=GOOG | period=None | interval=1d | auto_adjust=False | cache=market_001cd0aab61a055a24ab43db49ee5a9b02c435ae8955db2ee22f56434b813d9e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GOOG | yahoo=GOOG | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GOOG | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.46s
+[MARKET_DATA] CACHE MISS | ticker=GOOGL | period=None | interval=1d | auto_adjust=False | cache=market_b74b076344a7729db079bba1d8c730a9ef3ad47798980c5e3ddb045981ff9d97.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GOOGL | yahoo=GOOGL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GOOGL | start=2026-09-22 | end=2027-04-07 | rows=2 | elapsed=0.51s
+[MARKET_DATA] CACHE MISS | ticker=GS | period=None | interval=1d | auto_adjust=False | cache=market_6d5276b1c44500475fadcc3a02db6aa873cc922b3c343a0b99df8dd904c6ee9d.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GS | yahoo=GS | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=GS | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.46s
+[MARKET_DATA] CACHE MISS | ticker=HKPD | period=None | interval=1d | auto_adjust=False | cache=market_d6a8661edc93883a497fbbf9b7cef5fa78694a2ae5ccaf7270b6361a5a987ad4.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=HKPD | yahoo=HKPD | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=HKPD | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=HOOD | period=None | interval=1d | auto_adjust=False | cache=market_2df984da74bac12818295cc042df36516243739552928df998f999f225196f96.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=HOOD | yahoo=HOOD | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=HOOD | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=IMMX | period=None | interval=1d | auto_adjust=False | cache=market_993b1737678084d5255e5a8b7d4cdd759ce73f5f4154e947b00a731f61c0698e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=IMMX | yahoo=IMMX | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=IMMX | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=INTC | period=None | interval=1d | auto_adjust=False | cache=market_4944fb4cddeca7dc84200364335aa47178582668832ba84b5a64b19c96b77264.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=INTC | yahoo=INTC | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=INTC | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.55s
+[MARKET_DATA] CACHE MISS | ticker=JPM | period=None | interval=1d | auto_adjust=False | cache=market_6230ad0b01c578a331dac3feb1794b7f53e7388b816d0ab23d83e28207ea8a02.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=JPM | yahoo=JPM | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=JPM | start=2026-09-22 | end=2027-04-07 | rows=2 | elapsed=0.51s
+[MARKET_DATA] CACHE MISS | ticker=LITE | period=None | interval=1d | auto_adjust=False | cache=market_e43a216d71d907d2ffc30336704264355a9d4ffe1a1b5d5a627146355c4ff002.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=LITE | yahoo=LITE | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=LITE | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.42s
+[MARKET_DATA] CACHE MISS | ticker=MA | period=None | interval=1d | auto_adjust=False | cache=market_3171a4c0f619163bed41221abbd92b71198a4066fad2d08d770f93c7872400fd.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MA | yahoo=MA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MA | start=2026-09-22 | end=2027-04-07 | rows=1 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=MBX | period=None | interval=1d | auto_adjust=False | cache=market_6d788cebbdbc6707726c905b3fd6e806ce5754a35fd350af345621864b159082.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MBX | yahoo=MBX | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MBX | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=META | period=None | interval=1d | auto_adjust=False | cache=market_bdd3ef44b8049b3403f8e85ce5ce2a57ef245a7caabf50c609a3222d308e113f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=META | yahoo=META | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=META | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=MGN | period=None | interval=1d | auto_adjust=False | cache=market_f774b29f39a9c6c9730fb81bf868e82edfbfa5d3977694e01a56835840e14cfb.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MGN | yahoo=MGN | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MGN | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=MGRT | period=None | interval=1d | auto_adjust=False | cache=market_dcc3b7544263b0d46bdd213f0acd1bb02053779f334b1f0b3c4687779291af8a.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MGRT | yahoo=MGRT | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MGRT | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=MRNA | period=None | interval=1d | auto_adjust=False | cache=market_78d6b2f14415cedd5755bbed5934f010a1fa19aaeb77a60735bee01f1f192687.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MRNA | yahoo=MRNA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MRNA | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=MRVL | period=None | interval=1d | auto_adjust=False | cache=market_ea022598219dcbb7e5ef27b7a8cb30e83bd0e529f2c0d57bc81bdff5b173c7b2.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MRVL | yahoo=MRVL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MRVL | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.52s
+[MARKET_DATA] CACHE MISS | ticker=MSFT | period=None | interval=1d | auto_adjust=False | cache=market_186d20638eeb0abeb3c8933dc541eff0007b5a9bf87b38d401a85340a151726d.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MSFT | yahoo=MSFT | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MSFT | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.46s
+[MARKET_DATA] CACHE MISS | ticker=MTC | period=None | interval=1d | auto_adjust=False | cache=market_4d11372cc7ed96f6ce158b83da35ac3f92d51f3e87324c6781dce25122dcec39.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MTC | yahoo=MTC | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MTC | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=MU | period=None | interval=1d | auto_adjust=False | cache=market_923863dd10debb3b307bcadcf6b2d40524849ca2e67bad7ef27c52639d796507.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MU | yahoo=MU | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=MU | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.47s
+[MARKET_DATA] CACHE MISS | ticker=NBIS | period=None | interval=1d | auto_adjust=False | cache=market_e7237c11ce24cd13d657443da059c91f28520c31ece769c93f9b748b858b4cc3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=NBIS | yahoo=NBIS | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=NBIS | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.47s
+[MARKET_DATA] CACHE MISS | ticker=NUAI | period=None | interval=1d | auto_adjust=False | cache=market_693e879adf4c7f6dc8982c97b78d1ba17f720357d5ef96a5f6f2f0351b26706f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=NUAI | yahoo=NUAI | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=NUAI | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=NVDA | period=None | interval=1d | auto_adjust=False | cache=market_b7f4879f344270da763c6537b215d79fe668c1e79d9a4c686e746a8028abd140.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=NVDA | yahoo=NVDA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=NVDA | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=ORCL | period=None | interval=1d | auto_adjust=False | cache=market_75a542a430d70b6b10d3fecdf7f1230496179db41d1d94c4bfbe5bab02d810ed.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ORCL | yahoo=ORCL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ORCL | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=ORKA | period=None | interval=1d | auto_adjust=False | cache=market_97f2971888459d9667740fc254a9a78ff1bbfdbe1f5d6b96dc4c4b992e980613.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ORKA | yahoo=ORKA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ORKA | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=PASW | period=None | interval=1d | auto_adjust=False | cache=market_8186031e503948ca359dad0a7dfc6cd1e46093480e4a97c5de7cc8a5c27d39fa.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PASW | yahoo=PASW | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=PASW | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.68s
+[MARKET_DATA] CACHE MISS | ticker=PLTR | period=None | interval=1d | auto_adjust=False | cache=market_9aa3fb4905fb5e3ffd42fe123093a67279d0da9ce1d0eed011f310cf5bd199cb.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTR | yahoo=PLTR | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=PLTR | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=PLTU | period=None | interval=1d | auto_adjust=False | cache=market_66b342e68660aef9a4241eccdc9fe49c22b14d5da752f7b24e99ab094f9e5ab9.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTU | yahoo=PLTU | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=PLTU | start=2026-09-22 | end=2027-04-07 | rows=1 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=PRAX | period=None | interval=1d | auto_adjust=False | cache=market_9ae1c1ef0e30e71b2c180f990697c2a1795cacdddd2939501f8171e4cf180e0e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PRAX | yahoo=PRAX | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=PRAX | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=QTTB | period=None | interval=1d | auto_adjust=False | cache=market_de302fea24ceb7442ed89a3edbf35ea1141a083bdc828386be6ff1da71411906.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=QTTB | yahoo=QTTB | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=QTTB | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=SLS | period=None | interval=1d | auto_adjust=False | cache=market_45226b2ed42888df032b137c2847444e4fbd63c3246950239cecea9777da9e78.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SLS | yahoo=SLS | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SLS | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.67s
+[MARKET_DATA] CACHE MISS | ticker=SNDK | period=None | interval=1d | auto_adjust=False | cache=market_0ca6f9da96b79981838cd8a5b53283b5b4d41469d62a491418bdb9269c395776.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SNDK | yahoo=SNDK | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SNDK | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=SOXL | period=None | interval=1d | auto_adjust=False | cache=market_38fe08641a6a2a882588d4456a8d67ae6149c838527be40aeb2f4da5d6b4298b.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SOXL | yahoo=SOXL | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SOXL | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.46s
+[MARKET_DATA] CACHE MISS | ticker=SPCX | period=None | interval=1d | auto_adjust=False | cache=market_c5791994863e1143ac35c0777d39b33cfcdd4a68de8db7b14f17884ce44142a2.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPCX | yahoo=SPCX | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SPCX | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=SPRB | period=None | interval=1d | auto_adjust=False | cache=market_794dcfb4be4fd3f472c41e26cb6b206302748a5ba2f7e5d95b35e31930fff9e2.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPRB | yahoo=SPRB | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SPRB | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=SURG | period=None | interval=1d | auto_adjust=False | cache=market_ba16161eb0a8c739b09ebe0a09f0bec7a7ecb4a886bc7035c7bfcee9469d3020.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SURG | yahoo=SURG | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SURG | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=SYRE | period=None | interval=1d | auto_adjust=False | cache=market_925ac21d8dcd7b92cd26c4c8cff9503b866f02e3ee8d4770f5dedf15c5d4e692.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SYRE | yahoo=SYRE | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=SYRE | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.50s
+[MARKET_DATA] CACHE MISS | ticker=TQQQ | period=None | interval=1d | auto_adjust=False | cache=market_9f5635ccd6fbfc582a4ecc5f17cd2e213e553c2794871f71997114671997e5d5.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TQQQ | yahoo=TQQQ | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=TQQQ | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.47s
+[MARKET_DATA] CACHE MISS | ticker=TSLA | period=None | interval=1d | auto_adjust=False | cache=market_5d713f70bf9e977685333bce62dde41381f3b6c033b20508e0f8afe26669c628.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSLA | yahoo=TSLA | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=TSLA | start=2026-09-18 | end=2027-04-07 | rows=4 | elapsed=0.50s
+[MARKET_DATA] CACHE MISS | ticker=TSM | period=None | interval=1d | auto_adjust=False | cache=market_61d0325c66315bd24fdddc06c4df8c34fb0eb99ecdf5b2381203f8b90fc38f0a.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSM | yahoo=TSM | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=TSM | start=2026-09-22 | end=2027-04-07 | rows=2 | elapsed=0.48s
+[MARKET_DATA] CACHE MISS | ticker=TWST | period=None | interval=1d | auto_adjust=False | cache=market_7d343fd76c4832d07ca12ea11fb1f0ee3e43f74d5f3930ca517a1c10706075dc.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TWST | yahoo=TWST | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=TWST | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.46s
+[MARKET_DATA] CACHE MISS | ticker=V | period=None | interval=1d | auto_adjust=False | cache=market_ff91f02bedd1b3f1001b512a68fcb0ae83df0984d2d62716c613c51f2c448c7a.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=V | yahoo=V | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=V | start=2026-09-22 | end=2027-04-07 | rows=1 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=WDC | period=None | interval=1d | auto_adjust=False | cache=market_f756291dfdbf48448331e212912f1dec2da1ad6f2c7727ff6acc0d1adf6c152e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=WDC | yahoo=WDC | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=WDC | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.44s
+[MARKET_DATA] CACHE MISS | ticker=WOLF | period=None | interval=1d | auto_adjust=False | cache=market_56cc23ffef751b0a84e8d4c16ff858b12c41a619de7dfba316b8ef0766456555.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=WOLF | yahoo=WOLF | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=WOLF | start=2026-09-18 | end=2027-04-01 | rows=3 | elapsed=0.43s
+[MARKET_DATA] CACHE MISS | ticker=ZBAO | period=None | interval=1d | auto_adjust=False | cache=market_8095aab08b519094a1420eb21508697ec5219de36be1ea419f27b8e7cc57e1c7.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ZBAO | yahoo=ZBAO | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ZBAO | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.45s
+[MARKET_DATA] CACHE MISS | ticker=ZONE | period=None | interval=1d | auto_adjust=False | cache=market_a0b01acfe6ef34fda88d5551e6f4b1caf65409b580eaa92d4b671623173609ce.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ZONE | yahoo=ZONE | period=None | interval=1d | auto_adjust=False
+[PERF-TRACKER] Market Data | ticker=ZONE | start=2026-09-18 | end=2027-04-01 | rows=4 | elapsed=0.59s
+[PERF-TRACKER] Market Data requests=71 | unique_tickers=71
+[PERF-TRACKER] File | file=predictions_2026-09-18.jsonl | updated=192 | unchanged=10 | elapsed=0.22s
+[PERF-TRACKER] File | file=predictions_2026-09-22.jsonl | updated=24 | unchanged=1 | elapsed=0.02s
+[PERF-TRACKER] File | file=predictions_2026-09-24.jsonl | updated=0 | unchanged=25 | elapsed=0.00s
+[PERF-TRACKER] TOTAL | files=3 | updated=216 | unchanged=36 | elapsed=36.13s
+Prediction Tracker | files=3 | updated=216 | unchanged=36
+[PERF] Prediction Tracker: 36.13 sec
+
+===== PORTFOLIO MONITOR =====
+BITX | Close=20.12 | High=20.84 | Profit=-58.31%
+[PERF] Portfolio UNKNOWN: 0.19 sec
+APLD | Close=27.22 | High=28.90 | Profit=-43.61%
+[PERF] Portfolio UNKNOWN: 0.19 sec
+DFEN | Close=52.16 | High=54.33 | Profit=-15.28%
+[PERF] Portfolio UNKNOWN: 0.17 sec
+SOXL | Close=146.32 | High=151.00 | Profit=-24.11%
+[PERF] Portfolio UNKNOWN: 0.17 sec
+[PERF] Portfolio Monitor TOTAL: 0.73 sec
+
+===== WATCHLIST MONITOR V2.1.2 =====
+[MARKET_DATA] CACHE MISS | ticker=NVDA | period=5y | interval=1d | auto_adjust=False | cache=market_ab55e60e471ac86feff7f4e9a6c9b616f4edd21fab5bf567bb30f19c87481c03.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=NVDA | yahoo=NVDA | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=NVDA | period=5y | interval=1d | auto_adjust=True | cache=market_d8ff48aefb3f54bf605222c2c6a08905bf015889bbaafe9e08191f46249c66a9.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=NVDA | yahoo=NVDA | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE MISS | ticker=SMH | period=5y | interval=1d | auto_adjust=True | cache=market_335ccfb4b1cef159bd23fe305313d3f2466e75a1cea5fcd18d5341914a37e6e1.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SMH | yahoo=SMH | period=5y | interval=1d | auto_adjust=True
+
+========================================================================================
+WATCHLIST ANALYSIS | NVDA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=54.28 | confidence=49.67 | days=1254 | features=1003
+benchmark=SMH | trust=HIGH | grade=True | current=$225.51
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+NVDA | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=225.51 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+NVDA | FINAL=WATCH
+[PERF] Watchlist NVDA: 1.74 sec
+[MARKET_DATA] CACHE MISS | ticker=MSFT | period=5y | interval=1d | auto_adjust=False | cache=market_1712b69933775e76faefb6ea54ded2202a6eefbbeb7884c35f636ad90babe95b.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MSFT | yahoo=MSFT | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=MSFT | period=5y | interval=1d | auto_adjust=True | cache=market_f8f759837cc18f89bb95a72dfe21b96c4042e2787039c9511c56a84b285ec0ed.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MSFT | yahoo=MSFT | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE MISS | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPY | yahoo=SPY | period=5y | interval=1d | auto_adjust=True
+
+========================================================================================
+WATCHLIST ANALYSIS | MSFT
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=50.83 | confidence=41.53 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$500.59
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=RECOVERY
+========================================================================================
+MSFT | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=500.59 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+MSFT | FINAL=WATCH
+[PERF] Watchlist MSFT: 1.47 sec
+[MARKET_DATA] CACHE MISS | ticker=GOOGL | period=5y | interval=1d | auto_adjust=False | cache=market_11328b4f3eb4442fec24c671404a94ab3c8885c21e0671ebe5e6f7649b1300d3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GOOGL | yahoo=GOOGL | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=GOOGL | period=5y | interval=1d | auto_adjust=True | cache=market_f1e421099d7d4730df2e2f13790decd2f43625b674f4c527fe6b70af8da43921.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GOOGL | yahoo=GOOGL | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | GOOGL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=64.07 | confidence=56.76 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$337.83
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+GOOGL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=337.83 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+GOOGL | FINAL=WATCH
+[PERF] Watchlist GOOGL: 0.82 sec
+[MARKET_DATA] CACHE MISS | ticker=AMZN | period=5y | interval=1d | auto_adjust=False | cache=market_2acff954b3003a942774adee55e0170c41a3c0d8c3ecaa096863006ec857b08f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMZN | yahoo=AMZN | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=AMZN | period=5y | interval=1d | auto_adjust=True | cache=market_8a5700bfddbc260d5a4eb0322ed8cfe5f7fb9877de32b191db484d487fd21b26.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMZN | yahoo=AMZN | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AMZN
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=68.20 | confidence=59.63 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$249.27
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+AMZN | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=249.27 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+AMZN | FINAL=WATCH
+[PERF] Watchlist AMZN: 0.73 sec
+[MARKET_DATA] CACHE MISS | ticker=AVGO | period=5y | interval=1d | auto_adjust=False | cache=market_21c9f3fa1c7f03f6d3ddcb2857a9606748c1436445932a52882bb4d58aae4719.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AVGO | yahoo=AVGO | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=AVGO | period=5y | interval=1d | auto_adjust=True | cache=market_da9fa82ee9df6450056d84d29f707b6745bc1b997f602c3cd852e9f547a40d32.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AVGO | yahoo=AVGO | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AVGO
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=65.43 | confidence=57.39 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$354.99
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+AVGO | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=354.99 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+AVGO | FINAL=WATCH
+[PERF] Watchlist AVGO: 1.16 sec
+[MARKET_DATA] CACHE MISS | ticker=TSM | period=5y | interval=1d | auto_adjust=False | cache=market_df57a3cbc7c1fa68978584771a9562bc93dc30cc45a4ad50213a9373c672e4e6.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSM | yahoo=TSM | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=TSM | period=5y | interval=1d | auto_adjust=True | cache=market_23521600834c46ccfd6283b90970bcfb234ece0fc778a57ebfdcdf00339bb412.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSM | yahoo=TSM | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TSM
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION
+score=72.94 | confidence=59.40 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$446.57
+gate=BLOCKED | reason=buy_requires_confirmation
+failed BUY gates: trading_confidence, match_quality
+regime=CONFIRMED_BULL
+========================================================================================
+TSM | Prediction logged | raw=BUY_ON_CONFIRMATION | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=446.57 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+TSM | FINAL=BUY_ON_CONFIRMATION
+[PERF] Watchlist TSM: 0.87 sec
+[MARKET_DATA] CACHE MISS | ticker=META | period=5y | interval=1d | auto_adjust=False | cache=market_b7f4c3f184ac95a7d315a055b2657823aea0fcddc706adb120c62c1ac466c8f6.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=META | yahoo=META | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=META | period=5y | interval=1d | auto_adjust=True | cache=market_20f531e0a3481bdc18e5ac8dcaf3fa67f98e3af817b56366ac25addd0b0a173e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=META | yahoo=META | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE MISS | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=QQQ | yahoo=QQQ | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | META
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=50.91 | confidence=32.59 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$744.10
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=EXTREME_MOMENTUM
+========================================================================================
+META | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=744.1 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+META | FINAL=REDUCE
+[PERF] Watchlist META: 1.65 sec
+[MARKET_DATA] CACHE MISS | ticker=AAPL | period=5y | interval=1d | auto_adjust=False | cache=market_ab194939ffc094415e62fd105c4c9ae8e95c69dce5d54bcbbce16c011c1609b7.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AAPL | yahoo=AAPL | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=AAPL | period=5y | interval=1d | auto_adjust=True | cache=market_c13d36b1f381ee49738cac2f42363f71ca973139773b455bacea30d978d57e98.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AAPL | yahoo=AAPL | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AAPL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=45.98 | confidence=46.20 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$337.02
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+AAPL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=337.02 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+AAPL | FINAL=WATCH
+[PERF] Watchlist AAPL: 0.70 sec
+[MARKET_DATA] CACHE MISS | ticker=BRK.B | period=5y | interval=1d | auto_adjust=False | cache=market_68fcbf7989121958368f75a8cad2fa69eb271ffb5cc37c66a8353417f10663da.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BRK.B | yahoo=BRK-B | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=BRK.B | period=5y | interval=1d | auto_adjust=True | cache=market_77752a33103279976d338e53f310ec579decf6065289345628740cc846b19753.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=BRK.B | yahoo=BRK-B | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | BRK.B
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=50.24 | confidence=55.97 | days=1253 | features=1002
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$507.17
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=RECOVERY
+========================================================================================
+BRK.B | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=507.17 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+BRK.B | FINAL=WATCH
+[PERF] Watchlist BRK.B: 0.80 sec
+[MARKET_DATA] CACHE MISS | ticker=JPM | period=5y | interval=1d | auto_adjust=False | cache=market_94b11311fb9df7245f851bcce997e6e763adc4f4592ae72203fbf41e3b9eab5c.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=JPM | yahoo=JPM | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=JPM | period=5y | interval=1d | auto_adjust=True | cache=market_94e0f9ba1f8f304846311b9d86bc124f1817ecfeabbeeecb6ca946a9baeec338.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=JPM | yahoo=JPM | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | JPM
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=60.94 | confidence=49.65 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$337.53
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+JPM | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=337.53 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+JPM | FINAL=WATCH
+[PERF] Watchlist JPM: 0.94 sec
+[MARKET_DATA] CACHE MISS | ticker=V | period=5y | interval=1d | auto_adjust=False | cache=market_d9eb9ae6453ab9a98f6310f971042fd7e783dbe40eb9c2f349829587fa06e18d.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=V | yahoo=V | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=V | period=5y | interval=1d | auto_adjust=True | cache=market_af47ab17ce06b0e124d1a5fa48fdfcabd8c7c352afbabdeafb00894edcd0cde2.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=V | yahoo=V | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | V
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=33.53 | confidence=48.71 | days=1253 | features=1002
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$361.52
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+V | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=361.52 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+V | FINAL=REDUCE
+[PERF] Watchlist V: 1.02 sec
+[MARKET_DATA] CACHE MISS | ticker=TQQQ | period=5y | interval=1d | auto_adjust=False | cache=market_65bd3e01755f27c882e3c72bcf466e38f64ffd3ec9467f607a1a1cb714b0045e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TQQQ | yahoo=TQQQ | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=TQQQ | period=5y | interval=1d | auto_adjust=True | cache=market_423f32c8b7116cbe5a3d0e2690fd3e891303519e839a6353f2e753623de27b3d.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TQQQ | yahoo=TQQQ | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TQQQ
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=62.36 | confidence=53.09 | days=1254 | features=1003
+benchmark=QQQ | trust=HIGH | grade=True | current=$78.66
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+TQQQ | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=78.66 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+TQQQ | FINAL=WATCH
+[PERF] Watchlist TQQQ: 0.88 sec
+[MARKET_DATA] CACHE MISS | ticker=GDXU | period=5y | interval=1d | auto_adjust=False | cache=market_79371db348c94bb38ac5a06fdaa600f135712ef72175850de480d3b8f89f2d58.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GDXU | yahoo=GDXU | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=GDXU | period=5y | interval=1d | auto_adjust=True | cache=market_a0f33ca70295a2907d402e62a3d60910adc1f03d984d44175ac7e5538a8e1868.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GDXU | yahoo=GDXU | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE MISS | ticker=GDX | period=5y | interval=1d | auto_adjust=True | cache=market_c86b36e0101b62d865d2a9a7a51020a53589f70bf4a71c7e359091976d5aee95.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=GDX | yahoo=GDX | period=5y | interval=1d | auto_adjust=True
+
+========================================================================================
+WATCHLIST ANALYSIS | GDXU
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=SELL | FINAL=SELL
+score=10.03 | confidence=41.98 | days=1254 | features=1003
+benchmark=GDX | trust=HIGH | grade=True | current=$131.07
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+GDXU | Prediction logged | raw=SELL | gate=SELL | FINAL=SELL | price=131.07 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+GDXU | FINAL=SELL
+[PERF] Watchlist GDXU: 1.51 sec
+[MARKET_DATA] CACHE MISS | ticker=SPCX | period=5y | interval=1d | auto_adjust=False | cache=market_2e3944ae8b394074f38074eeb2a3a9483423c22f612ae2ea26ac50c8eb0c0e4e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPCX | yahoo=SPCX | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=SPCX | period=5y | interval=1d | auto_adjust=True | cache=market_713e031db6bb8b1e802a0d13e17f1727ef074829ef8ad93462628ebacb038175.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPCX | yahoo=SPCX | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE MISS | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SPY | yahoo=SPY | period=5y | interval=1d | auto_adjust=False
+
+========================================================================================
+WATCHLIST ANALYSIS | SPCX
+========================================================================================
+route=NEW_LISTING | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION
+score=83.00 | confidence=68.97 | days=71 | features=0
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$148.36
+gate=CONFIRMATION_REQUIRED | reason=engine_requires_confirmation
+BUY gates: confirmation required by engine
+regime=RECOVERY
+========================================================================================
+SPCX | Prediction logged | raw=BUY_ON_CONFIRMATION | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=148.36 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+SPCX | FINAL=BUY_ON_CONFIRMATION
+[PERF] Watchlist SPCX: 0.99 sec
+[MARKET_DATA] CACHE MISS | ticker=TSLA | period=5y | interval=1d | auto_adjust=False | cache=market_e688ece316bfccd766bfa155230087dc559a8f38607445c4519f892c2a66de0f.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSLA | yahoo=TSLA | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=TSLA | period=5y | interval=1d | auto_adjust=True | cache=market_297f72ff565467e325e7a5b8d7f7afc8dbdba674a674d0b70362253ef2170f85.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=TSLA | yahoo=TSLA | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | TSLA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=33.60 | confidence=42.08 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$380.12
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=EARLY_BULL
+========================================================================================
+TSLA | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=380.12 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+TSLA | FINAL=REDUCE
+[PERF] Watchlist TSLA: 0.81 sec
+[MARKET_DATA] CACHE MISS | ticker=AMD | period=5y | interval=1d | auto_adjust=False | cache=market_1f94334e160570905d71b4242eda1d346279b8a5298a186fe40d5c651b5e1a2b.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMD | yahoo=AMD | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=AMD | period=5y | interval=1d | auto_adjust=True | cache=market_5592fe0a6d7c490754416de71d252195ddc52420ecfd568d7d3dd89b28911e14.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=AMD | yahoo=AMD | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | AMD
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=REDUCE | FINAL=REDUCE
+score=35.33 | confidence=38.52 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$614.61
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+AMD | Prediction logged | raw=REDUCE | gate=REDUCE | FINAL=REDUCE | price=614.61 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+AMD | FINAL=REDUCE
+[PERF] Watchlist AMD: 0.81 sec
+[MARKET_DATA] CACHE MISS | ticker=DELL | period=5y | interval=1d | auto_adjust=False | cache=market_a443a5c12c7dd99635004f95d9c6fdb85acd982c5e8ff0fd275610389952755c.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=DELL | yahoo=DELL | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=DELL | period=5y | interval=1d | auto_adjust=True | cache=market_9f92cdbb0282168109b467214e7b86d09c9e92e67e5ad69d25aa6804d36094dc.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=DELL | yahoo=DELL | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | DELL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=62.16 | confidence=45.12 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$549.83
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+DELL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=549.83 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+DELL | FINAL=WATCH
+[PERF] Watchlist DELL: 0.94 sec
+[MARKET_DATA] CACHE MISS | ticker=LITE | period=5y | interval=1d | auto_adjust=False | cache=market_d077f46b8372938127ae1b4971a4d12c6676e3476817a3a6c6428655cbb62248.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=LITE | yahoo=LITE | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=LITE | period=5y | interval=1d | auto_adjust=True | cache=market_ac9d00f011dee28923a4fec64d50d003050d76b3bef2273594519edc5c9cd76a.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=LITE | yahoo=LITE | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | LITE
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=72.69 | confidence=48.34 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$937.00
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+LITE | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=937.0 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+LITE | FINAL=WATCH
+[PERF] Watchlist LITE: 0.89 sec
+[MARKET_DATA] CACHE MISS | ticker=ORCL | period=5y | interval=1d | auto_adjust=False | cache=market_c79accfa86a007cb391d58d62cebaf4797deaa1b82d9a704c1946a88053f35bb.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ORCL | yahoo=ORCL | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=ORCL | period=5y | interval=1d | auto_adjust=True | cache=market_c3da9d597419820870e9752404633f057824eba746b3496f2d8c24264978db42.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ORCL | yahoo=ORCL | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | ORCL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=47.05 | confidence=51.56 | days=1254 | features=1003
+benchmark=SPY | trust=MEDIUM | grade=True | current=$144.56
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+ORCL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=144.56 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+ORCL | FINAL=WATCH
+[PERF] Watchlist ORCL: 1.05 sec
+[MARKET_DATA] CACHE MISS | ticker=MRVL | period=5y | interval=1d | auto_adjust=False | cache=market_22d780bbd4dd3ccffa119a80155e2ecee415de98a5cb95b9e4fc7121646e8e76.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MRVL | yahoo=MRVL | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=MRVL | period=5y | interval=1d | auto_adjust=True | cache=market_c48de43b5a6c2afb0e8f55a278120c24a62ab0e4ad07bf08319075cf39a55f6e.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MRVL | yahoo=MRVL | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | MRVL
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=52.21 | confidence=36.83 | days=1254 | features=1003
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$260.90
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+MRVL | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=260.9 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+MRVL | FINAL=WATCH
+[PERF] Watchlist MRVL: 1.06 sec
+[MARKET_DATA] CACHE MISS | ticker=PLTR | period=5y | interval=1d | auto_adjust=False | cache=market_be5fa33b77dda3b062698e3f827662137ecc96e145f393ad5b29bfae7a209831.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTR | yahoo=PLTR | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=PLTR | period=5y | interval=1d | auto_adjust=True | cache=market_2da430e6f0665f3406c19438cefded4da798a6d027be378ddfa9c9c96d688706.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTR | yahoo=PLTR | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=QQQ | period=5y | interval=1d | auto_adjust=True | cache=market_c717c88ae7e4a9a88104fdd8c704ea989abf5fb9a00a43f8bd804ded9022f3b4.pkl
+[MARKET_DATA] CACHE MISS | ticker=IGV | period=5y | interval=1d | auto_adjust=True | cache=market_9ed2702a6763707aaae1f7c662df85df7ac7afa09a6370ee278d89260e659cf3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=IGV | yahoo=IGV | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE MISS | ticker=XLK | period=5y | interval=1d | auto_adjust=True | cache=market_9d9964a694d5949a9a1e1fb03c70d617db0b71d03a66e284d18ee6c9213b4f31.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=XLK | yahoo=XLK | period=5y | interval=1d | auto_adjust=True
+
+========================================================================================
+WATCHLIST ANALYSIS | PLTR
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=63.22 | confidence=46.74 | days=1254 | features=1003
+benchmark=IGV | trust=MEDIUM | grade=True | current=$191.79
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONFIRMED_BULL
+========================================================================================
+PLTR | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=191.79 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+PLTR | FINAL=WATCH
+[PERF] Watchlist PLTR: 2.16 sec
+[MARKET_DATA] CACHE MISS | ticker=PLTU | period=5y | interval=1d | auto_adjust=False | cache=market_4133696dcc36cd3e05acdf69deea08bc270663b63ced75ddb76becc10600cfd3.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTU | yahoo=PLTU | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=PLTU | period=5y | interval=1d | auto_adjust=True | cache=market_3cde5903c07e032db77b101a3783081419aa26018a037df9e33fe9262f3b19a0.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=PLTU | yahoo=PLTU | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | PLTU
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK
+score=99.00 | confidence=79.00 | days=445 | features=194
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$59.30
+gate=NOT_APPLICABLE | reason=unknown_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=BULLISH
+========================================================================================
+PLTU | Prediction logged | raw=BUY_ON_PULLBACK | gate=BUY_ON_PULLBACK | FINAL=BUY_ON_PULLBACK | price=59.3 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+PLTU | FINAL=BUY_ON_PULLBACK
+[PERF] Watchlist PLTU: 0.97 sec
+[MARKET_DATA] CACHE MISS | ticker=SNDK | period=5y | interval=1d | auto_adjust=False | cache=market_7d8494ff9366f9c914506b209818ff85c244e0da5d1bbfa1eccbb148205e7a19.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SNDK | yahoo=SNDK | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=SNDK | period=5y | interval=1d | auto_adjust=True | cache=market_95bdc70c4d290b21e118350d1c8b1f13ce77674a63b6d1396b09e43c526f4153.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=SNDK | yahoo=SNDK | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | SNDK
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=BUY | FINAL=BUY_ON_CONFIRMATION
+score=91.00 | confidence=79.00 | days=404 | features=153
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$1816.57
+gate=BLOCKED | reason=buy_requires_confirmation
+failed BUY gates: benchmark_trust, match_quality, fallback_ratio, historical_probability, reward_risk
+regime=BULLISH
+========================================================================================
+SNDK | Prediction logged | raw=BUY | gate=BUY_ON_CONFIRMATION | FINAL=BUY_ON_CONFIRMATION | price=1816.5699 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+SNDK | FINAL=BUY_ON_CONFIRMATION
+[PERF] Watchlist SNDK: 0.77 sec
+[MARKET_DATA] CACHE MISS | ticker=ASMG | period=5y | interval=1d | auto_adjust=False | cache=market_8518d9723322ca4907e01bf29599532691de635b4076e2da5f848ea6143b4b59.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ASMG | yahoo=ASMG | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=ASMG | period=5y | interval=1d | auto_adjust=True | cache=market_5461e2bf6cda35ee1726a47b1c863d81c2eb71ec241ba08d1c4b43c001499795.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=ASMG | yahoo=ASMG | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=False | cache=market_ffb64cb547a31e217c9e758a8bfa2726fb39829ce83263045e92be451daf4b98.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | ASMG
+========================================================================================
+route=NLE_EXTENDED_HISTORY | engine=NEW_LISTING_ENGINE V1.4.1 | raw=WATCH | FINAL=WATCH
+score=59.00 | confidence=79.00 | days=424 | features=173
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$46.28
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=RECOVERY
+========================================================================================
+ASMG | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=46.278 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+ASMG | FINAL=WATCH
+[PERF] Watchlist ASMG: 0.78 sec
+[MARKET_DATA] CACHE MISS | ticker=MA | period=5y | interval=1d | auto_adjust=False | cache=market_529713e11734aeda47b0400adefe4bd110418b07270bc2f15b65e4fe3e13a536.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MA | yahoo=MA | period=5y | interval=1d | auto_adjust=False
+[MARKET_DATA] CACHE MISS | ticker=MA | period=5y | interval=1d | auto_adjust=True | cache=market_52683ad082fe1303e067d8f5343d93828654ce88bdc952dbef8cefe54be472de.pkl
+[MARKET_DATA] YAHOO DOWNLOAD | ticker=MA | yahoo=MA | period=5y | interval=1d | auto_adjust=True
+[MARKET_DATA] CACHE HIT | ticker=SPY | period=5y | interval=1d | auto_adjust=True | cache=market_7ba1ae091b0348b0a989cd35679a4b4566c9560c81bad13abe49ea631b293c29.pkl
+
+========================================================================================
+WATCHLIST ANALYSIS | MA
+========================================================================================
+route=MATURE | engine=CHARACTERISTIC_CURVE_ENGINE V1.6.1 | raw=WATCH | FINAL=WATCH
+score=47.14 | confidence=40.94 | days=1253 | features=1002
+benchmark=SPY | trust=CONTEXT_ONLY | grade=False | current=$559.92
+gate=NOT_APPLICABLE | reason=non_bullish_signal_preserved
+BUY gates: NOT_APPLICABLE for non-bullish signal
+regime=CONSOLIDATION
+========================================================================================
+MA | Prediction logged | raw=WATCH | gate=WATCH | FINAL=WATCH | price=559.92 | file=C:\Scripts\Python\ai-trader\data\predictions\predictions_2026-09-24.jsonl
+MA | FINAL=WATCH
+[PERF] Watchlist MA: 1.10 sec
+[PERF] Watchlist Scanner TOTAL: 26.62 sec
+
+===== FUNDAMENTAL ANALYSIS =====
+NVDA => FUNDAMENTAL CACHE
+NVDA | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+[PERF] Fundamental NVDA: 0.00 sec
+MSFT => FUNDAMENTAL CACHE
+MSFT | Revenue:15/25 | Margins:15/15 | Debt:15/15 | Score:45/55 | 🟢 STRONG BUY
+[PERF] Fundamental MSFT: 0.00 sec
+GOOGL => FUNDAMENTAL CACHE
+GOOGL | Revenue:20/25 | Margins:15/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+[PERF] Fundamental GOOGL: 0.00 sec
+AMZN => FUNDAMENTAL CACHE
+AMZN | Revenue:15/25 | Margins:5/15 | Debt:10/15 | Score:30/55 | 🟡 HOLD
+[PERF] Fundamental AMZN: 0.00 sec
+AVGO => FUNDAMENTAL CACHE
+AVGO | Revenue:25/25 | Margins:15/15 | Debt:10/15 | Score:50/55 | 🟢 STRONG BUY
+[PERF] Fundamental AVGO: 0.00 sec
+TSM => FUNDAMENTAL CACHE
+TSM | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+[PERF] Fundamental TSM: 0.00 sec
+META => FUNDAMENTAL CACHE
+META | Revenue:20/25 | Margins:15/15 | Debt:10/15 | Score:45/55 | 🟢 STRONG BUY
+[PERF] Fundamental META: 0.00 sec
+AAPL => FUNDAMENTAL CACHE
+AAPL | Revenue:15/25 | Margins:15/15 | Debt:10/15 | Score:40/55 | 🟢 BUY
+[PERF] Fundamental AAPL: 0.00 sec
+BRK.B => FUNDAMENTAL CACHE
+BRK.B | Revenue:0/25 | Margins:0/15 | Debt:0/15 | Score:0/55 | 🔴 SELL
+[PERF] Fundamental BRK.B: 0.00 sec
+JPM => FUNDAMENTAL CACHE
+JPM | Revenue:25/25 | Margins:15/15 | Debt:0/15 | Score:40/55 | 🟢 BUY
+[PERF] Fundamental JPM: 0.00 sec
+V => FUNDAMENTAL CACHE
+V | Revenue:15/25 | Margins:15/15 | Debt:10/15 | Score:40/55 | 🟢 BUY
+[PERF] Fundamental V: 0.00 sec
+TQQQ => FUNDAMENTAL CACHE
+TQQQ | ETF | Fundamental Score N/A
+[PERF] Fundamental TQQQ: 0.00 sec
+GDXU => FUNDAMENTAL CACHE
+GDXU | ETF | Fundamental Score N/A
+[PERF] Fundamental GDXU: 0.00 sec
+SPCX => FUNDAMENTAL CACHE
+SPCX | Revenue:25/25 | Margins:0/15 | Debt:10/15 | Score:35/55 | 🟢 BUY
+[PERF] Fundamental SPCX: 0.00 sec
+TSLA => FUNDAMENTAL CACHE
+TSLA | Revenue:20/25 | Margins:0/15 | Debt:15/15 | Score:35/55 | 🟢 BUY
+[PERF] Fundamental TSLA: 0.00 sec
+AMD => FUNDAMENTAL CACHE
+AMD | Revenue:25/25 | Margins:10/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+[PERF] Fundamental AMD: 0.00 sec
+DELL => FUNDAMENTAL CACHE
+DELL | Revenue:25/25 | Margins:5/15 | Debt:0/15 | Score:30/55 | 🟡 HOLD
+[PERF] Fundamental DELL: 0.00 sec
+LITE => FUNDAMENTAL CACHE
+LITE | Revenue:25/25 | Margins:15/15 | Debt:10/15 | Score:50/55 | 🟢 STRONG BUY
+[PERF] Fundamental LITE: 0.00 sec
+ORCL => FUNDAMENTAL CACHE
+ORCL | Revenue:20/25 | Margins:15/15 | Debt:0/15 | Score:35/55 | 🟢 BUY
+[PERF] Fundamental ORCL: 0.00 sec
+MRVL => FUNDAMENTAL CACHE
+MRVL | Revenue:25/25 | Margins:10/15 | Debt:15/15 | Score:50/55 | 🟢 STRONG BUY
+[PERF] Fundamental MRVL: 0.00 sec
+PLTR => FUNDAMENTAL CACHE
+PLTR | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+[PERF] Fundamental PLTR: 0.00 sec
+PLTU => FUNDAMENTAL CACHE
+PLTU | ETF | Fundamental Score N/A
+[PERF] Fundamental PLTU: 0.00 sec
+SNDK => FUNDAMENTAL CACHE
+SNDK | Revenue:25/25 | Margins:15/15 | Debt:15/15 | Score:55/55 | 🟢 STRONG BUY
+[PERF] Fundamental SNDK: 0.00 sec
+ASMG => FUNDAMENTAL CACHE
+ASMG | ETF | Fundamental Score N/A
+[PERF] Fundamental ASMG: 0.00 sec
+MA => FUNDAMENTAL CACHE
+MA | Revenue:15/25 | Margins:15/15 | Debt:0/15 | Score:30/55 | 🟡 HOLD
+[PERF] Fundamental MA: 0.00 sec
+[PERF] Fundamental Analysis TOTAL: 0.02 sec
+
+Scan Completed
+===================================
+[PERF] AI TRADER TOTAL: 63.64 sec
+===================================
+
