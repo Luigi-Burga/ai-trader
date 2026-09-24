@@ -1,5 +1,5 @@
 """
-AI Trader - Integrated Main V2.9-PERF
+AI Trader - Integrated Main V2.8
 --------------------------------
 Structural migration of V2.7:
 
@@ -22,7 +22,6 @@ Structural migration of V2.7:
 from datetime import datetime
 import os
 import sys
-import time
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(
@@ -70,18 +69,6 @@ from app.utils.market_hours import (
 # V2.8: ALL application modules are under app/
 from app.prediction_logger import log_prediction
 from app.prediction_tracker import update_all_predictions
-
-
-def _perf_seconds(start: float) -> float:
-    """Return elapsed wall-clock seconds for a performance measurement."""
-    return time.perf_counter() - start
-
-
-def _perf_log(label: str, start: float) -> float:
-    """Print one performance measurement and return elapsed seconds."""
-    elapsed = _perf_seconds(start)
-    print(f"[PERF] {label}: {elapsed:.2f} sec", flush=True)
-    return elapsed
 
 
 def _prediction_directory() -> str:
@@ -132,7 +119,6 @@ def _run_prediction_tracker() -> None:
 
     Tracker failures are fail-safe and never stop the trading scan.
     """
-    perf_start = time.perf_counter()
     prediction_dir = _prediction_directory()
 
     try:
@@ -153,10 +139,8 @@ def _run_prediction_tracker() -> None:
             f"updated={summary.get('updated', 0)} | "
             f"unchanged={summary.get('unchanged', 0)}"
         )
-        _perf_log("Prediction Tracker", perf_start)
 
     except Exception as e:
-        _perf_log("Prediction Tracker (failed)", perf_start)
         print(
             f"Prediction Tracker Error: {e} | "
             "scan continues"
@@ -213,8 +197,6 @@ def _log_prediction_snapshot(
 if not _scan_allowed():
 """
 def main() -> None:
-    total_perf_start = time.perf_counter()
-
     if _scan_allowed():
         print("Market closed. Skipping scan.")
         return
@@ -228,7 +210,7 @@ def main() -> None:
 
     print("\n")
     print("===================================")
-    print(f"AI Trader Integrated V2.9-PERF")
+    print(f"AI Trader Integrated V2.8")
     print(f"Market Scan: {datetime.now()}")
     print(f"Run ID: {run_id}")
     print("===================================")
@@ -237,28 +219,21 @@ def main() -> None:
     _run_prediction_tracker()
 
     # PORTFOLIO
-    portfolio_perf_start = time.perf_counter()
     print("\n===== PORTFOLIO MONITOR =====")
     portfolio = load_portfolio()
 
     for stock in portfolio:
-        portfolio_symbol = stock.get("symbol", "UNKNOWN")
-        ticker_perf_start = time.perf_counter()
         try:
             monitor_position(stock)
-            _perf_log(f"Portfolio {portfolio_symbol}", ticker_perf_start)
         except Exception as e:
-            _perf_log(f"Portfolio {portfolio_symbol} (failed)", ticker_perf_start)
             print(
                 f"Portfolio Error "
                 f"{stock.get('symbol', 'UNKNOWN')} : {e}"
             )
 
     save_portfolio(portfolio)
-    _perf_log("Portfolio Monitor TOTAL", portfolio_perf_start)
 
     # WATCHLIST V2.1.2 + PREDICTION LOGGER
-    watchlist_perf_start = time.perf_counter()
     print(
         f"\n===== WATCHLIST MONITOR V{WATCHLIST_SCANNER_VERSION} ====="
     )
@@ -269,7 +244,6 @@ def main() -> None:
             "ticker",
             "UNKNOWN",
         )
-        ticker_perf_start = time.perf_counter()
 
         try:
             result = scan_buy_opportunity(stock)
@@ -291,23 +265,17 @@ def main() -> None:
                 f"{symbol} | "
                 f"FINAL={final_signal}"
             )
-            _perf_log(f"Watchlist {symbol}", ticker_perf_start)
 
         except Exception as e:
-            _perf_log(f"Watchlist {symbol} (failed)", ticker_perf_start)
             print(
                 f"Watchlist Error "
                 f"{symbol} : {e}"
             )
 
-    _perf_log("Watchlist Scanner TOTAL", watchlist_perf_start)
-
     # FUNDAMENTAL ANALYSIS
-    fundamental_perf_start = time.perf_counter()
     print("\n===== FUNDAMENTAL ANALYSIS =====")
 
     for stock in watchlist:
-        fundamental_ticker_start = time.perf_counter()
         try:
             symbol = stock["ticker"]
             result = calculate_fundamental_score(
@@ -315,7 +283,6 @@ def main() -> None:
             )
 
             if result is None:
-                _perf_log(f"Fundamental {symbol}", fundamental_ticker_start)
                 continue
 
             if result["type"] == "ETF":
@@ -323,7 +290,6 @@ def main() -> None:
                     f"{symbol} | ETF | "
                     "Fundamental Score N/A"
                 )
-                _perf_log(f"Fundamental {symbol}", fundamental_ticker_start)
                 continue
 
             print(
@@ -357,23 +323,13 @@ def main() -> None:
                             "cache unchanged."
                         )
 
-            _perf_log(f"Fundamental {symbol}", fundamental_ticker_start)
-
         except Exception as e:
-            _perf_log(
-                f"Fundamental {stock.get('ticker', 'UNKNOWN')} (failed)",
-                fundamental_ticker_start,
-            )
             print(
                 f"Fundamental Error "
                 f"{stock.get('ticker', 'UNKNOWN')} : {e}"
             )
 
-    _perf_log("Fundamental Analysis TOTAL", fundamental_perf_start)
-
     print("\nScan Completed")
-    print("===================================")
-    _perf_log("AI TRADER TOTAL", total_perf_start)
     print("===================================\n")
 
 

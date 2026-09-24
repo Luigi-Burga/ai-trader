@@ -1,4 +1,38 @@
-import yfinance as yf
+"""
+Portfolio Monitor V2.0
+----------------------
+
+Performance-focused version of Portfolio Monitor.
+
+Design goal:
+    Replace the direct yfinance intraday request with Market Data V2,
+    while preserving the existing investment and alert logic.
+
+Preserved behavior:
+    - calculate_position_status()
+    - current_price from the last Close
+    - highest_today from intraday High.max()
+    - evaluate_multi_level_alerts()
+    - evaluate_target_alert()
+    - evaluate_trailing_stop()
+    - position["highest_price"] update
+    - Telegram messages and send_telegram() contract
+    - no changes to investment/alert thresholds or decisions
+
+Data acquisition:
+    Market Data V2 handles:
+    - persistent intraday cache
+    - intraday TTL
+    - Yahoo fallback on cache miss
+    - ticker normalization
+
+The monitor remains synchronous and keeps the same public function:
+    monitor_position(position)
+"""
+
+import pandas as pd
+
+from app.data.market_data import get_history
 
 from app.portfolio.target_alert import (
     evaluate_target_alert
@@ -17,11 +51,17 @@ from app.alerts.telegram_alert import (
 )
 
 
+VERSION = "2.0"
+
+
 def calculate_position_status(
     current_price,
     buy_price,
     target_profit
 ):
+    """
+    Preserve the original portfolio status calculation exactly.
+    """
 
     profit_percent = (
         (current_price - buy_price)
@@ -33,7 +73,6 @@ def calculate_position_status(
     )
 
     return {
-
         "profit_percent": round(
             profit_percent,
             2
@@ -49,6 +88,55 @@ def calculate_position_status(
     }
 
 
+def _normalize_intraday_ohlcv(df):
+    """Normalize Market Data V2/yfinance output to 1-D OHLCV columns.
+
+    yfinance may return a MultiIndex even for a single ticker. In that case
+    df["Close"] can itself be a DataFrame, which makes iloc[-1] a Series and
+    breaks float(). Keep the monitor contract identical by reducing the frame
+    to canonical OHLCV columns first.
+    """
+    if df is None or df.empty:
+        return pd.DataFrame()
+
+    x = df.copy(deep=True)
+
+    if isinstance(x.columns, pd.MultiIndex):
+        selected = {}
+        for col in x.columns:
+            parts = [str(part).strip() for part in col]
+            for part in parts:
+                key = part.lower()
+                if key in {"open", "high", "low", "close", "volume"}:
+                    canonical = key.capitalize()
+                    if canonical not in selected:
+                        selected[canonical] = col
+                    break
+
+        if selected:
+            x = x[[selected[name] for name in selected]]
+            x.columns = list(selected.keys())
+
+    rename = {}
+    for col in x.columns:
+        key = str(col).strip().lower()
+        if key in {"open", "high", "low", "close", "volume"}:
+            rename[col] = key.capitalize()
+    x = x.rename(columns=rename)
+    x = x.loc[:, ~x.columns.duplicated(keep="first")]
+
+    required = ("Open", "High", "Low", "Close", "Volume")
+    if any(col not in x.columns for col in required):
+        return pd.DataFrame()
+
+    x = x[list(required)].copy()
+    for col in required:
+        x[col] = pd.to_numeric(x[col], errors="coerce")
+
+    x = x.dropna(subset=["High", "Low", "Close"])
+    return x
+
+
 def monitor_position(position):
 
     symbol = position["ticker"]
@@ -61,15 +149,26 @@ def monitor_position(position):
         position["target_profit"]
     )
 
-    ticker = yf.Ticker(symbol)
-
+    # ------------------------------------------------------------------
+    # MARKET DATA V2
     #
-    # Use intraday data
+    # The original monitor used:
+    #     direct Yahoo history request
+    #         period="1d",
+    #         interval="1m"
+    #     )
     #
-    df = ticker.history(
+    # Only the data-acquisition layer is changed here.
+    # The resulting dataframe is consumed exactly as before.
+    # ------------------------------------------------------------------
+    df = get_history(
+        symbol,
         period="1d",
-        interval="1m"
+        interval="1m",
+        auto_adjust=False,
     )
+
+    df = _normalize_intraday_ohlcv(df)
 
     if df.empty:
 
