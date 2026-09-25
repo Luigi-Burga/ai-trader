@@ -29,6 +29,8 @@ from typing import Dict, List, Optional, Tuple
 
 import math
 import numpy as np
+
+from app.ai.expected_value import calculate_appt
 import pandas as pd
 from app.ai.benchmark_resolver_v1_6_1 import resolve_benchmarks
 from app.data.market_data import get_daily_history
@@ -44,7 +46,7 @@ FEATURES = [
 ]
 
 HORIZONS = (1, 5, 10, 20, 60)
-VERSION = "1.6.1"
+VERSION = "1.7"
 
 
 @dataclass
@@ -836,6 +838,9 @@ def analyze_dataframe(
         vals = [r[key] for r in records if key in r]
         mfe = [r[f"mfe_{h}d"] for r in records if f"mfe_{h}d" in r]
         mae = [r[f"mae_{h}d"] for r in records if f"mae_{h}d" in r]
+        appt_risk_pct = abs(float(np.median(mae))) if mae else None
+        appt = calculate_appt(vals, risk_pct=appt_risk_pct)
+
         horizon_stats[f"{h}d"] = {
             "prob_positive": float(np.mean(np.array(vals) > 0)) if vals else 0.5,
             "mean_return": float(np.mean(vals)) if vals else 0.0,
@@ -851,6 +856,11 @@ def analyze_dataframe(
             "mae_p10": _percentile(mae, 10) or 0.0,
             "mae_p25": _percentile(mae, 25) or 0.0,
             "mae_p50": _percentile(mae, 50) or 0.0,
+            "win_rate": appt.get("win_rate"),
+            "avg_win_pct": appt.get("avg_win_pct"),
+            "avg_loss_pct": appt.get("avg_loss_pct"),
+            "expected_return": appt.get("expected_return"),
+            "appt_x": appt.get("appt_x"),
         }
 
     current = valid.iloc[-1]
@@ -908,6 +918,11 @@ def analyze_dataframe(
 
     historical_pattern = {
         "probability_positive_20d": round(h20["prob_positive"], 6),
+        "expected_return_20d": round(h20.get("expected_return", h20["mean_return"]), 6),
+        "appt_x_20d": (
+            round(float(h20["appt_x"]), 6)
+            if h20.get("appt_x") is not None else None
+        ),
         "mean_return_20d": round(h20["mean_return"], 6),
         "median_return_20d": round(h20["median_return"], 6),
         "median_mfe_20d": round(h20["median_mfe"], 6),
@@ -1030,6 +1045,14 @@ def analyze_dataframe(
         "historical_mae_20d": round(h20["median_mae"], 6),
         "historical_excursion_ratio_20d": round(historical_excursion_ratio, 3),
         "reward_risk_20d": round(rr, 3),  # backward compatibility
+        "expected_value_20d": (
+            round(float(h20["expected_return"]), 6)
+            if h20.get("expected_return_pct") is not None else None
+        ),
+        "appt_x_20d": (
+            round(float(h20["appt_x"]), 6)
+            if h20.get("appt_x") is not None else None
+        ),
         "levels": {
             "current_price": round(price, 4),
             "historical_pullback_low": levels["entry_zone_low"],

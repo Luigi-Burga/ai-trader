@@ -32,8 +32,14 @@ from pathlib import Path
 from typing import Any, Iterable, Optional
 
 from app.data.market_data import get_history
+from app.portfolio.risk_x_engine import (
+    build_risk_context,
+    enrich_observation_with_x,
+    risk_percent,
+)
+from app.portfolio.post_exit_analyzer import analyze_post_exit
 
-VERSION = "1.4"
+VERSION = "1.5"
 MODULE_NAME = "Prediction Tracker"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -413,7 +419,10 @@ def evaluate_snapshot(
     status = result.get("evaluation", {}).get(
         "status", "PENDING"
     )
-    if status == "COMPLETE":
+    if status == "COMPLETE" and (
+        result.get("risk_x")
+        and result.get("post_exit_analysis") is not None
+    ):
         return result
 
     ticker = _normalize_symbol(result.get("ticker"))
@@ -452,6 +461,16 @@ def evaluate_snapshot(
 
     stop = _safe_float(levels.get("stop"))
 
+    # ------------------------------------------------------------------
+    # V1.5 - Risk in X
+    # ------------------------------------------------------------------
+    risk_ctx = build_risk_context(
+        entry,
+        stop,
+        target,
+    )
+    risk_pct = risk_ctx.get("risk_pct")
+
     signal = str(
         result.get("final_signal")
         or result.get("signal")
@@ -473,9 +492,48 @@ def evaluate_snapshot(
             stop,
         )
         key = f"+{horizon}d"
-        observations[key] = obs
         if obs is not None:
+            obs = enrich_observation_with_x(obs, risk_pct)
             complete_count += 1
+        observations[key] = obs
+
+    # ------------------------------------------------------------------
+    # V1.5 - Post-Exit Analysis
+    #
+    # This is activated only when an actual/recorded exit is present.
+    # Existing prediction snapshots therefore remain backward compatible.
+    # ------------------------------------------------------------------
+    post_exit_result = None
+    trade = result.get("trade")
+    if not isinstance(trade, dict):
+        trade = {}
+
+    exit_price = _safe_float(
+        trade.get("exit_price")
+        or result.get("exit_price")
+    )
+    exit_timestamp = (
+        trade.get("exit_timestamp_utc")
+        or result.get("exit_timestamp_utc")
+    )
+
+    if exit_price is not None and exit_timestamp:
+        exit_index = _find_prediction_session(
+            frame,
+            str(exit_timestamp),
+            exit_price,
+        )
+        if exit_index is not None:
+            post_exit_result = analyze_post_exit(
+                frame,
+                exit_index=exit_index,
+                exit_price=exit_price,
+                direction=signal or "BUY",
+                risk_pct=risk_pct,
+            )
+
+    result["risk_x"] = risk_ctx
+    result["post_exit_analysis"] = post_exit_result
 
     result["evaluation"] = {
         "status": (

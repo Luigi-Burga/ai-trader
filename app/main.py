@@ -1,5 +1,5 @@
 """
-AI Trader - Integrated Main V2.8 + Fundamental Alert Engine V1 DRY-RUN
+AI Trader - Integrated Main V2.10 + Fundamental Alert Engine V1 DRY-RUN
 --------------------------------
 Structural migration of V2.7:
 
@@ -12,7 +12,7 @@ Structural migration of V2.7:
    logger/tracker, so execution is not dependent on the current directory.
 6. Keeps the validated V2.7 trading flow unchanged:
    - corrected market-hours condition
-   - Watchlist Scanner V2.1.1
+   - Watchlist Scanner V2.2.1
    - Telegram/cache handling
    - Prediction Tracker before current T0 logging
    - prediction snapshot for every watchlist result
@@ -43,7 +43,7 @@ from app.config.config_loader import (
 
 from app.portfolio.portfolio_monitor import monitor_position
 
-from app.scanners.watchlist_scanner_v2_1_2 import (
+from app.scanners.watchlist_scanner_v2_2_2 import (
     VERSION as WATCHLIST_SCANNER_VERSION,
     scan_buy_opportunity,
 )
@@ -68,6 +68,10 @@ from app.utils.market_hours import (
 # V2.8: ALL application modules are under app/
 from app.prediction_logger import log_prediction
 from app.prediction_tracker import update_all_predictions
+
+# V2.10 production wiring:
+# Main -> Watchlist Scanner V2.2 -> Orchestrator V1.5.1 ->
+# Decision Gate V1.3 -> Signal Engine V1.2.
 
 
 def _prediction_directory() -> str:
@@ -165,7 +169,7 @@ def _log_prediction_snapshot(
             snapshot, path = log_prediction(
                 symbol,
                 result,
-                source="main_integrated_v2_8",
+                source="main_integrated_v2_11",
                 run_id=run_id,
                 base_dir=prediction_dir,
             )
@@ -173,7 +177,7 @@ def _log_prediction_snapshot(
             snapshot, path = log_prediction(
                 symbol,
                 result,
-                source="main_integrated_v2_8",
+                source="main_integrated_v2_11",
                 run_id=run_id,
             )
 
@@ -209,7 +213,7 @@ def main() -> None:
 
     print("\n")
     print("===================================")
-    print(f"AI Trader Integrated V2.8")
+    print(f"AI Trader Integrated V2.11")
     print(f"Market Scan: {datetime.now()}")
     print(f"Run ID: {run_id}")
     print("===================================")
@@ -232,7 +236,7 @@ def main() -> None:
 
     save_portfolio(portfolio)
 
-    # WATCHLIST V2.1.2 + PREDICTION LOGGER
+    # WATCHLIST V2.2.1 + PREDICTION LOGGER
     print(
         f"\n===== WATCHLIST MONITOR V{WATCHLIST_SCANNER_VERSION} ====="
     )

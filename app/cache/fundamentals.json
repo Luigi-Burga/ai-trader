@@ -1,6 +1,6 @@
 {
     "TQQQ": {
-        "timestamp": "2026-09-23T12:29:46.686659",
+        "timestamp": "2026-09-24T17:22:36.322151",
         "data": {
             "symbol": "TQQQ",
             "type": "ETF",
@@ -12,7 +12,7 @@
         }
     },
     "GDXU": {
-        "timestamp": "2026-09-23T12:29:47.505976",
+        "timestamp": "2026-09-24T17:22:36.934600",
         "data": {
             "symbol": "GDXU",
             "type": "ETF",
@@ -72,7 +72,7 @@
         }
     },
     "META": {
-        "timestamp": "2026-09-23T12:29:40.812523",
+        "timestamp": "2026-09-24T17:22:33.055559",
         "data": {
             "symbol": "META",
             "type": "STOCK",
@@ -84,7 +84,7 @@
         }
     },
     "ASMG": {
-        "timestamp": "2026-09-23T12:30:05.118485",
+        "timestamp": "2026-09-24T17:22:43.080971",
         "data": {
             "symbol": "ASMG",
             "type": "ETF",
@@ -120,7 +120,7 @@
         }
     },
     "SNDK": {
-        "timestamp": "2026-09-23T12:30:02.869169",
+        "timestamp": "2026-09-24T17:22:42.547707",
         "data": {
             "symbol": "SNDK",
             "type": "STOCK",
@@ -396,7 +396,7 @@
         }
     },
     "NVDA": {
-        "timestamp": "2026-09-23T12:29:28.558870",
+        "timestamp": "2026-09-24T17:22:29.455849",
         "data": {
             "symbol": "NVDA",
             "type": "STOCK",
@@ -408,7 +408,7 @@
         }
     },
     "SPCX": {
-        "timestamp": "2026-09-23T12:29:48.531014",
+        "timestamp": "2026-09-24T17:22:37.652714",
         "data": {
             "symbol": "SPCX",
             "type": "STOCK",
@@ -432,7 +432,7 @@
         }
     },
     "AAPL": {
-        "timestamp": "2026-09-23T12:29:43.513337",
+        "timestamp": "2026-09-24T17:22:33.658335",
         "data": {
             "symbol": "AAPL",
             "type": "STOCK",
@@ -444,7 +444,7 @@
         }
     },
     "TSLA": {
-        "timestamp": "2026-09-23T12:29:49.452962",
+        "timestamp": "2026-09-24T17:22:38.266728",
         "data": {
             "symbol": "TSLA",
             "type": "STOCK",
@@ -456,7 +456,7 @@
         }
     },
     "AMD": {
-        "timestamp": "2026-09-23T12:29:50.373779",
+        "timestamp": "2026-09-24T17:22:38.931335",
         "data": {
             "symbol": "AMD",
             "type": "STOCK",
@@ -468,7 +468,7 @@
         }
     },
     "AMZN": {
-        "timestamp": "2026-09-23T12:29:35.587854",
+        "timestamp": "2026-09-24T17:22:31.099988",
         "data": {
             "symbol": "AMZN",
             "type": "STOCK",
@@ -480,7 +480,7 @@
         }
     },
     "MSFT": {
-        "timestamp": "2026-09-23T12:29:31.000100",
+        "timestamp": "2026-09-24T17:22:30.015971",
         "data": {
             "symbol": "MSFT",
             "type": "STOCK",
@@ -492,7 +492,7 @@
         }
     },
     "AVGO": {
-        "timestamp": "2026-09-23T12:29:36.375437",
+        "timestamp": "2026-09-24T17:22:31.815514",
         "data": {
             "symbol": "AVGO",
             "type": "STOCK",
@@ -504,7 +504,7 @@
         }
     },
     "DELL": {
-        "timestamp": "2026-09-23T12:29:52.626329",
+        "timestamp": "2026-09-24T17:22:39.527969",
         "data": {
             "symbol": "DELL",
             "type": "STOCK",
@@ -516,7 +516,7 @@
         }
     },
     "LITE": {
-        "timestamp": "2026-09-23T12:29:53.447027",
+        "timestamp": "2026-09-24T17:22:40.031709",
         "data": {
             "symbol": "LITE",
             "type": "STOCK",
@@ -528,7 +528,7 @@
         }
     },
     "ORCL": {
-        "timestamp": "2026-09-23T12:29:55.696578",
+        "timestamp": "2026-09-24T17:22:40.498434",
         "data": {
             "symbol": "ORCL",
             "type": "STOCK",
@@ -552,7 +552,7 @@
         }
     },
     "MRVL": {
-        "timestamp": "2026-09-23T12:29:56.619557",
+        "timestamp": "2026-09-24T17:22:41.051805",
         "data": {
             "symbol": "MRVL",
             "type": "STOCK",
@@ -564,7 +564,7 @@
         }
     },
     "PLTR": {
-        "timestamp": "2026-09-23T12:29:58.973741",
+        "timestamp": "2026-09-24T17:22:41.596219",
         "data": {
             "symbol": "PLTR",
             "type": "STOCK",
@@ -828,7 +828,7 @@
         }
     },
     "GOOGL": {
-        "timestamp": "2026-09-23T12:29:33.429355",
+        "timestamp": "2026-09-24T17:22:30.588479",
         "data": {
             "symbol": "GOOGL",
             "type": "STOCK",
@@ -840,7 +840,7 @@
         }
     },
     "TSM": {
-        "timestamp": "2026-09-23T12:29:38.541049",
+        "timestamp": "2026-09-24T17:22:32.530807",
         "data": {
             "symbol": "TSM",
             "type": "STOCK",
@@ -852,7 +852,7 @@
         }
     },
     "BRK.B": {
-        "timestamp": "2026-09-23T12:29:44.025340",
+        "timestamp": "2026-09-24T17:22:34.273582",
         "data": {
             "symbol": "BRK.B",
             "type": "STOCK",
@@ -864,7 +864,7 @@
         }
     },
     "JPM": {
-        "timestamp": "2026-09-23T12:29:44.844372",
+        "timestamp": "2026-09-24T17:22:34.887869",
         "data": {
             "symbol": "JPM",
             "type": "STOCK",
@@ -876,7 +876,7 @@
         }
     },
     "V": {
-        "timestamp": "2026-09-23T12:29:45.765520",
+        "timestamp": "2026-09-24T17:22:35.604270",
         "data": {
             "symbol": "V",
             "type": "STOCK",
@@ -888,7 +888,7 @@
         }
     },
     "PLTU": {
-        "timestamp": "2026-09-23T12:30:01.637733",
+        "timestamp": "2026-09-24T17:22:42.066582",
         "data": {
             "symbol": "PLTU",
             "type": "ETF",
@@ -900,7 +900,7 @@
         }
     },
     "MA": {
-        "timestamp": "2026-09-23T12:30:06.041382",
+        "timestamp": "2026-09-24T17:22:43.796999",
         "data": {
             "symbol": "MA",
             "type": "STOCK",

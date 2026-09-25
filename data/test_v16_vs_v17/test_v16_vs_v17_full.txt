@@ -1,0 +1,50 @@
+========================================================================
+AI Trader V1.6.1 vs V1.7 Full Regression Test
+========================================================================
+Overall                    : FAIL
+Assets tested              : 25
+Assets passed              : 25
+Assets failed              : 0
+Assets errors              : 0
+Unexpected changes         : 0
+Expected APPT changes      : 0
+Sizing changed signal      : 0
+Signal regressions         : 0
+Deterministic components   : FAIL
+Tracker comparison         : PASS
+Elapsed seconds            : 57.85
+
+Per asset:
+NVDA     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+MSFT     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+GOOGL    | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+AMZN     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+AVGO     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+TSM      | PASS  | CCE BUY_ON_CONFIRMATION -> BUY_ON_CONFIRMATION | Gate BUY_ON_CONFIRMATION -> BUY_ON_CONFIRMATION
+META     | PASS  | CCE REDUCE -> REDUCE | Gate REDUCE -> REDUCE
+AAPL     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+BRK.B    | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+JPM      | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+V        | PASS  | CCE REDUCE -> REDUCE | Gate REDUCE -> REDUCE
+MA       | PASS  | CCE SELL -> SELL | Gate SELL -> SELL
+TQQQ     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+GDXU     | PASS  | CCE SELL -> SELL | Gate SELL -> SELL
+SPCX     | PASS  | CCE INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY | Gate INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY
+TSLA     | PASS  | CCE REDUCE -> REDUCE | Gate REDUCE -> REDUCE
+AMD      | PASS  | CCE REDUCE -> REDUCE | Gate REDUCE -> REDUCE
+DELL     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+LITE     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+ORCL     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+MRVL     | PASS  | CCE WATCH -> WATCH | Gate WATCH -> WATCH
+PLTR     | PASS  | CCE BUY_ON_CONFIRMATION -> BUY_ON_CONFIRMATION | Gate BUY_ON_CONFIRMATION -> BUY_ON_CONFIRMATION
+PLTU     | PASS  | CCE INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY | Gate INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY
+SNDK     | PASS  | CCE INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY | Gate INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY
+ASMG     | PASS  | CCE INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY | Gate INSUFFICIENT_HISTORY -> INSUFFICIENT_HISTORY
+
+Interpretation:
+- Legacy CCE fields must remain unchanged within tolerance.
+- APPT is an expected new V1.7 field.
+- A gate change is only accepted when APPT explains it.
+- Position sizing must NEVER change the signal.
+- Risk X and Post-Exit are additive analytics.
+- Prediction Tracker legacy fields must remain unchanged.

@@ -1,0 +1,4689 @@
+{
+  "test": "AI Trader V1.6.1 vs V1.7 Full Regression Test",
+  "version": "1.0",
+  "started_at_utc": "2026-09-24T18:26:56.726533+00:00",
+  "tickers": [
+    "NVDA",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "AVGO",
+    "TSM",
+    "META",
+    "AAPL",
+    "BRK.B",
+    "JPM",
+    "V",
+    "MA",
+    "TQQQ",
+    "GDXU",
+    "SPCX",
+    "TSLA",
+    "AMD",
+    "DELL",
+    "LITE",
+    "ORCL",
+    "MRVL",
+    "PLTR",
+    "PLTU",
+    "SNDK",
+    "ASMG"
+  ],
+  "benchmark": null,
+  "safety": {
+    "production_files_modified": false,
+    "telegram_called": false,
+    "orders_generated": false,
+    "position_sizing_account_is_test_only": true
+  },
+  "modules": {
+    "cce_old": "app.ai.characteristic_curve_v1_6_1",
+    "cce_new": "app.ai.characteristic_curve_v1_7",
+    "gate_old": "app.strategies.decision_gate_v1_2",
+    "gate_new": "app.strategies.decision_gate_v1_3",
+    "signal_old": "app.strategies.signal_engine_v1_1",
+    "signal_new": "app.strategies.signal_engine_v1_2",
+    "tracker_old": "app.prediction_tracker_v1_4",
+    "tracker_new": "app.prediction_tracker_v1_5",
+    "risk_x": "app.portfolio.risk_x_engine",
+    "post_exit": "app.portfolio.post_exit_analyzer",
+    "expected_value": "app.ai.expected_value",
+    "position_sizer": "app.portfolio.position_sizer"
+  },
+  "assets": [
+    {
+      "ticker": "NVDA",
+      "status": "PASS",
+      "elapsed_seconds": 9.637,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 58.47,
+          "confidence": 53.64,
+          "trading_confidence": 53.64,
+          "current_price": 224.09,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SMH",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.030197,
+          "historical_mfe_20d": 0.106194,
+          "historical_mae_20d": -0.058984,
+          "reward_risk_20d": 1.8,
+          "entry_zone_low": 202.188,
+          "entry_zone_high": 224.09,
+          "stop": 202.188,
+          "tp1": 247.8871,
+          "tp2": 271.4358,
+          "tp3": 289.0273,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 58.47,
+          "confidence": 53.64,
+          "trading_confidence": 53.64,
+          "current_price": 224.09,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SMH",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.030197,
+          "historical_mfe_20d": 0.106194,
+          "historical_mae_20d": -0.058984,
+          "reward_risk_20d": 1.8,
+          "entry_zone_low": 202.188,
+          "entry_zone_high": 224.09,
+          "stop": 202.188,
+          "tp1": 247.8871,
+          "tp2": 271.4358,
+          "tp3": 289.0273,
+          "appt_x_20d": 1.100811,
+          "expected_return_20d": 0.06493
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SMH",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 53.64,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.65,
+            "reward_risk": 1.8,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SMH",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 53.64,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.65,
+            "reward_risk": 1.8,
+            "appt_x": 1.100811,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "MSFT",
+      "status": "PASS",
+      "elapsed_seconds": 4.268,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 55.27,
+          "confidence": 47.89,
+          "trading_confidence": 47.89,
+          "current_price": 496.56,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 16,
+          "fallback_matches": 4,
+          "fallback_ratio": 0.2,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.023949,
+          "historical_mfe_20d": 0.052636,
+          "historical_mae_20d": -0.031118,
+          "reward_risk_20d": 1.691,
+          "entry_zone_low": 465.4479,
+          "entry_zone_high": 496.56,
+          "stop": 465.4479,
+          "tp1": 522.6968,
+          "tp2": 537.4151,
+          "tp3": 549.8431,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 55.27,
+          "confidence": 47.89,
+          "trading_confidence": 47.89,
+          "current_price": 496.56,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 16,
+          "fallback_matches": 4,
+          "fallback_ratio": 0.2,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.023949,
+          "historical_mfe_20d": 0.052636,
+          "historical_mae_20d": -0.031118,
+          "reward_risk_20d": 1.691,
+          "entry_zone_low": 465.4479,
+          "entry_zone_high": 496.56,
+          "stop": 465.4479,
+          "tp1": 522.6968,
+          "tp2": 537.4151,
+          "tp3": 549.8431,
+          "appt_x_20d": 0.54303,
+          "expected_return_20d": 0.016898
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.89,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.2,
+            "historical_probability": 0.65,
+            "reward_risk": 1.691,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.89,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.2,
+            "historical_probability": 0.65,
+            "reward_risk": 1.691,
+            "appt_x": 0.54303,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "GOOGL",
+      "status": "PASS",
+      "elapsed_seconds": 2.361,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 45.85,
+          "confidence": 56.1,
+          "trading_confidence": 56.1,
+          "current_price": 342.005,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 22,
+          "primary_matches": 22,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.636364,
+          "historical_return_20d": 0.03648,
+          "historical_mfe_20d": 0.061822,
+          "historical_mae_20d": -0.049726,
+          "reward_risk_20d": 1.243,
+          "entry_zone_low": 303.5099,
+          "entry_zone_high": 342.005,
+          "stop": 303.5099,
+          "tp1": 363.1483,
+          "tp2": 386.2647,
+          "tp3": 413.8752,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 45.85,
+          "confidence": 56.1,
+          "trading_confidence": 56.1,
+          "current_price": 342.005,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 22,
+          "primary_matches": 22,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.636364,
+          "historical_return_20d": 0.03648,
+          "historical_mfe_20d": 0.061822,
+          "historical_mae_20d": -0.049726,
+          "reward_risk_20d": 1.243,
+          "entry_zone_low": 303.5099,
+          "entry_zone_high": 342.005,
+          "stop": 303.5099,
+          "tp1": 363.1483,
+          "tp2": 386.2647,
+          "tp3": 413.8752,
+          "appt_x_20d": 0.841385,
+          "expected_return_20d": 0.041839
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 56.1,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.636364,
+            "reward_risk": 1.243,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 56.1,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.636364,
+            "reward_risk": 1.243,
+            "appt_x": 0.841385,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "AMZN",
+      "status": "PASS",
+      "elapsed_seconds": 1.674,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 66.59,
+          "confidence": 62.12,
+          "trading_confidence": 62.12,
+          "current_price": 249.7983,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 21,
+          "primary_matches": 21,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.809524,
+          "historical_return_20d": 0.037404,
+          "historical_mfe_20d": 0.085565,
+          "historical_mae_20d": -0.026352,
+          "reward_risk_20d": 3.247,
+          "entry_zone_low": 236.8225,
+          "entry_zone_high": 249.7983,
+          "stop": 236.8225,
+          "tp1": 271.1724,
+          "tp2": 278.9027,
+          "tp3": 287.4906,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 66.59,
+          "confidence": 62.12,
+          "trading_confidence": 62.12,
+          "current_price": 249.7983,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 21,
+          "primary_matches": 21,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.809524,
+          "historical_return_20d": 0.037404,
+          "historical_mfe_20d": 0.085565,
+          "historical_mae_20d": -0.026352,
+          "reward_risk_20d": 3.247,
+          "entry_zone_low": 236.8225,
+          "entry_zone_high": 249.7983,
+          "stop": 236.8225,
+          "tp1": 271.1724,
+          "tp2": 278.9027,
+          "tp3": 287.4906,
+          "appt_x_20d": 1.486039,
+          "expected_return_20d": 0.03916
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 62.12,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.809524,
+            "reward_risk": 3.247,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 62.12,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.809524,
+            "reward_risk": 3.247,
+            "appt_x": 1.486039,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "AVGO",
+      "status": "PASS",
+      "elapsed_seconds": 1.064,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 67.18,
+          "confidence": 61.76,
+          "trading_confidence": 61.76,
+          "current_price": 349.815,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 22,
+          "primary_matches": 22,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.818182,
+          "historical_return_20d": 0.069372,
+          "historical_mfe_20d": 0.110256,
+          "historical_mae_20d": -0.031867,
+          "reward_risk_20d": 3.46,
+          "entry_zone_low": 327.8744,
+          "entry_zone_high": 349.815,
+          "stop": 327.0435,
+          "tp1": 388.3841,
+          "tp2": 413.3331,
+          "tp3": 444.5334,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 67.18,
+          "confidence": 61.76,
+          "trading_confidence": 61.76,
+          "current_price": 349.815,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 22,
+          "primary_matches": 22,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.818182,
+          "historical_return_20d": 0.069372,
+          "historical_mfe_20d": 0.110256,
+          "historical_mae_20d": -0.031867,
+          "reward_risk_20d": 3.46,
+          "entry_zone_low": 327.8744,
+          "entry_zone_high": 349.815,
+          "stop": 327.0435,
+          "tp1": 388.3841,
+          "tp2": 413.3331,
+          "tp3": 444.5334,
+          "appt_x_20d": 2.845511,
+          "expected_return_20d": 0.090679
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 61.76,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.818182,
+            "reward_risk": 3.46,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 61.76,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.818182,
+            "reward_risk": 3.46,
+            "appt_x": 2.845511,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "TSM",
+      "status": "PASS",
+      "elapsed_seconds": 1.098,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "BUY_ON_CONFIRMATION",
+          "action": "BUY_ON_CONFIRMATION",
+          "score": 89.13,
+          "confidence": 60.84,
+          "trading_confidence": 60.84,
+          "current_price": 449.13,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.8,
+          "historical_return_20d": 0.078626,
+          "historical_mfe_20d": 0.131065,
+          "historical_mae_20d": -0.032932,
+          "reward_risk_20d": 3.98,
+          "entry_zone_low": 421.0695,
+          "entry_zone_high": 449.13,
+          "stop": 421.0695,
+          "tp1": 507.9952,
+          "tp2": 530.1801,
+          "tp3": 535.1248,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "BUY_ON_CONFIRMATION",
+          "action": "BUY_ON_CONFIRMATION",
+          "score": 89.13,
+          "confidence": 60.84,
+          "trading_confidence": 60.84,
+          "current_price": 449.13,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.8,
+          "historical_return_20d": 0.078626,
+          "historical_mfe_20d": 0.131065,
+          "historical_mae_20d": -0.032932,
+          "reward_risk_20d": 3.98,
+          "entry_zone_low": 421.0695,
+          "entry_zone_high": 449.13,
+          "stop": 421.0695,
+          "tp1": 507.9952,
+          "tp2": 530.1801,
+          "tp3": 535.1248,
+          "appt_x_20d": 2.047893,
+          "expected_return_20d": 0.067441
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "STRONG_BUY",
+          "operational_signal": "BUY_ON_CONFIRMATION",
+          "signal": "BUY_ON_CONFIRMATION",
+          "gate_status": "BLOCKED",
+          "gate_reason": "buy_requires_confirmation",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 60.84,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.8,
+            "reward_risk": 3.98,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "STRONG_BUY",
+          "operational_signal": "BUY_ON_CONFIRMATION",
+          "signal": "BUY_ON_CONFIRMATION",
+          "gate_status": "BLOCKED",
+          "gate_reason": "buy_requires_confirmation",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": true,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 60.84,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.8,
+            "reward_risk": 3.98,
+            "appt_x": 2.047893,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "META",
+      "status": "PASS",
+      "elapsed_seconds": 2.33,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 49.63,
+          "confidence": 30.88,
+          "trading_confidence": 30.88,
+          "current_price": 774.2,
+          "regime": "EXTREME_MOMENTUM",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 15,
+          "fallback_matches": 5,
+          "fallback_ratio": 0.25,
+          "historical_probability_20d": 0.5,
+          "historical_return_20d": -0.00041,
+          "historical_mfe_20d": 0.053722,
+          "historical_mae_20d": -0.056174,
+          "reward_risk_20d": 0.956,
+          "entry_zone_low": 696.734,
+          "entry_zone_high": 774.2,
+          "stop": 696.734,
+          "tp1": 815.7915,
+          "tp2": 842.9957,
+          "tp3": 875.6777,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 49.63,
+          "confidence": 30.88,
+          "trading_confidence": 30.88,
+          "current_price": 774.2,
+          "regime": "EXTREME_MOMENTUM",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 15,
+          "fallback_matches": 5,
+          "fallback_ratio": 0.25,
+          "historical_probability_20d": 0.5,
+          "historical_return_20d": -0.00041,
+          "historical_mfe_20d": 0.053722,
+          "historical_mae_20d": -0.056174,
+          "reward_risk_20d": 0.956,
+          "entry_zone_low": 696.734,
+          "entry_zone_high": 774.2,
+          "stop": 696.734,
+          "tp1": 815.7915,
+          "tp2": 842.9957,
+          "tp3": 875.6777,
+          "appt_x_20d": 0.317227,
+          "expected_return_20d": 0.01782
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk",
+            "regime"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": false
+          },
+          "metrics": {
+            "trading_confidence": 30.88,
+            "match_quality": "WEAK",
+            "fallback_ratio": 0.25,
+            "historical_probability": 0.5,
+            "reward_risk": 0.956,
+            "regime": "EXTREME_MOMENTUM",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk",
+            "regime"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": false
+          },
+          "metrics": {
+            "trading_confidence": 30.88,
+            "match_quality": "WEAK",
+            "fallback_ratio": 0.25,
+            "historical_probability": 0.5,
+            "reward_risk": 0.956,
+            "appt_x": 0.317227,
+            "regime": "EXTREME_MOMENTUM",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "AAPL",
+      "status": "PASS",
+      "elapsed_seconds": 1.657,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 55.58,
+          "confidence": 54.08,
+          "trading_confidence": 54.08,
+          "current_price": 337.64,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.01023,
+          "historical_mfe_20d": 0.040889,
+          "historical_mae_20d": -0.052079,
+          "reward_risk_20d": 0.785,
+          "entry_zone_low": 308.1912,
+          "entry_zone_high": 337.64,
+          "stop": 308.1912,
+          "tp1": 351.4458,
+          "tp2": 362.2787,
+          "tp3": 374.1965,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 55.58,
+          "confidence": 54.08,
+          "trading_confidence": 54.08,
+          "current_price": 337.64,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.01023,
+          "historical_mfe_20d": 0.040889,
+          "historical_mae_20d": -0.052079,
+          "reward_risk_20d": 0.785,
+          "entry_zone_low": 308.1912,
+          "entry_zone_high": 337.64,
+          "stop": 308.1912,
+          "tp1": 351.4458,
+          "tp2": 362.2787,
+          "tp3": 374.1965,
+          "appt_x_20d": 0.142872,
+          "expected_return_20d": 0.007441
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 54.08,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.65,
+            "reward_risk": 0.785,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 54.08,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.65,
+            "reward_risk": 0.785,
+            "appt_x": 0.142872,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "BRK.B",
+      "status": "PASS",
+      "elapsed_seconds": 1.136,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 42.35,
+          "confidence": 53.15,
+          "trading_confidence": 53.15,
+          "current_price": 507.34,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.0122,
+          "historical_mfe_20d": 0.032803,
+          "historical_mae_20d": -0.024893,
+          "reward_risk_20d": 1.318,
+          "entry_zone_low": 487.9073,
+          "entry_zone_high": 507.34,
+          "stop": 487.9073,
+          "tp1": 523.9822,
+          "tp2": 529.0393,
+          "tp3": 552.1373,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 42.35,
+          "confidence": 53.15,
+          "trading_confidence": 53.15,
+          "current_price": 507.34,
+          "regime": "RECOVERY",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.0122,
+          "historical_mfe_20d": 0.032803,
+          "historical_mae_20d": -0.024893,
+          "reward_risk_20d": 1.318,
+          "entry_zone_low": 487.9073,
+          "entry_zone_high": 507.34,
+          "stop": 487.9073,
+          "tp1": 523.9822,
+          "tp2": 529.0393,
+          "tp3": 552.1373,
+          "appt_x_20d": 0.620735,
+          "expected_return_20d": 0.015452
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 53.15,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.6,
+            "reward_risk": 1.318,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 53.15,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.6,
+            "reward_risk": 1.318,
+            "appt_x": 0.620735,
+            "regime": "RECOVERY",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "JPM",
+      "status": "PASS",
+      "elapsed_seconds": 2.296,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 59.47,
+          "confidence": 55.19,
+          "trading_confidence": 55.19,
+          "current_price": 337.55,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.75,
+          "historical_return_20d": 0.046233,
+          "historical_mfe_20d": 0.077841,
+          "historical_mae_20d": -0.017954,
+          "reward_risk_20d": 4.335,
+          "entry_zone_low": 322.4219,
+          "entry_zone_high": 337.55,
+          "stop": 322.4219,
+          "tp1": 363.8252,
+          "tp2": 368.049,
+          "tp3": 380.6745,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 59.47,
+          "confidence": 55.19,
+          "trading_confidence": 55.19,
+          "current_price": 337.55,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.75,
+          "historical_return_20d": 0.046233,
+          "historical_mfe_20d": 0.077841,
+          "historical_mae_20d": -0.017954,
+          "reward_risk_20d": 4.335,
+          "entry_zone_low": 322.4219,
+          "entry_zone_high": 337.55,
+          "stop": 322.4219,
+          "tp1": 363.8252,
+          "tp2": 368.049,
+          "tp3": 380.6745,
+          "appt_x_20d": 1.973454,
+          "expected_return_20d": 0.035432
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 55.19,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.75,
+            "reward_risk": 4.335,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 55.19,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.75,
+            "reward_risk": 4.335,
+            "appt_x": 1.973454,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "V",
+      "status": "PASS",
+      "elapsed_seconds": 1.33,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 37.72,
+          "confidence": 51.36,
+          "trading_confidence": 51.36,
+          "current_price": 366.16,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.015039,
+          "historical_mfe_20d": 0.03086,
+          "historical_mae_20d": -0.028608,
+          "reward_risk_20d": 1.079,
+          "entry_zone_low": 350.1157,
+          "entry_zone_high": 366.16,
+          "stop": 350.1157,
+          "tp1": 377.4597,
+          "tp2": 388.9055,
+          "tp3": 397.3534,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 37.72,
+          "confidence": 51.36,
+          "trading_confidence": 51.36,
+          "current_price": 366.16,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.015039,
+          "historical_mfe_20d": 0.03086,
+          "historical_mae_20d": -0.028608,
+          "reward_risk_20d": 1.079,
+          "entry_zone_low": 350.1157,
+          "entry_zone_high": 366.16,
+          "stop": 350.1157,
+          "tp1": 377.4597,
+          "tp2": 388.9055,
+          "tp3": 397.3534,
+          "appt_x_20d": 0.457887,
+          "expected_return_20d": 0.013099
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 51.36,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.6,
+            "reward_risk": 1.079,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 51.36,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.6,
+            "reward_risk": 1.079,
+            "appt_x": 0.457887,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "MA",
+      "status": "PASS",
+      "elapsed_seconds": 1.471,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "SELL",
+          "action": "SELL",
+          "score": 16.02,
+          "confidence": 40.17,
+          "trading_confidence": 40.17,
+          "current_price": 561.87,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.4,
+          "historical_return_20d": -0.007897,
+          "historical_mfe_20d": 0.031331,
+          "historical_mae_20d": -0.041324,
+          "reward_risk_20d": 0.758,
+          "entry_zone_low": 528.3537,
+          "entry_zone_high": 561.87,
+          "stop": 528.3537,
+          "tp1": 579.4741,
+          "tp2": 597.0538,
+          "tp3": 604.7457,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "SELL",
+          "action": "SELL",
+          "score": 16.02,
+          "confidence": 40.17,
+          "trading_confidence": 40.17,
+          "current_price": 561.87,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 19,
+          "fallback_matches": 1,
+          "fallback_ratio": 0.05,
+          "historical_probability_20d": 0.4,
+          "historical_return_20d": -0.007897,
+          "historical_mfe_20d": 0.031331,
+          "historical_mae_20d": -0.041324,
+          "reward_risk_20d": 0.758,
+          "entry_zone_low": 528.3537,
+          "entry_zone_high": 561.87,
+          "stop": 528.3537,
+          "tp1": 579.4741,
+          "tp2": 597.0538,
+          "tp3": 604.7457,
+          "appt_x_20d": 0.066047,
+          "expected_return_20d": 0.002729
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "SELL",
+          "operational_signal": "SELL",
+          "signal": "SELL",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 40.17,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.4,
+            "reward_risk": 0.758,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "SELL",
+          "operational_signal": "SELL",
+          "signal": "SELL",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 40.17,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.05,
+            "historical_probability": 0.4,
+            "reward_risk": 0.758,
+            "appt_x": 0.066047,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "TQQQ",
+      "status": "PASS",
+      "elapsed_seconds": 1.496,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 64.66,
+          "confidence": 47.39,
+          "trading_confidence": 47.39,
+          "current_price": 78.4328,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "QQQ",
+          "matches": 20,
+          "primary_matches": 15,
+          "fallback_matches": 5,
+          "fallback_ratio": 0.25,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.067039,
+          "historical_mfe_20d": 0.091232,
+          "historical_mae_20d": -0.072639,
+          "reward_risk_20d": 1.256,
+          "entry_zone_low": 64.3961,
+          "entry_zone_high": 78.4328,
+          "stop": 64.3961,
+          "tp1": 85.5884,
+          "tp2": 91.7321,
+          "tp3": 95.2211,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 64.66,
+          "confidence": 47.39,
+          "trading_confidence": 47.39,
+          "current_price": 78.4328,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "QQQ",
+          "matches": 20,
+          "primary_matches": 15,
+          "fallback_matches": 5,
+          "fallback_ratio": 0.25,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.067039,
+          "historical_mfe_20d": 0.091232,
+          "historical_mae_20d": -0.072639,
+          "reward_risk_20d": 1.256,
+          "entry_zone_low": 64.3961,
+          "entry_zone_high": 78.4328,
+          "stop": 64.3961,
+          "tp1": 85.5884,
+          "tp2": 91.7321,
+          "tp3": 95.2211,
+          "appt_x_20d": 0.333491,
+          "expected_return_20d": 0.024224
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "QQQ",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": true,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.39,
+            "match_quality": "GOOD",
+            "fallback_ratio": 0.25,
+            "historical_probability": 0.6,
+            "reward_risk": 1.256,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "QQQ",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": true,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.39,
+            "match_quality": "GOOD",
+            "fallback_ratio": 0.25,
+            "historical_probability": 0.6,
+            "reward_risk": 1.256,
+            "appt_x": 0.333491,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "GDXU",
+      "status": "PASS",
+      "elapsed_seconds": 2.055,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "SELL",
+          "action": "SELL",
+          "score": 16.24,
+          "confidence": 42.6,
+          "trading_confidence": 42.6,
+          "current_price": 124.529,
+          "regime": "CONSOLIDATION",
+          "benchmark": "GDX",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.45,
+          "historical_return_20d": -0.02383,
+          "historical_mfe_20d": 0.215414,
+          "historical_mae_20d": -0.176484,
+          "reward_risk_20d": 1.221,
+          "entry_zone_low": 89.9512,
+          "entry_zone_high": 124.529,
+          "stop": 89.9512,
+          "tp1": 151.3542,
+          "tp2": 193.5603,
+          "tp3": 210.7958,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "SELL",
+          "action": "SELL",
+          "score": 16.24,
+          "confidence": 42.6,
+          "trading_confidence": 42.6,
+          "current_price": 124.529,
+          "regime": "CONSOLIDATION",
+          "benchmark": "GDX",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.45,
+          "historical_return_20d": -0.02383,
+          "historical_mfe_20d": 0.215414,
+          "historical_mae_20d": -0.176484,
+          "reward_risk_20d": 1.221,
+          "entry_zone_low": 89.9512,
+          "entry_zone_high": 124.529,
+          "stop": 89.9512,
+          "tp1": 151.3542,
+          "tp2": 193.5603,
+          "tp3": 210.7958,
+          "appt_x_20d": 0.554812,
+          "expected_return_20d": 0.097915
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "SELL",
+          "operational_signal": "SELL",
+          "signal": "SELL",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "GDX",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 42.6,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.45,
+            "reward_risk": 1.221,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "SELL",
+          "operational_signal": "SELL",
+          "signal": "SELL",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "GDX",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 42.6,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.45,
+            "reward_risk": 1.221,
+            "appt_x": 0.554812,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "SPCX",
+      "status": "PASS",
+      "elapsed_seconds": 0.872,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "UNCHANGED",
+        "old": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk",
+            "appt_x"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "appt_x": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "TSLA",
+      "status": "PASS",
+      "elapsed_seconds": 1.964,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 33.58,
+          "confidence": 42.62,
+          "trading_confidence": 42.62,
+          "current_price": 379.82,
+          "regime": "EARLY_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.45,
+          "historical_return_20d": -0.053929,
+          "historical_mfe_20d": 0.066625,
+          "historical_mae_20d": -0.125308,
+          "reward_risk_20d": 0.532,
+          "entry_zone_low": 313.3818,
+          "entry_zone_high": 379.82,
+          "stop": 313.3818,
+          "tp1": 405.1256,
+          "tp2": 430.2201,
+          "tp3": 519.1432,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 33.58,
+          "confidence": 42.62,
+          "trading_confidence": 42.62,
+          "current_price": 379.82,
+          "regime": "EARLY_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.45,
+          "historical_return_20d": -0.053929,
+          "historical_mfe_20d": 0.066625,
+          "historical_mae_20d": -0.125308,
+          "reward_risk_20d": 0.532,
+          "entry_zone_low": 313.3818,
+          "entry_zone_high": 379.82,
+          "stop": 313.3818,
+          "tp1": 405.1256,
+          "tp2": 430.2201,
+          "tp3": 519.1432,
+          "appt_x_20d": -0.000955,
+          "expected_return_20d": -0.00012
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 42.62,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.45,
+            "reward_risk": 0.532,
+            "regime": "EARLY_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk",
+            "appt_x"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 42.62,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.45,
+            "reward_risk": 0.532,
+            "appt_x": -0.000955,
+            "regime": "EARLY_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "AMD",
+      "status": "PASS",
+      "elapsed_seconds": 1.787,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 36.28,
+          "confidence": 39.88,
+          "trading_confidence": 39.88,
+          "current_price": 621.6,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.4,
+          "historical_return_20d": -0.037024,
+          "historical_mfe_20d": 0.075252,
+          "historical_mae_20d": -0.099275,
+          "reward_risk_20d": 0.758,
+          "entry_zone_low": 540.1134,
+          "entry_zone_high": 621.6,
+          "stop": 540.1134,
+          "tp1": 668.3766,
+          "tp2": 686.3289,
+          "tp3": 890.2961,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "REDUCE",
+          "action": "REDUCE",
+          "score": 36.28,
+          "confidence": 39.88,
+          "trading_confidence": 39.88,
+          "current_price": 621.6,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.4,
+          "historical_return_20d": -0.037024,
+          "historical_mfe_20d": 0.075252,
+          "historical_mae_20d": -0.099275,
+          "reward_risk_20d": 0.758,
+          "entry_zone_low": 540.1134,
+          "entry_zone_high": 621.6,
+          "stop": 540.1134,
+          "tp1": 668.3766,
+          "tp2": 686.3289,
+          "tp3": 890.2961,
+          "appt_x_20d": 0.350395,
+          "expected_return_20d": 0.034785
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 39.88,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.4,
+            "reward_risk": 0.758,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "REDUCE",
+          "operational_signal": "REDUCE",
+          "signal": "REDUCE",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 39.88,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.4,
+            "reward_risk": 0.758,
+            "appt_x": 0.350395,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "DELL",
+      "status": "PASS",
+      "elapsed_seconds": 1.291,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 63.51,
+          "confidence": 47.49,
+          "trading_confidence": 47.49,
+          "current_price": 537.78,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.035139,
+          "historical_mfe_20d": 0.122678,
+          "historical_mae_20d": -0.065484,
+          "reward_risk_20d": 1.873,
+          "entry_zone_low": 465.9442,
+          "entry_zone_high": 537.78,
+          "stop": 465.9442,
+          "tp1": 603.7538,
+          "tp2": 639.4668,
+          "tp3": 709.9534,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 63.51,
+          "confidence": 47.49,
+          "trading_confidence": 47.49,
+          "current_price": 537.78,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.6,
+          "historical_return_20d": 0.035139,
+          "historical_mfe_20d": 0.122678,
+          "historical_mae_20d": -0.065484,
+          "reward_risk_20d": 1.873,
+          "entry_zone_low": 465.9442,
+          "entry_zone_high": 537.78,
+          "stop": 465.9442,
+          "tp1": 603.7538,
+          "tp2": 639.4668,
+          "tp3": 709.9534,
+          "appt_x_20d": 0.610373,
+          "expected_return_20d": 0.03997
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.49,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.6,
+            "reward_risk": 1.873,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 47.49,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.6,
+            "reward_risk": 1.873,
+            "appt_x": 0.610373,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "LITE",
+      "status": "PASS",
+      "elapsed_seconds": 1.064,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 70.5,
+          "confidence": 49.6,
+          "trading_confidence": 49.6,
+          "current_price": 927.285,
+          "regime": "DISTRIBUTION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.069741,
+          "historical_mfe_20d": 0.180545,
+          "historical_mae_20d": -0.065504,
+          "reward_risk_20d": 2.756,
+          "entry_zone_low": 768.4077,
+          "entry_zone_high": 927.285,
+          "stop": 768.4077,
+          "tp1": 1094.7018,
+          "tp2": 1154.4125,
+          "tp3": 1310.3746,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 70.5,
+          "confidence": 49.6,
+          "trading_confidence": 49.6,
+          "current_price": 927.285,
+          "regime": "DISTRIBUTION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.65,
+          "historical_return_20d": 0.069741,
+          "historical_mfe_20d": 0.180545,
+          "historical_mae_20d": -0.065504,
+          "reward_risk_20d": 2.756,
+          "entry_zone_low": 768.4077,
+          "entry_zone_high": 927.285,
+          "stop": 768.4077,
+          "tp1": 1094.7018,
+          "tp2": 1154.4125,
+          "tp3": 1310.3746,
+          "appt_x_20d": 1.531212,
+          "expected_return_20d": 0.100301
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "regime"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": false
+          },
+          "metrics": {
+            "trading_confidence": 49.6,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.65,
+            "reward_risk": 2.756,
+            "regime": "DISTRIBUTION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "regime"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": false
+          },
+          "metrics": {
+            "trading_confidence": 49.6,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.65,
+            "reward_risk": 2.756,
+            "appt_x": 1.531212,
+            "regime": "DISTRIBUTION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "ORCL",
+      "status": "PASS",
+      "elapsed_seconds": 1.084,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 59.79,
+          "confidence": 55.85,
+          "trading_confidence": 55.85,
+          "current_price": 139.095,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.7,
+          "historical_return_20d": 0.058533,
+          "historical_mfe_20d": 0.100555,
+          "historical_mae_20d": -0.034143,
+          "reward_risk_20d": 2.945,
+          "entry_zone_low": 128.0962,
+          "entry_zone_high": 139.095,
+          "stop": 124.4235,
+          "tp1": 153.0817,
+          "tp2": 171.3677,
+          "tp3": 186.5574,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 59.79,
+          "confidence": 55.85,
+          "trading_confidence": 55.85,
+          "current_price": 139.095,
+          "regime": "CONSOLIDATION",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 20,
+          "fallback_matches": 0,
+          "fallback_ratio": 0.0,
+          "historical_probability_20d": 0.7,
+          "historical_return_20d": 0.058533,
+          "historical_mfe_20d": 0.100555,
+          "historical_mae_20d": -0.034143,
+          "reward_risk_20d": 2.945,
+          "entry_zone_low": 128.0962,
+          "entry_zone_high": 139.095,
+          "stop": 124.4235,
+          "tp1": 153.0817,
+          "tp2": 171.3677,
+          "tp3": 186.5574,
+          "appt_x_20d": 1.805318,
+          "expected_return_20d": 0.061638
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 55.85,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.7,
+            "reward_risk": 2.945,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 55.85,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.0,
+            "historical_probability": 0.7,
+            "reward_risk": 2.945,
+            "appt_x": 1.805318,
+            "regime": "CONSOLIDATION",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "MRVL",
+      "status": "PASS",
+      "elapsed_seconds": 1.378,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 51.34,
+          "confidence": 35.8,
+          "trading_confidence": 35.8,
+          "current_price": 258.77,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.55,
+          "historical_return_20d": 0.020049,
+          "historical_mfe_20d": 0.092417,
+          "historical_mae_20d": -0.105504,
+          "reward_risk_20d": 0.876,
+          "entry_zone_low": 214.8554,
+          "entry_zone_high": 258.77,
+          "stop": 214.8554,
+          "tp1": 282.6848,
+          "tp2": 315.1734,
+          "tp3": 371.5747,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "WATCH",
+          "action": "WATCH",
+          "score": 51.34,
+          "confidence": 35.8,
+          "trading_confidence": 35.8,
+          "current_price": 258.77,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "SPY",
+          "matches": 20,
+          "primary_matches": 18,
+          "fallback_matches": 2,
+          "fallback_ratio": 0.1,
+          "historical_probability_20d": 0.55,
+          "historical_return_20d": 0.020049,
+          "historical_mfe_20d": 0.092417,
+          "historical_mae_20d": -0.105504,
+          "reward_risk_20d": 0.876,
+          "entry_zone_low": 214.8554,
+          "entry_zone_high": 258.77,
+          "stop": 214.8554,
+          "tp1": 282.6848,
+          "tp2": 315.1734,
+          "tp3": 371.5747,
+          "appt_x_20d": 0.44221,
+          "expected_return_20d": 0.046655
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 35.8,
+            "match_quality": "WEAK",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.55,
+            "reward_risk": 0.876,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "WATCH",
+          "operational_signal": "WATCH",
+          "signal": "WATCH",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "non_bullish_signal_preserved",
+          "benchmark": "SPY",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 35.8,
+            "match_quality": "WEAK",
+            "fallback_ratio": 0.1,
+            "historical_probability": 0.55,
+            "reward_risk": 0.876,
+            "appt_x": 0.44221,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "PLTR",
+      "status": "PASS",
+      "elapsed_seconds": 3.378,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "EXPECTED_NEW_FIELD",
+        "old": {
+          "signal": "BUY_ON_CONFIRMATION",
+          "action": "BUY_ON_CONFIRMATION",
+          "score": 80.88,
+          "confidence": 54.37,
+          "trading_confidence": 54.37,
+          "current_price": 192.6,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "IGV",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.75,
+          "historical_return_20d": 0.094014,
+          "historical_mfe_20d": 0.158046,
+          "historical_mae_20d": -0.080571,
+          "reward_risk_20d": 1.962,
+          "entry_zone_low": 165.5868,
+          "entry_zone_high": 192.6,
+          "stop": 165.5868,
+          "tp1": 223.0397,
+          "tp2": 233.0096,
+          "tp3": 257.0871,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "BUY_ON_CONFIRMATION",
+          "action": "BUY_ON_CONFIRMATION",
+          "score": 80.88,
+          "confidence": 54.37,
+          "trading_confidence": 54.37,
+          "current_price": 192.6,
+          "regime": "CONFIRMED_BULL",
+          "benchmark": "IGV",
+          "matches": 20,
+          "primary_matches": 17,
+          "fallback_matches": 3,
+          "fallback_ratio": 0.15,
+          "historical_probability_20d": 0.75,
+          "historical_return_20d": 0.094014,
+          "historical_mfe_20d": 0.158046,
+          "historical_mae_20d": -0.080571,
+          "reward_risk_20d": 1.962,
+          "entry_zone_low": 165.5868,
+          "entry_zone_high": 192.6,
+          "stop": 165.5868,
+          "tp1": 223.0397,
+          "tp2": 233.0096,
+          "tp3": 257.0871,
+          "appt_x_20d": 0.958117,
+          "expected_return_20d": 0.077197
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "BUY",
+          "operational_signal": "BUY_ON_CONFIRMATION",
+          "signal": "BUY_ON_CONFIRMATION",
+          "gate_status": "BLOCKED",
+          "gate_reason": "buy_requires_confirmation",
+          "benchmark": "IGV",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 54.37,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.75,
+            "reward_risk": 1.962,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "BUY",
+          "operational_signal": "BUY_ON_CONFIRMATION",
+          "signal": "BUY_ON_CONFIRMATION",
+          "gate_status": "BLOCKED",
+          "gate_reason": "buy_requires_confirmation",
+          "benchmark": "IGV",
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": true,
+            "historical_probability": true,
+            "reward_risk": true,
+            "appt_x": true,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 54.37,
+            "match_quality": "MODERATE",
+            "fallback_ratio": 0.15,
+            "historical_probability": 0.75,
+            "reward_risk": 1.962,
+            "appt_x": 0.958117,
+            "regime": "CONFIRMED_BULL",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "PLTU",
+      "status": "PASS",
+      "elapsed_seconds": 0.976,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "UNCHANGED",
+        "old": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk",
+            "appt_x"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "appt_x": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "SNDK",
+      "status": "PASS",
+      "elapsed_seconds": 1.135,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "UNCHANGED",
+        "old": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk",
+            "appt_x"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "appt_x": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    },
+    {
+      "ticker": "ASMG",
+      "status": "PASS",
+      "elapsed_seconds": 1.029,
+      "cce": {
+        "pass_legacy_behavior": true,
+        "legacy_differences": [],
+        "appt_classification": "UNCHANGED",
+        "old": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        },
+        "new": {
+          "signal": "INSUFFICIENT_HISTORY",
+          "action": "INSUFFICIENT_HISTORY",
+          "score": 0.0,
+          "confidence": 0.0,
+          "trading_confidence": null,
+          "current_price": null,
+          "regime": null,
+          "benchmark": null,
+          "matches": 0,
+          "primary_matches": null,
+          "fallback_matches": null,
+          "fallback_ratio": null,
+          "historical_probability_20d": null,
+          "historical_return_20d": null,
+          "historical_mfe_20d": null,
+          "historical_mae_20d": null,
+          "reward_risk_20d": null,
+          "entry_zone_low": null,
+          "entry_zone_high": null,
+          "stop": null,
+          "tp1": null,
+          "tp2": null,
+          "tp3": null,
+          "appt_x_20d": null,
+          "expected_return_20d": null
+        }
+      },
+      "gate": {
+        "old": {
+          "version": "1.2",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "new": {
+          "version": "1.3",
+          "engine_signal": "INSUFFICIENT_HISTORY",
+          "operational_signal": "INSUFFICIENT_HISTORY",
+          "signal": "INSUFFICIENT_HISTORY",
+          "gate_status": "NOT_APPLICABLE",
+          "gate_reason": "unknown_signal_preserved",
+          "benchmark": null,
+          "benchmark_trust": null,
+          "benchmark_trust_decision_grade": false,
+          "buy_gates_passed": false,
+          "failed_gates": [
+            "benchmark_trust",
+            "trading_confidence",
+            "match_quality",
+            "fallback_ratio",
+            "historical_probability",
+            "reward_risk",
+            "appt_x"
+          ],
+          "gates": {
+            "benchmark_trust": false,
+            "trading_confidence": false,
+            "match_quality": false,
+            "fallback_ratio": false,
+            "historical_probability": false,
+            "reward_risk": false,
+            "appt_x": false,
+            "regime": true
+          },
+          "metrics": {
+            "trading_confidence": 0.0,
+            "match_quality": "",
+            "fallback_ratio": null,
+            "historical_probability": null,
+            "reward_risk": null,
+            "appt_x": null,
+            "regime": "",
+            "benchmark_trust": "",
+            "benchmark_grade": null,
+            "confirmation_required": null,
+            "confirmed": null
+          }
+        },
+        "operational_signal_same": true,
+        "classification": "UNCHANGED"
+      },
+      "signal_engine": {
+        "old": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_without_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "new_with_test_sizing": {
+          "status": "SKIPPED",
+          "reason": "signal_engine_contract_mismatch",
+          "errors": [
+            "build_decision() got an unexpected keyword argument 'engine_result'",
+            "build_decision() got an unexpected keyword argument 'analysis'",
+            "build_decision() got an unexpected keyword argument 'engine_result'"
+          ]
+        },
+        "old_vs_new_no_sizing_same": true,
+        "new_sizing_changed_signal": false
+      },
+      "regression_status": "PASS"
+    }
+  ],
+  "risk_x": {
+    "status": "FAIL",
+    "cases": [
+      {
+        "entry": 100.0,
+        "stop": 95.0,
+        "target": 110.0,
+        "risk_pct": 5.0,
+        "expected_risk_pct": 0.05,
+        "target_x": 2.0,
+        "expected_target_x": 2.0,
+        "pass": false
+      },
+      {
+        "entry": 100.0,
+        "stop": 90.0,
+        "target": 120.0,
+        "risk_pct": 10.0,
+        "expected_risk_pct": 0.1,
+        "target_x": 2.0,
+        "expected_target_x": 2.0,
+        "pass": false
+      },
+      {
+        "entry": 50.0,
+        "stop": 48.0,
+        "target": 54.0,
+        "risk_pct": 4.0,
+        "expected_risk_pct": 0.04,
+        "target_x": 2.0,
+        "expected_target_x": 2.0,
+        "pass": false
+      }
+    ]
+  },
+  "appt": {
+    "status": "PASS",
+    "cases": [
+      {
+        "version": "1.0",
+        "status": "COMPLETE",
+        "sample_size": 4,
+        "wins": 2,
+        "losses": 2,
+        "win_rate": 0.5,
+        "avg_win_pct": 0.1,
+        "avg_loss_pct": -0.05,
+        "expected_return": 0.025,
+        "risk_unit": 0.05,
+        "appt_x": 0.5
+      },
+      {
+        "version": "1.0",
+        "status": "COMPLETE",
+        "sample_size": 4,
+        "wins": 2,
+        "losses": 2,
+        "win_rate": 0.5,
+        "avg_win_pct": 0.15,
+        "avg_loss_pct": -0.05,
+        "expected_return": 0.05,
+        "risk_unit": 0.05,
+        "appt_x": 1.0
+      }
+    ]
+  },
+  "position_sizing": {
+    "status": "PASS",
+    "result": {
+      "version": "1.0",
+      "status": "OK",
+      "account_equity": 100000.0,
+      "entry_price": 100.0,
+      "stop_price": 95.0,
+      "risk_per_share": 5.0,
+      "max_risk_pct": 1.0,
+      "risk_budget": 1000.0,
+      "shares": 200,
+      "position_value": 20000.0,
+      "actual_risk": 1000.0,
+      "actual_risk_pct": 1.0,
+      "capital_utilization_pct": 20.0
+    },
+    "expected_shares": 200,
+    "expected_position_value": 20000,
+    "expected_risk_budget": 1000
+  },
+  "post_exit": {
+    "status": "PASS",
+    "result": {
+      "version": "1.0",
+      "status": "COMPLETE",
+      "exit_price": 103.0,
+      "direction": "BUY",
+      "risk_pct": 0.05,
+      "observations": {
+        "+1d": {
+          "max_opportunity_pct": 8.737864,
+          "max_adverse_move_pct": -0.970874,
+          "max_opportunity_x": 174.757282,
+          "max_adverse_move_x": -19.417476
+        },
+        "+3d": {
+          "max_opportunity_pct": 11.650485,
+          "max_adverse_move_pct": -0.970874,
+          "max_opportunity_x": 233.009709,
+          "max_adverse_move_x": -19.417476
+        }
+      },
+      "max_opportunity_after_exit_pct": 11.650485,
+      "interpretation": "Potential early exit"
+    }
+  },
+  "tracker": null,
+  "summary": {
+    "overall": "FAIL",
+    "assets_tested": 25,
+    "assets_passed": 25,
+    "assets_failed": 0,
+    "assets_errors": 0,
+    "unexpected_changes": [],
+    "expected_appt_changes": [],
+    "sizing_changed_signal": [],
+    "signal_engine_regressions": [],
+    "deterministic_components_ok": false,
+    "tracker_ok": true,
+    "elapsed_seconds": 57.849
+  },
+  "finished_at_utc": "2026-09-24T18:27:54.575273+00:00"
+}

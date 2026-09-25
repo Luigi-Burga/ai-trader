@@ -106,7 +106,7 @@ from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
-from app.data.market_data import get_daily_history
+import yfinance as yf
 
 
 VERSION = "1.6.1"
@@ -214,12 +214,13 @@ def _download_close_ohlcv(ticker: str, period: str = "5y") -> pd.DataFrame:
     ticker = _clean_ticker(ticker)
 
     try:
-        df = get_daily_history(
+        df = yf.download(
             ticker,
             period=period,
             auto_adjust=True,
-            actions=False,
+            progress=False,
             group_by="column",
+            threads=False,
         )
     except Exception:
         return pd.DataFrame()
@@ -784,6 +785,25 @@ def _result_dict(
     }
 
 
+def _attach_selected_benchmark_data(
+    result: dict[str, Any],
+    *,
+    benchmark: str,
+    period: str,
+    return_selected_data: bool,
+) -> dict[str, Any]:
+    """Attach selected benchmark data for internal orchestrator transport only."""
+    if not return_selected_data or not benchmark:
+        return result
+    try:
+        selected_df = _download_close_ohlcv(benchmark, period)
+    except Exception:
+        selected_df = pd.DataFrame()
+    if selected_df is not None and not selected_df.empty:
+        result["_selected_benchmark_data"] = selected_df.copy()
+    return result
+
+
 def resolve_benchmarks(
     ticker: str,
     *,
@@ -809,15 +829,10 @@ def resolve_benchmarks(
     config = config or ValidationConfig()
     ticker = _clean_ticker(ticker)
 
-    # Per-resolution in-memory benchmark data cache. This prevents duplicate
-    # provider/cache reads when the same candidate is encountered more than
-    # once during a resolution, and lets CCE reuse the selected DataFrame.
-    benchmark_data_cache: dict[str, pd.DataFrame] = {}
-
     if asset_df is None:
         asset_df = _download_close_ohlcv(ticker, period)
     else:
-        asset_df = asset_df.copy(deep=True)
+        asset_df = asset_df.copy()
 
     if asset_df.empty:
         req = _requirements(0, listing_days, config)
@@ -843,7 +858,7 @@ def resolve_benchmarks(
             reason="asset_unavailable",
         )
 
-        return _result_dict(
+        result = _result_dict(
             ticker=ticker,
             sector_benchmark=None,
             market_benchmark=MARKET_BENCHMARK,
@@ -860,6 +875,12 @@ def resolve_benchmarks(
             relevance=None,
             candidate_evaluations=None,
         )
+        return _attach_selected_benchmark_data(
+            result,
+            benchmark=market if market_validation.available else "",
+            period=period,
+            return_selected_data=return_selected_data,
+        )
 
     req = _requirements(len(asset_df), listing_days, config)
 
@@ -868,18 +889,12 @@ def resolve_benchmarks(
     # ---------------------------------------------------------------
     if benchmark:
         manual = _clean_ticker(benchmark)
-        manual_df = benchmark_data_cache.get(manual)
-        if manual_df is None:
-            manual_df = _download_close_ohlcv(manual, period)
-            benchmark_data_cache[manual] = manual_df
-
         validation, overlap = validate_benchmark(
             ticker,
             manual,
             period=period,
             listing_days=listing_days,
             asset_df=asset_df,
-            benchmark_df=manual_df,
             config=config,
         )
 
@@ -924,9 +939,12 @@ def resolve_benchmarks(
             relevance=relevance,
             candidate_evaluations=None,
         )
-        if return_selected_data:
-            result["_selected_benchmark_data"] = manual_df.copy(deep=True)
-        return result
+        return _attach_selected_benchmark_data(
+            result,
+            benchmark=manual,
+            period=period,
+            return_selected_data=return_selected_data,
+        )
 
     # ---------------------------------------------------------------
     # Sector candidates
@@ -942,18 +960,12 @@ def resolve_benchmarks(
     for candidate in candidates:
         candidate = _clean_ticker(candidate)
 
-        candidate_df = benchmark_data_cache.get(candidate)
-        if candidate_df is None:
-            candidate_df = _download_close_ohlcv(candidate, period)
-            benchmark_data_cache[candidate] = candidate_df
-
         validation, overlap = validate_benchmark(
             ticker,
             candidate,
             period=period,
             listing_days=listing_days,
             asset_df=asset_df,
-            benchmark_df=candidate_df,
             config=config,
         )
 
@@ -1019,20 +1031,17 @@ def resolve_benchmarks(
             relevance=relevance,
             candidate_evaluations=candidate_evaluations,
         )
-        if return_selected_data:
-            selected_df = benchmark_data_cache.get(selected, pd.DataFrame())
-            result["_selected_benchmark_data"] = selected_df.copy(deep=True)
-        return result
+        return _attach_selected_benchmark_data(
+            result,
+            benchmark=selected,
+            period=period,
+            return_selected_data=return_selected_data,
+        )
 
     # ---------------------------------------------------------------
     # Broad-market fallback
     # ---------------------------------------------------------------
     market = MARKET_BENCHMARK
-
-    market_df = benchmark_data_cache.get(market)
-    if market_df is None:
-        market_df = _download_close_ohlcv(market, period)
-        benchmark_data_cache[market] = market_df
 
     market_validation, market_overlap = validate_benchmark(
         ticker,
@@ -1040,7 +1049,6 @@ def resolve_benchmarks(
         period=period,
         listing_days=listing_days,
         asset_df=asset_df,
-        benchmark_df=market_df,
         config=config,
     )
 
@@ -1087,13 +1095,12 @@ def resolve_benchmarks(
         relevance=market_relevance,
         candidate_evaluations=candidate_evaluations or None,
     )
-    if return_selected_data:
-        selected_df = benchmark_data_cache.get(
-            str(result.get("selected_benchmark", "")).upper(),
-            pd.DataFrame(),
-        )
-        result["_selected_benchmark_data"] = selected_df.copy(deep=True)
-    return result
+    return _attach_selected_benchmark_data(
+        result,
+        benchmark=market if market_validation.available else "",
+        period=period,
+        return_selected_data=return_selected_data,
+    )
 
 
 def get_benchmark(
