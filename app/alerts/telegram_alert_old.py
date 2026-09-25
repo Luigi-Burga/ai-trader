@@ -11,8 +11,6 @@ Compatibility contract preserved from V2.0:
 Approval extension:
     telegram_wait_for_approval(token, timeout_seconds, poll_interval_seconds)
         -> "APPROVED" | "REJECTED" | "TIMEOUT"
-    telegram_wait_for_confirmation(token, timeout_seconds, poll_interval_seconds)
-        -> "CONFIRMED" | "REJECTED" | "TIMEOUT"
 
 Key optimization:
     - Reuses ONE Bot instance and ONE asyncio event loop per process.
@@ -350,68 +348,6 @@ def telegram_wait_for_approval(
         time.sleep(poll_interval_seconds)
 
     return "TIMEOUT"
-
-
-def telegram_wait_for_confirmation(
-    token: str,
-    timeout_seconds: int = 300,
-    poll_interval_seconds: int = 2,
-) -> str:
-    """
-    Wait for the explicit first-order confirmation command.
-
-    Accepted commands:
-        CONFIRM FIRST ORDER <token>
-        REJECT <token>
-
-    Uses the SAME Bot instance/event loop as send_telegram() and the
-    existing approval mechanism.
-    """
-    if not token:
-        raise ValueError("token must not be empty")
-    if timeout_seconds <= 0:
-        raise ValueError("timeout_seconds must be greater than zero")
-    if poll_interval_seconds <= 0:
-        raise ValueError("poll_interval_seconds must be greater than zero")
-
-    _DISPATCHER._start()
-
-    import time
-
-    deadline = time.monotonic() + timeout_seconds
-    offset = None
-
-    while time.monotonic() < deadline:
-        updates = _DISPATCHER.get_updates(offset=offset)
-
-        for update in updates:
-            update_id = getattr(update, "update_id", None)
-            if update_id is not None:
-                offset = update_id + 1
-
-            message = getattr(update, "message", None)
-            if message is None:
-                continue
-
-            chat = getattr(message, "chat", None)
-            chat_id = str(getattr(chat, "id", ""))
-
-            configured_chat_id = str(_DISPATCHER._chat_id or "")
-            if chat_id != configured_chat_id:
-                continue
-
-            text = str(getattr(message, "text", "") or "").strip()
-
-            if text.upper() == f"CONFIRM FIRST ORDER {token}".upper():
-                return "CONFIRMED"
-
-            if text.upper() == f"REJECT {token}".upper():
-                return "REJECTED"
-
-        time.sleep(poll_interval_seconds)
-
-    return "TIMEOUT"
-
 
 def close_telegram() -> None:
     """

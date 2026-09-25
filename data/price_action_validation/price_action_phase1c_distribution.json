@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "engine": "Price Action Engine",
+  "engine_version": "1.0",
+  "tickers": [
+    "NVDA",
+    "TSM",
+    "TQQQ",
+    "SPCX",
+    "PLTU"
+  ],
+  "horizons": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "results": {},
+  "errors": {
+    "NVDA": "arg must be a list, tuple, 1-d array, or Series",
+    "TSM": "arg must be a list, tuple, 1-d array, or Series",
+    "TQQQ": "arg must be a list, tuple, 1-d array, or Series",
+    "SPCX": "arg must be a list, tuple, 1-d array, or Series",
+    "PLTU": "arg must be a list, tuple, 1-d array, or Series"
+  }
+}
