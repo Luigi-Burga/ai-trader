@@ -1,6 +1,6 @@
 """AI Trader - Confidence Position Sizer V1.0
 
-Maps AI Trader confidence to the fixed 10-20 share BUY sizing policy.
+Maps AI Trader confidence to the fixed 100-200 share BUY sizing policy.
 This module does not connect to Alpaca and never submits orders.
 """
 
@@ -19,21 +19,21 @@ def calculate_buy_quantity(confidence: float) -> int:
     if confidence < 60.0:
         return 0
     if confidence < 70.0:
-        return 10
+        return 100
     if confidence < 80.0:
-        return 13
+        return 130
     if confidence < 90.0:
-        return 16
+        return 160
     if confidence < 95.0:
-        return 18
-    return 20
+        return 180
+    return 200
 
 
 def sizing_band(confidence: float) -> str:
     q = calculate_buy_quantity(confidence)
     if q == 0:
         return "NO_BUY"
-    return {10:"60-69",13:"70-79",16:"80-89",18:"90-94",20:"95-100"}[q]
+    return {100:"60-69",130:"70-79",160:"80-89",180:"90-94",200:"95-100"}[q]
 
 
 if __name__ == "__main__":
