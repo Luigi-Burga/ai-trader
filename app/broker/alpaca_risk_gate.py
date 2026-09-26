@@ -1,6 +1,6 @@
 """
 AI Trader - Alpaca Risk Gate
-Version: 1.0
+Version: 2.2
 
 Read-only safety barrier between Trade Intent and the future Executor.
 This module NEVER submits, cancels, or modifies Alpaca orders.
@@ -24,8 +24,9 @@ class RiskConfig:
 
     max_portfolio_exposure_pct: float = 80.0
     max_position_exposure_pct: float = 20.0
+    market_order_slippage_buffer_pct: float = 2.0
     min_confidence: float = 60.0
-    allowed_buy_signals: frozenset[str] = frozenset({"BUY"})
+    allowed_buy_signals: frozenset[str] = frozenset({"BUY", "STRONG_BUY"})
     allowed_sell_signals: frozenset[str] = frozenset({"SELL", "REDUCE"})
     require_reconciliation: bool = True
     reject_if_open_same_side: bool = True
@@ -39,6 +40,8 @@ class RiskConfig:
             raise ValueError(
                 "max_position_exposure_pct must be > 0 and <= 100."
             )
+        if self.market_order_slippage_buffer_pct < 0:
+            raise ValueError("market_order_slippage_buffer_pct must be >= 0.")
         if not 0 <= self.min_confidence <= 100:
             raise ValueError(
                 "min_confidence must be between 0 and 100."
@@ -131,7 +134,7 @@ class AlpacaRiskGate:
         self.reconciliation = reconciliation or AlpacaReconciliation()
         self.config = config or RiskConfig()
 
-    def evaluate(self, intent: TradeIntent, reconciliation_report=None) -> RiskDecision:
+    def evaluate(self, intent: TradeIntent, reconciliation_report=None, market_price: Optional[float] = None) -> RiskDecision:
         checks: list[RiskCheck] = []
         rejection_reasons: list[str] = []
 
@@ -141,7 +144,23 @@ class AlpacaRiskGate:
 
         current_exposure = positions_summary.gross_market_value
         current_exposure_pct = current_exposure / capital_base * 100
-        estimated_notional = intent.notional_value
+        if intent.order_type == "market":
+            if market_price is None or float(market_price) <= 0:
+                estimated_notional = 0.0
+                market_price_message = "Market order requires a positive current market price for risk estimation."
+            else:
+                market_price = float(market_price)
+                buffer = 1.0 + (self.config.market_order_slippage_buffer_pct / 100.0)
+                estimated_notional = intent.quantity * market_price * buffer
+                market_price_message = (
+                    f"Market price=${market_price:,.2f}; "
+                    f"risk buffer={self.config.market_order_slippage_buffer_pct:.2f}%; "
+                    f"risk notional=${estimated_notional:,.2f}."
+                )
+        else:
+            estimated_notional = intent.notional_value or 0.0
+            market_price_message = "Not applicable for non-market order."
+
         requested_exposure_pct = estimated_notional / capital_base * 100
 
         if intent.is_buy:
@@ -203,6 +222,9 @@ class AlpacaRiskGate:
             notional_ok,
             f"Requested notional=${estimated_notional:,.2f}.",
         )
+
+        if intent.order_type == "market":
+            add_check("MARKET_PRICE", market_price is not None and float(market_price) > 0, market_price_message)
 
         # 6. Confidence
         confidence = intent.confidence
@@ -289,7 +311,7 @@ class AlpacaRiskGate:
         if reconciliation_report is None:
             try:
                 reconciliation_report = (
-                    self.reconciliation.reconcile_empty_portfolio()
+                    self.reconciliation.reconcile_current_state()
                 )
             except Exception as exc:
                 reconciliation_error = str(exc)
@@ -408,8 +430,7 @@ def _run_self_test() -> None:
         symbol="NVDA",
         side="buy",
         quantity=100,
-        order_type="limit",
-        limit_price=180.50,
+        order_type="market",
         time_in_force="day",
         reason="Risk Gate self-test",
         confidence=84.2,
@@ -423,7 +444,7 @@ def _run_self_test() -> None:
     print()
 
     gate = create_risk_gate()
-    decision = gate.evaluate(intent)
+    decision = gate.evaluate(intent, market_price=180.50)
 
     print(decision.summary())
     print()

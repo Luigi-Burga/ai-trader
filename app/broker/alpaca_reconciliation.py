@@ -58,6 +58,7 @@ class ReconciliationReport:
 
     expected_open_order_count: int
     actual_open_order_count: int
+    actual_open_orders: list[dict[str, Any]]
 
     position_mismatches: list[dict[str, Any]]
     missing_expected_positions: list[str]
@@ -93,7 +94,7 @@ class AlpacaReconciliation:
     def reconcile(
         self,
         expected_positions: list[ExpectedPosition] | None = None,
-        expected_open_order_count: int = 0,
+        expected_open_order_count: int | None = 0,
     ) -> ReconciliationReport:
         """
         Compare expected AI Trader state with actual Alpaca state.
@@ -101,7 +102,8 @@ class AlpacaReconciliation:
         If expected_positions is omitted, the expected position set is empty.
         This is useful for the initial account-state validation.
         """
-        expected_positions = expected_positions or []
+        if expected_positions is None:
+            expected_positions = []
 
         account = self.client.get_account()
         actual_positions = self.client.get_positions()
@@ -181,7 +183,7 @@ class AlpacaReconciliation:
 
         actual_order_count = len(actual_orders)
 
-        if actual_order_count != expected_open_order_count:
+        if expected_open_order_count is not None and actual_order_count != expected_open_order_count:
             warnings.append(
                 "Open order count mismatch: "
                 f"expected={expected_open_order_count}, "
@@ -196,9 +198,14 @@ class AlpacaReconciliation:
                 f"Alpaca account status is {account.get('status')}."
             )
 
+        orders_match = (
+            expected_open_order_count is None
+            or actual_order_count == expected_open_order_count
+        )
+
         reconciled = (
             len(mismatches) == 0
-            and actual_order_count == expected_open_order_count
+            and orders_match
             and not account.get("trading_blocked", False)
             and account.get("status") == "AccountStatus.ACTIVE"
         )
@@ -213,8 +220,13 @@ class AlpacaReconciliation:
             reconciled=reconciled,
             expected_position_count=len(expected_map),
             actual_position_count=len(actual_map),
-            expected_open_order_count=expected_open_order_count,
+            expected_open_order_count=(
+                actual_order_count
+                if expected_open_order_count is None
+                else expected_open_order_count
+            ),
             actual_open_order_count=actual_order_count,
+            actual_open_orders=[self._normalize_actual_order(order) for order in actual_orders],
             position_mismatches=[
                 asdict(mismatch) for mismatch in mismatches
             ],
@@ -223,6 +235,54 @@ class AlpacaReconciliation:
             expected_symbols=sorted(expected_map),
             actual_symbols=sorted(actual_map),
             warnings=warnings,
+        )
+
+    def reconcile_current_state(self) -> ReconciliationReport:
+        """
+        Validate the current Alpaca broker state without assuming an empty
+        portfolio.
+
+        This is the autonomous-trading pre-execution validation. It accepts
+        any existing positions and any existing open orders as the current
+        broker state, while still validating that the account is active, not
+        trading-blocked, and that the broker state can be read consistently.
+
+        This method does NOT declare that the current state is the desired
+        strategy state. Strategy-vs-broker reconciliation remains available
+        through ``reconcile(expected_positions, expected_open_order_count)``.
+        """
+        actual_positions = self.client.get_positions()
+        actual_orders = self.client.get_orders(status="open")
+        expected_positions = [
+            ExpectedPosition(
+                symbol=str(position.get("symbol", "")).upper(),
+                qty=float(position.get("qty") or 0.0),
+                side=("short" if "short" in str(position.get("side", "")).lower() else "long"),
+            )
+            for position in actual_positions
+            if str(position.get("symbol", "")).strip()
+        ]
+
+        return self.reconcile(
+            expected_positions=expected_positions,
+            expected_open_order_count=len(actual_orders),
+        )
+
+    def reconcile_state(
+        self,
+        expected_positions: list[ExpectedPosition] | None = None,
+        expected_open_order_count: int | None = 0,
+    ) -> ReconciliationReport:
+        """
+        General reconciliation entry point for autonomous operation.
+
+        Use ``expected_positions=[]`` and ``expected_open_order_count=0`` for
+        an explicitly empty portfolio, or provide the expected broker state
+        for a portfolio containing positions and/or open orders.
+        """
+        return self.reconcile(
+            expected_positions=expected_positions,
+            expected_open_order_count=expected_open_order_count,
         )
 
     def reconcile_empty_portfolio(self) -> ReconciliationReport:
@@ -305,6 +365,24 @@ class AlpacaReconciliation:
             }
 
         return result
+
+    @staticmethod
+    def _normalize_actual_order(order: Any) -> dict[str, Any]:
+        """Normalize the broker open-order object for audit/reporting."""
+        if isinstance(order, Mapping):
+            get = order.get
+        else:
+            get = lambda key, default=None: getattr(order, key, default)
+
+        return {
+            "id": str(get("id", "")),
+            "symbol": str(get("symbol", "")).upper(),
+            "side": str(get("side", "")).lower(),
+            "qty": float(get("qty", 0) or 0),
+            "status": str(get("status", "")).lower(),
+            "order_type": str(get("order_type", "")).lower(),
+            "time_in_force": str(get("time_in_force", "")).lower(),
+        }
 
     def report(
         self,
@@ -404,8 +482,7 @@ def print_report(report: ReconciliationReport) -> None:
 if __name__ == "__main__":
     reconciliation = create_alpaca_reconciliation()
 
-    # Initial safety test:
-    # AI Trader expects an empty portfolio and zero open orders.
-    report = reconciliation.reconcile_empty_portfolio()
+    # Autonomous-state safety test: do not assume the portfolio is empty.
+    report = reconciliation.reconcile_current_state()
 
     print_report(report)
