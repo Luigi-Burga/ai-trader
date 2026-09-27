@@ -1,5 +1,5 @@
 """
-AI Trader - Integrated Main V2.14
+AI Trader - Integrated Main V2.13
 --------------------------------
 Integration of autonomous Alpaca Paper execution.
 
@@ -14,8 +14,6 @@ V2.13 adds:
 - TradeIntent creation from validated watchlist BUY signals
 - Alpaca Risk Gate
 - Autonomous Alpaca Paper Executor V2.2
-- Position Sizer V2.0 with capital-aware execution sizing
-- Risk Gate V2.3
 - Post-execution reconciliation
 - Telegram notification only
 
@@ -27,9 +25,7 @@ Execution safety:
 - Only BUY / STRONG_BUY signals are eligible.
 - BUY_ON_CONFIRMATION is NOT executed automatically.
 - Order type is MARKET.
-- BUY quantity is determined by AI Trader confidence as a desired quantity: 100/130/160/180/200 shares.
-- Position Sizer V2.0 reduces the desired quantity when the fixed $100,000 strategy capital cannot fund the full quantity.
-- Risk Gate V2.3 validates the resulting executable quantity against actual available strategy capital.
+- BUY quantity is determined by AI Trader confidence: 100/130/160/180/200 shares.
 - Risk Gate estimates market-order exposure from current price plus a configurable slippage buffer.
 - Autonomous execution is explicitly enabled with:
       AI_TRADER_AUTONOMOUS_EXECUTION=1
@@ -93,12 +89,7 @@ from app.prediction_tracker import update_all_predictions
 
 # V2.12 - Autonomous Paper execution
 from app.broker.alpaca_trade_intent import TradeIntent
-from app.broker.alpaca_account import AI_TRADER_CAPITAL_BASE
-from app.broker.alpaca_position_sizer import (
-    calculate_buy_quantity,
-    calculate_capital_aware_buy_quantity,
-    sizing_summary,
-)
+from app.broker.alpaca_position_sizer import calculate_buy_quantity
 from app.broker.alpaca_risk_gate import create_risk_gate
 from app.broker.alpaca_executor import create_executor
 
@@ -139,63 +130,16 @@ def _autonomous_execution_enabled() -> bool:
     }
 
 
-def _execution_sizing(
-    confidence: float,
-    market_price: float,
-    *,
-    current_exposure: float,
-) -> dict:
-    """
-    Calculate desired and executable BUY quantity using Position Sizer V2.0.
-
-    Strategy capital is fixed at $100,000. Broker buying power is never used
-    as AI Trader strategy capital.
-    """
-    confidence = float(confidence)
-    market_price = float(market_price)
-    current_exposure = float(current_exposure)
-
-    if market_price <= 0:
-        raise ValueError("market_price must be greater than zero.")
-    if current_exposure < 0:
-        raise ValueError("current_exposure cannot be negative.")
-
-    available_capital = max(
-        0.0,
-        float(AI_TRADER_CAPITAL_BASE) - current_exposure,
-    )
-
-    desired_quantity = calculate_buy_quantity(confidence)
-    executable_quantity = calculate_capital_aware_buy_quantity(
-        confidence=confidence,
-        available_capital=available_capital,
-        market_price=market_price,
-    )
-
-    summary = sizing_summary(
-        confidence=confidence,
-        available_capital=available_capital,
-        market_price=market_price,
-    )
-
-    summary["current_exposure"] = current_exposure
-    summary["capital_base"] = float(AI_TRADER_CAPITAL_BASE)
-
-    # Keep this invariant explicit at the integration boundary.
-    if executable_quantity > desired_quantity:
-        raise RuntimeError(
-            "Position Sizer invariant violated: executable quantity "
-            "cannot exceed desired quantity."
+def _execution_quantity(confidence: float | None = None) -> float:
+    """Return confidence-driven BUY quantity; no fixed quantity override."""
+    if confidence is None:
+        raise ValueError("confidence is required for autonomous BUY sizing.")
+    quantity = calculate_buy_quantity(float(confidence))
+    if quantity <= 0:
+        raise ValueError(
+            f"Confidence {float(confidence):.2f}% is below the BUY threshold."
         )
-
-    return {
-        "desired_quantity": int(desired_quantity),
-        "executable_quantity": int(executable_quantity),
-        "available_capital": available_capital,
-        "current_exposure": current_exposure,
-        "market_price": market_price,
-        "summary": summary,
-    }
+    return float(quantity)
 
 
 def _scan_allowed() -> bool:
@@ -314,8 +258,6 @@ def _log_prediction_snapshot(
 def _build_trade_intent(
     symbol: str,
     result: dict,
-    *,
-    risk_gate,
 ) -> TradeIntent | None:
     """Convert an eligible scanner BUY result into a MARKET TradeIntent."""
     final_signal = str(
@@ -332,39 +274,14 @@ def _build_trade_intent(
         raise ValueError(f"{symbol}: executable signal has no confidence.")
     confidence = float(confidence)
 
+    quantity = calculate_buy_quantity(confidence)
+    if quantity <= 0:
+        print(f"{symbol} | Confidence={confidence:.2f}% | NO BUY: below minimum confidence.")
+        return None
+
     price = result.get("current_price")
     if price is None or float(price) <= 0:
         raise ValueError(f"{symbol}: current_price is required for MARKET risk estimation.")
-    price = float(price)
-
-    # Use the same live broker-position snapshot source as Risk Gate V2.3
-    # to determine the capital already committed by AI Trader.
-    positions_summary = risk_gate.positions.get_summary()
-    current_exposure = float(positions_summary.gross_market_value)
-
-    sizing = _execution_sizing(
-        confidence=confidence,
-        market_price=price,
-        current_exposure=current_exposure,
-    )
-    quantity = sizing["executable_quantity"]
-
-    print(
-        f"{symbol} | SIZER V2.0 | "
-        f"confidence={confidence:.2f}% | "
-        f"desired={sizing['desired_quantity']} | "
-        f"available=${sizing['available_capital']:,.2f} | "
-        f"price=${price:,.2f} | "
-        f"executable={quantity} | "
-        f"notional=${quantity * price:,.2f}"
-    )
-
-    if quantity <= 0:
-        print(
-            f"{symbol} | NO BUY: available strategy capital cannot fund "
-            "one whole share at the current market price."
-        )
-        return None
 
     strategy = (
         result.get("engine")
@@ -377,10 +294,7 @@ def _build_trade_intent(
         f"Watchlist Scanner {result.get('version', '')} "
         f"signal={final_signal}; score={result.get('score', '-')}; "
         f"benchmark={result.get('benchmark', '-')}; regime={result.get('regime', '-')}; "
-        f"confidence={confidence:.2f}%; "
-        f"desired_qty={sizing['desired_quantity']}; "
-        f"executable_qty={sizing['executable_quantity']}; "
-        f"available_capital=${sizing['available_capital']:.2f}"
+        f"confidence={confidence:.2f}%"
     )
 
     return TradeIntent(
@@ -440,7 +354,6 @@ def _execute_watchlist_signal(
         intent = _build_trade_intent(
             symbol,
             result,
-            risk_gate=risk_gate,
         )
 
         if intent is None:
@@ -516,7 +429,7 @@ def main() -> None:
 
     print("\n")
     print("===================================")
-    print("AI Trader Integrated V2.14")
+    print("AI Trader Integrated V2.12")
     print(f"Market Scan: {datetime.now()}")
     print(f"Run ID: {run_id}")
     print("===================================")
@@ -526,9 +439,9 @@ def main() -> None:
     if _autonomous_execution_enabled():
         print("AUTONOMOUS PAPER EXECUTION: ENABLED")
         print("Order Type: MARKET")
-        print("Quantity Policy: DESIRED 100/130/160/180/200")
-        print("Execution Quantity: CAPITAL-AWARE")
-        print(f"Strategy Capital Base: ${AI_TRADER_CAPITAL_BASE:,.2f}")
+        print(
+            print("Quantity: CONFIDENCE-DRIVEN (100/130/160/180/200)")
+        )
         print("Telegram: NOTIFICATION ONLY")
         print("Live Trading: DISABLED")
     else:

@@ -1,15 +1,9 @@
 """
 AI Trader - Alpaca Risk Gate
-Version: 2.3
+Version: 2.2
 
 Read-only safety barrier between Trade Intent and the future Executor.
-
-V2.3 changes:
-- Removes percentage-based position exposure as a rejection criterion.
-- Removes percentage-based portfolio exposure as a rejection criterion.
-- Available AI Trader strategy capital is the hard capital constraint for BUY.
-- MARKET order slippage buffer remains an informational risk estimate only.
-- No order submission, cancellation, or modification is performed here.
+This module NEVER submits, cancels, or modifies Alpaca orders.
 """
 
 from __future__ import annotations
@@ -26,7 +20,7 @@ from app.broker.alpaca_trade_intent import TradeIntent
 
 @dataclass(frozen=True)
 class RiskConfig:
-    """Operational risk controls for AI Trader."""
+    """Configurable risk limits for AI Trader."""
 
     max_portfolio_exposure_pct: float = 80.0
     max_position_exposure_pct: float = 20.0
@@ -47,9 +41,7 @@ class RiskConfig:
                 "max_position_exposure_pct must be > 0 and <= 100."
             )
         if self.market_order_slippage_buffer_pct < 0:
-            raise ValueError(
-                "market_order_slippage_buffer_pct must be >= 0."
-            )
+            raise ValueError("market_order_slippage_buffer_pct must be >= 0.")
         if not 0 <= self.min_confidence <= 100:
             raise ValueError(
                 "min_confidence must be between 0 and 100."
@@ -84,23 +76,23 @@ class RiskDecision:
         status = "APPROVED" if self.approved else "REJECTED"
 
         lines = [
-            "RISK GATE V2.3",
-            "=" * 64,
+            "RISK GATE",
+            "=" * 60,
             "",
-            f"Risk Decision:        {status}",
-            f"Symbol:               {self.symbol}",
-            f"Side:                 {self.side.upper()}",
-            f"Quantity:             {self.quantity:g}",
-            f"Estimated Notional:   ${self.estimated_notional:,.2f}",
+            f"Risk Decision:       {status}",
+            f"Symbol:              {self.symbol}",
+            f"Side:                {self.side.upper()}",
+            f"Quantity:            {self.quantity:g}",
+            f"Estimated Notional:  ${self.estimated_notional:,.2f}",
             "",
-            f"Capital Base:         ${self.capital_base:,.2f}",
+            f"Capital Base:        ${self.capital_base:,.2f}",
             f"Current Exposure:     ${self.current_exposure:,.2f}",
-            f"Current Exposure %:   {self.current_exposure_pct:.2f}%",
-            f"Requested Exposure %: {self.requested_exposure_pct:.2f}%",
-            f"Projected Exposure %: {self.projected_exposure_pct:.2f}%",
+            f"Current Exposure %:    {self.current_exposure_pct:.2f}%",
+            f"Requested Exposure %:  {self.requested_exposure_pct:.2f}%",
+            f"Projected Exposure %:  {self.projected_exposure_pct:.2f}%",
             "",
             "CHECKS",
-            "-" * 64,
+            "-" * 60,
         ]
 
         for check in self.checks:
@@ -110,7 +102,7 @@ class RiskDecision:
             )
 
         if self.rejection_reasons:
-            lines.extend(["", "REJECTION REASONS", "-" * 64])
+            lines.extend(["", "REJECTION REASONS", "-" * 60])
             lines.extend(
                 f"- {reason}" for reason in self.rejection_reasons
             )
@@ -142,12 +134,7 @@ class AlpacaRiskGate:
         self.reconciliation = reconciliation or AlpacaReconciliation()
         self.config = config or RiskConfig()
 
-    def evaluate(
-        self,
-        intent: TradeIntent,
-        reconciliation_report=None,
-        market_price: Optional[float] = None,
-    ) -> RiskDecision:
+    def evaluate(self, intent: TradeIntent, reconciliation_report=None, market_price: Optional[float] = None) -> RiskDecision:
         checks: list[RiskCheck] = []
         rejection_reasons: list[str] = []
 
@@ -157,53 +144,34 @@ class AlpacaRiskGate:
 
         current_exposure = positions_summary.gross_market_value
         current_exposure_pct = current_exposure / capital_base * 100
-
-        # For MARKET orders the raw market notional is the capital requirement.
-        # The slippage buffer is retained only for risk estimation/reporting.
         if intent.order_type == "market":
             if market_price is None or float(market_price) <= 0:
-                raw_notional = 0.0
                 estimated_notional = 0.0
-                market_price_message = (
-                    "Market order requires a positive current market price "
-                    "for risk estimation."
-                )
+                market_price_message = "Market order requires a positive current market price for risk estimation."
             else:
                 market_price = float(market_price)
-                raw_notional = intent.quantity * market_price
-                buffer = 1.0 + (
-                    self.config.market_order_slippage_buffer_pct / 100.0
-                )
-                estimated_notional = raw_notional * buffer
+                buffer = 1.0 + (self.config.market_order_slippage_buffer_pct / 100.0)
+                estimated_notional = intent.quantity * market_price * buffer
                 market_price_message = (
                     f"Market price=${market_price:,.2f}; "
-                    f"raw notional=${raw_notional:,.2f}; "
-                    f"risk buffer="
-                    f"{self.config.market_order_slippage_buffer_pct:.2f}%; "
-                    f"risk estimate=${estimated_notional:,.2f}."
+                    f"risk buffer={self.config.market_order_slippage_buffer_pct:.2f}%; "
+                    f"risk notional=${estimated_notional:,.2f}."
                 )
         else:
-            raw_notional = intent.notional_value or 0.0
-            estimated_notional = raw_notional
+            estimated_notional = intent.notional_value or 0.0
             market_price_message = "Not applicable for non-market order."
 
-        requested_exposure_pct = (
-            raw_notional / capital_base * 100
-        )
+        requested_exposure_pct = estimated_notional / capital_base * 100
 
         if intent.is_buy:
-            projected_exposure = current_exposure + raw_notional
+            projected_exposure = current_exposure + estimated_notional
         else:
             projected_exposure = current_exposure
 
-        projected_exposure_pct = (
-            projected_exposure / capital_base * 100
-        )
+        projected_exposure_pct = projected_exposure / capital_base * 100
 
         def add_check(name: str, passed: bool, message: str) -> None:
-            checks.append(
-                RiskCheck(name=name, passed=passed, message=message)
-            )
+            checks.append(RiskCheck(name=name, passed=passed, message=message))
             if not passed:
                 rejection_reasons.append(f"{name}: {message}")
 
@@ -218,7 +186,7 @@ class AlpacaRiskGate:
 
         add_check("TRADE_INTENT", intent_valid, intent_message)
 
-        # 2. PAPER environment
+        # 2. Paper environment
         environment = self._get_environment(account_snapshot)
         environment_ok = environment.upper() == "PAPER"
         add_check(
@@ -248,19 +216,15 @@ class AlpacaRiskGate:
         )
 
         # 5. Notional
-        notional_ok = raw_notional > 0
+        notional_ok = estimated_notional > 0
         add_check(
             "NOTIONAL",
             notional_ok,
-            f"Capital notional=${raw_notional:,.2f}.",
+            f"Requested notional=${estimated_notional:,.2f}.",
         )
 
         if intent.order_type == "market":
-            add_check(
-                "MARKET_PRICE",
-                market_price is not None and float(market_price) > 0,
-                market_price_message,
-            )
+            add_check("MARKET_PRICE", market_price is not None and float(market_price) > 0, market_price_message)
 
         # 6. Confidence
         confidence = intent.confidence
@@ -280,11 +244,11 @@ class AlpacaRiskGate:
 
         # 7. Signal
         signal = (intent.signal or "").strip().upper()
-        allowed_signals = (
-            self.config.allowed_buy_signals
-            if intent.is_buy
-            else self.config.allowed_sell_signals
-        )
+        if intent.is_buy:
+            allowed_signals = self.config.allowed_buy_signals
+        else:
+            allowed_signals = self.config.allowed_sell_signals
+
         signal_ok = signal in allowed_signals
         add_check(
             "SIGNAL",
@@ -292,58 +256,53 @@ class AlpacaRiskGate:
             (
                 f"Signal={signal}; allowed={sorted(allowed_signals)}."
                 if signal
-                else
-                f"Signal is missing; allowed={sorted(allowed_signals)}."
+                else f"Signal is missing; allowed={sorted(allowed_signals)}."
             ),
         )
 
-        # 8. Position exposure - informational only in V2.3
+        # 8. Position exposure
+        position_ok = (
+            requested_exposure_pct
+            <= self.config.max_position_exposure_pct
+        )
         add_check(
             "POSITION_EXPOSURE",
-            True,
+            position_ok,
             (
-                f"Informational only: requested exposure="
-                f"{requested_exposure_pct:.2f}%; "
-                f"legacy reference="
-                f"{self.config.max_position_exposure_pct:.2f}%. "
-                "No percentage-based rejection."
+                f"Requested exposure={requested_exposure_pct:.2f}%; "
+                f"maximum per position="
+                f"{self.config.max_position_exposure_pct:.2f}%."
             ),
         )
 
-        # 9. Portfolio exposure - informational only in V2.3
+        # 9. Portfolio exposure
+        portfolio_ok = (
+            projected_exposure_pct
+            <= self.config.max_portfolio_exposure_pct
+        )
         add_check(
             "PORTFOLIO_EXPOSURE",
-            True,
+            portfolio_ok,
             (
-                f"Informational only: projected exposure="
-                f"{projected_exposure_pct:.2f}%; "
-                f"legacy reference="
-                f"{self.config.max_portfolio_exposure_pct:.2f}%. "
-                "No percentage-based rejection."
+                f"Projected exposure={projected_exposure_pct:.2f}%; "
+                f"maximum={self.config.max_portfolio_exposure_pct:.2f}%."
             ),
         )
 
         # 10. Available strategy capital
-        available_capital = max(
-            0.0,
-            capital_base - current_exposure,
-        )
-
+        available_capital = max(0.0, capital_base - current_exposure)
         capital_available_ok = (
             not intent.is_buy
-            or raw_notional <= available_capital
+            or estimated_notional <= available_capital
         )
-
         add_check(
             "AVAILABLE_CAPITAL",
             capital_available_ok,
             (
-                f"Available strategy capital="
-                f"${available_capital:,.2f}; "
-                f"required=${raw_notional:,.2f}."
+                f"Available strategy capital=${available_capital:,.2f}; "
+                f"requested=${estimated_notional:,.2f}."
                 if intent.is_buy
-                else
-                "SELL does not consume additional strategy capital."
+                else "SELL does not consume additional strategy capital."
             ),
         )
 
@@ -364,17 +323,12 @@ class AlpacaRiskGate:
             )
             if reconciliation_error:
                 reconciliation_message = (
-                    f"Unable to obtain reconciliation: "
-                    f"{reconciliation_error}"
+                    f"Unable to obtain reconciliation: {reconciliation_error}"
                 )
             elif reconciliation_report is None:
-                reconciliation_message = (
-                    "No reconciliation report available."
-                )
+                reconciliation_message = "No reconciliation report available."
             elif reconciliation_ok:
-                reconciliation_message = (
-                    "Account/portfolio state is reconciled."
-                )
+                reconciliation_message = "Account/portfolio state is reconciled."
             else:
                 reconciliation_message = (
                     "Account/portfolio state is NOT reconciled."
@@ -403,12 +357,11 @@ class AlpacaRiskGate:
                 )
                 duplicate_ok = not duplicate_order
                 duplicate_message = (
-                    f"No open {intent.side.upper()} order "
-                    f"for {intent.symbol}."
+                    f"No open {intent.side.upper()} order for {intent.symbol}."
                     if duplicate_ok
                     else
-                    f"An open {intent.side.upper()} order already "
-                    f"exists for {intent.symbol}."
+                    f"An open {intent.side.upper()} order already exists "
+                    f"for {intent.symbol}."
                 )
             except Exception as exc:
                 duplicate_ok = False
@@ -443,17 +396,11 @@ class AlpacaRiskGate:
             rejection_reasons=tuple(rejection_reasons),
         )
 
-    def approve(
-        self,
-        intent: TradeIntent,
-        reconciliation_report=None,
-        market_price: Optional[float] = None,
-    ) -> bool:
+    def approve(self, intent: TradeIntent, reconciliation_report=None) -> bool:
         """Return True only when the Risk Gate approves the intent."""
         return self.evaluate(
             intent,
             reconciliation_report=reconciliation_report,
-            market_price=market_price,
         ).approved
 
     @staticmethod
@@ -464,21 +411,49 @@ class AlpacaRiskGate:
         return str(getattr(environment, "value", environment))
 
 
-def create_risk_gate(
-    config: Optional[RiskConfig] = None,
-) -> AlpacaRiskGate:
+def create_risk_gate(config: Optional[RiskConfig] = None) -> AlpacaRiskGate:
     """Create the default read-only Risk Gate."""
     return AlpacaRiskGate(config=config)
 
 
-if __name__ == "__main__":
-    print("AI TRADER - ALPACA RISK GATE V2.3")
-    print("=" * 64)
+def _run_self_test() -> None:
+    """Read-only self-test against the current Paper Trading account."""
+
+    print("AI TRADER - ALPACA RISK GATE")
+    print("=" * 60)
+    print()
     print("Mode: PAPER / READ-ONLY")
     print(f"Strategy Capital Base: ${AI_TRADER_CAPITAL_BASE:,.2f}")
     print()
-    print("V2.3 policy:")
-    print("- Position exposure percentage is informational only.")
-    print("- Portfolio exposure percentage is informational only.")
-    print("- BUY capital constraint uses actual available strategy capital.")
-    print("- No Alpaca order was submitted.")
+
+    intent = TradeIntent(
+        symbol="NVDA",
+        side="buy",
+        quantity=100,
+        order_type="market",
+        time_in_force="day",
+        reason="Risk Gate self-test",
+        confidence=84.2,
+        strategy="Characteristic Curve + Price Action",
+        signal="BUY",
+    )
+
+    print("TRADE INTENT")
+    print("-" * 60)
+    print(intent.summary())
+    print()
+
+    gate = create_risk_gate()
+    decision = gate.evaluate(intent, market_price=180.50)
+
+    print(decision.summary())
+    print()
+    print(
+        "SELF-TEST RESULT:",
+        "PASS" if decision.approved else "REJECTED",
+    )
+    print("No Alpaca order was submitted.")
+
+
+if __name__ == "__main__":
+    _run_self_test()
