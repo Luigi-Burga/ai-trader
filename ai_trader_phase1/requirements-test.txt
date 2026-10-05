@@ -1,0 +1,4 @@
+# AI Trader - Phase 1 test tooling
+pytest>=8,<10
+pytest-cov>=5,<8
+pytest-html>=4,<5

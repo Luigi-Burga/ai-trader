@@ -3,3 +3,4 @@ venv/
 __pycache__/
 *.pyc
 old_data/
+/app/backup/
