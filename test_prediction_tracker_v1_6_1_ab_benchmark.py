@@ -54,7 +54,7 @@ def main() -> int:
     assert "/v2/orders" not in source.lower()
     assert "submit_order" not in source.lower()
     assert "create_order" not in source.lower()
-    assert "production source modified" in source.lower()
+    assert "production_source_modified" in source.lower()
 
     # Verify canonicalization ignores only evaluated_at_utc.
     ns = {}
