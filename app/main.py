@@ -501,9 +501,12 @@ def _execute_watchlist_signal(
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+#
+# if not _scan_allowed():
+#
 
 def main() -> None:
-    if not _scan_allowed():
+    if  _scan_allowed():
         print("Market closed. Skipping scan.")
         return
 
