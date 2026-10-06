@@ -1,0 +1,1898 @@
+{
+  "diagnostic": "AI Trader Performance Diagnostic",
+  "version": "1.0",
+  "timestamp_utc": "2026-10-06T17:28:54.903695+00:00",
+  "research_only": true,
+  "production_changes": false,
+  "orders_allowed": false,
+  "result_file": "C:\\Scripts\\Python\\ai-trader\\performance_diagnostic_v1_results.json",
+  "static_production_map": {
+    "production_main": "C:\\Scripts\\Python\\ai-trader\\app\\main.py",
+    "sha256": "4f7caed0ff4b0b918921c24b422036d81af32f038084e65272d3e2f22fc60eac",
+    "imports": [
+      "from app.config.config_loader import (",
+      "from app.portfolio.portfolio_monitor import monitor_position",
+      "from app.scanners.watchlist_scanner_v2_2_2 import (",
+      "from app.fundamentals.score_engine import (",
+      "from app.alerts.fundamental_alert_engine_v1 import (",
+      "from app.utils.market_hours import (",
+      "from app.prediction_logger import log_prediction",
+      "from app.prediction_tracker import update_all_predictions",
+      "from app.broker.alpaca_trade_intent import TradeIntent",
+      "from app.broker.alpaca_account import AI_TRADER_CAPITAL_BASE",
+      "from app.broker.alpaca_position_sizer import (",
+      "from app.broker.alpaca_risk_gate import create_risk_gate",
+      "from app.broker.alpaca_executor import create_executor"
+    ],
+    "functions": [
+      {
+        "line": 114,
+        "definition": "def _prediction_directory() -> str:"
+      },
+      {
+        "line": 122,
+        "definition": "def _autonomous_execution_enabled() -> bool:"
+      },
+      {
+        "line": 142,
+        "definition": "def _execution_sizing("
+      },
+      {
+        "line": 201,
+        "definition": "def _scan_allowed() -> bool:"
+      },
+      {
+        "line": 227,
+        "definition": "def _run_prediction_tracker() -> None:"
+      },
+      {
+        "line": 263,
+        "definition": "def _log_prediction_snapshot("
+      },
+      {
+        "line": 314,
+        "definition": "def _build_trade_intent("
+      },
+      {
+        "line": 399,
+        "definition": "def _execute_watchlist_signal("
+      },
+      {
+        "line": 508,
+        "definition": "def main() -> None:"
+      }
+    ],
+    "known_stages": {
+      "market_hours": "is_market_open",
+      "prediction_tracker": "_run_prediction_tracker",
+      "portfolio": "monitor_position",
+      "watchlist_scanner": "scan_buy_opportunity",
+      "prediction_logger": "_log_prediction_snapshot",
+      "sizing": "_execution_sizing",
+      "risk_gate": "risk_gate.evaluate",
+      "executor": "executor.execute",
+      "fundamentals": "calculate_fundamental_score",
+      "fundamental_alert": "process_fundamental_alert"
+    }
+  },
+  "run": {
+    "status": "ERROR",
+    "return_code": 1,
+    "elapsed_seconds": 8.595267,
+    "safety": {
+      "autonomous_execution": "0",
+      "orders_allowed": false,
+      "live_trading": false
+    },
+    "force_scan": false,
+    "profile_file": "C:\\Scripts\\Python\\ai-trader\\performance_diagnostic_v1.prof",
+    "top_functions": [
+      {
+        "filename": "<frozen runpy>",
+        "line": 269,
+        "function": "run_path",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.1e-05,
+        "cumulative_seconds": 8.593453
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method builtins.exec>",
+        "primitive_calls": 2,
+        "calls": 1483,
+        "tottime_seconds": 0.080955,
+        "cumulative_seconds": 8.588384
+      },
+      {
+        "filename": "<frozen runpy>",
+        "line": 91,
+        "function": "_run_module_code",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.6e-05,
+        "cumulative_seconds": 8.588096
+      },
+      {
+        "filename": "<frozen runpy>",
+        "line": 65,
+        "function": "_run_code",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2e-06,
+        "cumulative_seconds": 8.588067
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\main.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.8e-05,
+        "cumulative_seconds": 8.588013
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 1360,
+        "function": "_find_and_load",
+        "primitive_calls": 15,
+        "calls": 1585,
+        "tottime_seconds": 0.008596,
+        "cumulative_seconds": 5.627273
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 1308,
+        "function": "_find_and_load_unlocked",
+        "primitive_calls": 14,
+        "calls": 1519,
+        "tottime_seconds": 0.008301,
+        "cumulative_seconds": 5.626666
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 914,
+        "function": "_load_unlocked",
+        "primitive_calls": 21,
+        "calls": 1466,
+        "tottime_seconds": 0.005081,
+        "cumulative_seconds": 5.621132
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 753,
+        "function": "exec_module",
+        "primitive_calls": 15,
+        "calls": 1354,
+        "tottime_seconds": 0.003851,
+        "cumulative_seconds": 5.620357
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 483,
+        "function": "_call_with_frames_removed",
+        "primitive_calls": 34,
+        "calls": 3962,
+        "tottime_seconds": 0.003604,
+        "cumulative_seconds": 5.608525
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\portfolio\\portfolio_monitor.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2e-05,
+        "cumulative_seconds": 4.238094
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method builtins.__import__>",
+        "primitive_calls": 425,
+        "calls": 1285,
+        "tottime_seconds": 0.001939,
+        "cumulative_seconds": 3.663797
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _io.open>",
+        "primitive_calls": 729,
+        "calls": 729,
+        "tottime_seconds": 3.278324,
+        "cumulative_seconds": 3.279842
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.6e-05,
+        "cumulative_seconds": 3.025838
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\main.py",
+        "line": 508,
+        "function": "main",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.8e-05,
+        "cumulative_seconds": 2.962825
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\main.py",
+        "line": 201,
+        "function": "_scan_allowed",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.3e-05,
+        "cumulative_seconds": 2.96237
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\utils\\market_hours.py",
+        "line": 5,
+        "function": "is_market_open",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 7.4e-05,
+        "cumulative_seconds": 2.962296
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 1409,
+        "function": "_handle_fromlist",
+        "primitive_calls": 1297,
+        "calls": 1862,
+        "tottime_seconds": 0.002238,
+        "cumulative_seconds": 2.72905
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\__init__.py",
+        "line": 140,
+        "function": "timezone",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.2e-05,
+        "cumulative_seconds": 2.711451
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<method 'extend' of 'list' objects>",
+        "primitive_calls": 1508,
+        "calls": 1508,
+        "tottime_seconds": 0.001812,
+        "cumulative_seconds": 2.711147
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\lazy.py",
+        "line": 150,
+        "function": "_lazy",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9.1e-05,
+        "cumulative_seconds": 2.710352
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\lazy.py",
+        "line": 97,
+        "function": "_lazy",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.2e-05,
+        "cumulative_seconds": 2.710165
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 809,
+        "function": "module_from_spec",
+        "primitive_calls": 1459,
+        "calls": 1466,
+        "tottime_seconds": 0.002678,
+        "cumulative_seconds": 2.709918
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\__init__.py",
+        "line": 1125,
+        "function": "<genexpr>",
+        "primitive_calls": 598,
+        "calls": 598,
+        "tottime_seconds": 0.001541,
+        "cumulative_seconds": 2.709083
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\__init__.py",
+        "line": 121,
+        "function": "resource_exists",
+        "primitive_calls": 597,
+        "calls": 597,
+        "tottime_seconds": 0.004531,
+        "cumulative_seconds": 2.707542
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pytz\\__init__.py",
+        "line": 78,
+        "function": "open_resource",
+        "primitive_calls": 598,
+        "calls": 598,
+        "tottime_seconds": 0.006141,
+        "cumulative_seconds": 2.685533
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 1051,
+        "function": "create_module",
+        "primitive_calls": 73,
+        "calls": 74,
+        "tottime_seconds": 0.000624,
+        "cumulative_seconds": 2.666715
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _imp.create_dynamic>",
+        "primitive_calls": 73,
+        "calls": 74,
+        "tottime_seconds": 2.657301,
+        "cumulative_seconds": 2.665897
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000502,
+        "cumulative_seconds": 1.473503
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\__config__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.1e-05,
+        "cumulative_seconds": 1.344945
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\_core\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.00029,
+        "cumulative_seconds": 1.343846
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\_core\\multiarray.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.0001,
+        "cumulative_seconds": 1.268023
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 826,
+        "function": "get_code",
+        "primitive_calls": 1354,
+        "calls": 1354,
+        "tottime_seconds": 0.013555,
+        "cumulative_seconds": 1.019984
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method builtins.__build_class__>",
+        "primitive_calls": 3529,
+        "calls": 3627,
+        "tottime_seconds": 0.047783,
+        "cumulative_seconds": 0.97649
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\data\\market_data.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.9e-05,
+        "cumulative_seconds": 0.89527
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.9e-05,
+        "cumulative_seconds": 0.892455
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 947,
+        "function": "get_data",
+        "primitive_calls": 1354,
+        "calls": 1354,
+        "tottime_seconds": 0.005196,
+        "cumulative_seconds": 0.800667
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\utils\\market_hours.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-06,
+        "cumulative_seconds": 0.79876
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.4e-05,
+        "cumulative_seconds": 0.797788
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\calendar_registry.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000159,
+        "cumulative_seconds": 0.795629
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\calendars\\mirror.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000325,
+        "cumulative_seconds": 0.683053
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\exchange_calendars\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.6e-05,
+        "cumulative_seconds": 0.680195
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\search.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.5e-05,
+        "cumulative_seconds": 0.670799
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\data.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.8e-05,
+        "cumulative_seconds": 0.663881
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\exchange_calendars\\calendar_utils.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000492,
+        "cumulative_seconds": 0.663329
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\pathlib\\__init__.py",
+        "line": 763,
+        "function": "open",
+        "primitive_calls": 126,
+        "calls": 126,
+        "tottime_seconds": 0.000308,
+        "cumulative_seconds": 0.659004
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 1059,
+        "function": "exec_module",
+        "primitive_calls": 47,
+        "calls": 74,
+        "tottime_seconds": 0.000236,
+        "cumulative_seconds": 0.579516
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _imp.exec_dynamic>",
+        "primitive_calls": 47,
+        "calls": 74,
+        "tottime_seconds": 0.037872,
+        "cumulative_seconds": 0.578871
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\config_init.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000127,
+        "cumulative_seconds": 0.541473
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\errors\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.4e-05,
+        "cumulative_seconds": 0.539221
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_libs\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.4e-05,
+        "cumulative_seconds": 0.537309
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\api.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6e-05,
+        "cumulative_seconds": 0.536918
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_account.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.6e-05,
+        "cumulative_seconds": 0.505044
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_client.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.7e-05,
+        "cumulative_seconds": 0.501779
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\alpaca\\trading\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.2e-05,
+        "cumulative_seconds": 0.497477
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\alpaca\\trading\\client.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.8e-05,
+        "cumulative_seconds": 0.481712
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _io.open_code>",
+        "primitive_calls": 1357,
+        "calls": 1357,
+        "tottime_seconds": 0.462567,
+        "cumulative_seconds": 0.462567
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\zoneinfo\\_common.py",
+        "line": 4,
+        "function": "load_tzdata",
+        "primitive_calls": 63,
+        "calls": 63,
+        "tottime_seconds": 0.000762,
+        "cumulative_seconds": 0.458847
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.8e-05,
+        "cumulative_seconds": 0.419383
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\app\\alerts\\telegram_alert.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.9e-05,
+        "cumulative_seconds": 0.311612
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\telegram\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000324,
+        "cumulative_seconds": 0.310483
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\_internal\\_model_construction.py",
+        "line": 84,
+        "function": "__new__",
+        "primitive_calls": 45,
+        "calls": 45,
+        "tottime_seconds": 0.001339,
+        "cumulative_seconds": 0.305452
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\curl_cffi\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.3e-05,
+        "cumulative_seconds": 0.295324
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\groupby\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1e-05,
+        "cumulative_seconds": 0.293303
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<method 'read' of '_io.BufferedReader' objects>",
+        "primitive_calls": 2430,
+        "calls": 2430,
+        "tottime_seconds": 0.292216,
+        "cumulative_seconds": 0.292216
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\groupby\\generic.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.8e-05,
+        "cumulative_seconds": 0.291719
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 1243,
+        "function": "_find_spec",
+        "primitive_calls": 1504,
+        "calls": 1504,
+        "tottime_seconds": 0.008996,
+        "cumulative_seconds": 0.269295
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000272,
+        "cumulative_seconds": 0.25817
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\_internal\\_model_construction.py",
+        "line": 600,
+        "function": "complete_model_class",
+        "primitive_calls": 44,
+        "calls": 44,
+        "tottime_seconds": 0.001247,
+        "cumulative_seconds": 0.256311
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\builder\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 5.7e-05,
+        "cumulative_seconds": 0.256032
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 1284,
+        "function": "find_spec",
+        "primitive_calls": 1479,
+        "calls": 1479,
+        "tottime_seconds": 0.001375,
+        "cumulative_seconds": 0.250769
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 1255,
+        "function": "_get_spec",
+        "primitive_calls": 1479,
+        "calls": 1479,
+        "tottime_seconds": 0.003469,
+        "cumulative_seconds": 0.249332
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 717,
+        "function": "schedule",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.5e-05,
+        "cumulative_seconds": 0.249186
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\element.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.1e-05,
+        "cumulative_seconds": 0.243774
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\alpaca\\common\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.6e-05,
+        "cumulative_seconds": 0.241986
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 1357,
+        "function": "find_spec",
+        "primitive_calls": 1963,
+        "calls": 1963,
+        "tottime_seconds": 0.014372,
+        "cumulative_seconds": 0.235869
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\alpaca\\common\\models.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1e-05,
+        "cumulative_seconds": 0.233468
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 907,
+        "function": "read_text",
+        "primitive_calls": 63,
+        "calls": 63,
+        "tottime_seconds": 0.000476,
+        "cumulative_seconds": 0.229634
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\pathlib\\__init__.py",
+        "line": 780,
+        "function": "read_text",
+        "primitive_calls": 63,
+        "calls": 63,
+        "tottime_seconds": 0.000251,
+        "cumulative_seconds": 0.228485
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\__init__.py",
+        "line": 71,
+        "function": "import_module",
+        "primitive_calls": 169,
+        "calls": 170,
+        "tottime_seconds": 0.000262,
+        "cumulative_seconds": 0.2282
+      },
+      {
+        "filename": "<frozen importlib._bootstrap>",
+        "line": 1394,
+        "function": "_gcd_import",
+        "primitive_calls": 169,
+        "calls": 173,
+        "tottime_seconds": 0.000208,
+        "cumulative_seconds": 0.227906
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\plugin\\_schema_validator.py",
+        "line": 22,
+        "function": "create_schema_validator",
+        "primitive_calls": 44,
+        "calls": 44,
+        "tottime_seconds": 0.002136,
+        "cumulative_seconds": 0.212675
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\plugin\\_loader.py",
+        "line": 22,
+        "function": "get_plugins",
+        "primitive_calls": 44,
+        "calls": 44,
+        "tottime_seconds": 0.000429,
+        "cumulative_seconds": 0.209205
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\frame.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000108,
+        "cumulative_seconds": 0.205523
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 488,
+        "function": "entry_points",
+        "primitive_calls": 59,
+        "calls": 59,
+        "tottime_seconds": 0.00012,
+        "cumulative_seconds": 0.205252
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_config\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.8e-05,
+        "cumulative_seconds": 0.198177
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\__init__.py",
+        "line": 717,
+        "function": "__getattr__",
+        "primitive_calls": 2,
+        "calls": 2,
+        "tottime_seconds": 1.1e-05,
+        "cumulative_seconds": 0.196899
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_config\\config.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 5e-05,
+        "cumulative_seconds": 0.195001
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_typing.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000525,
+        "cumulative_seconds": 0.191346
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\calendars\\nyse.py",
+        "line": 1318,
+        "function": "valid_days",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.7e-05,
+        "cumulative_seconds": 0.187782
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 591,
+        "function": "valid_days",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1e-05,
+        "cumulative_seconds": 0.187765
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 574,
+        "function": "holidays",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.022776,
+        "cumulative_seconds": 0.187481
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.1e-05,
+        "cumulative_seconds": 0.18743
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\random\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.6e-05,
+        "cumulative_seconds": 0.181845
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\formatter.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.8e-05,
+        "cumulative_seconds": 0.179754
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\dammit.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000124,
+        "cumulative_seconds": 0.178446
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\curl_cffi\\aio.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.9e-05,
+        "cumulative_seconds": 0.178424
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\tseries\\holiday.py",
+        "line": 496,
+        "function": "holidays",
+        "primitive_calls": 3,
+        "calls": 3,
+        "tottime_seconds": 0.000249,
+        "cumulative_seconds": 0.164524
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\generic.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9.8e-05,
+        "cumulative_seconds": 0.163519
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\tseries\\holiday.py",
+        "line": 299,
+        "function": "dates",
+        "primitive_calls": 40,
+        "calls": 40,
+        "tottime_seconds": 0.001004,
+        "cumulative_seconds": 0.157565
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 509,
+        "function": "_compile_bytecode",
+        "primitive_calls": 1354,
+        "calls": 1354,
+        "tottime_seconds": 0.024928,
+        "cumulative_seconds": 0.157275
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 145,
+        "function": "_path_stat",
+        "primitive_calls": 5431,
+        "calls": 5431,
+        "tottime_seconds": 0.002391,
+        "cumulative_seconds": 0.156301
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method nt.stat>",
+        "primitive_calls": 5466,
+        "calls": 5466,
+        "tottime_seconds": 0.154381,
+        "cumulative_seconds": 0.154381
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\telegram\\request\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-06,
+        "cumulative_seconds": 0.151551
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 58,
+        "function": "holidays",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.3e-05,
+        "cumulative_seconds": 0.149059
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\asyncio\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.2e-05,
+        "cumulative_seconds": 0.148579
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\telegram\\request\\_httpxrequest.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.5e-05,
+        "cumulative_seconds": 0.140154
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\httpx\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.8e-05,
+        "cumulative_seconds": 0.139287
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\charset_normalizer\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.8e-05,
+        "cumulative_seconds": 0.134101
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\charset_normalizer\\api.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000288,
+        "cumulative_seconds": 0.131215
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method builtins.hasattr>",
+        "primitive_calls": 22588,
+        "calls": 23443,
+        "tottime_seconds": 0.005731,
+        "cumulative_seconds": 0.130247
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method marshal.loads>",
+        "primitive_calls": 1354,
+        "calls": 1354,
+        "tottime_seconds": 0.130207,
+        "cumulative_seconds": 0.130207
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\__init__.py",
+        "line": 330,
+        "function": "_compile",
+        "primitive_calls": 5541,
+        "calls": 5541,
+        "tottime_seconds": 0.004936,
+        "cumulative_seconds": 0.128581
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\ticker.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.5e-05,
+        "cumulative_seconds": 0.127837
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\base.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 5.5e-05,
+        "cumulative_seconds": 0.126503
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\random\\_pickle.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.8e-05,
+        "cumulative_seconds": 0.123855
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\__init__.py",
+        "line": 287,
+        "function": "compile",
+        "primitive_calls": 434,
+        "calls": 434,
+        "tottime_seconds": 0.000246,
+        "cumulative_seconds": 0.122051
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\_compiler.py",
+        "line": 757,
+        "function": "compile",
+        "primitive_calls": 299,
+        "calls": 299,
+        "tottime_seconds": 0.001059,
+        "cumulative_seconds": 0.120216
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\lib\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.8e-05,
+        "cumulative_seconds": 0.118647
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\live.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.6e-05,
+        "cumulative_seconds": 0.117901
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\arrow\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-06,
+        "cumulative_seconds": 0.111753
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\httpx\\_main.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-05,
+        "cumulative_seconds": 0.109558
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\arrow\\array.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9.2e-05,
+        "cumulative_seconds": 0.108498
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 164,
+        "function": "_path_isfile",
+        "primitive_calls": 1804,
+        "calls": 1804,
+        "tottime_seconds": 0.00146,
+        "cumulative_seconds": 0.102484
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 155,
+        "function": "_path_is_mode_type",
+        "primitive_calls": 1965,
+        "calls": 1965,
+        "tottime_seconds": 0.001695,
+        "cumulative_seconds": 0.102329
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\cache.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.2e-05,
+        "cumulative_seconds": 0.101933
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\dataclasses.py",
+        "line": 1439,
+        "function": "wrap",
+        "primitive_calls": 97,
+        "calls": 97,
+        "tottime_seconds": 0.000268,
+        "cumulative_seconds": 0.101487
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\dataclasses.py",
+        "line": 986,
+        "function": "_process_class",
+        "primitive_calls": 97,
+        "calls": 97,
+        "tottime_seconds": 0.00475,
+        "cumulative_seconds": 0.101219
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\charset_normalizer\\utils.py",
+        "line": 265,
+        "function": "is_multi_byte_encoding",
+        "primitive_calls": 98,
+        "calls": 98,
+        "tottime_seconds": 0.000191,
+        "cumulative_seconds": 0.094119
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\asyncio\\base_events.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 5.1e-05,
+        "cumulative_seconds": 0.092398
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexing.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000112,
+        "cumulative_seconds": 0.089447
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexes\\datetimes.py",
+        "line": 1248,
+        "function": "date_range",
+        "primitive_calls": 83,
+        "calls": 83,
+        "tottime_seconds": 0.002539,
+        "cumulative_seconds": 0.087641
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\peewee.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000421,
+        "cumulative_seconds": 0.086706
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\__init__.py",
+        "line": 425,
+        "function": "__getattr__",
+        "primitive_calls": 5,
+        "calls": 6,
+        "tottime_seconds": 6.6e-05,
+        "cumulative_seconds": 0.085497
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\compat\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.3e-05,
+        "cumulative_seconds": 0.084349
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\datetimes.py",
+        "line": 413,
+        "function": "_generate_range",
+        "primitive_calls": 83,
+        "calls": 83,
+        "tottime_seconds": 0.002894,
+        "cumulative_seconds": 0.083064
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\type_adapter.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.6e-05,
+        "cumulative_seconds": 0.080254
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\sqlite3\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.1e-05,
+        "cumulative_seconds": 0.078982
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\main.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8.4e-05,
+        "cumulative_seconds": 0.078235
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\sqlite3\\dbapi2.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.5e-05,
+        "cumulative_seconds": 0.078108
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\datetimes.py",
+        "line": 2936,
+        "function": "_generate_range",
+        "primitive_calls": 4089,
+        "calls": 4089,
+        "tottime_seconds": 0.030582,
+        "cumulative_seconds": 0.077234
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\calendars.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.8e-05,
+        "cumulative_seconds": 0.076641
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\tseries\\holiday.py",
+        "line": 361,
+        "function": "_reference_dates",
+        "primitive_calls": 40,
+        "calls": 40,
+        "tottime_seconds": 0.00132,
+        "cumulative_seconds": 0.07545
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\compat\\_constants.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.2e-05,
+        "cumulative_seconds": 0.074692
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\platform.py",
+        "line": 1120,
+        "function": "machine",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-06,
+        "cumulative_seconds": 0.073225
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\platform.py",
+        "line": 985,
+        "function": "uname",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.6e-05,
+        "cumulative_seconds": 0.073216
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexes\\api.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.1e-05,
+        "cumulative_seconds": 0.072068
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\_parser.py",
+        "line": 963,
+        "function": "parse",
+        "primitive_calls": 299,
+        "calls": 299,
+        "tottime_seconds": 0.000853,
+        "cumulative_seconds": 0.071416
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\curl_cffi\\__version__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.8e-05,
+        "cumulative_seconds": 0.071316
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\dataclasses.py",
+        "line": 478,
+        "function": "add_fns_to_class",
+        "primitive_calls": 97,
+        "calls": 97,
+        "tottime_seconds": 0.001591,
+        "cumulative_seconds": 0.070987
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\_parser.py",
+        "line": 452,
+        "function": "_parse_sub",
+        "primitive_calls": 299,
+        "calls": 1588,
+        "tottime_seconds": 0.005547,
+        "cumulative_seconds": 0.06995
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\requests\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.9e-05,
+        "cumulative_seconds": 0.068822
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\_parser.py",
+        "line": 512,
+        "function": "_parse",
+        "primitive_calls": 353,
+        "calls": 5177,
+        "tottime_seconds": 0.024488,
+        "cumulative_seconds": 0.068803
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 101,
+        "function": "_path_join",
+        "primitive_calls": 9764,
+        "calls": 9764,
+        "tottime_seconds": 0.047211,
+        "cumulative_seconds": 0.068234
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\yfinance\\pricing_pb2.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.9e-05,
+        "cumulative_seconds": 0.065064
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6.8e-05,
+        "cumulative_seconds": 0.063125
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 823,
+        "function": "schedule_from_days",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000107,
+        "cumulative_seconds": 0.061308
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\tseries\\holiday.py",
+        "line": 396,
+        "function": "_apply_rule",
+        "primitive_calls": 40,
+        "calls": 40,
+        "tottime_seconds": 0.000263,
+        "cumulative_seconds": 0.061096
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\api\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6e-06,
+        "cumulative_seconds": 0.059885
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\lib\\_arraypad_impl.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2e-05,
+        "cumulative_seconds": 0.058898
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\ops\\common.py",
+        "line": 67,
+        "function": "new_method",
+        "primitive_calls": 157,
+        "calls": 311,
+        "tottime_seconds": 0.000463,
+        "cumulative_seconds": 0.057001
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\bs4\\css.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.7e-05,
+        "cumulative_seconds": 0.056956
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\telegram\\_bot.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000151,
+        "cumulative_seconds": 0.056234
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\groupby\\groupby.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000124,
+        "cumulative_seconds": 0.055568
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\lib\\_index_tricks_impl.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.7e-05,
+        "cumulative_seconds": 0.053416
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexes\\base.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000222,
+        "cumulative_seconds": 0.052802
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\soupsieve\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.8e-05,
+        "cumulative_seconds": 0.051718
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\api\\typing\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.1e-05,
+        "cumulative_seconds": 0.050599
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\base.py",
+        "line": 1633,
+        "function": "_arith_method",
+        "primitive_calls": 71,
+        "calls": 71,
+        "tottime_seconds": 0.000609,
+        "cumulative_seconds": 0.049907
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arraylike.py",
+        "line": 100,
+        "function": "__add__",
+        "primitive_calls": 65,
+        "calls": 65,
+        "tottime_seconds": 9.2e-05,
+        "cumulative_seconds": 0.049662
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\_migration.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 3.1e-05,
+        "cumulative_seconds": 0.049154
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\soupsieve\\css_parser.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 8e-05,
+        "cumulative_seconds": 0.049108
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\testing.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4e-06,
+        "cumulative_seconds": 0.04897
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\matrixlib\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1e-05,
+        "cumulative_seconds": 0.048526
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\_testing\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000145,
+        "cumulative_seconds": 0.048099
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas_market_calendars\\market_calendar.py",
+        "line": 683,
+        "function": "special_dates",
+        "primitive_calls": 2,
+        "calls": 2,
+        "tottime_seconds": 9.1e-05,
+        "cumulative_seconds": 0.048076
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\warnings.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.6e-05,
+        "cumulative_seconds": 0.047955
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\ssl.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 7.7e-05,
+        "cumulative_seconds": 0.047925
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.1e-05,
+        "cumulative_seconds": 0.047408
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\re\\_compiler.py",
+        "line": 590,
+        "function": "_code",
+        "primitive_calls": 299,
+        "calls": 299,
+        "tottime_seconds": 0.00043,
+        "cumulative_seconds": 0.046931
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\asyncio\\windows_events.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.5e-05,
+        "cumulative_seconds": 0.046764
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic\\version.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 1.1e-05,
+        "cumulative_seconds": 0.046687
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\linalg\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 2.5e-05,
+        "cumulative_seconds": 0.046523
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 448,
+        "function": "metadata",
+        "primitive_calls": 4,
+        "calls": 4,
+        "tottime_seconds": 5.6e-05,
+        "cumulative_seconds": 0.046068
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\alpaca\\trading\\models.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.6e-05,
+        "cumulative_seconds": 0.04592
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\rich\\console.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.000232,
+        "cumulative_seconds": 0.045685
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pydantic_core\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 4.3e-05,
+        "cumulative_seconds": 0.045224
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<method '__exit__' of '_io._IOBase' objects>",
+        "primitive_calls": 1382,
+        "calls": 1382,
+        "tottime_seconds": 0.045077,
+        "cumulative_seconds": 0.045077
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\numpy\\linalg\\_linalg.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 0.00011,
+        "cumulative_seconds": 0.045023
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexes\\base.py",
+        "line": 7429,
+        "function": "_arith_method",
+        "primitive_calls": 34,
+        "calls": 34,
+        "tottime_seconds": 6.1e-05,
+        "cumulative_seconds": 0.045019
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\ops\\array_ops.py",
+        "line": 242,
+        "function": "arithmetic_op",
+        "primitive_calls": 71,
+        "calls": 71,
+        "tottime_seconds": 0.000107,
+        "cumulative_seconds": 0.044315
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\io\\json\\__init__.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 6e-06,
+        "cumulative_seconds": 0.043915
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\telegram\\_inputchecklist.py",
+        "line": 1,
+        "function": "<module>",
+        "primitive_calls": 1,
+        "calls": 1,
+        "tottime_seconds": 9e-06,
+        "cumulative_seconds": 0.043837
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _operator.add>",
+        "primitive_calls": 65,
+        "calls": 65,
+        "tottime_seconds": 8.9e-05,
+        "cumulative_seconds": 0.043833
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method nt._path_exists>",
+        "primitive_calls": 598,
+        "calls": 598,
+        "tottime_seconds": 0.043807,
+        "cumulative_seconds": 0.043807
+      },
+      {
+        "filename": "<frozen importlib._bootstrap_external>",
+        "line": 239,
+        "function": "cache_from_source",
+        "primitive_calls": 2708,
+        "calls": 2708,
+        "tottime_seconds": 0.008238,
+        "cumulative_seconds": 0.043773
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\indexes\\base.py",
+        "line": 2969,
+        "function": "__iadd__",
+        "primitive_calls": 18,
+        "calls": 18,
+        "tottime_seconds": 3.7e-05,
+        "cumulative_seconds": 0.043613
+      },
+      {
+        "filename": "C:\\Users\\luigi\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\platform.py",
+        "line": 338,
+        "function": "_wmi_query",
+        "primitive_calls": 2,
+        "calls": 2,
+        "tottime_seconds": 4.9e-05,
+        "cumulative_seconds": 0.043597
+      },
+      {
+        "filename": "C:\\Scripts\\Python\\ai-trader\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\datetimelike.py",
+        "line": 1396,
+        "function": "__add__",
+        "primitive_calls": 65,
+        "calls": 65,
+        "tottime_seconds": 0.000358,
+        "cumulative_seconds": 0.043546
+      },
+      {
+        "filename": "~",
+        "line": 0,
+        "function": "<built-in method _wmi.exec_query>",
+        "primitive_calls": 2,
+        "calls": 2,
+        "tottime_seconds": 0.04353,
+        "cumulative_seconds": 0.04353
+      }
+    ],
+    "error": {
+      "type": "ValueError",
+      "message": "Missing ALPACA_API_KEY environment variable.",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Scripts\\Python\\ai-trader\\performance_diagnostic_v1.py\", line 113, in run_profile\n    runpy.run_path(str(PRODUCTION_MAIN), run_name=\"__main__\")\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 294, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\main.py\", line 669, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\main.py\", line 545, in main\n    risk_gate = create_risk_gate()\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_risk_gate.py\", line 471, in create_risk_gate\n    return AlpacaRiskGate(config=config)\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_risk_gate.py\", line 139, in __init__\n    self.account = account or AlpacaAccount()\n                              ~~~~~~~~~~~~~^^\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_account.py\", line 65, in __init__\n    self.client = client or create_alpaca_client()\n                            ~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_client.py\", line 194, in create_alpaca_client\n    return AlpacaClient()\n  File \"C:\\Scripts\\Python\\ai-trader\\app\\broker\\alpaca_client.py\", line 57, in __init__\n    raise ValueError(\"Missing ALPACA_API_KEY environment variable.\")\nValueError: Missing ALPACA_API_KEY environment variable.\n"
+    }
+  },
+  "status": "OK"
+}
