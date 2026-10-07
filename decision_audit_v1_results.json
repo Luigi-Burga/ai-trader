@@ -1,0 +1,1884 @@
+{
+  "audit": "AI Trader Decision Audit",
+  "version": "1.0",
+  "timestamp_utc": "2026-10-07T00:50:32.159891+00:00",
+  "research_only": true,
+  "production_changes": false,
+  "orders_allowed": false,
+  "alpaca_trading_endpoints_called": false,
+  "inputs": {
+    "prediction_dir": "C:\\Scripts\\Python\\ai-trader\\data\\predictions",
+    "files": [
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+        "sha256": "71536a650c65b5e34f0091e8d8f97846b105e85165afa064835f7ec38aa39902",
+        "records": 202,
+        "parse_errors": 0
+      },
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-22.jsonl",
+        "sha256": "659ee11a4b020f29337348eacde8c791cfa315d6913e8d3c69cb0b93085f896c",
+        "records": 25,
+        "parse_errors": 0
+      },
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-23.jsonl",
+        "sha256": "9d6e52a3db3adf2d6775422d58df6b1fe28f1ecb3384f85e9b757a47ac4d8ead",
+        "records": 75,
+        "parse_errors": 0
+      },
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+        "sha256": "02857e05f7e4afec702f171c8f8dcdb7cc57610208a020f56e72caaf300549b1",
+        "records": 400,
+        "parse_errors": 0
+      },
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-25.jsonl",
+        "sha256": "5aff51d3f74e744faf9befbcbe20ae3038f50ff07fc30d41d78e6d83b9864417",
+        "records": 125,
+        "parse_errors": 0
+      },
+      {
+        "file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+        "sha256": "8eda7d532574a04d605286f65e27c4690686cc7df869cad0e9ee3f94fe777925",
+        "records": 78,
+        "parse_errors": 0
+      }
+    ],
+    "total_records": 905,
+    "horizons_days": [
+      1,
+      5,
+      10,
+      20
+    ]
+  },
+  "summary": {
+    "all": {
+      "N": 905,
+      "confidence_mean": 50.52017679558011,
+      "score_mean": 51.903281767955804,
+      "appt_mean": null,
+      "confidence_N": 905,
+      "score_N": 905,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "raw_buy": {
+      "N": 37,
+      "confidence_mean": 79.0,
+      "score_mean": 88.8108108108108,
+      "appt_mean": null,
+      "confidence_N": 37,
+      "score_N": 37,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "raw_buy_only": {
+      "N": 37,
+      "confidence_mean": 79.0,
+      "score_mean": 88.8108108108108,
+      "appt_mean": null,
+      "confidence_N": 37,
+      "score_N": 37,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "raw_strong_buy": {
+      "N": 0,
+      "confidence_mean": null,
+      "score_mean": null,
+      "appt_mean": null,
+      "confidence_N": 0,
+      "score_N": 0,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "final_buy": {
+      "N": 1,
+      "confidence_mean": 59.39,
+      "score_mean": 72.95,
+      "appt_mean": null,
+      "confidence_N": 1,
+      "score_N": 1,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "buy_on_confirmation": {
+      "N": 106,
+      "confidence_mean": 67.91660377358491,
+      "score_mean": 83.64669811320753,
+      "appt_mean": null,
+      "confidence_N": 106,
+      "score_N": 106,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "raw_buy_to_confirmation": {
+      "N": 37,
+      "confidence_mean": 79.0,
+      "score_mean": 88.8108108108108,
+      "appt_mean": null,
+      "confidence_N": 37,
+      "score_N": 37,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    },
+    "raw_buy_to_other": {
+      "N": 0,
+      "confidence_mean": null,
+      "score_mean": null,
+      "appt_mean": null,
+      "confidence_N": 0,
+      "score_N": 0,
+      "appt_N": 0,
+      "1d_N": 0,
+      "1d_mean_return_pct": null,
+      "1d_positive_pct": null,
+      "5d_N": 0,
+      "5d_mean_return_pct": null,
+      "5d_positive_pct": null,
+      "10d_N": 0,
+      "10d_mean_return_pct": null,
+      "10d_positive_pct": null,
+      "20d_N": 0,
+      "20d_mean_return_pct": null,
+      "20d_positive_pct": null
+    }
+  },
+  "decision_rates": {
+    "raw_buy_count": 37,
+    "final_buy_count": 1,
+    "buy_on_confirmation_count": 106,
+    "raw_buy_to_final_buy_pct": 2.7027027027027026,
+    "raw_buy_to_confirmation_pct": 286.4864864864865,
+    "raw_buy_to_other_pct": 0.0
+  },
+  "downgrade_reasons": {
+    "count": 37,
+    "reasons": [
+      {
+        "reason": "<reason unavailable>",
+        "count": 37,
+        "samples": [
+          {
+            "symbol": "MGRT",
+            "timestamp": null,
+            "score": 91.0,
+            "confidence": 79.0,
+            "appt": null
+          },
+          {
+            "symbol": "SNDK",
+            "timestamp": null,
+            "score": 91.0,
+            "confidence": 79.0,
+            "appt": null
+          },
+          {
+            "symbol": "NUAI",
+            "timestamp": null,
+            "score": 78.0,
+            "confidence": 79.0,
+            "appt": null
+          },
+          {
+            "symbol": "MGRT",
+            "timestamp": null,
+            "score": 91.0,
+            "confidence": 79.0,
+            "appt": null
+          },
+          {
+            "symbol": "SNDK",
+            "timestamp": null,
+            "score": 91.0,
+            "confidence": 79.0,
+            "appt": null
+          }
+        ]
+      }
+    ]
+  },
+  "decision_matrix": [
+    {
+      "symbol": "MGRT",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 118.0,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 43,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1691.6318,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 44,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "NUAI",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 78.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 5.77,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "RECOVERY",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 46,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "MGRT",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 118.0,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 110,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1715.64,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 111,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "NUAI",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 5.865,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 113,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "MGRT",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 118.0,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 178,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1723.36,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 179,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "NUAI",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 5.855,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-18.jsonl",
+      "source_line": 181,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "PLTU",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 72.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 54.31,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-22.jsonl",
+      "source_line": 22,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 96.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1766.64,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-22.jsonl",
+      "source_line": 23,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "PLTU",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 72.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 54.31,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 22,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 48,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 73,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 98,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 123,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 148,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 173,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 198,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 223,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 248,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 273,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 298,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 323,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 348,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 373,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-24.jsonl",
+      "source_line": 398,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1816.5699,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-25.jsonl",
+      "source_line": 48,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-25.jsonl",
+      "source_line": 73,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 86.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": null,
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-25.jsonl",
+      "source_line": 98,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1753.62,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-25.jsonl",
+      "source_line": 123,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "PLTU",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 81.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 57.9,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 23,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1777.8,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 24,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "PLTU",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 81.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 57.9,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 49,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1777.8,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 50,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "PLTU",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 81.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 57.9,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 75,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "timestamp": null,
+      "raw_signal": "BUY",
+      "final_signal": "BUY_ON_CONFIRMATION",
+      "classification": "BUY_ON_CONFIRMATION",
+      "score": 91.0,
+      "confidence": 79.0,
+      "appt": null,
+      "price": 1777.8,
+      "reason": null,
+      "benchmark": "SPY",
+      "regime": "BULLISH",
+      "engine": "NEW_LISTING_ENGINE",
+      "source_file": "C:\\Scripts\\Python\\ai-trader\\data\\predictions\\predictions_2026-09-26.jsonl",
+      "source_line": 76,
+      "outcomes": {
+        "1d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "5d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "10d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        },
+        "20d": {
+          "future_close": null,
+          "return_pct": null,
+          "positive": null
+        }
+      }
+    }
+  ],
+  "market_data": {
+    "status": "OK",
+    "symbols_requested": [
+      "AAPL",
+      "ADBT",
+      "AMD",
+      "AMZE",
+      "AMZN",
+      "ANRO",
+      "ASMG",
+      "AVGO",
+      "AXTI",
+      "BE",
+      "BRK.B",
+      "BUUU",
+      "CLYM",
+      "CTNT",
+      "CYPH",
+      "DELL",
+      "DFEN",
+      "DMRA",
+      "EDRY",
+      "ELOX",
+      "ERAS",
+      "FAMI",
+      "FANG",
+      "FNGR",
+      "GDXU",
+      "GEV",
+      "GNS",
+      "GOOG",
+      "GOOGL",
+      "GS",
+      "HKPD",
+      "HOOD",
+      "IMMX",
+      "INTC",
+      "JPM",
+      "LITE",
+      "MA",
+      "MBX",
+      "META",
+      "MGN",
+      "MGRT",
+      "MRNA",
+      "MRVL",
+      "MSFT",
+      "MTC",
+      "MU",
+      "NBIS",
+      "NUAI",
+      "NVDA",
+      "ORCL",
+      "ORKA",
+      "PASW",
+      "PLTR",
+      "PLTU",
+      "PRAX",
+      "QTTB",
+      "RITR",
+      "SLS",
+      "SNDK",
+      "SOXL",
+      "SPCX",
+      "SPRB",
+      "SURG",
+      "SYRE",
+      "TQQQ",
+      "TSLA",
+      "TSM",
+      "TWST",
+      "UZX",
+      "V",
+      "WDC",
+      "WOLF",
+      "ZBAO",
+      "ZONE"
+    ],
+    "symbols_loaded": [
+      "AAPL",
+      "ADBT",
+      "AMD",
+      "AMZE",
+      "AMZN",
+      "ANRO",
+      "ASMG",
+      "AVGO",
+      "AXTI",
+      "BE",
+      "BRK.B",
+      "BUUU",
+      "CLYM",
+      "CTNT",
+      "CYPH",
+      "DELL",
+      "DFEN",
+      "DMRA",
+      "EDRY",
+      "ELOX",
+      "ERAS",
+      "FAMI",
+      "FANG",
+      "FNGR",
+      "GDXU",
+      "GEV",
+      "GNS",
+      "GOOG",
+      "GOOGL",
+      "GS",
+      "HKPD",
+      "HOOD",
+      "IMMX",
+      "INTC",
+      "JPM",
+      "LITE",
+      "MA",
+      "MBX",
+      "META",
+      "MGN",
+      "MGRT",
+      "MRNA",
+      "MRVL",
+      "MSFT",
+      "MTC",
+      "MU",
+      "NBIS",
+      "NUAI",
+      "NVDA",
+      "ORCL",
+      "ORKA",
+      "PASW",
+      "PLTR",
+      "PLTU",
+      "PRAX",
+      "QTTB",
+      "RITR",
+      "SLS",
+      "SNDK",
+      "SOXL",
+      "SPCX",
+      "SPRB",
+      "SURG",
+      "SYRE",
+      "TQQQ",
+      "TSLA",
+      "TSM",
+      "TWST",
+      "UZX",
+      "V",
+      "WDC",
+      "WOLF",
+      "ZBAO",
+      "ZONE"
+    ],
+    "errors": {}
+  },
+  "status": "OK",
+  "elapsed_seconds": 45.764728
+}
