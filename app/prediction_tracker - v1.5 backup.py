@@ -1,9 +1,9 @@
 """
-AI Trader - Prediction Tracker V1.6.1
+AI Trader - Prediction Tracker V1.3
 
 Evaluates historical prediction snapshots stored by Prediction Logger.
 
-V1.6 / Performance Optimization V1:
+V1.4:
 - Preserves the V1.1 public contract and evaluation calculations.
 - Keeps all market-data access behind Shared Market Data Layer V2.
 - Reuses the persistent 5y Market Data V2 cache whenever it covers a ticker.
@@ -39,18 +39,8 @@ from app.portfolio.risk_x_engine import (
 )
 from app.portfolio.post_exit_analyzer import analyze_post_exit
 
-VERSION = "1.6.1"
+VERSION = "1.5"
 MODULE_NAME = "Prediction Tracker"
-
-# Performance Optimization V1:
-# Prediction Tracker evaluates historical snapshots and does not require a
-# fresh 5y Yahoo download on every scheduler cycle. The shared Market Data V2
-# cache remains the only acquisition layer; this TTL only applies to tracker
-# requests and does not change the global Market Data V2 default.
-TRACKER_MARKET_CACHE_TTL_SECONDS = max(
-    0,
-    int(os.getenv("AI_TRADER_TRACKER_MARKET_CACHE_TTL_SECONDS", "86400")),
-)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DIRECTORY = PROJECT_ROOT / "data" / "predictions"
@@ -259,7 +249,6 @@ def _trading_days_since(
         actions=False,
         group_by="column",
         threads=False,
-        ttl_seconds=TRACKER_MARKET_CACHE_TTL_SECONDS,
     )
 
     sliced = _slice_market_window(broad, start, end)
@@ -277,7 +266,6 @@ def _trading_days_since(
         actions=False,
         group_by="column",
         threads=False,
-        ttl_seconds=TRACKER_MARKET_CACHE_TTL_SECONDS,
     )
 
     if data is None or data.empty:
@@ -431,38 +419,11 @@ def evaluate_snapshot(
     status = result.get("evaluation", {}).get(
         "status", "PENDING"
     )
-
-    # V1.6.1 correction: COMPLETE is only a fast-path when every horizon
-    # observation is actually complete and there is no pending post-exit work.
-    # A snapshot can be marked COMPLETE while a future horizon is still None;
-    # those missing horizons must remain eligible for evaluation.
-    if status == "COMPLETE":
-        existing_observations = result.get("evaluation", {}).get(
-            "observations", {}
-        )
-        if not isinstance(existing_observations, dict):
-            existing_observations = {}
-
-        all_horizons_complete = all(
-            isinstance(existing_observations.get(f"+{horizon}d"), dict)
-            and existing_observations.get(f"+{horizon}d", {}).get("actual_price") is not None
-            for horizon in HORIZONS_DAYS
-        )
-
-        trade = result.get("trade")
-        if not isinstance(trade, dict):
-            trade = {}
-        exit_price = _safe_float(
-            trade.get("exit_price")
-            or result.get("exit_price")
-        )
-        exit_timestamp = (
-            trade.get("exit_timestamp_utc")
-            or result.get("exit_timestamp_utc")
-        )
-
-        if all_horizons_complete and exit_price is None and not exit_timestamp:
-            return result
+    if status == "COMPLETE" and (
+        result.get("risk_x")
+        and result.get("post_exit_analysis") is not None
+    ):
+        return result
 
     ticker = _normalize_symbol(result.get("ticker"))
     timestamp = result.get("prediction_timestamp_utc")
@@ -517,26 +478,10 @@ def evaluate_snapshot(
         or ""
     ).strip().upper()
 
-    existing_observations = result.get("evaluation", {}).get(
-        "observations", {}
-    )
-    if not isinstance(existing_observations, dict):
-        existing_observations = {}
-
     observations: dict[str, Any] = {}
     complete_count = 0
 
     for horizon in HORIZONS_DAYS:
-        key = f"+{horizon}d"
-        existing = existing_observations.get(key)
-
-        # Preserve completed historical observations exactly. Only missing
-        # horizons require new market-data evaluation.
-        if isinstance(existing, dict) and existing.get("actual_price") is not None:
-            observations[key] = existing
-            complete_count += 1
-            continue
-
         obs = _horizon_observation(
             frame,
             t0_index,
@@ -546,6 +491,7 @@ def evaluate_snapshot(
             target,
             stop,
         )
+        key = f"+{horizon}d"
         if obs is not None:
             obs = enrich_observation_with_x(obs, risk_pct)
             complete_count += 1
@@ -673,39 +619,13 @@ def _eligible_snapshot_request(
     Return (ticker, start, end) for a snapshot that can request market data.
 
     This deliberately mirrors the V1.1 validation gates in evaluate_snapshot:
-    Fully complete records without an exit do not trigger market-data requests.
-    COMPLETE records with missing horizons remain eligible.
+    COMPLETE records and invalid ticker/timestamp/entry records do not trigger
+    market-data requests.
     """
     status = record.get("evaluation", {}).get(
         "status", "PENDING"
     )
-    evaluation = record.get("evaluation", {})
-    observations = evaluation.get("observations", {})
-    if not isinstance(observations, dict):
-        observations = {}
-
-    # V1.6.1: COMPLETE records are eligible when one or more horizons are
-    # still missing. They remain ineligible only when all horizons are
-    # complete and there is no recorded exit requiring post-exit analysis.
-    all_horizons_complete = all(
-        isinstance(observations.get(f"+{horizon}d"), dict)
-        and observations.get(f"+{horizon}d", {}).get("actual_price") is not None
-        for horizon in HORIZONS_DAYS
-    )
-
-    trade = record.get("trade")
-    if not isinstance(trade, dict):
-        trade = {}
-    exit_price = _safe_float(
-        trade.get("exit_price")
-        or record.get("exit_price")
-    )
-    exit_timestamp = (
-        trade.get("exit_timestamp_utc")
-        or record.get("exit_timestamp_utc")
-    )
-
-    if status == "COMPLETE" and all_horizons_complete and exit_price is None and not exit_timestamp:
+    if status == "COMPLETE":
         return None
 
     ticker = _normalize_symbol(record.get("ticker"))
@@ -794,7 +714,6 @@ def _build_market_data_cache(
                 actions=False,
                 group_by="column",
                 threads=False,
-                ttl_seconds=TRACKER_MARKET_CACHE_TTL_SECONDS,
             )
         except Exception as exc:
             elapsed = time.perf_counter() - started
@@ -935,9 +854,6 @@ def update_prediction_file(
 
         record.clear()
         record.update(evaluated)
-
-    if updated == 0:
-        return 0, unchanged
 
     if not _atomic_replace(file_path, records):
         return 0, len(records)
