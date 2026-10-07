@@ -30,68 +30,65 @@
     {
       "ticker": "JPM"
     },
-  
     {
       "ticker": "V"
     },
-
     {
         "ticker": "TQQQ"        
     },
-
     {
         "ticker": "GDXU"
+    },
+    {
+        "ticker": "TSLA"
+    },
+    {
+        "ticker": "AMD"
+    },
+    {
+        "ticker": "DELL"
+    },
+    {
+        "ticker": "LITE"
+    },
+    {
+        "ticker": "ORCL"
+    },
+    {
+        "ticker": "MRVL"
+    }, 
+    {
+        "ticker": "PLTR"
+    }, 
+    {
+        "ticker": "PLTU"
+    }, 
+    {
+        "ticker": "SNDK"
+    },
+    {
+        "ticker": "ASMG"
     },
 
     {
         "ticker": "SPCX"
     },
 
-    {
-        "ticker": "DFEN"
-    },
-    {
-        "ticker": "TSLA"
-    },
-   
-    {
-        "ticker": "AMD"
-    },
-      
-    {
-        "ticker": "DELL"
-    },
-   
-    {
-        "ticker": "LITE"
-    },
-   
-    {
-        "ticker": "ORCL"
-    },
- 
-    {
-        "ticker": "MRVL"
-    }, 
 
     {
-        "ticker": "PLTR"
-    }, 
-
-    {
-        "ticker": "PLTU"
-    }, 
-   
-    {
-        "ticker": "SNDK"
+        "ticker": "MU"
     },
 
     {
-        "ticker": "ASMG"
+        "ticker": "LRCX"
     },
 
     {
-      "ticker": "MA"
+        "ticker": "AMAT"
+    },
+
+    {
+      "ticker": "ANET"
     }
   ]
 }
