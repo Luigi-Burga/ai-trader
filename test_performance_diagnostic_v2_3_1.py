@@ -28,8 +28,8 @@ def test_safe_instrumentation_contract():
     assert "md._read_cache =" not in s
     assert "md._write_cache =" not in s
     # Public boundaries and Yahoo remain instrumented.
-    assert "md.get_history" in s
-    assert "md.get_daily_history" in s
+    assert 'getattr(md, name, None)' in s
+    assert 'for name in ("get_history", "get_daily_history")' in s
     assert "md.yf.download" in s
 
 def test_lineage_contract():
