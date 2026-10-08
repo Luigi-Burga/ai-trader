@@ -305,6 +305,15 @@ def _market_history(
     if not ticker:
         return pd.DataFrame()
 
+    # Long daily historical series (e.g. 5y/1d) do not need the
+    # global 15-minute Market Data TTL. Reuse the shared cache for 24h.
+    # Other period/interval combinations keep the existing global TTL.
+    history_cache_ttl = (
+        86400
+        if str(period).lower() == "5y" and str(interval).lower() == "1d"
+        else None
+    )
+
     raw = get_history(
         ticker,
         period=period,
@@ -313,6 +322,7 @@ def _market_history(
         actions=False,
         group_by="column",
         threads=False,
+        ttl_seconds=history_cache_ttl,
     )
     return _normalize_ohlcv(raw)
 
