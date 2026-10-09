@@ -1,0 +1,5 @@
+# Root crontab; install only after one controlled build and scan pass.
+# Update only after the trading day, so code/image changes do not interrupt data collection.
+30 16 * * 1-5 /home/luigi/tools/update_ai_trader.sh
+# Production scan every 15 minutes; app/main.py retains its existing market-hours guard.
+*/15 * * * * /home/luigi/tools/run_ai_trader.sh
