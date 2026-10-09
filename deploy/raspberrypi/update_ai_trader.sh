@@ -9,6 +9,44 @@ BRANCH="main"
 mkdir -p "${TOOLS_DIR}"
 log() { printf '%s - %s\n' "$(date '+%Y-%m-%d %H:%M:%S %z')" "$*" >> "${LOGFILE}"; }
 
+# Send through the existing Compose environment, where Telegram credentials
+# are already configured. Never print credentials or the Bot API URL to logs.
+send_telegram() {
+    local message="$1"
+    if docker compose run --rm --no-build --entrypoint python ai-trader -c '
+import json, os, sys, urllib.request
+
+token = os.environ.get("TELEGRAM_BOT_TOKEN")
+chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+if not token or not chat_id:
+    print("Telegram credentials missing from Compose environment.", file=sys.stderr)
+    sys.exit(2)
+
+payload = json.dumps({"chat_id": chat_id, "text": sys.argv[1]}).encode("utf-8")
+request = urllib.request.Request(
+    "https://api.telegram.org/bot" + token + "/sendMessage",
+    data=payload,
+    headers={"Content-Type": "application/json"},
+    method="POST",
+)
+try:
+    with urllib.request.urlopen(request, timeout=15) as response:
+        result = json.loads(response.read().decode("utf-8"))
+    if not result.get("ok"):
+        print("Telegram API rejected the notification.", file=sys.stderr)
+        sys.exit(1)
+except Exception:
+    print("Telegram send failed (network/API error).", file=sys.stderr)
+    sys.exit(1)
+' "$message" >/dev/null 2>>"${LOGFILE}"; then
+        log "Telegram notification sent."
+    else
+        log "WARNING: Telegram notification failed; see preceding error without credentials."
+        return 1
+    fi
+}
+
+
 # Shared lock: the scan holds this for its full duration.
 exec 9>"${LOCKFILE}"
 if ! flock -n 9; then
@@ -62,6 +100,6 @@ else
 fi
 
 if [[ "${UPDATED}" -eq 1 ]]; then
-    send_telegram "AI Trader repository updated and image build verified. Commit: ${CURRENT_COMMIT}"
+    send_telegram "AI Trader repository updated and image build verified. Commit: ${CURRENT_COMMIT}" || true
 fi
 log "Updater finished successfully."
