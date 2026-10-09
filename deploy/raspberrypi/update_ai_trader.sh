@@ -13,7 +13,7 @@ log() { printf '%s - %s\n' "$(date '+%Y-%m-%d %H:%M:%S %z')" "$*" >> "${LOGFILE}
 # are already configured. Never print credentials or the Bot API URL to logs.
 send_telegram() {
     local message="$1"
-    if docker compose run --rm --no-build --entrypoint python ai-trader -c '
+    if docker compose run --rm --entrypoint python ai-trader -c '
 import json, os, sys, urllib.request
 
 token = os.environ.get("TELEGRAM_BOT_TOKEN")

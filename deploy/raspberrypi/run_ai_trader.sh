@@ -17,7 +17,7 @@ fi
 cd "${REPO_DIR}"
 COMMIT="$(git rev-parse HEAD)"
 log "Production scan started. Git commit=${COMMIT}"
-if docker compose run --rm --no-build ai-trader >> "${LOGFILE}" 2>&1; then
+if docker compose run --rm ai-trader >> "${LOGFILE}" 2>&1; then
     EXIT_CODE=0
 else
     EXIT_CODE=$?
