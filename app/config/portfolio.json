@@ -4,7 +4,7 @@
             "ticker": "BITX",
             "buy_price": 48.26,
             "number_of_shares": 51,
-            "target_profit": 5.0,
+            "target_profit": -25.0,
             "trailing_stop": 0,
             "highest_price": 48.26,
             "alerts_sent": []
@@ -13,7 +13,7 @@
             "ticker": "APLD",
             "buy_price": 48.27,
             "number_of_shares": 20,
-            "target_profit": 5,
+            "target_profit": -25.0,
             "trailing_stop": 0,
             "highest_price": 48.27,
             "alerts_sent": []
@@ -22,7 +22,7 @@
             "ticker": "DFEN",
             "buy_price": 61.57,
             "number_of_shares": 93,
-            "target_profit": 15,
+            "target_profit": -10.0,
             "trailing_stop": 10,
             "highest_price": 61.57,
             "alerts_sent": []
@@ -30,9 +30,9 @@
 
                 {
             "ticker": "GDXU",
-            "buy_price": 98,
-            "number_of_shares": 15093,
-            "target_profit": 40,
+            "buy_price": 97.14,
+            "number_of_shares": 150,
+            "target_profit": 45,
             "trailing_stop": 10,
             "highest_price": 98,
             "alerts_sent": []
@@ -41,7 +41,7 @@
             "ticker": "SOXL",
             "buy_price": 192.8,
             "number_of_shares": 26,
-            "target_profit": 5,
+            "target_profit": -15,
             "trailing_stop": 10,
             "highest_price": 192.8,
             "alerts_sent": []
