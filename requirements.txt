@@ -36,3 +36,4 @@ python-dotenv
 pytz
 pandas-market-calendars
 alpaca-py
+pytest

@@ -176,6 +176,10 @@ def build_snapshot(
     if not isinstance(engine_summary, Mapping):
         engine_summary = {}
 
+    decision_gate = result.get("decision_gate")
+    if not isinstance(decision_gate, Mapping):
+        decision_gate = None
+
     def pick(name: str, *fallback_names: str) -> Any:
         for container in (result, engine_summary, engine_result):
             for key in (name, *fallback_names):
@@ -255,6 +259,7 @@ def build_snapshot(
         "signal": signal,
         "final_signal": signal,
         "action": action,
+        "decision_gate": decision_gate,
 
         "score": score,
         "confidence": confidence,
