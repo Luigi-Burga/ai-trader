@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Any, Mapping, Optional
 
 
-VERSION = "1.1"
+VERSION = "1.2"
 MODULE_NAME = "Prediction Logger"
 
 # app/prediction_logger.py -> project root -> data/predictions
@@ -180,6 +180,14 @@ def build_snapshot(
     if not isinstance(decision_gate, Mapping):
         decision_gate = None
 
+    signal_engine = result.get("signal_engine")
+    if not isinstance(signal_engine, Mapping):
+        signal_engine = {}
+
+    signal_transformations = result.get("signal_transformations")
+    if not isinstance(signal_transformations, list):
+        signal_transformations = []
+
     def pick(name: str, *fallback_names: str) -> Any:
         for container in (result, engine_summary, engine_result):
             for key in (name, *fallback_names):
@@ -260,6 +268,17 @@ def build_snapshot(
         "final_signal": signal,
         "action": action,
         "decision_gate": decision_gate,
+
+        # Signal Engine boundary and downstream transformation audit.
+        "signal_engine": signal_engine,
+        "signal_engine_input_signal": result.get("signal_engine_input_signal"),
+        "signal_engine_output_signal": result.get("signal_engine_output_signal"),
+        "pre_safety_signal": result.get("pre_safety_signal"),
+        "signal_transformations": signal_transformations,
+        "safety_override_applied": bool(
+            result.get("safety_override_applied", bool(signal_transformations))
+        ),
+        "safety_override_reason": result.get("safety_override_reason"),
 
         "score": score,
         "confidence": confidence,

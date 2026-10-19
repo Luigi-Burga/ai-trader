@@ -481,19 +481,49 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
         or gated_signal
     ).upper()
 
+    # Capture the Signal Engine boundary before applying downstream safety rules.
+    # These fields are observational only: they do not change the decision logic.
+    signal_engine_input_signal = gated_signal
+    signal_engine_output_signal = final_signal
+    pre_safety_signal = final_signal
+    signal_transformations = []
+
     # Downstream safety invariants.
     non_bullish = {
         "SELL", "STRONG_SELL", "REDUCE", "AVOID", "WATCH",
         "NO_DATA", "REVIEW_DATA", "INSUFFICIENT_HISTORY", "ERROR",
     }
     if gated_signal in non_bullish and final_signal in {"BUY", "STRONG_BUY"}:
+        before_signal = final_signal
         final_signal = gated_signal
+        signal_transformations.append({
+            "stage": "post_signal_engine_safety",
+            "rule": "non_bullish_gate_override",
+            "from_signal": before_signal,
+            "to_signal": final_signal,
+            "reason": (
+                f"Signal Engine returned {before_signal}, but Decision Gate "
+                f"operational signal was non-bullish ({gated_signal}); "
+                "preserved the non-bullish gate output."
+            ),
+        })
 
     if (
         final_signal in {"BUY", "STRONG_BUY"}
         and analysis.get("benchmark_trust") in {"CONTEXT_ONLY", "NONE", None, ""}
     ):
+        before_signal = final_signal
         final_signal = "BUY_ON_CONFIRMATION"
+        signal_transformations.append({
+            "stage": "post_signal_engine_safety",
+            "rule": "benchmark_trust_confirmation",
+            "from_signal": before_signal,
+            "to_signal": final_signal,
+            "reason": (
+                "Benchmark trust is CONTEXT_ONLY, NONE, or unavailable; "
+                "BUY/STRONG_BUY is downgraded to BUY_ON_CONFIRMATION."
+            ),
+        })
 
     _print_result(analysis, gate, final_signal, buy_target)
 
@@ -530,6 +560,14 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
         "analysis": analysis,
         "decision_gate": dict(gate),
         "signal_engine": dict(signal_result),
+        "signal_engine_input_signal": signal_engine_input_signal,
+        "signal_engine_output_signal": signal_engine_output_signal,
+        "pre_safety_signal": pre_safety_signal,
+        "signal_transformations": signal_transformations,
+        "safety_override_applied": bool(signal_transformations),
+        "safety_override_reason": (
+            signal_transformations[-1]["reason"] if signal_transformations else None
+        ),
     }
 
 
