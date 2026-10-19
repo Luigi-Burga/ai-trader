@@ -61,6 +61,14 @@ def _gate_input(
     """
     result = dict(engine_result)
 
+### Added 
+# Preserve authoritative orchestrator engine metadata for Decision Gate.
+    for key in ("engine", "engine_version", "route"):
+        if analysis.get(key) is not None:
+            result[key] = analysis[key]
+
+###
+
     # V2.2 integration fix:
     # The Orchestrator exposes normalized decision-grade fields at the
     # analysis boundary, while engine_result remains the raw CCE/NLE payload.
