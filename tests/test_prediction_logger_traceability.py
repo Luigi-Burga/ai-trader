@@ -70,3 +70,54 @@ def test_decision_gate_survives_jsonl_persistence(tmp_path):
     assert saved["final_signal"] == "BUY_ON_CONFIRMATION"
     assert saved["decision_gate"]["gate_status"] == "BLOCKED"
     assert saved["decision_gate"]["failed_gates"] == ["benchmark_trust"]
+
+
+def test_signal_engine_traceability_survives_jsonl_persistence(tmp_path):
+    result = {
+        "raw_signal": "BUY",
+        "gated_signal": "BUY",
+        "signal": "BUY_ON_CONFIRMATION",
+        "final_signal": "BUY_ON_CONFIRMATION",
+        "signal_engine": {
+            "signal": "BUY",
+            "reason": "simulated test",
+        },
+        "signal_engine_input_signal": "BUY",
+        "signal_engine_output_signal": "BUY",
+        "pre_safety_signal": "BUY",
+        "signal_transformations": [
+            {
+                "stage": "post_signal_engine_safety",
+                "rule": "benchmark_trust_confirmation",
+                "from_signal": "BUY",
+                "to_signal": "BUY_ON_CONFIRMATION",
+                "reason": "Simulated benchmark trust restriction",
+            }
+        ],
+        "safety_override_applied": True,
+        "safety_override_reason": "Simulated benchmark trust restriction",
+    }
+
+    snapshot = build_snapshot("TEST", result)
+    path = append_snapshot(snapshot, base_dir=tmp_path)
+    saved = json.loads(path.read_text(encoding="utf-8").strip())
+
+    assert saved["signal_engine_input_signal"] == "BUY"
+    assert saved["signal_engine_output_signal"] == "BUY"
+    assert saved["pre_safety_signal"] == "BUY"
+    assert saved["final_signal"] == "BUY_ON_CONFIRMATION"
+
+    assert saved["signal_transformations"] == [
+        {
+            "stage": "post_signal_engine_safety",
+            "rule": "benchmark_trust_confirmation",
+            "from_signal": "BUY",
+            "to_signal": "BUY_ON_CONFIRMATION",
+            "reason": "Simulated benchmark trust restriction",
+        }
+    ]
+
+    assert saved["safety_override_applied"] is True
+    assert saved["safety_override_reason"] == (
+        "Simulated benchmark trust restriction"
+    )
