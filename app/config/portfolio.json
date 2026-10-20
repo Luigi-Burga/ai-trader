@@ -39,11 +39,11 @@
         },
         {
             "ticker": "SOXL",
-            "buy_price": 192.8,
-            "number_of_shares": 26,
-            "target_profit": -15,
+            "buy_price": 132.0,
+            "number_of_shares": 76,
+            "target_profit": 10,
             "trailing_stop": 10,
-            "highest_price": 192.8,
+            "highest_price": 132.0,
             "alerts_sent": []
         }
     ]
