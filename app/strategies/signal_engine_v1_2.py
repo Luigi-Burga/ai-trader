@@ -86,6 +86,11 @@ def build_decision(
     elif raw_signal in {"BUY", "STRONG_BUY"} and not grade:
         operational = "BUY_ON_CONFIRMATION"
         reason = "buy_blocked_by_benchmark_trust"
+    elif raw_signal not in {"BUY", "STRONG_BUY"}:
+        # Benchmark trust only gates bullish entry signals. For non-bullish
+        # signals, do not imply that benchmark trust was accepted for a buy.
+        operational = raw_signal
+        reason = "not_applicable_non_bullish_signal"
     else:
         operational = raw_signal
         reason = "benchmark_trust_accepted"
