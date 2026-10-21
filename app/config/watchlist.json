@@ -22,16 +22,7 @@
       "ticker": "META"
     },
     {
-      "ticker": "AAPL"
-    },
-    {
-      "ticker": "BRK.B"
-    },
-    {
       "ticker": "JPM"
-    },
-    {
-      "ticker": "V"
     },
     {
         "ticker": "TQQQ"        
@@ -40,53 +31,20 @@
         "ticker": "GDXU"
     },
     {
-        "ticker": "TSLA"
-    },
-    {
         "ticker": "AMD"
     },
     {
         "ticker": "DELL"
     },
     {
-        "ticker": "LITE"
-    },
-    {
-        "ticker": "ORCL"
-    },
-    {
-        "ticker": "MRVL"
-    }, 
-    {
         "ticker": "PLTR"
     }, 
     {
-        "ticker": "PLTU"
-    }, 
-    {
-        "ticker": "SNDK"
-    },
-    {
-        "ticker": "ASMG"
-    },
-
-    {
-        "ticker": "SPCX"
-    },
-
-
-    {
         "ticker": "MU"
     },
-
     {
         "ticker": "LRCX"
     },
-
-    {
-        "ticker": "AMAT"
-    },
-
     {
         "ticker": "SOXL"
     },
