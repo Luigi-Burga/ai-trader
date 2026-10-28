@@ -91,6 +91,12 @@ from app.utils.market_hours import (
 from app.prediction_logger import log_prediction
 from app.prediction_tracker import update_all_predictions
 
+# Decision Policy V1 — SHADOW ONLY. It records a parallel recommendation;
+# it never replaces the scanner signal or authorizes execution.
+from app.decision_policy_shadow_integration import _decision_policy_shadow
+
+DECISION_POLICY_SHADOW_ONLY = True
+
 # V2.12 - Autonomous Paper execution
 from app.broker.alpaca_trade_intent import TradeIntent
 from app.broker.alpaca_account import AI_TRADER_CAPITAL_BASE
@@ -415,6 +421,15 @@ def _execute_watchlist_signal(
         or "ERROR"
     ).upper()
 
+    # Safety interlock: while the centralized policy is SHADOW_ONLY, no
+    # watchlist order can reach the executor even if an environment flag is set.
+    if DECISION_POLICY_SHADOW_ONLY:
+        print(
+            f"{symbol} | SHADOW ONLY | NO ORDER SUBMITTED | "
+            f"original_signal={final_signal}"
+        )
+        return
+
     if final_signal == NON_EXECUTABLE_CONFIRMATION_SIGNAL:
         print(
             f"{symbol} | FINAL={final_signal} | "
@@ -578,6 +593,9 @@ def main() -> None:
 
         try:
             result = scan_buy_opportunity(stock)
+
+            # Parallel policy evaluation; must not modify final_signal/signal.
+            _decision_policy_shadow(symbol, result)
 
             # Capture T0 before moving to the next ticker.
             _log_prediction_snapshot(
