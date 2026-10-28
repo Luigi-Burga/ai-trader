@@ -1,5 +1,5 @@
 import unittest
-from decision_policy_v1 import DecisionInput, DecisionPolicyConfig, evaluate_decision
+from app.decision_policy_v1 import DecisionInput, DecisionPolicyConfig, evaluate_decision
 
 
 def candidate(**overrides):
@@ -27,7 +27,7 @@ class DecisionPolicyTests(unittest.TestCase):
         ))
         self.assertEqual(result.operational_signal, "BUY_ON_CONFIRMATION")
         self.assertEqual(result.decision_status, "REQUIRES_CONFIRMATION")
-        self.assertIn("CONFIDENCE_BELOW_AUTO_MIN", result.failed_gates)
+        self.assertIn("PRIMARY_ROUTE_NOT_MET", result.failed_gates)
 
     def test_fallback_over_confirmation_limit_blocks(self):
         result = evaluate_decision(candidate(fallback_ratio=0.70))
