@@ -1,5 +1,5 @@
 """Pure shadow adapter used by app.main; never authorizes orders."""
-from app.decision_policy_v1 import DecisionInput, evaluate_decision
+from app.ai.decision_policy_v1 import DecisionInput, evaluate_decision
 
 def _policy_float(value, default=None):
     try:
