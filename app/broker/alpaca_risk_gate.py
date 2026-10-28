@@ -147,6 +147,7 @@ class AlpacaRiskGate:
         intent: TradeIntent,
         reconciliation_report=None,
         market_price: Optional[float] = None,
+        ignore_open_order_check: bool = False,
     ) -> RiskDecision:
         checks: list[RiskCheck] = []
         rejection_reasons: list[str] = []
@@ -395,7 +396,16 @@ class AlpacaRiskGate:
         duplicate_ok = True
         duplicate_message = ""
 
-        if self.config.reject_if_open_same_side:
+        if ignore_open_order_check:
+            # Only for a SELL that is deliberately replacing its own native
+            # bracket children at the 15-session time exit. Executor duplicate
+            # protection remains mandatory after those children are canceled.
+            if intent.side != "sell":
+                duplicate_ok = False
+                duplicate_message = "ignore_open_order_check is valid only for SELL time exits."
+            else:
+                duplicate_message = "Deferred duplicate-order check for managed bracket exit; executor rechecks after cancellation."
+        elif self.config.reject_if_open_same_side:
             try:
                 duplicate_order = self.orders.has_open_order(
                     symbol=intent.symbol,

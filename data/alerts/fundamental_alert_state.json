@@ -23,7 +23,7 @@
     "revenue": 25.0,
     "score": 50.0,
     "symbol": "AMD",
-    "updated_at": "2026-09-26T04:55:28.221189+00:00"
+    "updated_at": "2026-10-28T19:54:40.705541+00:00"
   },
   "AMZN": {
     "debt": 10.0,
@@ -36,7 +36,20 @@
     "revenue": 15.0,
     "score": 30.0,
     "symbol": "AMZN",
-    "updated_at": "2026-09-26T04:55:28.007604+00:00"
+    "updated_at": "2026-10-28T19:54:40.504390+00:00"
+  },
+  "ANET": {
+    "debt": 0.0,
+    "last_alert_at": null,
+    "last_alert_class": null,
+    "last_alert_rating": null,
+    "last_alert_score": null,
+    "margins": 15.0,
+    "rating": "🟢 BUY",
+    "revenue": 25.0,
+    "score": 40.0,
+    "symbol": "ANET",
+    "updated_at": "2026-10-28T19:54:40.956771+00:00"
   },
   "AVGO": {
     "debt": 10.0,
@@ -49,7 +62,7 @@
     "revenue": 25.0,
     "score": 50.0,
     "symbol": "AVGO",
-    "updated_at": "2026-09-26T04:55:28.022769+00:00"
+    "updated_at": "2026-10-28T19:54:40.555191+00:00"
   },
   "BRK.B": {
     "debt": 0.0,
@@ -75,7 +88,7 @@
     "revenue": 25.0,
     "score": 30.0,
     "symbol": "DELL",
-    "updated_at": "2026-09-26T04:55:28.242468+00:00"
+    "updated_at": "2026-10-28T19:54:40.736730+00:00"
   },
   "GOOGL": {
     "debt": 15.0,
@@ -88,20 +101,20 @@
     "revenue": 20.0,
     "score": 50.0,
     "symbol": "GOOGL",
-    "updated_at": "2026-09-26T04:55:27.986594+00:00"
+    "updated_at": "2026-10-28T19:54:40.473794+00:00"
   },
   "JPM": {
     "debt": 0.0,
-    "last_alert_at": null,
-    "last_alert_class": null,
-    "last_alert_rating": null,
-    "last_alert_score": null,
+    "last_alert_at": "2026-10-28T19:48:48.510364+00:00",
+    "last_alert_class": "IMPORTANT",
+    "last_alert_rating": "🟡 HOLD",
+    "last_alert_score": 30.0,
     "margins": 15.0,
-    "rating": "🟢 BUY",
-    "revenue": 25.0,
-    "score": 40.0,
+    "rating": "🟡 HOLD",
+    "revenue": 15.0,
+    "score": 30.0,
     "symbol": "JPM",
-    "updated_at": "2026-09-26T04:55:28.120039+00:00"
+    "updated_at": "2026-10-28T19:54:40.659284+00:00"
   },
   "LITE": {
     "debt": 10.0,
@@ -115,6 +128,19 @@
     "score": 50.0,
     "symbol": "LITE",
     "updated_at": "2026-09-26T04:55:28.264254+00:00"
+  },
+  "LRCX": {
+    "debt": 15.0,
+    "last_alert_at": null,
+    "last_alert_class": null,
+    "last_alert_rating": null,
+    "last_alert_score": null,
+    "margins": 15.0,
+    "rating": "🟢 STRONG BUY",
+    "revenue": 25.0,
+    "score": 55.0,
+    "symbol": "LRCX",
+    "updated_at": "2026-10-28T19:54:40.928711+00:00"
   },
   "MA": {
     "debt": 0.0,
@@ -140,7 +166,7 @@
     "revenue": 20.0,
     "score": 45.0,
     "symbol": "META",
-    "updated_at": "2026-09-26T04:55:28.055171+00:00"
+    "updated_at": "2026-10-28T19:54:40.627223+00:00"
   },
   "MRVL": {
     "debt": 15.0,
@@ -166,7 +192,20 @@
     "revenue": 15.0,
     "score": 45.0,
     "symbol": "MSFT",
-    "updated_at": "2026-09-26T04:55:27.967095+00:00"
+    "updated_at": "2026-10-28T19:54:40.425827+00:00"
+  },
+  "MU": {
+    "debt": 15.0,
+    "last_alert_at": null,
+    "last_alert_class": null,
+    "last_alert_rating": null,
+    "last_alert_score": null,
+    "margins": 15.0,
+    "rating": "🟢 STRONG BUY",
+    "revenue": 25.0,
+    "score": 55.0,
+    "symbol": "MU",
+    "updated_at": "2026-10-28T19:54:40.874828+00:00"
   },
   "NVDA": {
     "debt": 15.0,
@@ -179,7 +218,7 @@
     "revenue": 25.0,
     "score": 55.0,
     "symbol": "NVDA",
-    "updated_at": "2026-09-26T04:55:27.946534+00:00"
+    "updated_at": "2026-10-28T19:54:40.378806+00:00"
   },
   "ORCL": {
     "debt": 0.0,
@@ -205,7 +244,7 @@
     "revenue": 25.0,
     "score": 55.0,
     "symbol": "PLTR",
-    "updated_at": "2026-09-26T04:55:28.312549+00:00"
+    "updated_at": "2026-10-28T19:54:40.795102+00:00"
   },
   "SNDK": {
     "debt": 15.0,
@@ -257,7 +296,7 @@
     "revenue": 25.0,
     "score": 55.0,
     "symbol": "TSM",
-    "updated_at": "2026-09-26T04:55:28.035745+00:00"
+    "updated_at": "2026-10-28T19:54:40.594133+00:00"
   },
   "V": {
     "debt": 10.0,

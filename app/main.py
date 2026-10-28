@@ -107,6 +107,12 @@ from app.broker.alpaca_position_sizer import (
 )
 from app.broker.alpaca_risk_gate import create_risk_gate
 from app.broker.alpaca_executor import create_executor
+from app.strategies.breakout_vol_filter_live import (
+    scan_buy_opportunity as scan_breakout_vol_filter,
+    record_submission as record_breakout_submission,
+    manage_time_exit as manage_breakout_time_exit,
+    STRATEGY as BREAKOUT_STRATEGY,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -123,6 +129,10 @@ def _prediction_directory() -> str:
         "AI_TRADER_PREDICTION_DIR",
         "",
     ).strip()
+
+
+def _active_strategy() -> str:
+    return os.getenv("AI_TRADER_ACTIVE_STRATEGY", "").strip().upper()
 
 
 def _autonomous_execution_enabled() -> bool:
@@ -333,6 +343,23 @@ def _build_trade_intent(
     if final_signal not in EXECUTABLE_SIGNALS:
         return None
 
+    if str(result.get("strategy") or "").upper() == BREAKOUT_STRATEGY:
+        confidence = float(result.get("confidence", 75.0))
+        quantity = int(result.get("quantity") or 0)
+        price = float(result.get("current_price") or 0.0)
+        stop = float(result.get("stop_loss_price") or 0.0)
+        target = float(result.get("take_profit_price") or 0.0)
+        if quantity < 1 or price <= 0 or stop <= 0 or target <= price:
+            raise ValueError(f"{symbol}: invalid BREAKOUT_VOL_FILTER quantity/price/bracket.")
+        return TradeIntent(
+            symbol=symbol, side="buy", quantity=quantity, order_type="market", time_in_force="day",
+            reason=(f"{BREAKOUT_STRATEGY}; signal_date={result.get('signal_date')}; "
+                    f"ATR14={result.get('atr14')}; stop=${stop:.2f}; target=${target:.2f}; "
+                    f"risk_budget=${result.get('risk_budget_usd', 0):.2f}"),
+            confidence=confidence, strategy=BREAKOUT_STRATEGY, signal=final_signal,
+            stop_loss_price=stop, take_profit_price=target,
+        )
+
     confidence = result.get("confidence")
     if confidence is None:
         raise ValueError(f"{symbol}: executable signal has no confidence.")
@@ -423,11 +450,16 @@ def _execute_watchlist_signal(
 
     # Safety interlock: while the centralized policy is SHADOW_ONLY, no
     # watchlist order can reach the executor even if an environment flag is set.
-    if DECISION_POLICY_SHADOW_ONLY:
+    is_breakout = str(result.get("strategy") or "").upper() == BREAKOUT_STRATEGY
+    breakout_explicitly_selected = _active_strategy() == BREAKOUT_STRATEGY
+    if DECISION_POLICY_SHADOW_ONLY and not (is_breakout and breakout_explicitly_selected):
         print(
             f"{symbol} | SHADOW ONLY | NO ORDER SUBMITTED | "
             f"original_signal={final_signal}"
         )
+        return
+    if is_breakout and not breakout_explicitly_selected:
+        print(f"{symbol} | BREAKOUT_VOL_FILTER not active; no order submitted.")
         return
 
     if final_signal == NON_EXECUTABLE_CONFIRMATION_SIGNAL:
@@ -504,6 +536,8 @@ def _execute_watchlist_signal(
         )
         print("-" * 60)
         print(execution_result.summary())
+        if execution_result.submitted and str(result.get("strategy") or "").upper() == BREAKOUT_STRATEGY:
+            record_breakout_submission(result)
 
     except Exception as exc:
         # Fail-safe per ticker: one execution error must not stop the
@@ -534,13 +568,14 @@ def main() -> None:
 
     print("\n")
     print("===================================")
-    print("AI Trader Integrated V2.14")
+    print("AI Trader Integrated V2.15 - BREAKOUT_VOL_FILTER adapter")
     print(f"Market Scan: {datetime.now()}")
     print(f"Run ID: {run_id}")
     print("===================================")
 
     print()
     print("===== EXECUTION MODE =====")
+    print(f"Active strategy: {_active_strategy() or 'EXISTING WATCHLIST PIPELINE'}")
     if _autonomous_execution_enabled():
         print("AUTONOMOUS PAPER EXECUTION: ENABLED")
         print("Order Type: MARKET")
@@ -592,10 +627,14 @@ def main() -> None:
         )
 
         try:
-            result = scan_buy_opportunity(stock)
-
-            # Parallel policy evaluation; must not modify final_signal/signal.
-            _decision_policy_shadow(symbol, result)
+            if _active_strategy() == BREAKOUT_STRATEGY:
+                manage_breakout_time_exit(symbol, risk_gate=risk_gate, executor=executor)
+                result = scan_breakout_vol_filter(stock, executor=executor)
+                print(f"{symbol} | STRATEGY={BREAKOUT_STRATEGY} | signal_date={result.get('signal_date', '-')} | reason={result.get('reason', result.get('error', '-'))}")
+            else:
+                result = scan_buy_opportunity(stock)
+                # Parallel policy evaluation; must not modify final_signal/signal.
+                _decision_policy_shadow(symbol, result)
 
             # Capture T0 before moving to the next ticker.
             _log_prediction_snapshot(

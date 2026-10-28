@@ -27,10 +27,9 @@
             "highest_price": 61.57,
             "alerts_sent": []
         },
-
-                {
+        {
             "ticker": "GDXU",
-            "buy_price": 96.00,
+            "buy_price": 96.0,
             "number_of_shares": 200,
             "target_profit": 35,
             "trailing_stop": 10,
@@ -39,7 +38,7 @@
         },
         {
             "ticker": "SOXL",
-            "buy_price": 133.00,
+            "buy_price": 133.0,
             "number_of_shares": 76,
             "target_profit": 13,
             "trailing_stop": 10,

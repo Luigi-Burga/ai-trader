@@ -57,6 +57,8 @@ class TradeIntent:
     signal: str = ""
 
     created_at: str = ""
+    stop_loss_price: float | None = None
+    take_profit_price: float | None = None
 
     def __post_init__(self) -> None:
         symbol = self.symbol.strip().upper()
@@ -116,6 +118,17 @@ class TradeIntent:
 
         if self.order_type == "limit" and self.stop_price is not None:
             raise ValueError("limit order cannot contain stop_price.")
+
+        # Optional Alpaca bracket exits attached to a MARKET BUY entry.
+        if (self.stop_loss_price is None) != (self.take_profit_price is None):
+            raise ValueError("stop_loss_price and take_profit_price must be supplied together.")
+        if self.stop_loss_price is not None:
+            if self.side != "buy" or self.order_type != "market":
+                raise ValueError("Bracket exits are supported only for MARKET BUY intents.")
+            if self.stop_loss_price <= 0 or self.take_profit_price <= 0:
+                raise ValueError("Bracket stop and take-profit prices must be positive.")
+            if self.stop_loss_price >= self.take_profit_price:
+                raise ValueError("Bracket stop must be below take-profit for a long position.")
 
         if self.order_type == "stop" and self.limit_price is not None:
             raise ValueError("stop order cannot contain limit_price.")
@@ -187,6 +200,8 @@ class TradeIntentFactory:
         confidence: float | None = None,
         strategy: str = "",
         signal: str = "",
+        stop_loss_price: float | None = None,
+        take_profit_price: float | None = None,
     ) -> TradeIntent:
         return TradeIntent(
             symbol=symbol,
@@ -201,6 +216,8 @@ class TradeIntentFactory:
             strategy=strategy,
             signal=signal,
             created_at=datetime.now(timezone.utc).isoformat(),
+            stop_loss_price=stop_loss_price,
+            take_profit_price=take_profit_price,
         )
 
 
@@ -216,6 +233,8 @@ def create_trade_intent(
     confidence: float | None = None,
     strategy: str = "",
     signal: str = "",
+    stop_loss_price: float | None = None,
+    take_profit_price: float | None = None,
 ) -> TradeIntent:
     """Convenience factory for AI Trader components."""
     return TradeIntentFactory.create(
@@ -230,6 +249,8 @@ def create_trade_intent(
         confidence=confidence,
         strategy=strategy,
         signal=signal,
+        stop_loss_price=stop_loss_price,
+        take_profit_price=take_profit_price,
     )
 
 

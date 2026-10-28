@@ -68,12 +68,14 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Optional
 
-from alpaca.trading.enums import OrderSide, TimeInForce
+from alpaca.trading.enums import OrderClass, OrderSide, TimeInForce
 from alpaca.trading.requests import (
     LimitOrderRequest,
     MarketOrderRequest,
     StopLimitOrderRequest,
     StopOrderRequest,
+    StopLossRequest,
+    TakeProfitRequest,
 )
 
 from app.broker.alpaca_client import AlpacaClient, create_alpaca_client
@@ -366,6 +368,9 @@ class AlpacaExecutor:
             message=(
                 "Order submitted successfully to Alpaca PAPER after Risk Gate approval, "
                 "dynamic reconciliation, position-state validation, and duplicate-order checks."
+                + (f" Bracket exits attached: stop=${intent.stop_loss_price:.2f}, "
+                   f"take-profit=${intent.take_profit_price:.2f}."
+                   if intent.stop_loss_price is not None and intent.take_profit_price is not None else "")
             ),
             proposal_token=token,
             order_id=order_id,
@@ -380,6 +385,28 @@ class AlpacaExecutor:
         # turn a successfully submitted order into a failed execution result.
         self._notify_execution_result(result, risk_decision=risk_decision)
         return result
+
+    def cancel_open_orders_for_symbol(self, symbol: str) -> int:
+        """Cancel open orders for one symbol before a controlled time-based exit.
+
+        This method is PAPER-only and fails closed if order lookup/cancellation fails.
+        """
+        if self.config.paper_only and not self._is_paper_environment():
+            raise RuntimeError("Refusing to cancel orders outside Alpaca PAPER.")
+        normalized = str(symbol).strip().upper()
+        orders = self.orders.find_open_orders_for_symbol(normalized)
+        cancelled = 0
+        for order in orders:
+            self.client._client.cancel_order_by_id(order.id)
+            cancelled += 1
+        # Verify that the exit children/parent orders are no longer open.
+        remaining = self.orders.find_open_orders_for_symbol(normalized)
+        if remaining:
+            raise RuntimeError(
+                f"Open orders remain for {normalized} after cancellation: "
+                + ", ".join(o.id for o in remaining)
+            )
+        return cancelled
 
     # ------------------------------------------------------------------
     # Existing-position safety
@@ -441,12 +468,25 @@ class AlpacaExecutor:
         tif = TimeInForce(intent.time_in_force.lower())
 
         if intent.order_type == "market":
-            request = MarketOrderRequest(
-                symbol=intent.symbol,
-                qty=intent.quantity,
-                side=side,
-                time_in_force=tif,
-            )
+            if intent.stop_loss_price is not None and intent.take_profit_price is not None:
+                if intent.side.lower() != "buy":
+                    raise ValueError("Bracket orders are only supported for BUY entries.")
+                request = MarketOrderRequest(
+                    symbol=intent.symbol,
+                    qty=intent.quantity,
+                    side=side,
+                    time_in_force=tif,
+                    order_class=OrderClass.BRACKET,
+                    take_profit=TakeProfitRequest(limit_price=round(float(intent.take_profit_price), 2)),
+                    stop_loss=StopLossRequest(stop_price=round(float(intent.stop_loss_price), 2)),
+                )
+            else:
+                request = MarketOrderRequest(
+                    symbol=intent.symbol,
+                    qty=intent.quantity,
+                    side=side,
+                    time_in_force=tif,
+                )
 
         elif intent.order_type == "limit":
             request = LimitOrderRequest(
