@@ -19,6 +19,7 @@ from typing import Any, Dict, Mapping
 from app.ai.asset_analysis_orchestrator_v1_5_1 import analyze_ticker
 from app.strategies.decision_gate_v1_5 import apply_decision_gate
 from app.strategies.signal_engine_v1_2 import generate_signal
+from app.ai.decision_policy_v1 import DecisionInput, evaluate_decision
 
 VERSION = "2.2.2"
 SCANNER = "Watchlist Scanner"
@@ -296,6 +297,77 @@ def _review_data_result(
     }
 
 
+def _decision_policy_shadow(analysis: Mapping[str, Any], engine_result: Mapping[str, Any], final_signal: str) -> Dict[str, Any]:
+    """Evaluate centralized policy in shadow mode; never changes final_signal.
+
+    For BUY_ON_CONFIRMATION only, a clearly labelled BUY eligibility probe is
+    used to report why automatic BUY is not eligible. It is not a real BUY.
+    """
+    levels = engine_result.get("levels") if isinstance(engine_result.get("levels"), Mapping) else {}
+    signal = str(final_signal or "WATCH").upper()
+    probe = signal == "BUY_ON_CONFIRMATION"
+    analytical_signal = "BUY" if probe else signal
+
+    def first(*values):
+        for value in values:
+            if value is not None and value != "":
+                return value
+        return None
+
+    status = str(analysis.get("status") or "ANALYZED").upper()
+    score = first(analysis.get("score"), engine_result.get("score"))
+    probability = first(engine_result.get("historical_probability_20d"), engine_result.get("probability_20d"), analysis.get("historical_probability_20d"))
+    reward_risk = first(engine_result.get("reward_risk_20d"), engine_result.get("reward_risk"), analysis.get("reward_risk_20d"))
+
+
+    confidence = first(analysis.get("confidence"), engine_result.get("confidence"))
+
+    if confidence is not None:
+       try:
+          confidence = float(confidence) 
+          if confidence > 1.0:
+             confidence /= 100.0
+       except (TypeError, ValueError):
+            confidence = None
+    
+    
+    fallback = first(engine_result.get("fallback_ratio"), analysis.get("fallback_ratio"))
+    quality = first(engine_result.get("match_quality"), analysis.get("match_quality"))
+    regime = first(analysis.get("regime"), engine_result.get("regime"), engine_result.get("cycle"))
+    appt = first(analysis.get("appt_x_20d"), engine_result.get("appt_x_20d"), analysis.get("appt"))
+    benchmark_trust = first(analysis.get("benchmark_trust"), engine_result.get("benchmark_trust"))
+    benchmark_grade = first(analysis.get("benchmark_trust_decision_grade"), engine_result.get("benchmark_trust_decision_grade"))
+    current_price = first(analysis.get("current_price"), engine_result.get("current_price"))
+    entry_price = first(levels.get("entry_price"), levels.get("preferred_entry"), levels.get("current_price"))
+    entry_valid = entry_price is not None and current_price is not None
+    stop_valid = first(levels.get("stop"), levels.get("dynamic_stop"), levels.get("stop_loss")) is not None
+    data_valid = status not in {"ERROR", "REVIEW_DATA", "INVALID_DATA"}
+
+    decision = evaluate_decision(DecisionInput(
+        symbol=str(analysis.get("ticker") or engine_result.get("ticker") or "UNKNOWN").upper(),
+        analytical_signal=analytical_signal,
+        score=score,
+        probability_20d=probability,
+        reward_risk=reward_risk,
+        confidence=confidence,
+        fallback_ratio=fallback,
+        match_quality=quality,
+        regime=regime,
+        appt=appt,
+        benchmark_trust=benchmark_trust,
+        benchmark_decision_grade=benchmark_grade,
+        data_valid=data_valid,
+        entry_valid=entry_valid,
+        stop_valid=stop_valid,
+        source="WATCHLIST_SCANNER_SHADOW",
+    )).to_dict()
+    decision["mode"] = "SHADOW_ONLY"
+    decision["eligibility_probe"] = "HYPOTHETICAL_ONLY" if probe else "ACTUAL_FINAL_SIGNAL"
+    decision["original_final_signal"] = signal
+    decision["policy_does_not_override_pipeline"] = True
+    return decision
+
+
 def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
     """Analyze one watchlist item through the complete validated pipeline."""
     ticker = str(stock.get("ticker") or "").strip().upper()
@@ -533,6 +605,25 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
             ),
         })
 
+    # Centralized policy integration (SHADOW ONLY): diagnostics only; do not
+    # override final_signal or affect main.py / Alpaca execution eligibility.
+    try:
+        policy_shadow = _decision_policy_shadow(analysis, engine_result, final_signal)
+    except Exception as exc:
+        policy_shadow = {
+            "mode": "SHADOW_ONLY",
+            "status": "SHADOW_EVALUATION_ERROR",
+            "error": str(exc),
+            "original_final_signal": final_signal,
+            "policy_does_not_override_pipeline": True,
+        }
+    print(
+        f"POLICY SHADOW | {ticker} | original={final_signal} | "
+        f"policy={policy_shadow.get('operational_signal', '-')} | "
+        f"status={policy_shadow.get('decision_status', policy_shadow.get('status', '-'))} | "
+        f"failed={','.join(policy_shadow.get('failed_gates', []))}"
+    )
+
     _print_result(analysis, gate, final_signal, buy_target)
 
     if buy_target and analysis.get("current_price") is not None:
@@ -576,6 +667,7 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
         "safety_override_reason": (
             signal_transformations[-1]["reason"] if signal_transformations else None
         ),
+        "decision_policy_shadow": policy_shadow,
     }
 
 

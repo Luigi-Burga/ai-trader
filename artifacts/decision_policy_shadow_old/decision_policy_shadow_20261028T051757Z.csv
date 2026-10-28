@@ -1,0 +1,5 @@
+﻿ticker,analytical_signal,current_gate_signal,current_final_signal,proposed_signal,comparison,decision_status,reasons,failed_gates,score,probability_20d,reward_risk,confidence_fraction,fallback_ratio,match_quality,regime,benchmark_trust,benchmark_decision_grade,data_valid,entry_valid,stop_valid,current_price,scanner_status,scanner_error
+NVDA,WATCH,WATCH,WATCH,WATCH,SIN_CAMBIOS,NOT_BUY_CANDIDATE,Analytical signal is WATCH; policy does not promote non-buy signals.,,68.34,,,0.5893,,,CONSOLIDATION,HIGH,True,True,True,True,217.94,ANALYZED,
+MSFT,WATCH,WATCH,WATCH,WATCH,SIN_CAMBIOS,NOT_BUY_CANDIDATE,Analytical signal is WATCH; policy does not promote non-buy signals.,,52.07,,,0.48960000000000004,,,RECOVERY,MEDIUM,True,True,True,True,531.33,ANALYZED,
+GOOGL,WATCH,WATCH,WATCH,WATCH,SIN_CAMBIOS,NOT_BUY_CANDIDATE,Analytical signal is WATCH; policy does not promote non-buy signals.,,59.04,,,0.5268,,,DOWNTREND,MEDIUM,True,True,True,True,320.58,ANALYZED,
+AMZN,WATCH,WATCH,WATCH,WATCH,SIN_CAMBIOS,NOT_BUY_CANDIDATE,Analytical signal is WATCH; policy does not promote non-buy signals.,,66.26,,,0.5703,,,RECOVERY,MEDIUM,True,True,True,True,253.1,ANALYZED,
