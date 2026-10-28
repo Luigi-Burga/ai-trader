@@ -1,5 +1,5 @@
 import unittest
-from decision_policy_v1 import DecisionInput, DecisionPolicyConfig, evaluate_decision
+from app.ai.decision_policy_v1 import DecisionInput, DecisionPolicyConfig, evaluate_decision
 
 
 def candidate(**overrides):

@@ -174,9 +174,37 @@ def evaluate_decision(data: DecisionInput,
         and appt is not None and appt >= config.confirmation_appt_min
     )
     if confirmation:
-        return _result(data, sig, "BUY_ON_CONFIRMATION", "REQUIRES_CONFIRMATION",
-                       ["Confirmation route passed; no automatic order is authorized."],
-                       ["PRIMARY_ROUTE_NOT_MET"])
+        # Report the actual failed gates rather than the opaque placeholder
+        # PRIMARY_ROUTE_NOT_MET. Also document why STRONG_BUY is not eligible.
+        blockers = []
+        if score < config.buy_score_min: blockers.append("SCORE_BELOW_BUY_MIN")
+        if prob < config.buy_probability_min: blockers.append("PROBABILITY_BELOW_BUY_MIN")
+        if rr < config.buy_rr_min: blockers.append("REWARD_RISK_BELOW_BUY_MIN")
+        if conf < config.confidence_min: blockers.append("CONFIDENCE_BELOW_AUTO_MIN")
+        if fallback > config.fallback_max_auto: blockers.append("FALLBACK_ABOVE_AUTO_MAX")
+        if quality not in config.allowed_match_quality_auto: blockers.append("MATCH_QUALITY_BELOW_AUTO_MIN")
+        if score < config.strong_buy_score_min: blockers.append("SCORE_BELOW_STRONG_BUY_MIN")
+        if prob < config.strong_buy_probability_min: blockers.append("PROBABILITY_BELOW_STRONG_BUY_MIN")
+        if rr < config.strong_buy_rr_min: blockers.append("REWARD_RISK_BELOW_STRONG_BUY_MIN")
+        return _result(
+            data, sig, "BUY_ON_CONFIRMATION", "REQUIRES_CONFIRMATION",
+            ["Confirmation route passed; no automatic order is authorized.",
+             "Automatic BUY blockers: " + ", ".join(
+                 item for item in blockers if item not in {
+                     "SCORE_BELOW_STRONG_BUY_MIN",
+                     "PROBABILITY_BELOW_STRONG_BUY_MIN",
+                     "REWARD_RISK_BELOW_STRONG_BUY_MIN",
+                 }
+             ),
+             "STRONG_BUY blockers: " + ", ".join(
+                 item for item in blockers if item in {
+                     "SCORE_BELOW_STRONG_BUY_MIN",
+                     "PROBABILITY_BELOW_STRONG_BUY_MIN",
+                     "REWARD_RISK_BELOW_STRONG_BUY_MIN",
+                 }
+             )],
+            blockers,
+        )
 
     # Explain every primary criterion that failed.
     if score < config.buy_score_min: failed.append("SCORE_BELOW_BUY_MIN")
