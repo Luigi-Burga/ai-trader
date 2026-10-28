@@ -37,9 +37,11 @@ class MainDecisionPolicyShadowTests(unittest.TestCase):
         self.assertEqual(decision["operational_signal"], "WATCH")
         self.assertEqual(decision["decision_status"], "NOT_BUY_CANDIDATE")
 
-    def test_execution_interlock_is_enabled(self):
-        self.assertIn("DECISION_POLICY_SHADOW_ONLY = True", MAIN_SOURCE)
-        self.assertIn("NO ORDER SUBMITTED", MAIN_SOURCE)
+    def test_execution_interlock_is_disabled(self):
+        self.assertIn("DECISION_POLICY_SHADOW_ONLY = False", MAIN_SOURCE)
+        self.assertIn("NO EXECUTION: confirmation required.", MAIN_SOURCE)
+        self.assertIn("risk_gate.evaluate(", MAIN_SOURCE)
+        self.assertIn("executor.execute(", MAIN_SOURCE)
 
 
 if __name__ == "__main__":

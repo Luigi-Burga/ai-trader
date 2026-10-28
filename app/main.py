@@ -95,7 +95,7 @@ from app.prediction_tracker import update_all_predictions
 # it never replaces the scanner signal or authorizes execution.
 from app.decision_policy_shadow_integration import _decision_policy_shadow
 
-DECISION_POLICY_SHADOW_ONLY = True
+DECISION_POLICY_SHADOW_ONLY = False
 
 # V2.12 - Autonomous Paper execution
 from app.broker.alpaca_trade_intent import TradeIntent
