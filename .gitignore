@@ -2,5 +2,38 @@ venv/
 .env
 __pycache__/
 *.pyc
+
+# Pruebas y diagnósticos locales
+local_tests/
+artifacts/
+*.log
+test_*.txt
+performance_diagnostic*_results.json
+
+# Datos históricos y caché
+old_data/
+data/market_cache/
+data/early_recovery_v1_2/
+
+# Archivos temporales y respaldos
+*.bak
+*.bak_*
+_policy_shadow_patch/
 old_data/
 /app/backup/
+# === AI Trader: archivos locales de desarrollo ===
+local_tests/
+artifacts/
+experiments/
+old_data/
+data/market_cache/
+data/early_recovery_v1_2/
+
+# Resultados y diagnósticos generados
+*.log
+test_*.txt
+performance_diagnostic*_results.json
+
+# Respaldos locales
+*.bak
+*.bak_*

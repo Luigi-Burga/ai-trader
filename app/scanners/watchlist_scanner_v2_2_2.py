@@ -20,6 +20,7 @@ from app.ai.asset_analysis_orchestrator_v1_5_1 import analyze_ticker
 from app.strategies.decision_gate_v1_5 import apply_decision_gate
 from app.strategies.signal_engine_v1_2 import generate_signal
 from app.ai.decision_policy_v1 import DecisionInput, evaluate_decision
+from app.ai.early_recovery_live_adapter_v1_2 import evaluate_live_early_recovery
 
 VERSION = "2.2.2"
 SCANNER = "Watchlist Scanner"
@@ -624,6 +625,55 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
         f"failed={','.join(policy_shadow.get('failed_gates', []))}"
     )
 
+    # Early Recovery V1.2 ACTIVE experimental path. A qualifying recovery candidate
+    # can promote a weak/neutral production signal to BUY. Hard risk/invalid-data
+    # signals remain blocking. The normal Alpaca executor and risk gate still apply.
+    early_recovery_v1_2 = evaluate_live_early_recovery(
+        ticker, analysis, engine_result, period=period, interval=interval
+    )
+    early_recovery_v1_2['safety'] = {
+        'mode': 'ACTIVE_PAPER_PATH',
+        'orders_submitted': False,
+        'production_integrated': True,
+        'broker_risk_gate_still_required': True,
+    }
+    hard_block_signals = {
+        'SELL', 'STRONG_SELL', 'REDUCE', 'AVOID', 'NO_DATA',
+        'REVIEW_DATA', 'INSUFFICIENT_HISTORY', 'ERROR'
+    }
+    candidate_action = str(early_recovery_v1_2.get('action', '')).upper()
+    current_signal = str(final_signal or '').upper()
+    if (
+        candidate_action == 'BUY_CANDIDATE'
+        and current_signal not in hard_block_signals
+        and str(analysis.get('status', 'ANALYZED')).upper()
+            not in {'ERROR', 'REVIEW_DATA', 'INVALID_DATA'}
+    ):
+        before_signal = final_signal
+        final_signal = 'BUY'
+        early_recovery_v1_2['production_override'] = {
+            'applied': True,
+            'from_signal': before_signal,
+            'to_signal': 'BUY',
+            'reason': 'Early Recovery V1.2 thresholds met; candidate promoted to active BUY path',
+        }
+        signal_transformations.append({
+            'stage': 'early_recovery_v1_2_active',
+            'rule': 'recovery_candidate_promoted_to_buy',
+            'from_signal': before_signal,
+            'to_signal': 'BUY',
+            'reason': 'Early Recovery V1.2 candidate qualified and no hard-block signal was present.',
+        })
+        print(
+            f'EARLY RECOVERY V1.2 ACTIVE | {ticker} | '
+            f"tier={early_recovery_v1_2.get('tier')} | "
+            f'previous={before_signal} | FINAL=BUY | risk_gate=REQUIRED'
+        )
+    else:
+        early_recovery_v1_2['production_override'] = {
+            'applied': False,
+            'reason': 'No BUY_CANDIDATE or a hard-block/invalid-data condition remains active',
+        }
     _print_result(analysis, gate, final_signal, buy_target)
 
     if buy_target and analysis.get("current_price") is not None:
@@ -668,6 +718,7 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
             signal_transformations[-1]["reason"] if signal_transformations else None
         ),
         "decision_policy_shadow": policy_shadow,
+        "early_recovery_v1_2": early_recovery_v1_2,
     }
 
 

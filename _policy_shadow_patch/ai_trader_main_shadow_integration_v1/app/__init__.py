@@ -1,1 +1,0 @@
-"""AI Trader application package."""

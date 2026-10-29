@@ -318,7 +318,7 @@ def main():
         "orders_submitted":False,
         "generated_at_utc":datetime.now(timezone.utc).isoformat(),
         "repository_root":str(repo_root),
-        "policy_version":"decision_policy_v1; shadow_adapter_v1_2",
+        "policy_version":"decision_policy_v1; shadow_adapter_v1_1",
         "count":len(rows),
         "summary":{
             "sin_cambios":sum(r.get("comparison")=="SIN_CAMBIOS" for r in rows),
