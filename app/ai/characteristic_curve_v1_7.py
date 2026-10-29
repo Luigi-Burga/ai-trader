@@ -709,7 +709,24 @@ def analyze_dataframe(
 ) -> Dict[str, object]:
     cfg = cfg or CurveConfig()
     data = _clean_ohlcv(df)
+
+    if data is None or data.empty:
+        raise ValueError("CCE_INVALID_INPUT_DATA: OHLCV vacío tras limpieza")
+
+    required_ohlcv = {"Open", "High", "Low", "Close", "Volume"}
+    missing_ohlcv = required_ohlcv - set(data.columns)
+    if missing_ohlcv:
+        raise ValueError(
+            f"CCE_INVALID_INPUT_DATA: faltan columnas OHLCV: {sorted(missing_ohlcv)}"
+        )
+
     features = build_features(data, benchmark_df)
+
+    missing_features = set(FEATURES) - set(features.columns)
+    if missing_features:
+        raise ValueError(
+            f"CCE_INVALID_FEATURES: faltan features: {sorted(missing_features)}"
+        )
 
     valid = features[FEATURES].dropna()
     if len(valid) < cfg.min_history:

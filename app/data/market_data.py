@@ -145,6 +145,33 @@ def _cache_path(cache_dir: Path, key: str) -> Path:
     return cache_dir / f"market_{key}.pkl"
 
 
+def _failure_marker_active(path: Path, ttl_seconds: int = 60) -> bool:
+    """True while an identical market-data request has a recent failure."""
+    try:
+        age = time.time() - path.stat().st_mtime
+        if age < 0 or age >= ttl_seconds:
+            return False
+        return True
+    except OSError:
+        return False
+
+
+def _record_failure(path: Path) -> None:
+    """Record a short-lived failed request; never store it as market data."""
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(str(time.time()), encoding="utf-8")
+    except OSError as exc:
+        _debug_log(f"FAILURE MARKER WRITE ERROR | {exc}")
+
+
+def _clear_failure(path: Path) -> None:
+    try:
+        path.unlink(missing_ok=True)
+    except OSError:
+        pass
+
+
 def _read_cache(path: Path, ttl_seconds: int) -> Optional[pd.DataFrame]:
     try:
         age = time.time() - path.stat().st_mtime
@@ -261,6 +288,18 @@ def get_history(
             )
             return cached
 
+        failure_marker = path.with_suffix(path.suffix + ".fail")
+        if _failure_marker_active(
+            failure_marker,
+            _env_int("AI_TRADER_NEGATIVE_CACHE_TTL_SECONDS", 60),
+        ):
+            _debug_log(
+                f"RECENT FAILURE CACHE HIT | ticker={symbol} | "
+                f"period={period_key} | interval={interval} | "
+                f"auto_adjust={auto_adjust} | retry deferred"
+            )
+            return pd.DataFrame()
+
         _debug_log(
             f"CACHE MISS | ticker={symbol} | period={period_key} | "
             f"interval={interval} | auto_adjust={auto_adjust} | cache={path.name}"
@@ -286,11 +325,12 @@ def get_history(
         f"period={period_key} | interval={interval} | auto_adjust={auto_adjust}"
     )
 
+    failure_marker = path.with_suffix(path.suffix + ".fail")
     try:
         data = yf.download(yahoo_symbol, **kwargs)
     except Exception:
-        # Preserve yfinance's failure semantics for callers while avoiding a
-        # stale/partial cache write.
+        # Preserve the original exception, but suppress repeated retries briefly.
+        _record_failure(failure_marker)
         raise
 
     if data is None:
@@ -300,6 +340,9 @@ def get_history(
 
     if not data.empty:
         _write_cache(path, data, request)
+        _clear_failure(failure_marker)
+    else:
+        _record_failure(failure_marker)
 
     return data.copy(deep=True)
 

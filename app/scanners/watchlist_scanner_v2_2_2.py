@@ -639,7 +639,7 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
     }
     hard_block_signals = {
         'SELL', 'STRONG_SELL', 'REDUCE', 'AVOID', 'NO_DATA',
-        'REVIEW_DATA', 'INSUFFICIENT_HISTORY', 'ERROR'
+        'REVIEW_DATA', 'INSUFFICIENT_HISTORY', 'ENGINE_ERROR', 'ERROR'
     }
     candidate_action = str(early_recovery_v1_2.get('action', '')).upper()
     current_signal = str(final_signal or '').upper()
