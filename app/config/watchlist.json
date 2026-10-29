@@ -10,6 +10,9 @@
       "ticker": "GOOGL"
     },
     {
+      "ticker": "GOOG"
+    },
+    {
       "ticker": "AMZN"
     },
     {
@@ -47,6 +50,9 @@
     },
     {
         "ticker": "SOXL"
+    },
+    {
+        "ticker": "DFEN"
     },
     {
       "ticker": "ANET"
