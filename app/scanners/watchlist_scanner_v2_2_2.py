@@ -421,6 +421,16 @@ def scan_buy_opportunity(stock: Mapping[str, Any]) -> Dict[str, Any]:
     # into the pipeline-level result when the benchmark was auto-resolved.
     engine_result = _gate_input(_engine_result(analysis), analysis)
 
+    # Preserve the original orchestrator exception in operational logs.
+    engine_error = analysis.get("engine_error")
+    if isinstance(engine_error, Mapping):
+        print(
+            f"{ticker} => ENGINE ERROR | "
+            f"engine={analysis.get('engine')} | "
+            f"type={engine_error.get('type')} | "
+            f"message={engine_error.get('message')}"
+        )
+
     # V2.2.2 FIX:
     # The Orchestrator is authoritative for the selected engine's signal.
     # engine_result may contain legacy/raw fields whose signal semantics differ
